@@ -1,1 +1,15 @@
 theme: jekyll-theme-architect
+plugins:
+   - jekyll-mentions
+   - jemoji
+   - jekyll-redirect-from
+   - jekyll-sitemap
+   - jekyll-feed
+   - jekyll-feed
+   - jekyll-redirect-from
+   - jekyll-seo-tag
+   - jekyll-sitemap
+   - jekyll-avatar
+   - jemoji
+   - jekyll-mentions
+     #   - jekyll-include-cache
