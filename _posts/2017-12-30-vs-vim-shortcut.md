@@ -1,6 +1,7 @@
 ---
 title: Vim in VS shortcut
 layout: default
+categories: productivity
 ---
 ## VS shortcut
 - `cmd + b`: show/hide file explorer
