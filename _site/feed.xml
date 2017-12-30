@@ -1,1 +1,32 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.5.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-10-07T14:25:58+07:00</updated><id>http://localhost:4000/</id><title type="html">ngocvtdev.github.io</title><entry><title type="html">My First Post!</title><link href="http://localhost:4000/2017/10/05/first-post.html" rel="alternate" type="text/html" title="My First Post!" /><published>2017-10-05T00:00:00+07:00</published><updated>2017-10-05T00:00:00+07:00</updated><id>http://localhost:4000/2017/10/05/first-post</id><content type="html" xml:base="http://localhost:4000/2017/10/05/first-post.html">&lt;p&gt;my first post!&lt;/p&gt;</content><author><name></name></author><summary type="html">my first post!</summary></entry></feed>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.5.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-12-30T16:38:19+07:00</updated><id>http://localhost:4000/</id><title type="html">ngocvt’s blog</title><subtitle>this blog is about my experiences in software development</subtitle><entry><title type="html">Vim in VS shortcut</title><link href="http://localhost:4000/2017/12/30/vs-vim-shortcut.html" rel="alternate" type="text/html" title="Vim in VS shortcut" /><published>2017-12-30T00:00:00+07:00</published><updated>2017-12-30T00:00:00+07:00</updated><id>http://localhost:4000/2017/12/30/vs-vim-shortcut</id><content type="html" xml:base="http://localhost:4000/2017/12/30/vs-vim-shortcut.html">&lt;h2 id=&quot;vs-shortcut&quot;&gt;VS shortcut&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;cmd + b&lt;/code&gt;: show/hide file explorer&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;cmd + opt+right arrow/left arrow&lt;/code&gt;: next/previous tab&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;cmd \&lt;/code&gt;: split view&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;vim-shortcut&quot;&gt;Vim shortcut&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;copy then paste replace:
+ex:
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;list.add(abc)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;aff&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;vib&lt;/code&gt;: slellect inside block ()&lt;/li&gt;
+  &lt;li&gt;Inside a yarenthesis blocky, I use vib (“select inner block”)&lt;/li&gt;
+  &lt;li&gt;Inside a curly braces block you can use viB (“capital B”)&lt;/li&gt;
+  &lt;li&gt;To make the selections “inclusive” (select also the quotes, parenthesis or braces) you can use &lt;code class=&quot;highlighter-rouge&quot;&gt;a&lt;/code&gt; instead of &lt;code class=&quot;highlighter-rouge&quot;&gt;i&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;surround:
+    &lt;ul&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;d s&lt;/code&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;existing char&amp;gt;&lt;/code&gt;	Delete existing surround&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;c s&lt;/code&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;existing char&amp;gt;&lt;/code&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;desired char&amp;gt;&lt;/code&gt;	Change surround existing to desired&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;y s&lt;/code&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;motion&amp;gt;&lt;/code&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;desired char&amp;gt;&lt;/code&gt;	Surround something with something using motion (as in “you surround”)&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;S&lt;/code&gt;  &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;desired char&amp;gt;&lt;/code&gt;	Surround when in visual modes (surrounds full selection)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</content><author><name></name></author><summary type="html">VS shortcut cmd + b: show/hide file explorer cmd + opt+right arrow/left arrow: next/previous tab cmd \: split view</summary></entry></feed>
