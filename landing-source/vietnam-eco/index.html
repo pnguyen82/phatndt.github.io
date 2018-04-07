@@ -96,7 +96,7 @@
             width: 26px;
             height: 26px;
             font-family: slick;
-            font-size: 40px;
+            font-size: 20px;
             line-height: 25px;
             text-align: center;
             text-shadow: rgb(142, 199, 255) 0px 0px 13px;
@@ -104,6 +104,9 @@
             -webkit-font-smoothing: antialiased;
             -moz-font-smoothing: antialiased;
             font-smoothing: antialiased;
+        }
+        .slick-slide:focus{
+           outline: none; 
         }
 
     </style>
@@ -795,7 +798,7 @@
             position: absolute;
             top: 1418px;
             left: 50%;
-            overflow: hidden;
+            /* overflow: hidden; */
             height: 1370px;
             transform-origin: 564.993px 459.75px 0px;
             -webkit-transform-origin: 564.993px 459.75px 0px;
@@ -2366,7 +2369,7 @@
                 transform-style: preserve-3d;
                 -webkit-transform-style: preserve-3d;
                 -moz-transform-style: preserve-3d;
-                overflow: hidden;
+                /* overflow: hidden; */
             }
             .gwd-div-15xy {
                 width: 90.16%;
@@ -3037,13 +3040,13 @@
                 height: 3400px;
             }
             .gwd-div-1qq8 {
-                overflow: hidden;
+                /* overflow: hidden; */
                 height: 800px;
                 transform-origin: 448.175px 459.79px 0px;
                 -webkit-transform-origin: 448.175px 459.79px 0px;
                 -moz-transform-origin: 448.175px 459.79px 0px;
                 left: 50%;
-                width: 750px;
+                width: 748px;
                 transform: translate3d(-375px, -392px, 0px);
                 -webkit-transform: translate3d(-375px, -392px, 0px);
                 -moz-transform: translate3d(-375px, -392px, 0px);
@@ -3992,11 +3995,16 @@
             text-align: center;
             background: linear-gradient(to right, rgb(113, 2, 185) 14%, rgb(0, 187, 249) 100%);
             color: white;
+            max-width: 100px;
+            max-height: 50px;
+            min-width: 70px;
+            min-height: 40px;
             padding: 12px;
             font-size: 1.1em;
             margin-top: 20px;
             border-radius: 0.2rem;
             float: right;
+            position: relative;
         }
 
         #register-form .form-input {
@@ -4032,6 +4040,11 @@
 
         a.nav-item:visited {
             text-decoration: none;
+        }
+        .slick-list{
+            overflow: hidden;
+            width:100%;
+            height:100%;
         }
     </style>
     <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Mono" rel="stylesheet" type="text/css">
@@ -4414,7 +4427,8 @@
                 <label for="firstName">Linkedin</label>
                 <input type="text" name="linkedin" id="linkedin">
             </div>
-            <button id="submit-btn" type="submti">SUBMIT</button>
+            <button id="submit-btn" type="submit">SUBMIT</button>
+            
         </form>
 
     </div>
@@ -4427,9 +4441,9 @@
             $('.gwd-div-1qq8').slick({
                 infinite: false,
                 slidesToShow: 3,
-                slidesToScroll: 1,
+                slidesToScroll: 2,
                 autoplay: true,
-                autoplaySpeed: 2000,
+                autoplaySpeed: 5000,
                 dots: true,
                 arrows:true,
                 responsive: [{
@@ -4471,10 +4485,13 @@
                 script.src = $(this).attr('action') + "?" + $(this).serialize() + "&callback=registerSuccess";
                 $('#call-sheet-api').remove();
                 document.body.appendChild(script);
+                $('#submit-btn').html(`<img src="loading.svg" alt="" id='loading-img' style="width:100%;height:100%;top:0;left:0;position: absolute;">`);
+
             });
         })
         function registerSuccess() {
-            window.location.reload();
+            $('#submit-btn').text('DONE!');
+            // window.location.reload();
         }
     </script>
     <script type="text/javascript" id="gwd-init-code">
