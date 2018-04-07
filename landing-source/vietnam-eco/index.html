@@ -11,7 +11,23 @@
     <link href="gwdpage_style.css" rel="stylesheet" data-version="12" data-exports-type="gwd-page">
     <link href="gwdpagedeck_style.css" rel="stylesheet" data-version="11" data-exports-type="gwd-pagedeck">
     <link href="gwdimage_style.css" rel="stylesheet" data-version="11" data-exports-type="gwd-image">
+    <link rel="stylesheet" href="slick-theme.css">
+    <!-- <link rel="stylesheet" href="slick.css"> -->
     <style type="text/css">
+        *{
+            box-sizing: border-box;
+        }
+        .slick-prev:before,
+        .slick-next:before {
+            color: #006fc7;
+            z-index: 1000;
+        }
+        .slick-prev,.click-next{
+            z-index: 1000;
+        }
+        .slick-slider:focus{
+            outline: none;
+        }
         .slick-dots li button {
             border: 0px;
             background: 0px 0px;
@@ -45,10 +61,11 @@
             height: 25px;
             width: 25px;
             margin: 0px 5px;
-            border: 1px solid rgb(0, 83, 251);
+            /* border: 1px solid rgb(0, 83, 251); */
             border-radius: 50%;
-            box-shadow: rgba(18, 60, 255, 0.4) 0px 0px 15px 0px;
+            /* box-shadow: rgba(18, 60, 255, 0.4) 0px 0px 15px 0px; */
         }
+
 
         .slick-dots li {
             position: relative;
@@ -88,6 +105,7 @@
             -moz-font-smoothing: antialiased;
             font-smoothing: antialiased;
         }
+        
     </style>
     <style type="text/css" id="gwd-text-style">
         p {
@@ -3900,17 +3918,19 @@
                 top: 842px;
             }
         }
-        .slick-active:focus{
-          outline:none;
+
+        .slick-active:focus {
+            outline: none;
         }
     </style>
     <style>
-        .register-popup:hover{
-            cursor:pointer;
-            background:linear-gradient(to left, rgb(113, 2, 185) 14%, rgb(0, 187, 249) 100%);
+        .register-popup:hover {
+            cursor: pointer;
+            background: linear-gradient(to left, rgb(113, 2, 185) 14%, rgb(0, 187, 249) 100%);
             transition-duration: .5s;
-            border-radius:1rem;
+            border-radius: 1rem;
         }
+
         #register-form-container {
             position: fixed;
             display: none;
@@ -3936,10 +3956,11 @@
             margin: auto;
             border-radius: 1.7%;
         }
+
         @media (max-width: 899px) {
             #register-form {
-              font-size: .8em;
-              line-height: 20px;
+                font-size: .8em;
+                line-height: 20px;
             }
         }
 
@@ -3987,9 +4008,10 @@
 
         @media (max-width: 899px) {
             #register-form .form-input {
-              margin-left: 30px;
+                margin-left: 30px;
             }
         }
+
         a.nav-item:link {
             text-decoration: none;
         }
@@ -4011,7 +4033,6 @@
         a.nav-item:visited {
             text-decoration: none;
         }
-
     </style>
     <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Mono" rel="stylesheet" type="text/css">
     <script data-source="googbase_min.js" data-version="4" data-exports-type="googbase" src="googbase_min.js"></script>
@@ -4207,11 +4228,10 @@
                             <br class="">officer of VNG Corporation,
                             <br class="">a leading internet and social media
                             <br class="">company in Vietnam. Mr, Minh Le is a strong believer in the power of the internet to connect
-                            <br
-                                class="">Vietnamese people together in ways unforeseen just a few years ago. As the country expands economically
-                                and internet usage rates expand, VNG will look to create even more value-added services and
-                                products that cater towards enhancing Vietnamese people’s lives both online and off. He obtained
-                                a bachelor of business in banking and finance from Monash University in Melbourne, Australia.&nbsp;</span>
+                            <br class="">Vietnamese people together in ways unforeseen just a few years ago. As the country expands economically
+                            and internet usage rates expand, VNG will look to create even more value-added services and products
+                            that cater towards enhancing Vietnamese people’s lives both online and off. He obtained a bachelor
+                            of business in banking and finance from Monash University in Melbourne, Australia.&nbsp;</span>
                     </div>
                     <div class="gwd-div-wdp6 gwd-div-l946" id="anhtien">
                         <div class="gwd-div-blmk gwd-div-j02f" id="hinhanhtien">
@@ -4376,7 +4396,8 @@
         </div>
     </div>
     <div id="register-form-container">
-        <form action="https://script.google.com/macros/s/AKfycbxaSfg86zO1oWYN0ht-hyXZiahaQ3cfmcLP1qje7ScfyVqf4lRb/exec" id="register-form" method="GET">
+        <form action="https://script.google.com/macros/s/AKfycbxaSfg86zO1oWYN0ht-hyXZiahaQ3cfmcLP1qje7ScfyVqf4lRb/exec" id="register-form"
+            method="GET">
             <h2>REGISTER</h2>
             <button class="close-btn" type="button">x</button>
             <div class="form-input">
@@ -4406,12 +4427,12 @@
             $('.gwd-div-1qq8').slick({
                 infinite: false,
                 slidesToShow: 3,
-                slidesToScroll: 2,
-                arrows: false,
-                dots: true,
+                slidesToScroll: 1,
                 autoplay: true,
-                autoplaySpeed: 5000,
-              swipeToSlide:true,
+                autoplaySpeed: 2000,
+                dots: true,
+                arrows:true,
+                swipeToSlide: true,
                 responsive: [{
                     breakpoint: 900,
                     settings: {
@@ -4446,47 +4467,47 @@
             $('#register-form').submit(function (e) {
                 e.preventDefault();
                 var script = document.createElement('script');
-                script.id="call-sheet-api";
+                script.id = "call-sheet-api";
                 script.type = 'text/javascript';
-                script.src = $(this).attr('action')+"?"+$(this).serialize()+"&callback=registerSuccess";
+                script.src = $(this).attr('action') + "?" + $(this).serialize() + "&callback=registerSuccess";
                 $('#call-sheet-api').remove();
                 document.body.appendChild(script);
             });
         })
-       function registerSuccess(){
-           window.location.reload();
-       }
+        function registerSuccess() {
+            window.location.reload();
+        }
     </script>
     <script type="text/javascript" id="gwd-init-code">
-            (function () {
-                document.body.style.opacity = "0";
-                var pageDeck = document.getElementById('pagedeck');
-                /**
-                 * Handles the DOMContentLoaded event. The DOMContentLoaded event is
-                 * fired when the document has been completely loaded and parsed.
-                 */
+        (function () {
+            document.body.style.opacity = "0";
+            var pageDeck = document.getElementById('pagedeck');
+            /**
+             * Handles the DOMContentLoaded event. The DOMContentLoaded event is
+             * fired when the document has been completely loaded and parsed.
+             */
 
-                function handleDomContentLoaded(event) { }
+            function handleDomContentLoaded(event) { }
 
-                /**
-                 * Handles the WebComponentsReady event. This event is fired when all
-                 * custom elements have been registered and upgraded.
-                 */
-                function handleWebComponentsReady(event) {
-                    document.body.style.opacity = "";
-                    setTimeout(function () {
-                        pageDeck.goToPage(pageDeck.getDefaultPage().id);
-                    }, 0);
-                }
+            /**
+             * Handles the WebComponentsReady event. This event is fired when all
+             * custom elements have been registered and upgraded.
+             */
+            function handleWebComponentsReady(event) {
+                document.body.style.opacity = "";
+                setTimeout(function () {
+                    pageDeck.goToPage(pageDeck.getDefaultPage().id);
+                }, 0);
+            }
 
-                window.addEventListener('DOMContentLoaded',
-                    handleDomContentLoaded, false);
-                window.addEventListener('WebComponentsReady',
-                    handleWebComponentsReady, false);
+            window.addEventListener('DOMContentLoaded',
+                handleDomContentLoaded, false);
+            window.addEventListener('WebComponentsReady',
+                handleWebComponentsReady, false);
 
 
 
-            })();
+        })();
     </script>
 
 </body>
