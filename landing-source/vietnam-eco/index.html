@@ -2182,10 +2182,6 @@
         }
 
         @media (max-width: 899px) {
-            #register-form {
-              font-size: .8em;
-              line-height: 20px;
-            }
             .gwd-div-xxpm {
                 width: 100%;
                 height: 2700px;
@@ -3905,24 +3901,10 @@
             }
         }
         .slick-active:focus{
-            border:none;
+          outline:none;
         }
     </style>
     <style>
-        @media (max-width: 899px) {
-            #register-form {
-              font-size: .8em;
-              line-height: 20px;
-            }
-        }
-        @media (min-width:900px{
-            #register-form {
-              font-size: 1.2em;
-              line-height: 32px;
-            }
-        }
-
-
         .register-popup:hover{
             cursor:pointer;
             background:linear-gradient(to left, rgb(113, 2, 185) 14%, rgb(0, 187, 249) 100%);
@@ -3942,15 +3924,23 @@
 
         #register-form {
             font-family: roboto, sans-serif;
+            font-size: 1.2em;
+            line-height: 32px;
             position: relative;
             padding: 40px;
             background-color: white;
             width: 100%;
             max-width: 500px;
             min-width: 300px;
-            min-height: 300px;
+            min-height: 200px;
             margin: auto;
             border-radius: 1.7%;
+        }
+        @media (max-width: 899px) {
+            #register-form {
+              font-size: .8em;
+              line-height: 20px;
+            }
         }
 
         #register-form .close-btn {
@@ -4015,6 +4005,7 @@
         a.nav-item:visited {
             text-decoration: none;
         }
+
     </style>
     <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Mono" rel="stylesheet" type="text/css">
     <script data-source="googbase_min.js" data-version="4" data-exports-type="googbase" src="googbase_min.js"></script>
@@ -4414,6 +4405,7 @@
                 dots: true,
                 autoplay: true,
                 autoplaySpeed: 5000,
+              swipeToSlide:true,
                 responsive: [{
                     breakpoint: 900,
                     settings: {
