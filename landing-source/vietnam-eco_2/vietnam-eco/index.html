@@ -4576,8 +4576,8 @@
                 <label for="firstName">Linkedin</label>
                 <input type="text" name="linkedin" id="linkedin">
             </div>
-            <div class="g-recaptcha" data-sitekey="6LeEi1IUAAAAAJaoiFpNbg5qpMetkqRnnwDty2ZO"></div>
-            <button id="submit-btn" type="submit">SUBMIT</button>
+            <div class="g-recaptcha" data-callback="recaptchaSuccess" style="float: left;" data-sitekey="6LeEi1IUAAAAAJaoiFpNbg5qpMetkqRnnwDty2ZO"></div>
+            <button id="submit-btn" type="submit" disabled="false">SUBMIT</button>
 
         </form>
 
@@ -4587,6 +4587,10 @@
     <script src='https://www.google.com/recaptcha/api.js'></script>
     <script>
         /*     $('#slick-container').slick(); */
+      recaptchaSuccess(){
+        $('#submit-btn').attr('disable',"false");
+
+      }
 
         $(function () {
             $('.gwd-div-1qq8').slick({
