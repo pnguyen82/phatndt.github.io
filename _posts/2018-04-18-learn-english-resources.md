@@ -11,3 +11,4 @@ layout: default
 
 ### Vocabulary
 - Anki is great fashcard app for you to learn vocabulary https://apps.ankiweb.net/
+- Doulingo  https://www.duolingo.com/
