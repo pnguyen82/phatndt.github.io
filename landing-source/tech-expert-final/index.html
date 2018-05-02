@@ -7034,8 +7034,7 @@ body {
             <input type="text" name="facebook" placeholder="fb.com/LifeAtVNG" class="gwd-div-1kcg"></input>
             <p class="gwd-p-nby1 gwd-p-mi0j gwd-p-yllb">Facebook:</p>
           </div><span class="gwd-span-6v83">Register form</span>
-          <p class="gwd-p-1x6q gwd-p-1agg">See you there!
-          </p>
+          <p class="gwd-p-1x6q gwd-p-1agg" id="register-notify"></p>
           <button type="submit" id="submit-btn" class="gwd-div-1q8x gwd-div-1k3o">Submit</button>
           <p class="gwd-p-15ob">(*) Required</p>
         </div>
@@ -7191,8 +7190,10 @@ body {
     function callback(data) {
       console.log(data);
       if (data && data.resultCode >= 0) {
-        document.getElementById('submit-btn').innerHTML = "Success!";
-        document.getElementById('submit-btn').removeEventListener('click');
+        document.getElementById('submit-btn').innerHTML = "Submit Again";
+        //document.getElementById('submit-btn').removeEventListener('click');
+        document.getElementById('register-notify').innerHTML = "Thank you for your registration";
+        document.getElementById('register-form').reset();
       }
     }
 
@@ -7227,6 +7228,8 @@ body {
       //
       document.getElementById('register-form').onsubmit = function (e) {
         e.preventDefault();
+        document.getElementById('register-notify').innerHTML = "";
+        document.getElementById('submit-btn').innerHTML ="Processing"
         var putDataScript = document.createElement('script');
         putDataScript.type = "text/javascript";
         var formData = new FormData(document.querySelector('#register-form'))
@@ -7244,5 +7247,4 @@ body {
     })();
   </script>
 </body>
-</htmlndow.scrollTo(0,document.getElementById('register-form').offsetTop)
-  7243       }    >
+</html>
