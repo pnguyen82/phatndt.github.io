@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html><head><meta name="GCD" content="YTk3ODQ3ZWZhN2I4NzZmMzBkNTEwYjJlb2677c53136180f721fbbb98e3b914bf"/>
   <meta charset="utf-8">
-  <title>test</title>
+  <title>Tech Expert Connection</title>
   <meta name="generator" content="Google Web Designer 3.0.1.0319">
   <meta name="template" content="Expandable 3.0.0">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -4775,7 +4775,7 @@ body {
         -moz-transform-style: preserve-3d;
     }
     .gwd-p-1agg {
-        top: 100%;
+        top: 102%;
         font-size: 20px;
         width: 247px;
         height: 27px;
@@ -5906,7 +5906,7 @@ body {
         left: 50%;
     }
     .gwd-p-1agg {
-        top: 100%;
+        top: 102%;
         font-size: 30px;
         width: 397px;
         height: 61px;
@@ -6851,7 +6851,7 @@ body {
         transform-origin: 237.274px 26.2246px 0px;
         -webkit-transform-origin: 237.274px 26.2246px 0px;
         -moz-transform-origin: 237.274px 26.2246px 0px;
-        top: 100%;
+        top: 103%;
         transform: translate3d(-237px, -52px, 0px);
         -webkit-transform: translate3d(-237px, -52px, 0px);
         -moz-transform: translate3d(-237px, -52px, 0px);
@@ -6896,6 +6896,21 @@ body {
       width: auto;
     }
 
+    #register-notify{
+       font-family: "Space Mono", monospace;
+       position: absolute;
+       top: 91%;
+       margin: auto;
+       width: 100%;
+       text-align: center;
+       font-size: 20px;
+    }
+    @media (max-width: 1366px) and (min-width: 900px) {
+      #register-notify{
+         top: 90%;
+      }
+    }
+
     @media (max-width: 899px) {
       .gwd-span-mzkv {
           font-size: 23px;
@@ -6905,6 +6920,9 @@ body {
       }
       #register-form input {
         font-size: 18px;
+      }
+      #register-notify{
+       top: 91%;
       }
     }
   </style>
@@ -7035,7 +7053,8 @@ body {
             <input type="text" name="facebook" placeholder="fb.com/LifeAtVNG" class="gwd-div-1kcg"></input>
             <p class="gwd-p-nby1 gwd-p-mi0j gwd-p-yllb">Facebook:</p>
           </div><span class="gwd-span-6v83">Register form</span>
-          <p class="gwd-p-1x6q gwd-p-1agg" style="width:auto;" id="register-notify"></p>
+          <p id="register-notify">Thank you for you registration</p>
+          <p class="gwd-p-1x6q gwd-p-1agg">See you there!</p>
           <button type="submit" id="submit-btn" class="gwd-div-1q8x gwd-div-1k3o">Submit</button>
           <p class="gwd-p-15ob">(*) Required</p>
         </div>
@@ -7223,6 +7242,14 @@ body {
         handleDomContentLoaded, false);
       window.addEventListener('WebComponentsReady',
         handleWebComponentsReady, false);
+
+      //clear result text on focus
+      document.querySelectorAll('#register-form input').forEach(function(item){
+        item.onfocus = function(){
+          document.getElementById('register-notify').innerHTML="";
+        }
+      })
+
 
       // put data on form submit
 
