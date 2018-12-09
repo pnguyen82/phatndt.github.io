@@ -1,5 +1,6 @@
 ---
 title: Git Rebase, when to use it?
+categories: git
 ---
 
 ## Definition

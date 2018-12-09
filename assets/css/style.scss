@@ -44,3 +44,16 @@ header{
     position: absolute;
     width: auto;
 }
+.post-category{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: inline;
+}
+.post-category li{
+    display: inline;
+    padding: .1em .7em;
+    background: darkslategrey;
+    border-radius: .5em;
+    color: white;
+}

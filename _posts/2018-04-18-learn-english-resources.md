@@ -1,5 +1,6 @@
 ---
 title: Learn English Resources
+categories: english
 ---
 
 - original post: https://vozforums.com/showthread.php?t=6129889

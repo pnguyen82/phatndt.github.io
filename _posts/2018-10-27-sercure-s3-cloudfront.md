@@ -1,5 +1,6 @@
 ---
 title: Secure s3 cloudfont content with Signed Cookies and Signed URLs
+categories: aws s3
 ---
 # Serve s3 cloudfront secure conent
 Use case:

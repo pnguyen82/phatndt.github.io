@@ -2,10 +2,19 @@
 <div class="posts">
   <ul>
 {% for post in paginator.posts %}
+  <div>
   <h1><a href="{{ post.url }}">{{ post.title }}</a></h1>
-  <p class="author">
-    <span class="date">{{ post.date | date: "%-d %B %Y" }}</span>
-  </p>
+  <div class="author">
+    <span class="date">
+      <small>{{ post.date | date: "%-d %B %Y" }}</small>
+    </span>
+    <ul class="post-category">
+     {% for cat in post.categories %}
+       <li>{{cat}}</li>
+     {% endfor %}
+    </ul>
+  </div>
+  </div>
 {% endfor %}
 </ul>
 </div>
