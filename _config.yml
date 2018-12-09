@@ -3,6 +3,8 @@ title: ngoc's blog
 description: This blog is about my experiences in software development, I hope you can find something useful!
 show_downloads: false
 permalink: /:categories/:title/
+excerpt_separator: <!--more-->
+paginate: 10
 
 plugins:
    - jemoji

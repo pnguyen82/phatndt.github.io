@@ -309,3 +309,12 @@ footer { width: 180px; position: fixed; left: 50%; margin-left: -530px; bottom: 
 @media print, screen and (max-height: 680px) { footer { text-align: center; margin: 20px auto; position: relative; left: auto; bottom: auto; width: auto; } }
 @media print, screen and (max-height: 480px) { nav { display: none; }
   footer { text-align: center; margin: 20px auto; position: relative; left: auto; bottom: auto; width: auto; } }
+/* system typefaces */
+/* sans serif typefaces */
+/* serif typefaces */
+/* type scale */
+body { font-size: 1em; }
+
+section { width: auto; max-width: 800px; }
+
+header { position: absolute; width: auto; }

@@ -16,16 +16,11 @@
 <body>
   {%include header.html%}
   <div class="wrapper">
-    <nav>
-      <ul>
-      </ul>
-    </nav>
     <section>
       {{ content }}
     </section>
-    {%include footer.html%}
-    {%include comment.html%}
-  </div>
-    {%include gtag.html%}
+  {%include footer.html%}
+  {% include gtag.html %}
 </body>
+
 </html>
