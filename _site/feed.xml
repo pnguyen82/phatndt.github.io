@@ -1,4 +1,134 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.5.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-12-31T00:32:13+07:00</updated><id>http://localhost:4000/</id><title type="html">ngocvt’s blog</title><subtitle>This blog is about my experiences in software development, I hope you can find something useful!</subtitle><entry><title type="html">Vim in VS shortcut</title><link href="http://localhost:4000/productivity/vs-vim-shortcut/" rel="alternate" type="text/html" title="Vim in VS shortcut" /><published>2017-12-30T00:00:00+07:00</published><updated>2017-12-30T00:00:00+07:00</updated><id>http://localhost:4000/productivity/vs-vim-shortcut</id><content type="html" xml:base="http://localhost:4000/productivity/vs-vim-shortcut/">&lt;h2 id=&quot;vs-shortcut&quot;&gt;VS shortcut&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.5.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2018-12-09T09:44:23+07:00</updated><id>http://localhost:4000/</id><title type="html">ngoc’s blog</title><subtitle>This blog is about my experiences in software development, I hope you can find something useful!</subtitle><entry><title type="html">Secure s3 cloudfont</title><link href="http://localhost:4000/sercure-s3-cloudfront/" rel="alternate" type="text/html" title="Secure s3 cloudfont" /><published>2018-10-27T00:00:00+07:00</published><updated>2018-10-27T00:00:00+07:00</updated><id>http://localhost:4000/sercure-s3-cloudfront</id><content type="html" xml:base="http://localhost:4000/sercure-s3-cloudfront/">&lt;h1 id=&quot;serve-s3-secure-conent&quot;&gt;Serve s3 secure conent&lt;/h1&gt;
+&lt;p&gt;https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-setting-signed-cookie-canned-policy.html&lt;/p&gt;
+&lt;h2 id=&quot;step&quot;&gt;Step&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;set cookies:The name-value pairs are:&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;CloudFront-Expires&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;CloudFront-Signature&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;CloudFront-Key-Pair-Id&lt;/code&gt;
+Example:
+```
+Set-Cookie:
+Domain=optional domain name;
+Path=/optional directory path;
+Secure;
+HttpOnly;
+CloudFront-Expires=date and time in Unix time format (in seconds) and Coordinated Universal Time (UTC)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Set-Cookie:
+Domain=optional domain name;
+Path=/optional directory path;
+Secure;
+HttpOnly;
+CloudFront-Signature=hashed and signed version of the policy statement&lt;/p&gt;
+
+&lt;p&gt;Set-Cookie:
+Domain=optional domain name;
+Path=/optional directory path;
+Secure;
+HttpOnly;
+CloudFront-Key-Pair-Id=active CloudFront key pair Id for the key pair that you are using to generate the signature
+```&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;golang lib:
+https://docs.aws.amazon.com/sdk-for-go/api/service/cloudfront/sign/#CookieSigner.Sign&lt;/li&gt;
+&lt;/ul&gt;</content><author><name></name></author><summary type="html">Serve s3 secure conent https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-setting-signed-cookie-canned-policy.html Step set cookies:The name-value pairs are: CloudFront-Expires CloudFront-Signature CloudFront-Key-Pair-Id Example: ``` Set-Cookie: Domain=optional domain name; Path=/optional directory path; Secure; HttpOnly; CloudFront-Expires=date and time in Unix time format (in seconds) and Coordinated Universal Time (UTC)</summary></entry><entry><title type="html">naming-classes-how-to-avoid-calling-everything-a-whatevermanager</title><link href="http://localhost:4000/naming-classes-how-to-avoid-calling-everything-a-whatevermanager/" rel="alternate" type="text/html" title="naming-classes-how-to-avoid-calling-everything-a-whatevermanager" /><published>2018-10-27T00:00:00+07:00</published><updated>2018-10-27T00:00:00+07:00</updated><id>http://localhost:4000/naming-classes-how-to-avoid-calling-everything-a-whatevermanager</id><content type="html" xml:base="http://localhost:4000/naming-classes-how-to-avoid-calling-everything-a-whatevermanager/">&lt;p&gt;source: https://stackoverflow.com/questions/1866794/naming-classes-how-to-avoid-calling-everything-a-whatevermanager
+Here’s a little summary of what I learned from this question in the meantime.&lt;/p&gt;
+
+&lt;p&gt;Try not to create new metaphors (Nanny)
+Have a look at what other frameworks do
+Further articles/books on this topic:&lt;/p&gt;
+
+&lt;p&gt;What names do you find yourself prepending/appending to classes regularly?
+What’s the best approach to naming classes?
+Book: Design Patterns: Elements of Reusable Object-Oriented Software (Hardcover)
+Book: Patterns of Enterprise Application Architecture (Hardcover)
+Book: Implementation Patterns (Paperback)
+And a current list of name prefixes/suffixes I collected (subjectively!) from the answers:&lt;/p&gt;
+
+&lt;p&gt;Coordinator
+Builder
+Writer
+Reader
+Handler
+Container
+Protocol
+Target
+Converter
+Controller
+View
+Factory
+Entity
+Bucket
+And a good tip for the road:&lt;/p&gt;
+
+&lt;p&gt;Don’t get naming paralysis. Yes, names are very important but they’re not important enough to waste huge amounts of time on. If you can’t think up a good name in 10 minutes, move on.&lt;/p&gt;</content><author><name></name></author><summary type="html">source: https://stackoverflow.com/questions/1866794/naming-classes-how-to-avoid-calling-everything-a-whatevermanager Here’s a little summary of what I learned from this question in the meantime.</summary></entry><entry><title type="html">Git Rebase</title><link href="http://localhost:4000/git-rebase/" rel="alternate" type="text/html" title="Git Rebase" /><published>2018-09-13T00:00:00+07:00</published><updated>2018-09-13T00:00:00+07:00</updated><id>http://localhost:4000/git-rebase</id><content type="html" xml:base="http://localhost:4000/git-rebase/">&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git rebase in its simplest form is a command which will merge another branch into the branch where you are currently working, and move all of the local commits that are ahead of the rebased branch to the top of the history on that branch.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;source:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;https://nathanleclaire.com/blog/2014/09/14/dont-be-scared-of-git-rebase/&lt;/li&gt;
+  &lt;li&gt;https://www.atlassian.com/git/tutorials/merging-vs-rebasing&lt;/li&gt;
+&lt;/ul&gt;</content><author><name></name></author><summary type="html">git rebase in its simplest form is a command which will merge another branch into the branch where you are currently working, and move all of the local commits that are ahead of the rebased branch to the top of the history on that branch. source: https://nathanleclaire.com/blog/2014/09/14/dont-be-scared-of-git-rebase/ https://www.atlassian.com/git/tutorials/merging-vs-rebasing</summary></entry><entry><title type="html">Spring security</title><link href="http://localhost:4000/spring-security/" rel="alternate" type="text/html" title="Spring security" /><published>2018-06-13T00:00:00+07:00</published><updated>2018-06-13T00:00:00+07:00</updated><id>http://localhost:4000/spring-security</id><content type="html" xml:base="http://localhost:4000/spring-security/">&lt;h3 id=&quot;what-is-the-default-authenticationmanager-in-spring-security&quot;&gt;What is the default authenticationmanager in spring security&lt;/h3&gt;
+&lt;p&gt;The AuthenticationManager is really just a container for authentication providers, giving a consistent interface to them all. In most cases, the default AuthenticationManager is more than sufficient.
+When you call
+.authenticate(new UsernamePasswordAuthenticationToken(username, password))`
+it is passing the UsernamePasswordAuthenticationToken to the default AuthenticationProvider, which will use the userDetailsService to get the user based on username and compare that user’s password with the one in the authentication token.
+In general, the AuthenticationManager passes some sort of AuthenticationToken to the each of it’s AuthenticationProviders and they each inspect it and, if they can use it to authenticate, they return with an indication of “Authenticated”, “Unauthenticated”, or “Could not authenticate” (which indicates the provider did not know how to handle the token, so it passed on processing it)
+This is the mechanism that allows you to plug in other authentication schemes, like authenticating against an LDAP or Active Directory server, or OpenID, and is one of the main extension points within the Spring Security framework.&lt;/p&gt;
+
+&lt;p&gt;Spring Security ships only one real AuthenticationManager implementation:
+org.springframework.security.authentication.ProviderManager
+This uses different AuthenticationProvider for the authentication tasks
+The AuthenticationManagerBeanDefinitionParser is responsible to parse &lt;sec:authentication-manager&gt; its java doc states:
+Registers the central ProviderManager used by the namespace configuration, and allows the configuration of an alias, allowing users to reference it in their beans and clearly see where the name is coming from.
+It creates the ProviderManager and adds the specified provides. If no provides is specified in the xml, then it adds an NullAuthenticationProvider. This is at least a provider that does noting than preventing configuration exceptions.&lt;/sec:authentication-manager&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">What is the default authenticationmanager in spring security The AuthenticationManager is really just a container for authentication providers, giving a consistent interface to them all. In most cases, the default AuthenticationManager is more than sufficient. When you call .authenticate(new UsernamePasswordAuthenticationToken(username, password))` it is passing the UsernamePasswordAuthenticationToken to the default AuthenticationProvider, which will use the userDetailsService to get the user based on username and compare that user’s password with the one in the authentication token. In general, the AuthenticationManager passes some sort of AuthenticationToken to the each of it’s AuthenticationProviders and they each inspect it and, if they can use it to authenticate, they return with an indication of “Authenticated”, “Unauthenticated”, or “Could not authenticate” (which indicates the provider did not know how to handle the token, so it passed on processing it) This is the mechanism that allows you to plug in other authentication schemes, like authenticating against an LDAP or Active Directory server, or OpenID, and is one of the main extension points within the Spring Security framework.</summary></entry><entry><title type="html">Learn English Resources</title><link href="http://localhost:4000/learn-english-resources/" rel="alternate" type="text/html" title="Learn English Resources" /><published>2018-04-18T00:00:00+07:00</published><updated>2018-04-18T00:00:00+07:00</updated><id>http://localhost:4000/learn-english-resources</id><content type="html" xml:base="http://localhost:4000/learn-english-resources/">&lt;ul&gt;
+  &lt;li&gt;original post: https://vozforums.com/showthread.php?t=6129889&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;english-podcast&quot;&gt;English Podcast&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;https://softwareengineeringdaily.com/
+    &lt;blockquote&gt;
+      &lt;p&gt;I like speaker voice, it’s also have transcript for you&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;vocabulary&quot;&gt;Vocabulary&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Anki is great fashcard app for you to learn vocabulary https://apps.ankiweb.net/&lt;/li&gt;
+  &lt;li&gt;Doulingo  https://www.duolingo.com/&lt;/li&gt;
+&lt;/ul&gt;</content><author><name></name></author><summary type="html">original post: https://vozforums.com/showthread.php?t=6129889</summary></entry><entry><title type="html">My vim setup</title><link href="http://localhost:4000/my-vim-setup/" rel="alternate" type="text/html" title="My vim setup" /><published>2018-02-03T00:00:00+07:00</published><updated>2018-02-03T00:00:00+07:00</updated><id>http://localhost:4000/my-vim-setup</id><content type="html" xml:base="http://localhost:4000/my-vim-setup/"></content><author><name></name></author><summary type="html"></summary></entry><entry><title type="html">Reward Spiner Js</title><link href="http://localhost:4000/reward-spiner-js/" rel="alternate" type="text/html" title="Reward Spiner Js" /><published>2018-01-04T00:00:00+07:00</published><updated>2018-01-04T00:00:00+07:00</updated><id>http://localhost:4000/reward-spiner-js</id><content type="html" xml:base="http://localhost:4000/reward-spiner-js/">&lt;h2&gt;Reward Spiner in Js&lt;/h2&gt;
+
+&lt;p data-height=&quot;502&quot; data-theme-id=&quot;dark&quot; data-slug-hash=&quot;BJwjqz&quot; data-default-tab=&quot;result&quot; data-user=&quot;ngocvt&quot; data-embed-version=&quot;2&quot; data-pen-title=&quot;Reward Spiner Js&quot; class=&quot;codepen&quot;&gt;See the Pen &lt;a href=&quot;https://codepen.io/ngocvt/pen/BJwjqz/&quot;&gt;Reward Spiner Js&lt;/a&gt; by ngocvt.dev (&lt;a href=&quot;https://codepen.io/ngocvt&quot;&gt;@ngocvt&lt;/a&gt;) on &lt;a href=&quot;https://codepen.io&quot;&gt;CodePen&lt;/a&gt;.&lt;/p&gt;
+&lt;script async src=&quot;https://production-assets.codepen.io/assets/embed/ei.js&quot;&gt;&lt;/script&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;</content><author><name></name></author><summary type="html">Reward Spiner in Js</summary></entry><entry><title type="html">Heorku Notes</title><link href="http://localhost:4000/heorku-notes/" rel="alternate" type="text/html" title="Heorku Notes" /><published>2018-01-04T00:00:00+07:00</published><updated>2018-01-04T00:00:00+07:00</updated><id>http://localhost:4000/heorku-notes</id><content type="html" xml:base="http://localhost:4000/heorku-notes/">&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$heroku&lt;/span&gt; create                                                            
+ ▸    heroku-cli: update available from 6.11.10-532d137 to 6.15.5-1f03166
+Creating app... &lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;, ⬢ immense-retreat-69551
+https://immense-retreat-69551.herokuapp.com/ | https://git.heroku.com/immense-retreat-69551.git
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git remote -v                                                             
+heroku	https://git.heroku.com/immense-retreat-69551.git &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;fetch&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+heroku	https://git.heroku.com/immense-retreat-69551.git &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;push&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+origin	https://github.com/ngocvtdev/sample-room-java.git &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;fetch&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+origin	https://github.com/ngocvtdev/sample-room-java.git &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;push&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;h2 id=&quot;profile-web&quot;&gt;Profile web&lt;/h2&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;web: command
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;</content><author><name></name></author><summary type="html">``` bash $heroku create ▸ heroku-cli: update available from 6.11.10-532d137 to 6.15.5-1f03166 Creating app… done, ⬢ immense-retreat-69551 https://immense-retreat-69551.herokuapp.com/ | https://git.heroku.com/immense-retreat-69551.git</summary></entry><entry><title type="html">Vim in VS shortcut</title><link href="http://localhost:4000/productivity/vs-vim-shortcut/" rel="alternate" type="text/html" title="Vim in VS shortcut" /><published>2017-12-30T00:00:00+07:00</published><updated>2017-12-30T00:00:00+07:00</updated><id>http://localhost:4000/productivity/vs-vim-shortcut</id><content type="html" xml:base="http://localhost:4000/productivity/vs-vim-shortcut/">&lt;h2 id=&quot;vs-shortcut&quot;&gt;VS shortcut&lt;/h2&gt;
 &lt;ul&gt;
   &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;cmd + b&lt;/code&gt;: show/hide file explorer&lt;/li&gt;
   &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;cmd + opt+right arrow/left arrow&lt;/code&gt;: next/previous tab&lt;/li&gt;
@@ -32,7 +162,5 @@ ex:
 &lt;/ul&gt;</content><author><name></name></author><summary type="html">VS shortcut cmd + b: show/hide file explorer cmd + opt+right arrow/left arrow: next/previous tab cmd \: split view</summary></entry><entry><title type="html">Productivity tools</title><link href="http://localhost:4000/productivity/productivity-tools/" rel="alternate" type="text/html" title="Productivity tools" /><published>2017-12-30T00:00:00+07:00</published><updated>2017-12-30T00:00:00+07:00</updated><id>http://localhost:4000/productivity/productivity-tools</id><content type="html" xml:base="http://localhost:4000/productivity/productivity-tools/">&lt;ol&gt;
   &lt;li&gt;&lt;a href=&quot;https://trello.com&quot;&gt;Trello&lt;/a&gt; for tasks management&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://pomelloapp.com&quot;&gt;Pomello App&lt;/a&gt; Pomello turns your Trello cards into Pomodoro® tasks.&lt;/li&gt;
-&lt;/ol&gt;</content><author><name></name></author><summary type="html">Trello for tasks management Pomello App Pomello turns your Trello cards into Pomodoro® tasks.</summary></entry><entry><title type="html">Blogs that I read</title><link href="http://localhost:4000/tech%20blog/blogs-i-read/" rel="alternate" type="text/html" title="Blogs that I read" /><published>2017-12-30T00:00:00+07:00</published><updated>2017-12-30T00:00:00+07:00</updated><id>http://localhost:4000/tech%20blog/blogs-i-read</id><content type="html" xml:base="http://localhost:4000/tech%20blog/blogs-i-read/">&lt;ol&gt;
-  &lt;li&gt;&lt;a href=&quot;http://misko.hevery.com/attachments/Guide-Writing%20Testable%20Code.pdf&quot;&gt;Writing Testable Code by Misko Hevery&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#links&quot;&gt;Markdown Cheatsheet&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;</content><author><name></name></author><summary type="html">Writing Testable Code by Misko Hevery Markdown Cheatsheet</summary></entry></feed>
+  &lt;li&gt;&lt;a href=&quot;https://gist.github.com/andreyvit/2921703&quot;&gt;Tmux cheatsheet&lt;/a&gt; Tmux cheatsheet&lt;/li&gt;
+&lt;/ol&gt;</content><author><name></name></author><summary type="html">Trello for tasks management Pomello App Pomello turns your Trello cards into Pomodoro® tasks. Tmux cheatsheet Tmux cheatsheet</summary></entry></feed>

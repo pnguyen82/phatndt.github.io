@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang=" en-US ">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1"> <!-- Begin Jekyll SEO tag v2.3.0 -->
+<title>Spring security | ngoc’s blog</title>
+<meta property="og:title" content="Spring security">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="What is the default authenticationmanager in spring security The AuthenticationManager is really just a container for authentication providers, giving a consistent interface to them all. In most cases, the default AuthenticationManager is more than sufficient. When you call .authenticate(new UsernamePasswordAuthenticationToken(username, password))` it is passing the UsernamePasswordAuthenticationToken to the default AuthenticationProvider, which will use the userDetailsService to get the user based on username and compare that user’s password with the one in the authentication token. In general, the AuthenticationManager passes some sort of AuthenticationToken to the each of it’s AuthenticationProviders and they each inspect it and, if they can use it to authenticate, they return with an indication of “Authenticated”, “Unauthenticated”, or “Could not authenticate” (which indicates the provider did not know how to handle the token, so it passed on processing it) This is the mechanism that allows you to plug in other authentication schemes, like authenticating against an LDAP or Active Directory server, or OpenID, and is one of the main extension points within the Spring Security framework.">
+<meta property="og:description" content="What is the default authenticationmanager in spring security The AuthenticationManager is really just a container for authentication providers, giving a consistent interface to them all. In most cases, the default AuthenticationManager is more than sufficient. When you call .authenticate(new UsernamePasswordAuthenticationToken(username, password))` it is passing the UsernamePasswordAuthenticationToken to the default AuthenticationProvider, which will use the userDetailsService to get the user based on username and compare that user’s password with the one in the authentication token. In general, the AuthenticationManager passes some sort of AuthenticationToken to the each of it’s AuthenticationProviders and they each inspect it and, if they can use it to authenticate, they return with an indication of “Authenticated”, “Unauthenticated”, or “Could not authenticate” (which indicates the provider did not know how to handle the token, so it passed on processing it) This is the mechanism that allows you to plug in other authentication schemes, like authenticating against an LDAP or Active Directory server, or OpenID, and is one of the main extension points within the Spring Security framework.">
+<link rel="canonical" href="http://localhost:4000/spring-security/">
+<meta property="og:url" content="http://localhost:4000/spring-security/">
+<meta property="og:site_name" content="ngoc’s blog">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2018-06-13T00:00:00+07:00">
+<script type="application/ld+json">
+{"@type":"BlogPosting","url":"http://localhost:4000/spring-security/","publisher":null,"name":null,"headline":"Spring security","dateModified":"2018-06-13T00:00:00+07:00","datePublished":"2018-06-13T00:00:00+07:00","sameAs":null,"image":null,"author":null,"description":"What is the default authenticationmanager in spring security The AuthenticationManager is really just a container for authentication providers, giving a consistent interface to them all. In most cases, the default AuthenticationManager is more than sufficient. When you call .authenticate(new UsernamePasswordAuthenticationToken(username, password))` it is passing the UsernamePasswordAuthenticationToken to the default AuthenticationProvider, which will use the userDetailsService to get the user based on username and compare that user’s password with the one in the authentication token. In general, the AuthenticationManager passes some sort of AuthenticationToken to the each of it’s AuthenticationProviders and they each inspect it and, if they can use it to authenticate, they return with an indication of “Authenticated”, “Unauthenticated”, or “Could not authenticate” (which indicates the provider did not know how to handle the token, so it passed on processing it) This is the mechanism that allows you to plug in other authentication schemes, like authenticating against an LDAP or Active Directory server, or OpenID, and is one of the main extension points within the Spring Security framework.","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/spring-security/"},"@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  <link rel="stylesheet" href="/assets/css/style.css?v=36207633240da97260660b99441e11f0c8a76573">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script src="/assets/js/main.js"></script>
+  <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <style>
+    .comment-box {
+      padding: 20px;
+      background-color:#fbfbfb;
+      border-radius: 3px;
+      border: 1px solid #cbcbcb;
+      box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.09), inset 0px 0px 2px 2px rgba(255, 255, 255, 0.5), inset 0 0 5px 5px rgba(255, 255, 255, 0.4);
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>ngoc's blog</h1>
+    <p>This blog is about my experiences in software development, I hope you can find something useful!</p>
+  </header>
+  <div class="wrapper">
+    <nav>
+      <ul></ul>
+    </nav>
+    <section>
+      <h3 id="what-is-the-default-authenticationmanager-in-spring-security">What is the default authenticationmanager in spring security</h3>
+<p>The AuthenticationManager is really just a container for authentication providers, giving a consistent interface to them all. In most cases, the default AuthenticationManager is more than sufficient.
+When you call
+.authenticate(new UsernamePasswordAuthenticationToken(username, password))`
+it is passing the UsernamePasswordAuthenticationToken to the default AuthenticationProvider, which will use the userDetailsService to get the user based on username and compare that user’s password with the one in the authentication token.
+In general, the AuthenticationManager passes some sort of AuthenticationToken to the each of it’s AuthenticationProviders and they each inspect it and, if they can use it to authenticate, they return with an indication of “Authenticated”, “Unauthenticated”, or “Could not authenticate” (which indicates the provider did not know how to handle the token, so it passed on processing it)
+This is the mechanism that allows you to plug in other authentication schemes, like authenticating against an LDAP or Active Directory server, or OpenID, and is one of the main extension points within the Spring Security framework.</p>
+
+<p>Spring Security ships only one real AuthenticationManager implementation:
+org.springframework.security.authentication.ProviderManager
+This uses different AuthenticationProvider for the authentication tasks
+The AuthenticationManagerBeanDefinitionParser is responsible to parse <authentication-manager> its java doc states:
+Registers the central ProviderManager used by the namespace configuration, and allows the configuration of an alias, allowing users to reference it in their beans and clearly see where the name is coming from.
+It creates the ProviderManager and adds the specified provides. If no provides is specified in the xml, then it adds an NullAuthenticationProvider. This is at least a provider that does noting than preventing configuration exceptions.</authentication-manager></p>
+
+
+    </section>
+    <div class="comment-box">
+      <div id="disqus_thread"></div>
+      <script>
+
+        /**
+        *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+        *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+        /*
+        var disqus_config = function () {
+        this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+        */
+        (function () { // DON'T EDIT BELOW THIS LINE
+          var d = document, s = d.createElement('script');
+          s.src = 'https://ngocvts-blog.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the
+        <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+      </noscript>
+    </div>
+    <footer>
+      
+      <p>Project maintained by
+        <a href="http://github.com/ngocvtdev">ngocvtdev</a>
+      </p>
+      
+      <p>
+        <small>Hosted on GitHub Pages — Theme by
+          <a href="https://twitter.com/michigangraham">mattgraham</a>
+        </small>
+      </p>
+    </footer>
+  </div>
+  <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+  <script id="dsq-count-scr" src="//ngocvts-blog.disqus.com/count.js" async></script>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-92160345-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-92160345-2');
+</script>
+</body>
+
+</html>

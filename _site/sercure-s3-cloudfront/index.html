@@ -1,0 +1,36 @@
+<h1 id="serve-s3-secure-conent">Serve s3 secure conent</h1>
+<p>https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-setting-signed-cookie-canned-policy.html</p>
+<h2 id="step">Step</h2>
+<ol>
+  <li>set cookies:The name-value pairs are:</li>
+  <li><code class="highlighter-rouge">CloudFront-Expires</code></li>
+  <li><code class="highlighter-rouge">CloudFront-Signature</code></li>
+  <li><code class="highlighter-rouge">CloudFront-Key-Pair-Id</code>
+Example:
+```
+Set-Cookie:
+Domain=optional domain name;
+Path=/optional directory path;
+Secure;
+HttpOnly;
+CloudFront-Expires=date and time in Unix time format (in seconds) and Coordinated Universal Time (UTC)</li>
+</ol>
+
+<p>Set-Cookie:
+Domain=optional domain name;
+Path=/optional directory path;
+Secure;
+HttpOnly;
+CloudFront-Signature=hashed and signed version of the policy statement</p>
+
+<p>Set-Cookie:
+Domain=optional domain name;
+Path=/optional directory path;
+Secure;
+HttpOnly;
+CloudFront-Key-Pair-Id=active CloudFront key pair Id for the key pair that you are using to generate the signature
+```</p>
+<ul>
+  <li>golang lib:
+https://docs.aws.amazon.com/sdk-for-go/api/service/cloudfront/sign/#CookieSigner.Sign</li>
+</ul>
