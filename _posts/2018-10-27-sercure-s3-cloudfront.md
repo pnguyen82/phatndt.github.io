@@ -2,7 +2,6 @@
 title: Secure s3 cloudfont content with Signed Cookies and Signed URLs
 categories: aws s3
 ---
-# Serve s3 cloudfront secure conent
 Use case:
 >Many companies that distribute content over the internet want to restrict access to documents, business data, media streams, or content that is intended for selected users, for example, users who have paid a fee
 

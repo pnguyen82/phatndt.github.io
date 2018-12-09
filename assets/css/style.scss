@@ -57,3 +57,11 @@ header{
     border-radius: .5em;
     color: white;
 }
+.post-info{
+    border-bottom:solid;
+    border-width: 1px; 
+    transition: border-width 0.1s linear;
+}
+.post-info:hover {
+    border-width: .5px; 
+}
