@@ -1,6 +1,5 @@
 ---
 title: Secure s3 cloudfont content with Signed Cookies and Signed URLs
-layout: default
 ---
 # Serve s3 cloudfront secure conent
 Use case:

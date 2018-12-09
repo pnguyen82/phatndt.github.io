@@ -1,6 +1,5 @@
 ---
 title: Vim in VS shortcut
-layout: default
 categories: productivity
 ---
 ## VS shortcut

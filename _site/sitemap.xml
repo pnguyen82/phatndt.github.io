@@ -1,36 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
-<loc>http://localhost:4000/tech%20blog/blogs-i-read/</loc>
-<lastmod>2017-12-30T00:00:00+07:00</lastmod>
-</url>
-<url>
 <loc>http://localhost:4000/productivity/productivity-tools/</loc>
 <lastmod>2017-12-30T00:00:00+07:00</lastmod>
-</url>
-<url>
-<loc>http://localhost:4000/productivity/vs-vim-shortcut/</loc>
-<lastmod>2017-12-30T00:00:00+07:00</lastmod>
-</url>
-<url>
-<loc>http://localhost:4000/heorku-notes/</loc>
-<lastmod>2018-01-04T00:00:00+07:00</lastmod>
 </url>
 <url>
 <loc>http://localhost:4000/reward-spiner-js/</loc>
 <lastmod>2018-01-04T00:00:00+07:00</lastmod>
 </url>
 <url>
-<loc>http://localhost:4000/my-vim-setup/</loc>
-<lastmod>2018-02-03T00:00:00+07:00</lastmod>
-</url>
-<url>
 <loc>http://localhost:4000/learn-english-resources/</loc>
 <lastmod>2018-04-18T00:00:00+07:00</lastmod>
-</url>
-<url>
-<loc>http://localhost:4000/spring-security/</loc>
-<lastmod>2018-06-13T00:00:00+07:00</lastmod>
 </url>
 <url>
 <loc>http://localhost:4000/git-rebase/</loc>
@@ -45,6 +25,10 @@
 <lastmod>2018-10-27T00:00:00+07:00</lastmod>
 </url>
 <url>
+<loc>http://localhost:4000/notes/</loc>
+<lastmod>2018-12-09T00:00:00+07:00</lastmod>
+</url>
+<url>
 <loc>http://localhost:4000/about/</loc>
 </url>
 <url>
@@ -55,8 +39,5 @@
 </url>
 <url>
 <loc>http://localhost:4000/</loc>
-</url>
-<url>
-<loc>http://localhost:4000/page2/</loc>
 </url>
 </urlset>

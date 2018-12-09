@@ -1,25 +1,25 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang=" en-US ">
 
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="chrome=1"> <!-- Begin Jekyll SEO tag v2.3.0 -->
-<title>Git Rebase | ngoc’s blog</title>
-<meta property="og:title" content="Git Rebase">
-<meta property="og:locale" content="en_US">
-<meta name="description" content="git rebase in its simplest form is a command which will merge another branch into the branch where you are currently working, and move all of the local commits that are ahead of the rebased branch to the top of the history on that branch. source: https://nathanleclaire.com/blog/2014/09/14/dont-be-scared-of-git-rebase/ https://www.atlassian.com/git/tutorials/merging-vs-rebasing">
-<meta property="og:description" content="git rebase in its simplest form is a command which will merge another branch into the branch where you are currently working, and move all of the local commits that are ahead of the rebased branch to the top of the history on that branch. source: https://nathanleclaire.com/blog/2014/09/14/dont-be-scared-of-git-rebase/ https://www.atlassian.com/git/tutorials/merging-vs-rebasing">
-<link rel="canonical" href="http://localhost:4000/git-rebase/">
-<meta property="og:url" content="http://localhost:4000/git-rebase/">
-<meta property="og:site_name" content="ngoc’s blog">
-<meta property="og:type" content="article">
-<meta property="article:published_time" content="2018-09-13T00:00:00+07:00">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1"> <!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Git Rebase, when to use it? | ngoc’s blog</title>
+<meta name="generator" content="Jekyll v3.7.4" />
+<meta property="og:title" content="Git Rebase, when to use it?" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Definition git rebase in its simplest form is a command which will merge another branch into the branch where you are currently working, and move all of the local commits that are ahead of the rebased branch to the top of the history on that branch. The Golden Rule of Rebasing Once you understand what rebasing is, the most important thing to learn is when not to do it. The golden rule of git rebase is to NEVER use it on public branches. So you should alway run git commant like this git checkout feature-xxx git rebase master source: Merging vs Rebasing Git Merge vs. Rebase: What’s the Diff? Don’t Be Scare Of Git Merge" />
+<meta property="og:description" content="Definition git rebase in its simplest form is a command which will merge another branch into the branch where you are currently working, and move all of the local commits that are ahead of the rebased branch to the top of the history on that branch. The Golden Rule of Rebasing Once you understand what rebasing is, the most important thing to learn is when not to do it. The golden rule of git rebase is to NEVER use it on public branches. So you should alway run git commant like this git checkout feature-xxx git rebase master source: Merging vs Rebasing Git Merge vs. Rebase: What’s the Diff? Don’t Be Scare Of Git Merge" />
+<link rel="canonical" href="http://localhost:4000/git-rebase/" />
+<meta property="og:url" content="http://localhost:4000/git-rebase/" />
+<meta property="og:site_name" content="ngoc’s blog" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-09-13T00:00:00+07:00" />
 <script type="application/ld+json">
-{"@type":"BlogPosting","url":"http://localhost:4000/git-rebase/","publisher":null,"name":null,"headline":"Git Rebase","dateModified":"2018-09-13T00:00:00+07:00","datePublished":"2018-09-13T00:00:00+07:00","sameAs":null,"image":null,"author":null,"description":"git rebase in its simplest form is a command which will merge another branch into the branch where you are currently working, and move all of the local commits that are ahead of the rebased branch to the top of the history on that branch. source: https://nathanleclaire.com/blog/2014/09/14/dont-be-scared-of-git-rebase/ https://www.atlassian.com/git/tutorials/merging-vs-rebasing","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/git-rebase/"},"@context":"http://schema.org"}</script>
+{"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/git-rebase/"},"@type":"BlogPosting","url":"http://localhost:4000/git-rebase/","headline":"Git Rebase, when to use it?","dateModified":"2018-09-13T00:00:00+07:00","datePublished":"2018-09-13T00:00:00+07:00","description":"Definition git rebase in its simplest form is a command which will merge another branch into the branch where you are currently working, and move all of the local commits that are ahead of the rebased branch to the top of the history on that branch. The Golden Rule of Rebasing Once you understand what rebasing is, the most important thing to learn is when not to do it. The golden rule of git rebase is to NEVER use it on public branches. So you should alway run git commant like this git checkout feature-xxx git rebase master source: Merging vs Rebasing Git Merge vs. Rebase: What’s the Diff? Don’t Be Scare Of Git Merge","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
-  <link rel="stylesheet" href="/assets/css/style.css?v=e3d078171959e8bf77d6cd06b93996095450bd81">
+  <link rel="stylesheet" href="/assets/css/style.css?v=8e9ab930641168f4bb1ef10c7d9d398906c69d80">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
   <script src="/assets/js/main.js"></script>
   <!--[if lt IE 9]>
@@ -41,17 +41,32 @@
       </ul>
     </nav>
     <section>
-      <blockquote>
+      <h1 class="title">Git Rebase, when to use it?</h1>
+      </br>
+      <h2 id="definition">Definition</h2>
+<blockquote>
   <p>git rebase in its simplest form is a command which will merge another branch
 into the branch where you are currently working,
 and move all of the local commits that are ahead of the rebased branch to the top of the history
 on that branch.</p>
 </blockquote>
 
+<h2 id="the-golden-rule-of-rebasing">The Golden Rule of Rebasing</h2>
+<blockquote>
+  <p>Once you understand what rebasing is, the most important thing to learn is when not to do it.
+The golden rule of git rebase is to <em>NEVER</em> use it on public branches.</p>
+</blockquote>
+
+<p>So you should alway run git commant like this</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout feature-xxx
+git rebase master
+</code></pre></div></div>
+
 <p>source:</p>
 <ul>
-  <li>https://nathanleclaire.com/blog/2014/09/14/dont-be-scared-of-git-rebase/</li>
-  <li>https://www.atlassian.com/git/tutorials/merging-vs-rebasing</li>
+  <li><a href="https://www.atlassian.com/git/tutorials/merging-vs-rebasing">Merging vs Rebasing</a></li>
+  <li><a href="https://hackernoon.com/git-merge-vs-rebase-whats-the-diff-76413c117333">Git Merge vs. Rebase: What’s the Diff?</a></li>
+  <li><a href="https://nathanleclaire.com/blog/2014/09/14/dont-be-scared-of-git-rebase">Don’t Be Scare Of Git Merge</a></li>
 </ul>
 
     </section>
@@ -63,7 +78,7 @@ on that branch.</p>
     </p>
     
     <p>
-    <small>Hosted on GitHub Pages — Theme by
+    <small>Hosted on GitHub Pages &mdash; Theme by
         <a href="https://twitter.com/michigangraham">mattgraham</a>
     </small>
     </p>

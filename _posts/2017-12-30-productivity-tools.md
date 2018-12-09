@@ -1,6 +1,5 @@
 ---
 title: Productivity tools
-layout: default
 categories: productivity
 ---
 1. [Trello](https://trello.com) for tasks management

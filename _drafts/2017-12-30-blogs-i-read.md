@@ -1,6 +1,5 @@
 ---
 title: Blogs that I read
-layout: default
 categories: [tech blog]
 ---
 
