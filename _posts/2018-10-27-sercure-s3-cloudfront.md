@@ -81,3 +81,6 @@ You can follow this steps: [Creating CloudFront Key Pairs](https://docs.aws.amaz
 Default cloudfront domain look like this: `http://xyz.cloudfront.net`, so you `can not` set cookie for that domain.
 If you own the domain `www.yourdomain.com` then you will need to add a `CNAME` to `xyz.cloudfront.net`
 So instead of `xyz.cloudfront.net/image1.png` now you can access from `yourdomain.com/image1.png`
+
+## References
+- [Using Cloudfront Signed Cookies](https://www.spacevatican.org/2015/5/1/using-cloudfront-signed-cookies/)
