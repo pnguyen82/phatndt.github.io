@@ -1,0 +1,131 @@
+---
+layout: blank
+permalink: /practise-speaking/
+title: Practise Speaking English
+---
+<div>
+<link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">
+
+<style>
+.button-success,
+.button-error,
+.button-warning,
+.button-secondary {
+  color: white;
+  border-radius: 4px;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+.button-success {
+  background: rgb(28, 184, 65); /* this is a green */
+}
+
+.button-error {
+  background: rgb(202, 60, 60); /* this is a maroon */
+}
+
+.button-warning {
+  background: rgb(223, 117, 20); /* this is an orange */
+}
+
+.button-secondary {
+  background: rgb(66, 184, 221); /* this is a light blue */
+}
+</style>
+<div id="result" style="font-size:1.2em"></div>
+<div style="width:100%;margin-top:20px;" >
+<button class="pure-button button-success" onclick="startRecord()" id="start-btn">Start</button>
+<button class="pure-button button-error" onclick="stopRecord()" id="stop-btn">Stop</button>
+<button class="pure-button button-secondary" onclick="playAudio()" id="play-btn">Play</button>
+</div>
+<script>
+ document.getElementById('stop-btn').style.display = 'none';
+ document.getElementById('play-btn').style.display = 'none';
+
+const recordAudio = () =>
+  new Promise(async resolve => {
+    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+    const mediaRecorder = new MediaRecorder(stream);
+    const audioChunks = [];
+
+    mediaRecorder.addEventListener("dataavailable", event => {
+      audioChunks.push(event.data);
+    });
+
+    const start = () => mediaRecorder.start();
+
+    const stop = () =>
+      new Promise(resolve => {
+        mediaRecorder.addEventListener("stop", () => {
+          const audioBlob = new Blob(audioChunks);
+          const audioUrl = URL.createObjectURL(audioBlob);
+          const audio = new Audio(audioUrl);
+          const play = () => audio.play();
+          resolve({ audioBlob, audioUrl, play });
+        });
+
+        mediaRecorder.stop();
+      });
+
+    resolve({ start, stop });
+  });
+//
+var recorder;
+var recognition;
+var audio;
+function init(){
+  document.querySelector('#result').innerHTML=""
+  window.SpeechRecognition = window.webkitSpeechRecognition || window.SpeechRecognition;
+  let finalTranscript = '';
+  recognition = new window.SpeechRecognition();
+
+  recognition.interimResults = true;
+  recognition.maxAlternatives = 10;
+  recognition.continuous = true;
+  //
+  recognition.onaudiostart = function() {
+    console.log('Audio capturing started');
+  }
+
+  recognition.onresult = (event) => {
+    let interimTranscript = '';
+      console.log(event)
+    for (let i = event.resultIndex, len = event.results.length; i < len; i++) {
+      let transcript = event.results[i][0].transcript;
+      if (event.results[i].isFinal) {
+        finalTranscript += transcript;
+      } else {
+        interimTranscript += transcript;
+      }
+    }
+
+    document.querySelector('#result').innerHTML = finalTranscript + '<i style="color:#ddd;">' + interimTranscript + '</>';
+  }
+  recognition.start();
+}
+    function startRecord(){
+     init()
+     startRecordAudio()
+ document.getElementById('start-btn').style.display = 'none';
+ document.getElementById('stop-btn').style.display = 'inline-block';
+ document.getElementById('play-btn').style.display = 'none';
+    }
+    function stopRecord(){
+      stopRecordAudio()
+      recognition.stop();
+ document.getElementById('start-btn').style.display = 'inline-block';
+ document.getElementById('stop-btn').style.display = 'none';
+ document.getElementById('play-btn').style.display = 'inline-block';
+    }
+    async function startRecordAudio(){
+     recorder = await recordAudio();
+     recorder.start();
+    }
+    async function stopRecordAudio(){
+      audio = await recorder.stop();
+    }
+    function playAudio(){
+      audio.play();
+    }
+  </script>
+  </div>
