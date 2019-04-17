@@ -85,7 +85,7 @@ title: Practise Speaking English
               const audioUrl = URL.createObjectURL(audioBlob);
               const audio = new Audio(audioUrl);
               const play = () => audio.play();
-              resolve({audioBlob, audioUrl, play});
+              resolve({audioBlob, audioUrl, play, audio});
             });
 
             mediaRecorder.stop();
@@ -114,7 +114,6 @@ title: Practise Speaking English
 
       recognition.onresult = event => {
         let interimTranscript = '';
-        console.log(event);
         for (
           let i = event.resultIndex, len = event.results.length;
           i < len;
@@ -137,6 +136,10 @@ title: Practise Speaking English
       recognition.start();
     }
     function startRecord() {
+      if (audio) {
+        audio.audio.pause();
+        audio.audio.currentTime = 0;
+      }
       init();
       startRecordAudio();
       document.getElementById('start-btn').style.display = 'none';

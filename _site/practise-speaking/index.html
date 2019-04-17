@@ -16,7 +16,7 @@
 {"description":"This blog is about my experiences in software development, I hope you can find something useful!","@type":"WebPage","url":"http://localhost:4000/practise-speaking/","headline":"Practise Speaking English","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
-  <link rel="stylesheet" href="/assets/css/style.css?v=1481db07c6d75f9c044aeac07151829054d58e0a">
+  <link rel="stylesheet" href="/assets/css/style.css?v=9594d10073a731e574631ecc0a56bf54dabc1212">
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
   <style>
   section{
@@ -108,7 +108,7 @@
               const audioUrl = URL.createObjectURL(audioBlob);
               const audio = new Audio(audioUrl);
               const play = () => audio.play();
-              resolve({audioBlob, audioUrl, play});
+              resolve({audioBlob, audioUrl, play, audio});
             });
 
             mediaRecorder.stop();
@@ -137,7 +137,6 @@
 
       recognition.onresult = event => {
         let interimTranscript = '';
-        console.log(event);
         for (
           let i = event.resultIndex, len = event.results.length;
           i < len;
@@ -160,6 +159,10 @@
       recognition.start();
     }
     function startRecord() {
+      if (audio) {
+        audio.audio.pause();
+        audio.audio.currentTime = 0;
+      }
       init();
       startRecordAudio();
       document.getElementById('start-btn').style.display = 'none';
