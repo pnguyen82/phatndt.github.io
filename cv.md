@@ -5,9 +5,11 @@ layout: blank
 # VO THAI NGOC
 #### *Software Engineer*
 ## Personal Information
-Nickname: Felix  
-Email: ngocvt.dev@gmail.com  
+Nickname: Felix
+Email: ngocvt.dev@gmail.com
 Phone: +84 933662703
+LinkedIn: https://www.linkedin.com/in/ngoc-vo-99187112a
+Github: https://github.com/felixvo
 
 -------
 ## Experiences
@@ -28,7 +30,7 @@ Develop backend services and operation tool for 360Live app (video streaming app
 - Java, Kafka, Thrift, Jetty, Redis, JUnit, MySQL and basic knowledge with JS, React, HTML, CSS
 
 **Associate Software Engineer** *10/2015-3/2017*
-*VNG Corp* 
+*VNG Corp*
 
 Build a tracking system for marketing's team
 - Collecting user marketing data and mapping with data from ads platform
