@@ -1,7 +1,8 @@
-```
-title: Working with mysql JSON
+---
+title: Working with MySQL JSON
 category: mysql
-```
+---
+
 Source: https://scotch.io/tutorials/working-with-json-in-mysql
 ## Create Table
 ```sql
