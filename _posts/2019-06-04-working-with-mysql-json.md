@@ -81,7 +81,8 @@ WHERE
     `category_id` = 1
 AND `attributes` -> '$.ports.usb' > 0
 AND `attributes` -> '$.ports.hdmi' > 0;
-``
+```
+
 ## UPDATE
 ### JSON_INSERT
 ```sql
