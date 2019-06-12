@@ -5,10 +5,10 @@ layout: blank
 # VO THAI NGOC
 #### *Software Engineer*
 ## Personal Information
-Nickname: Felix
-Email: ngocvt.dev@gmail.com
-Phone: +84 933662703
-Skype: oknion
+Nickname: Felix  
+Email: ngocvt.dev@gmail.com  
+Phone: +84 933662703  
+Skype: oknion  
 [LinkedIn](https://www.linkedin.com/in/ngoc-vo-99187112a)
 
 -------
