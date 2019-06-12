@@ -5,43 +5,45 @@ layout: blank
 # VO THAI NGOC
 #### *Software Engineer*
 ## Personal Information
-Nickname: Felix  
-Email: ngocvt.dev@gmail.com  
-Phone: +84 933662703  
-Skype: oknion  
-[LinkedIn](https://www.linkedin.com/in/ngoc-vo-99187112a)  
-[Github](https://github.com/felixvo)
+Nickname: Felix
+Email: ngocvt.dev@gmail.com
+Phone: +84 933662703
+Skype: oknion
+[LinkedIn](https://www.linkedin.com/in/ngoc-vo-99187112a)
 
 -------
 ## Experiences
 **Software engineer**  *5/2018 - Present*
 *Mobiclix MobiClix Pte LTD*
 
-Develop backend services for payment gateway, in-house products, and external products that are run across 20+ markets globally
-- Work with other payments platform to integrate their payment method to the current system
-- Apply SOLID principles/Best Practise make the system more readable, maintainable and scalable.
-- Go is the main language, gRPC for Inter-Process Communication, RabitMQ for messaging, Redis for caching and operation require high read/write, MySQL for the database.
-- Basic AWS in EC2, S3, CloudFront, VPC, elastic beanstalk
-- Infa: kubernetes, Jenkins, consul, ELK
+- Develop backend services for payment gateway, in-house products, and external products that are run across 20+ markets globally.
+- Design and implement scalable, maintainable system
+- Integrate in-house payment gateway with payment aggregators.
+- Tech stack: `Go`, `gRPC`, `MySQL`, `RabbitMQ`, `Redis`
 
 **Software engineer**  *3/2017- 5/2018*
 *VNG Corp*
 
-Develop backend services and operation tool for 360Live app (video streaming app)
-- Java, Kafka, Thrift, Jetty, Redis, JUnit, MySQL and basic knowledge with JS, React, HTML, CSS
+- Develop backend services for 360Live app (video streaming app).
+- Build an operation tool and analytic dashboard.
+- Tech stack: `Java`, `Kafka`, `Thrift`, `Jetty`, `Redis`, `MySQL`,`JS`, `HTML`
 
 **Associate Software Engineer** *10/2015-3/2017*
 *VNG Corp*
 
-Build a tracking system for marketing's team
+Build a tracking system for marketing team
 - Collecting user marketing data and mapping with data from ads platform
 - Integrate with google adwords, facebook ads, coccoc ads, and other ads platform to get marketing data (cost, impression, click)
-- Build marketing's dashboard to measure which campaign bring good/bad convertion
-- Using: Java, Kafka, Thrift, MySQL, Hadoop
+- Develope analytic dashboard to measure the result of the advertising campaign
+- Tech stack: `Java`, `Kafka`, `Thrift`, `MySQL`, `Hadoop`
+
+## Education
+- Bachelor of Information Technology at University Of Technology And Education (2011-2015)
 
 ## Skills
-- Web development experiences with Java, Golang
-- Microservices with Java, Golang
+- Have strong fundamental
+- Web development experiences
+- Microservices
 - Learn new technology quickly
 
 ## Self Study Journey
