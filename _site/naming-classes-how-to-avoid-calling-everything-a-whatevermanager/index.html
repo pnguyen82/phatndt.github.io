@@ -4,22 +4,22 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="chrome=1"> <!-- Begin Jekyll SEO tag v2.5.0 -->
-<title>Naming classes how to avoid calling everything a whatevermanager | felix’s blog</title>
-<meta name="generator" content="Jekyll v3.7.4" />
+<title>Naming classes how to avoid calling everything a whatevermanager | Felix’s blog</title>
+<meta name="generator" content="Jekyll v3.8.5" />
 <meta property="og:title" content="Naming classes how to avoid calling everything a whatevermanager" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Here’s a little summary of what I learned from this question in the meantime. Try not to create new metaphors (Nanny) Have a look at what other frameworks do Further articles/books on this topic: What names do you find yourself prepending/appending to classes regularly? What’s the best approach to naming classes? Book: Design Patterns: Elements of Reusable Object-Oriented Software (Hardcover) Book: Patterns of Enterprise Application Architecture (Hardcover) Book: Implementation Patterns (Paperback) And a current list of name prefixes/suffixes I collected (subjectively!) from the answers: Coordinator Builder Writer Reader Handler Container Protocol Target Converter Controller View Factory Entity Bucket And a good tip for the road: Don’t get naming paralysis. Yes, names are very important but they’re not important enough to waste huge amounts of time on. If you can’t think up a good name in 10 minutes, move on. source: https://stackoverflow.com/questions/1866794/naming-classes-how-to-avoid-calling-everything-a-whatevermanager" />
 <meta property="og:description" content="Here’s a little summary of what I learned from this question in the meantime. Try not to create new metaphors (Nanny) Have a look at what other frameworks do Further articles/books on this topic: What names do you find yourself prepending/appending to classes regularly? What’s the best approach to naming classes? Book: Design Patterns: Elements of Reusable Object-Oriented Software (Hardcover) Book: Patterns of Enterprise Application Architecture (Hardcover) Book: Implementation Patterns (Paperback) And a current list of name prefixes/suffixes I collected (subjectively!) from the answers: Coordinator Builder Writer Reader Handler Container Protocol Target Converter Controller View Factory Entity Bucket And a good tip for the road: Don’t get naming paralysis. Yes, names are very important but they’re not important enough to waste huge amounts of time on. If you can’t think up a good name in 10 minutes, move on. source: https://stackoverflow.com/questions/1866794/naming-classes-how-to-avoid-calling-everything-a-whatevermanager" />
 <link rel="canonical" href="http://localhost:4000/naming-classes-how-to-avoid-calling-everything-a-whatevermanager/" />
 <meta property="og:url" content="http://localhost:4000/naming-classes-how-to-avoid-calling-everything-a-whatevermanager/" />
-<meta property="og:site_name" content="felix’s blog" />
+<meta property="og:site_name" content="Felix’s blog" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2018-10-27T00:00:00+07:00" />
 <script type="application/ld+json">
 {"description":"Here’s a little summary of what I learned from this question in the meantime. Try not to create new metaphors (Nanny) Have a look at what other frameworks do Further articles/books on this topic: What names do you find yourself prepending/appending to classes regularly? What’s the best approach to naming classes? Book: Design Patterns: Elements of Reusable Object-Oriented Software (Hardcover) Book: Patterns of Enterprise Application Architecture (Hardcover) Book: Implementation Patterns (Paperback) And a current list of name prefixes/suffixes I collected (subjectively!) from the answers: Coordinator Builder Writer Reader Handler Container Protocol Target Converter Controller View Factory Entity Bucket And a good tip for the road: Don’t get naming paralysis. Yes, names are very important but they’re not important enough to waste huge amounts of time on. If you can’t think up a good name in 10 minutes, move on. source: https://stackoverflow.com/questions/1866794/naming-classes-how-to-avoid-calling-everything-a-whatevermanager","@type":"BlogPosting","url":"http://localhost:4000/naming-classes-how-to-avoid-calling-everything-a-whatevermanager/","headline":"Naming classes how to avoid calling everything a whatevermanager","dateModified":"2018-10-27T00:00:00+07:00","datePublished":"2018-10-27T00:00:00+07:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/naming-classes-how-to-avoid-calling-everything-a-whatevermanager/"},"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
-  <link rel="stylesheet" href="/assets/css/style.css?v=9594d10073a731e574631ecc0a56bf54dabc1212">
+  <link rel="stylesheet" href="/assets/css/style.css?v=5e8e5bafa762d1f95c5979aa5db43284c09f1e3d">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
   <script src="/assets/js/main.js"></script>
   <!--[if lt IE 9]>
@@ -32,17 +32,20 @@
   <header>
     <a href="/">
         <h1>
-       felix's blog
+       Felix's blog
         </h1>
     </a>
     <p>This blog is about my experiences in software development, I hope you can find something useful!</p>
 </header>
+<hr>
+
+  <nav class="table-of-content">
+    Table Of Contents
+    <ul>
+    </ul>
+  </nav>
   <div class="wrapper">
-    <nav>
-      <ul>
-      </ul>
-    </nav>
-    <section>
+    <section class="content">
       <h1 class="title">Naming classes how to avoid calling everything a whatevermanager</h1>
       </br>
       <p>Here’s a little summary of what I learned from this question in the meantime.</p>
@@ -87,7 +90,7 @@ If you can’t think up a good name in 10 minutes, move on.</p>
 <p>source: https://stackoverflow.com/questions/1866794/naming-classes-how-to-avoid-calling-everything-a-whatevermanager</p>
 
     </section>
-    <footer>
+    <!-- <footer>
   <div>
     Project maintained by
     <a href="https://github.com/felixvo" target="_blank"
@@ -103,16 +106,9 @@ If you can’t think up a good name in 10 minutes, move on.</p>
     <a href="https://twitter.com/michigangraham">mattgraham</a>
   </small>
 </footer>
-
+ -->
     
   <style>
-    .comment-box {
-      padding: 20px;
-      background-color:#fbfbfb;
-      border-radius: 3px;
-      border: 1px solid #cbcbcb;
-      box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.09), inset 0px 0px 2px 2px rgba(255, 255, 255, 0.5), inset 0 0 5px 5px rgba(255, 255, 255, 0.4);
-    }
   </style>
     <div class="comment-box">
       <div id="disqus_thread"></div>
@@ -140,6 +136,7 @@ If you can’t think up a good name in 10 minutes, move on.</p>
     </div>
   <!--[if !IE]><script>fixScale(document);</script><![endif]-->
   <script id="dsq-count-scr" src="//ngocvts-blog.disqus.com/count.js" async></script>
+
   </div>
     <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-92160345-2"></script>

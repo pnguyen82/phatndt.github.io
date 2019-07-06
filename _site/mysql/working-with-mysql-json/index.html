@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang=" en-US ">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1"> <!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Working with MySQL JSON | Felix’s blog</title>
+<meta name="generator" content="Jekyll v3.8.5" />
+<meta property="og:title" content="Working with MySQL JSON" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Source: https://scotch.io/tutorials/working-with-json-in-mysql Create Table CREATE TABLE `e_store`.`products`( `id` INT UNSIGNED NOT NULL AUTO_INCREMENT , `attributes` JSON NOT NULL , PRIMARY KEY(`id`) ); Insert JSON RAW INSERT INTO `e_store`.`products`( `attributes` ) VALUES( &#39;{&quot;screen&quot;: &quot;20 inch&quot;, &quot;resolution&quot;: &quot;1280 x 720 pixels&quot;, &quot;ports&quot;: {&quot;hdmi&quot;: 0, &quot;usb&quot;: 0}, &quot;speakers&quot;: {&quot;left&quot;: &quot;5 watt&quot;, &quot;right&quot;: &quot;5 watt&quot;}}&#39; ); JSON_OBJECT INSERT INTO `e_store`.`products`( `attributes` ) VALUES( JSON_OBJECT( &quot;network&quot; , JSON_ARRAY(&quot;GSM&quot; , &quot;CDMA&quot; , &quot;HSPA&quot; , &quot;EVDO&quot;) , &quot;body&quot; , &quot;5.11 x 2.59 x 0.46 inches&quot; , &quot;weight&quot; , &quot;143 grams&quot; ) ); JSON_MERGE INSERT INTO `e_store`.`products`( `attributes` ) VALUES( JSON_MERGE( &#39;{&quot;sensor_type&quot;: &quot;CMOS&quot;}&#39; , &#39;{&quot;processor&quot;: &quot;Digic DV III&quot;}&#39; , &#39;{&quot;scanning_system&quot;: &quot;progressive&quot;}&#39; ) ); JSON_TYPE SELECT JSON_TYPE(attributes) FROM `e_store`.`products`; // return Object SELECT JSON_EXTRACT SELECT * FROM `e_store`.`products` WHERE `category_id` = 1 AND JSON_EXTRACT(`attributes` , &#39;$.ports.usb&#39;) &gt; 0 AND JSON_EXTRACT(`attributes` , &#39;$.ports.hdmi&#39;) &gt; 0; SELECT * FROM `e_store`.`products` WHERE `category_id` = 1 AND `attributes` -&gt; &#39;$.ports.usb&#39; &gt; 0 AND `attributes` -&gt; &#39;$.ports.hdmi&#39; &gt; 0; UPDATE JSON_INSERT UPDATE `e_store`.`products` SET `attributes` = JSON_INSERT( `attributes` , &#39;$.chipset&#39; , &#39;Qualcomm&#39; ) WHERE `category_id` = 2; JSON_REPLACE UPDATE `e_store`.`products` SET `attributes` = JSON_REPLACE( `attributes` , &#39;$.chipset&#39; , &#39;Qualcomm Snapdragon&#39; ) WHERE `category_id` = 2; JSON_SET UPDATE `e_store`.`products` SET `attributes` = JSON_SET( `attributes` , &#39;$.body_color&#39; , &#39;red&#39; ) WHERE `category_id` = 1; The JSON_INSERT function will only add the property to the object if it does not exists already. The JSON_REPLACE function substitutes the property only if it is found. The JSON_SET function will add the property if it is not found else replace it. JSON_REMOVE UPDATE `e_store`.`products` SET `attributes` = JSON_REMOVE(`attributes` , &#39;$.mount_type&#39;) WHERE `category_id` = 3;" />
+<meta property="og:description" content="Source: https://scotch.io/tutorials/working-with-json-in-mysql Create Table CREATE TABLE `e_store`.`products`( `id` INT UNSIGNED NOT NULL AUTO_INCREMENT , `attributes` JSON NOT NULL , PRIMARY KEY(`id`) ); Insert JSON RAW INSERT INTO `e_store`.`products`( `attributes` ) VALUES( &#39;{&quot;screen&quot;: &quot;20 inch&quot;, &quot;resolution&quot;: &quot;1280 x 720 pixels&quot;, &quot;ports&quot;: {&quot;hdmi&quot;: 0, &quot;usb&quot;: 0}, &quot;speakers&quot;: {&quot;left&quot;: &quot;5 watt&quot;, &quot;right&quot;: &quot;5 watt&quot;}}&#39; ); JSON_OBJECT INSERT INTO `e_store`.`products`( `attributes` ) VALUES( JSON_OBJECT( &quot;network&quot; , JSON_ARRAY(&quot;GSM&quot; , &quot;CDMA&quot; , &quot;HSPA&quot; , &quot;EVDO&quot;) , &quot;body&quot; , &quot;5.11 x 2.59 x 0.46 inches&quot; , &quot;weight&quot; , &quot;143 grams&quot; ) ); JSON_MERGE INSERT INTO `e_store`.`products`( `attributes` ) VALUES( JSON_MERGE( &#39;{&quot;sensor_type&quot;: &quot;CMOS&quot;}&#39; , &#39;{&quot;processor&quot;: &quot;Digic DV III&quot;}&#39; , &#39;{&quot;scanning_system&quot;: &quot;progressive&quot;}&#39; ) ); JSON_TYPE SELECT JSON_TYPE(attributes) FROM `e_store`.`products`; // return Object SELECT JSON_EXTRACT SELECT * FROM `e_store`.`products` WHERE `category_id` = 1 AND JSON_EXTRACT(`attributes` , &#39;$.ports.usb&#39;) &gt; 0 AND JSON_EXTRACT(`attributes` , &#39;$.ports.hdmi&#39;) &gt; 0; SELECT * FROM `e_store`.`products` WHERE `category_id` = 1 AND `attributes` -&gt; &#39;$.ports.usb&#39; &gt; 0 AND `attributes` -&gt; &#39;$.ports.hdmi&#39; &gt; 0; UPDATE JSON_INSERT UPDATE `e_store`.`products` SET `attributes` = JSON_INSERT( `attributes` , &#39;$.chipset&#39; , &#39;Qualcomm&#39; ) WHERE `category_id` = 2; JSON_REPLACE UPDATE `e_store`.`products` SET `attributes` = JSON_REPLACE( `attributes` , &#39;$.chipset&#39; , &#39;Qualcomm Snapdragon&#39; ) WHERE `category_id` = 2; JSON_SET UPDATE `e_store`.`products` SET `attributes` = JSON_SET( `attributes` , &#39;$.body_color&#39; , &#39;red&#39; ) WHERE `category_id` = 1; The JSON_INSERT function will only add the property to the object if it does not exists already. The JSON_REPLACE function substitutes the property only if it is found. The JSON_SET function will add the property if it is not found else replace it. JSON_REMOVE UPDATE `e_store`.`products` SET `attributes` = JSON_REMOVE(`attributes` , &#39;$.mount_type&#39;) WHERE `category_id` = 3;" />
+<link rel="canonical" href="http://localhost:4000/mysql/working-with-mysql-json/" />
+<meta property="og:url" content="http://localhost:4000/mysql/working-with-mysql-json/" />
+<meta property="og:site_name" content="Felix’s blog" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-06-04T00:00:00+07:00" />
+<script type="application/ld+json">
+{"description":"Source: https://scotch.io/tutorials/working-with-json-in-mysql Create Table CREATE TABLE `e_store`.`products`( `id` INT UNSIGNED NOT NULL AUTO_INCREMENT , `attributes` JSON NOT NULL , PRIMARY KEY(`id`) ); Insert JSON RAW INSERT INTO `e_store`.`products`( `attributes` ) VALUES( &#39;{&quot;screen&quot;: &quot;20 inch&quot;, &quot;resolution&quot;: &quot;1280 x 720 pixels&quot;, &quot;ports&quot;: {&quot;hdmi&quot;: 0, &quot;usb&quot;: 0}, &quot;speakers&quot;: {&quot;left&quot;: &quot;5 watt&quot;, &quot;right&quot;: &quot;5 watt&quot;}}&#39; ); JSON_OBJECT INSERT INTO `e_store`.`products`( `attributes` ) VALUES( JSON_OBJECT( &quot;network&quot; , JSON_ARRAY(&quot;GSM&quot; , &quot;CDMA&quot; , &quot;HSPA&quot; , &quot;EVDO&quot;) , &quot;body&quot; , &quot;5.11 x 2.59 x 0.46 inches&quot; , &quot;weight&quot; , &quot;143 grams&quot; ) ); JSON_MERGE INSERT INTO `e_store`.`products`( `attributes` ) VALUES( JSON_MERGE( &#39;{&quot;sensor_type&quot;: &quot;CMOS&quot;}&#39; , &#39;{&quot;processor&quot;: &quot;Digic DV III&quot;}&#39; , &#39;{&quot;scanning_system&quot;: &quot;progressive&quot;}&#39; ) ); JSON_TYPE SELECT JSON_TYPE(attributes) FROM `e_store`.`products`; // return Object SELECT JSON_EXTRACT SELECT * FROM `e_store`.`products` WHERE `category_id` = 1 AND JSON_EXTRACT(`attributes` , &#39;$.ports.usb&#39;) &gt; 0 AND JSON_EXTRACT(`attributes` , &#39;$.ports.hdmi&#39;) &gt; 0; SELECT * FROM `e_store`.`products` WHERE `category_id` = 1 AND `attributes` -&gt; &#39;$.ports.usb&#39; &gt; 0 AND `attributes` -&gt; &#39;$.ports.hdmi&#39; &gt; 0; UPDATE JSON_INSERT UPDATE `e_store`.`products` SET `attributes` = JSON_INSERT( `attributes` , &#39;$.chipset&#39; , &#39;Qualcomm&#39; ) WHERE `category_id` = 2; JSON_REPLACE UPDATE `e_store`.`products` SET `attributes` = JSON_REPLACE( `attributes` , &#39;$.chipset&#39; , &#39;Qualcomm Snapdragon&#39; ) WHERE `category_id` = 2; JSON_SET UPDATE `e_store`.`products` SET `attributes` = JSON_SET( `attributes` , &#39;$.body_color&#39; , &#39;red&#39; ) WHERE `category_id` = 1; The JSON_INSERT function will only add the property to the object if it does not exists already. The JSON_REPLACE function substitutes the property only if it is found. The JSON_SET function will add the property if it is not found else replace it. JSON_REMOVE UPDATE `e_store`.`products` SET `attributes` = JSON_REMOVE(`attributes` , &#39;$.mount_type&#39;) WHERE `category_id` = 3;","@type":"BlogPosting","url":"http://localhost:4000/mysql/working-with-mysql-json/","headline":"Working with MySQL JSON","dateModified":"2019-06-04T00:00:00+07:00","datePublished":"2019-06-04T00:00:00+07:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/mysql/working-with-mysql-json/"},"@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  <link rel="stylesheet" href="/assets/css/style.css?v=5e8e5bafa762d1f95c5979aa5db43284c09f1e3d">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script src="/assets/js/main.js"></script>
+  <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+</head>
+
+<body>
+  <header>
+    <a href="/">
+        <h1>
+       Felix's blog
+        </h1>
+    </a>
+    <p>This blog is about my experiences in software development, I hope you can find something useful!</p>
+</header>
+<hr>
+
+  <nav class="table-of-content">
+    Table Of Contents
+    <ul>
+    </ul>
+  </nav>
+  <div class="wrapper">
+    <section class="content">
+      <h1 class="title">Working with MySQL JSON</h1>
+      </br>
+      <p>Source: https://scotch.io/tutorials/working-with-json-in-mysql</p>
+<h2 id="create-table">Create Table</h2>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="nv">`e_store`</span><span class="p">.</span><span class="nv">`products`</span><span class="p">(</span>
+    <span class="nv">`id`</span> <span class="n">INT</span> <span class="n">UNSIGNED</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="n">AUTO_INCREMENT</span> <span class="p">,</span>
+    <span class="nv">`attributes`</span> <span class="n">JSON</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="p">,</span>
+    <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">(</span><span class="nv">`id`</span><span class="p">)</span>
+<span class="p">);</span>
+</code></pre></div></div>
+<h2 id="insert">Insert</h2>
+<h3 id="json-raw">JSON RAW</h3>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">INSERT</span> <span class="k">INTO</span> <span class="nv">`e_store`</span><span class="p">.</span><span class="nv">`products`</span><span class="p">(</span>
+    <span class="nv">`attributes`</span>
+<span class="p">)</span>
+<span class="k">VALUES</span><span class="p">(</span>
+    <span class="s1">'{"screen": "20 inch", "resolution": "1280 x 720 pixels", "ports": {"hdmi": 0, "usb": 0}, "speakers": {"left": "5 watt", "right": "5 watt"}}'</span>
+<span class="p">);</span>
+</code></pre></div></div>
+
+<h3 id="json_object">JSON_OBJECT</h3>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">INSERT</span> <span class="k">INTO</span> <span class="nv">`e_store`</span><span class="p">.</span><span class="nv">`products`</span><span class="p">(</span>
+    <span class="nv">`attributes`</span>
+<span class="p">)</span>
+<span class="k">VALUES</span><span class="p">(</span>
+
+    <span class="n">JSON_OBJECT</span><span class="p">(</span>
+        <span class="nv">"network"</span> <span class="p">,</span>
+        <span class="n">JSON_ARRAY</span><span class="p">(</span><span class="nv">"GSM"</span> <span class="p">,</span> <span class="nv">"CDMA"</span> <span class="p">,</span> <span class="nv">"HSPA"</span> <span class="p">,</span> <span class="nv">"EVDO"</span><span class="p">)</span> <span class="p">,</span>
+        <span class="nv">"body"</span> <span class="p">,</span>
+        <span class="nv">"5.11 x 2.59 x 0.46 inches"</span> <span class="p">,</span>
+        <span class="nv">"weight"</span> <span class="p">,</span>
+        <span class="nv">"143 grams"</span>
+    <span class="p">)</span>
+<span class="p">);</span>
+</code></pre></div></div>
+
+<h3 id="json_merge">JSON_MERGE</h3>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">INSERT</span> <span class="k">INTO</span> <span class="nv">`e_store`</span><span class="p">.</span><span class="nv">`products`</span><span class="p">(</span>
+    <span class="nv">`attributes`</span>
+<span class="p">)</span>
+<span class="k">VALUES</span><span class="p">(</span>
+    <span class="n">JSON_MERGE</span><span class="p">(</span>
+        <span class="s1">'{"sensor_type": "CMOS"}'</span> <span class="p">,</span>
+        <span class="s1">'{"processor": "Digic DV III"}'</span> <span class="p">,</span>
+        <span class="s1">'{"scanning_system": "progressive"}'</span>
+    <span class="p">)</span>
+<span class="p">);</span>
+</code></pre></div></div>
+
+<h3 id="json_type">JSON_TYPE</h3>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SELECT JSON_TYPE(attributes) FROM `e_store`.`products`; // return Object
+</code></pre></div></div>
+
+<h2 id="select">SELECT</h2>
+<h3 id="json_extract">JSON_EXTRACT</h3>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span>
+    <span class="o">*</span>
+<span class="k">FROM</span>
+    <span class="nv">`e_store`</span><span class="p">.</span><span class="nv">`products`</span>
+<span class="k">WHERE</span>
+    <span class="nv">`category_id`</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="k">AND</span> <span class="n">JSON_EXTRACT</span><span class="p">(</span><span class="nv">`attributes`</span> <span class="p">,</span> <span class="s1">'$.ports.usb'</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span>
+<span class="k">AND</span> <span class="n">JSON_EXTRACT</span><span class="p">(</span><span class="nv">`attributes`</span> <span class="p">,</span> <span class="s1">'$.ports.hdmi'</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">;</span>
+</code></pre></div></div>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span>
+    <span class="o">*</span>
+<span class="k">FROM</span>
+    <span class="nv">`e_store`</span><span class="p">.</span><span class="nv">`products`</span>
+<span class="k">WHERE</span>
+    <span class="nv">`category_id`</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="k">AND</span> <span class="nv">`attributes`</span> <span class="o">-&gt;</span> <span class="s1">'$.ports.usb'</span> <span class="o">&gt;</span> <span class="mi">0</span>
+<span class="k">AND</span> <span class="nv">`attributes`</span> <span class="o">-&gt;</span> <span class="s1">'$.ports.hdmi'</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h2 id="update">UPDATE</h2>
+<h3 id="json_insert">JSON_INSERT</h3>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">UPDATE</span> <span class="nv">`e_store`</span><span class="p">.</span><span class="nv">`products`</span>
+<span class="k">SET</span> <span class="nv">`attributes`</span> <span class="o">=</span> <span class="n">JSON_INSERT</span><span class="p">(</span>
+    <span class="nv">`attributes`</span> <span class="p">,</span>
+    <span class="s1">'$.chipset'</span> <span class="p">,</span>
+    <span class="s1">'Qualcomm'</span>
+<span class="p">)</span>
+<span class="k">WHERE</span>
+    <span class="nv">`category_id`</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+</code></pre></div></div>
+<h3 id="json_replace">JSON_REPLACE</h3>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">UPDATE</span> <span class="nv">`e_store`</span><span class="p">.</span><span class="nv">`products`</span>
+<span class="k">SET</span> <span class="nv">`attributes`</span> <span class="o">=</span> <span class="n">JSON_REPLACE</span><span class="p">(</span>
+    <span class="nv">`attributes`</span> <span class="p">,</span>
+    <span class="s1">'$.chipset'</span> <span class="p">,</span>
+    <span class="s1">'Qualcomm Snapdragon'</span>
+<span class="p">)</span>
+<span class="k">WHERE</span>
+    <span class="nv">`category_id`</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h3 id="json_set">JSON_SET</h3>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">UPDATE</span> <span class="nv">`e_store`</span><span class="p">.</span><span class="nv">`products`</span>
+<span class="k">SET</span> <span class="nv">`attributes`</span> <span class="o">=</span> <span class="n">JSON_SET</span><span class="p">(</span>
+    <span class="nv">`attributes`</span> <span class="p">,</span>
+    <span class="s1">'$.body_color'</span> <span class="p">,</span>
+    <span class="s1">'red'</span>
+<span class="p">)</span>
+<span class="k">WHERE</span>
+    <span class="nv">`category_id`</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>The JSON_INSERT function will only add the property to the object if it does not exists already.</p>
+</blockquote>
+
+<blockquote>
+  <p>The JSON_REPLACE function substitutes the property only if it is found.</p>
+</blockquote>
+
+<blockquote>
+  <p>The JSON_SET function will add the property if it is not found else replace it.</p>
+</blockquote>
+
+<h3 id="json_remove">JSON_REMOVE</h3>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">UPDATE</span> <span class="nv">`e_store`</span><span class="p">.</span><span class="nv">`products`</span>
+<span class="k">SET</span> <span class="nv">`attributes`</span> <span class="o">=</span> <span class="n">JSON_REMOVE</span><span class="p">(</span><span class="nv">`attributes`</span> <span class="p">,</span> <span class="s1">'$.mount_type'</span><span class="p">)</span>
+<span class="k">WHERE</span>
+    <span class="nv">`category_id`</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+</code></pre></div></div>
+
+    </section>
+    <!-- <footer>
+  <div>
+    Project maintained by
+    <a href="https://github.com/felixvo" target="_blank"
+      >felixvo</a
+    >
+    , here is my <a href="/cv">CV</a>
+  </div>
+  <div>
+    <a href="/practise-speaking">Practise Speaking</a>
+  </div>
+  <small
+    >Hosted on GitHub Pages &mdash; Theme by
+    <a href="https://twitter.com/michigangraham">mattgraham</a>
+  </small>
+</footer>
+ -->
+    
+  <style>
+  </style>
+    <div class="comment-box">
+      <div id="disqus_thread"></div>
+      <script>
+
+        /**
+        *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+        *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+        /*
+        var disqus_config = function () {
+        this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+        */
+        (function () { // DON'T EDIT BELOW THIS LINE
+          var d = document, s = d.createElement('script');
+          s.src = 'https://ngocvts-blog.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the
+        <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+      </noscript>
+    </div>
+  <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+  <script id="dsq-count-scr" src="//ngocvts-blog.disqus.com/count.js" async></script>
+
+  </div>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-92160345-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-92160345-2');
+</script>
+</body>
+</html>

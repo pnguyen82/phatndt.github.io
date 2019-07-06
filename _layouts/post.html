@@ -15,17 +15,18 @@
 
 <body>
   {%include header.html%}
+  <nav class="table-of-content">
+    Table Of Contents
+    <ul>
+    </ul>
+  </nav>
   <div class="wrapper">
-    <nav>
-      <ul>
-      </ul>
-    </nav>
-    <section>
+    <section class="content">
       <h1 class="title">{{page.title}}</h1>
       </br>
       {{ content }}
     </section>
-    {%include footer.html%}
+    <!-- {%include footer.html%} -->
     {%include comment.html%}
   </div>
     {%include gtag.html%}
