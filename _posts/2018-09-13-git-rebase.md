@@ -3,8 +3,8 @@ title: Git Rebase, when to use it?
 categories: git
 ---
 
-## Definition
->git rebase in its simplest form is a command which will merge another branch
+>`git rebase` in its simplest form is a command which will merge another branch
+<!--more-->
 >into the branch where you are currently working,
 >and move all of the local commits that are ahead of the rebased branch to the top of the history
 >on that branch.

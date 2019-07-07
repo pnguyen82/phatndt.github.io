@@ -2,12 +2,13 @@
 title: Learn English Resources
 categories: english
 ---
-
-- original post: https://vozforums.com/showthread.php?t=6129889
+<!--more-->
 
 ### English Podcast
 - https://softwareengineeringdaily.com/
  > I like speaker voice, it's also have transcript for you
+- https://spec.fm/podcasts/developer-tea
+- https://www.codingblocks.net/category/podcast/
 
 ### Vocabulary
 - Anki is great fashcard app for you to learn vocabulary https://apps.ankiweb.net/
