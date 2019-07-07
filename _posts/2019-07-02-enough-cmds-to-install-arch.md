@@ -17,21 +17,26 @@ curl [url]
 - `dd bs=4M if=path/to/archlinux.iso of=/dev/sdx status=progress oflag=sync`: create bootable usb
 2. Partition the disks
 - `lsblk`: lsblk lists information about all or the specified block devices. The lsblk command reads the sysfs filesystem to gather information.
-- `cgdisk`: text-mode partitioning tools
-Sample layout:
-  - BIOS with MBR
-    Mount point	Partition	Partition type	Suggested size
-    /mnt	/dev/sdX1	Linux	Remainder of the device
-    [SWAP]	/dev/sdX2	Linux swap	More than 512 MiB
-  - UEFI with GPT
-    Mount point	Partition	Partition type	Suggested size
-    /mnt/boot or /mnt/efi	/dev/sdX1	EFI system partition	256–512 MiB
-    /mnt	/dev/sdX2	Linux x86-64 root (/)	Remainder of the device
-    [SWAP]	/dev/sdX3	Linux swap	More than 512 MiB
-- `mkfs.vfat -F32 /dev/sdXX`: format FAT32 for EFI partition
-- `mkfs.ext4 /dev/sdXX`: format ext4 for basic linux partition
-- `mkswap /dev/sdXX`: make swap partition
-- `swapon /dev/sdXX`: enable swap on a partition
+- `cgdisk`: text-mode partitioning tools  
+Sample layout:  
+    - BIOS with MBR:
+
+      | Mount point | Partition | Partition type |     Suggested size      |
+      | ----------- | --------- | -------------- | ----------------------- |
+      | /mnt        | /dev/sdX1 | Linux          | Remainder of the device |
+      | [SWAP]      | /dev/sdX2 | Linux          | swap	More than 512 MiB  |
+    - UEFI with GPT:
+
+      |      Mount point      |           Partition            |       Partition type        | Suggested size |
+      | --------------------- | ------------------------------ | --------------------------- | -------------- |
+      | /mnt/boot or /mnt/efi | /dev/sdX1                      | EFI system partition        | 256–512 MiB    |
+      | /mnt                  | /dev/sdX2	Linux x86-64 root (/) | Remainder of the device     |               |
+      | [SWAP]                | /dev/sdX3                      | Linux swap	More than 512 MiB |               |
+       
+    - `mkfs.vfat -F32 /dev/sdXX`: format FAT32 for EFI partition
+    - `mkfs.ext4 /dev/sdXX`: format ext4 for basic linux partition
+    - `mkswap /dev/sdXX`: make swap partition
+    - `swapon /dev/sdXX`: enable swap on a partition
 3. Install the base packages
 - `mount /dev/sdaX /mnt`: mount cmd
 - `mount /dev/sdaY /mnt/boot`: if your boot is UEFI, replace Y with you boot partition number
@@ -50,4 +55,3 @@ EFI
 BIOS with MBR
   - `grub-install --target=i386-pc /dev/sdX`: sdX is the disk, not the partion, ex: /dev/sda
 - `grub-mkconfig -o /boot/grub/grub.cfg`: create grub boot config
-

@@ -19,7 +19,7 @@
 {"description":"A guide for installing Arch Linux","@type":"BlogPosting","url":"http://localhost:4000/enough-cmds-to-install-arch/","headline":"Enough Cmds To Install Arch","dateModified":"2019-07-02T00:00:00+07:00","datePublished":"2019-07-02T00:00:00+07:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/enough-cmds-to-install-arch/"},"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
-  <link rel="stylesheet" href="/assets/css/style.css?v=ea4cd947503928eca70afb6bea717498bb8edf62">
+  <link rel="stylesheet" href="/assets/css/style.css?v=efd415e841e92ccca344b83cb4c9caa13c4d2d57">
   <link href="https://fonts.googleapis.com/css?family=Fira+Mono|Open+Sans|Montserrat|Roboto&display=swap" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
   <script src="/assets/js/main.js"></script>
@@ -52,7 +52,8 @@
       <p>A guide for installing Arch Linux</p>
 
 <!--more-->
-<p>Becasue there’s no UI when installing Arch and so many command to remember, so I recommended to list all document you need
+<p><a href="https://wiki.archlinux.org/index.php/Installation_guide">Complete Guide</a><br />
+Becasue there’s no UI when installing Arch and so many command to remember, so I recommended to list all document you need
 then just <code class="highlighter-rouge">curl</code> to get the document.</p>
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl [url]
 </code></pre></div></div>
@@ -73,19 +74,71 @@ then just <code class="highlighter-rouge">curl</code> to get the document.</p>
   <li>Partition the disks
     <ul>
       <li><code class="highlighter-rouge">lsblk</code>: lsblk lists information about all or the specified block devices. The lsblk command reads the sysfs filesystem to gather information.</li>
-      <li><code class="highlighter-rouge">cgdisk</code>: text-mode partitioning tools
-Sample layout:
-        <ul>
-          <li>BIOS with MBR
- Mount point	Partition	Partition type	Suggested size
- /mnt	/dev/sdX1	Linux	Remainder of the device
- [SWAP]	/dev/sdX2	Linux swap	More than 512 MiB</li>
-          <li>UEFI with GPT
- Mount point	Partition	Partition type	Suggested size
- /mnt/boot or /mnt/efi	/dev/sdX1	EFI system partition	256–512 MiB
- /mnt	/dev/sdX2	Linux x86-64 root (/)	Remainder of the device
- [SWAP]	/dev/sdX3	Linux swap	More than 512 MiB</li>
-        </ul>
+      <li><code class="highlighter-rouge">cgdisk</code>: text-mode partitioning tools<br />
+Sample layout:</li>
+    </ul>
+    <ul>
+      <li>
+        <p>BIOS with MBR:</p>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Mount point</th>
+              <th>Partition</th>
+              <th>Partition type</th>
+              <th>Suggested size</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>/mnt</td>
+              <td>/dev/sdX1</td>
+              <td>Linux</td>
+              <td>Remainder of the device</td>
+            </tr>
+            <tr>
+              <td>[SWAP]</td>
+              <td>/dev/sdX2</td>
+              <td>Linux</td>
+              <td>swap	More than 512 MiB</td>
+            </tr>
+          </tbody>
+        </table>
+      </li>
+      <li>
+        <p>UEFI with GPT:</p>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Mount point</th>
+              <th>Partition</th>
+              <th>Partition type</th>
+              <th>Suggested size</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>/mnt/boot or /mnt/efi</td>
+              <td>/dev/sdX1</td>
+              <td>EFI system partition</td>
+              <td>256–512 MiB</td>
+            </tr>
+            <tr>
+              <td>/mnt</td>
+              <td>/dev/sdX2	Linux x86-64 root (/)</td>
+              <td>Remainder of the device</td>
+              <td> </td>
+            </tr>
+            <tr>
+              <td>[SWAP]</td>
+              <td>/dev/sdX3</td>
+              <td>Linux swap	More than 512 MiB</td>
+              <td> </td>
+            </tr>
+          </tbody>
+        </table>
       </li>
       <li><code class="highlighter-rouge">mkfs.vfat -F32 /dev/sdXX</code>: format FAT32 for EFI partition</li>
       <li><code class="highlighter-rouge">mkfs.ext4 /dev/sdXX</code>: format ext4 for basic linux partition</li>
@@ -120,7 +173,6 @@ BIOS with MBR</li>
     </ul>
   </li>
 </ol>
-
 
     </section>
     <!-- <footer>
