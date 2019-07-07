@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-07-07T09:42:11+07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Felix’s blog</title><subtitle>This blog is about my experiences in software development, I hope you can find something useful!</subtitle><entry><title type="html">Working with MySQL JSON</title><link href="http://localhost:4000/mysql/working-with-mysql-json/" rel="alternate" type="text/html" title="Working with MySQL JSON" /><published>2019-06-04T00:00:00+07:00</published><updated>2019-06-04T00:00:00+07:00</updated><id>http://localhost:4000/mysql/working-with-mysql-json</id><content type="html" xml:base="http://localhost:4000/mysql/working-with-mysql-json/">&lt;p&gt;As of &lt;a href=&quot;https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-8.html#mysqld-5-7-8-json&quot;&gt;MySQL 5.7.8&lt;/a&gt;, MySQL supports a native JSON data type defined by RFC 7159 that enables efficient access to data in JSON (JavaScript Object Notation) documents
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-07-07T09:58:55+07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Felix’s blog</title><subtitle>This blog is about my experiences in software development, I hope you can find something useful!</subtitle><entry><title type="html">Working with MySQL JSON</title><link href="http://localhost:4000/mysql/working-with-mysql-json/" rel="alternate" type="text/html" title="Working with MySQL JSON" /><published>2019-06-04T00:00:00+07:00</published><updated>2019-06-04T00:00:00+07:00</updated><id>http://localhost:4000/mysql/working-with-mysql-json</id><content type="html" xml:base="http://localhost:4000/mysql/working-with-mysql-json/">&lt;p&gt;As of &lt;a href=&quot;https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-8.html#mysqld-5-7-8-json&quot;&gt;MySQL 5.7.8&lt;/a&gt;, MySQL supports a native JSON data type defined by RFC 7159 that enables efficient access to data in JSON (JavaScript Object Notation) documents
 &lt;!--more--&gt;
 Source: https://scotch.io/tutorials/working-with-json-in-mysql&lt;/p&gt;
 &lt;h2 id=&quot;create-table&quot;&gt;Create Table&lt;/h2&gt;
@@ -125,45 +125,33 @@ Source: https://scotch.io/tutorials/working-with-json-in-mysql&lt;/p&gt;
     &lt;span class=&quot;nv&quot;&gt;`category_id`&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name></name></author><category term="mysql" /><summary type="html">As of MySQL 5.7.8, MySQL supports a native JSON data type defined by RFC 7159 that enables efficient access to data in JSON (JavaScript Object Notation) documents</summary></entry><entry><title type="html">Open port CentOS</title><link href="http://localhost:4000/devops/open-port-centos/" rel="alternate" type="text/html" title="Open port CentOS" /><published>2019-05-29T00:00:00+07:00</published><updated>2019-05-29T00:00:00+07:00</updated><id>http://localhost:4000/devops/open-port-centos</id><content type="html" xml:base="http://localhost:4000/devops/open-port-centos/">&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;firewall-cmd --zone=public --add-port=8080/tcp --permanent
 firewall-cmd --reload
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name></name></author><summary type="html">firewall-cmd --zone=public --add-port=8080/tcp --permanent firewall-cmd --reload</summary></entry><entry><title type="html">Naming classes how to avoid calling everything a whatevermanager</title><link href="http://localhost:4000/naming-classes-how-to-avoid-calling-everything-a-whatevermanager/" rel="alternate" type="text/html" title="Naming classes how to avoid calling everything a whatevermanager" /><published>2018-10-27T00:00:00+07:00</published><updated>2018-10-27T00:00:00+07:00</updated><id>http://localhost:4000/naming-classes-how-to-avoid-calling-everything-a-whatevermanager</id><content type="html" xml:base="http://localhost:4000/naming-classes-how-to-avoid-calling-everything-a-whatevermanager/">&lt;p&gt;Try not to create new metaphors (Nanny)
-Have a look at what other frameworks do
-&lt;!--more--&gt;
-Further articles/books on this topic:&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name></name></author><summary type="html">firewall-cmd --zone=public --add-port=8080/tcp --permanent firewall-cmd --reload</summary></entry><entry><title type="html">Choosing between Interface and Abstract Class?</title><link href="http://localhost:4000/choosing-between-interface-and-abstract-class/" rel="alternate" type="text/html" title="Choosing between Interface and Abstract Class?" /><published>2018-12-13T00:00:00+07:00</published><updated>2018-12-13T00:00:00+07:00</updated><id>http://localhost:4000/choosing-between-interface-and-abstract-class</id><content type="html" xml:base="http://localhost:4000/choosing-between-interface-and-abstract-class/">&lt;p&gt;This is the question that I still feel that I don’t have a right answer for the
+past few year!
+&lt;!--more--&gt;&lt;/p&gt;
 
-&lt;p&gt;What names do you find yourself prepending/appending to classes regularly?
-What’s the best approach to naming classes?
-Book: Design Patterns: Elements of Reusable Object-Oriented Software (Hardcover)
-Book: Patterns of Enterprise Application Architecture (Hardcover)
-Book: Implementation Patterns (Paperback)&lt;/p&gt;
+&lt;p&gt;https://dzone.com/articles/how-to-choose-between-interface-and-abstract-class-1&lt;/p&gt;
 
-&lt;p&gt;And a current list of name prefixes/suffixes I collected (subjectively!) from the answers:&lt;/p&gt;
-
+&lt;h2 id=&quot;summary&quot;&gt;Summary&lt;/h2&gt;
+&lt;h3 id=&quot;abstract-class&quot;&gt;Abstract Class&lt;/h3&gt;
 &lt;ul&gt;
-  &lt;li&gt;Coordinator&lt;/li&gt;
-  &lt;li&gt;Builder&lt;/li&gt;
-  &lt;li&gt;Writer&lt;/li&gt;
-  &lt;li&gt;Reader&lt;/li&gt;
-  &lt;li&gt;Handler&lt;/li&gt;
-  &lt;li&gt;Container&lt;/li&gt;
-  &lt;li&gt;Protocol&lt;/li&gt;
-  &lt;li&gt;Target&lt;/li&gt;
-  &lt;li&gt;Converter&lt;/li&gt;
-  &lt;li&gt;Controller&lt;/li&gt;
-  &lt;li&gt;View&lt;/li&gt;
-  &lt;li&gt;Factory&lt;/li&gt;
-  &lt;li&gt;Entity&lt;/li&gt;
-  &lt;li&gt;Bucket&lt;/li&gt;
+  &lt;li&gt;Create an abstract class when you are providing &lt;code class=&quot;highlighter-rouge&quot;&gt;guidelines for a concrete class&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;Abstract class creation is &lt;code class=&quot;highlighter-rouge&quot;&gt;not at all related to&lt;/code&gt; whether you want to provide the implementation of any method or not.&lt;/li&gt;
+  &lt;li&gt;Add only those &lt;code class=&quot;highlighter-rouge&quot;&gt;properties&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;behaviors&lt;/code&gt; to the abstract class, without which your concrete class will lose its existence.
+For example, the Vehicle cannot exist without an engine.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;And a good tip for the road:&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Don’t get naming paralysis.
-Yes, names are very important but they’re not important enough to waste huge amounts of time on.
-If you can’t think up a good name in 10 minutes, move on.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Source: https://stackoverflow.com/questions/1866794/naming-classes-how-to-avoid-calling-everything-a-whatevermanager&lt;/p&gt;</content><author><name></name></author><summary type="html">Try not to create new metaphors (Nanny) Have a look at what other frameworks do</summary></entry><entry><title type="html">Secure S3 Cloudfont Content</title><link href="http://localhost:4000/aws/s3/sercure-s3-cloudfront/" rel="alternate" type="text/html" title="Secure S3 Cloudfont Content" /><published>2018-10-27T00:00:00+07:00</published><updated>2018-10-27T00:00:00+07:00</updated><id>http://localhost:4000/aws/s3/sercure-s3-cloudfront</id><content type="html" xml:base="http://localhost:4000/aws/s3/sercure-s3-cloudfront/">&lt;blockquote&gt;
+&lt;h3 id=&quot;interface&quot;&gt;Interface&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Create interfaces that provide additional &lt;code class=&quot;highlighter-rouge&quot;&gt;behavior&lt;/code&gt; to your concrete class.
+When we share these interfaces to the external system, then it becomes a contract,
+that is why we say that interfaces are behavioral contracts of the concrete class.&lt;/li&gt;
+  &lt;li&gt;These &lt;code class=&quot;highlighter-rouge&quot;&gt;behaviors should not be mandatory for your class&lt;/code&gt;.
+These behaviors should add more capabilities to your class.
+For example, a Car will be a Car, even if it cannot move.&lt;/li&gt;
+  &lt;li&gt;Ask the question that, whenever a concrete class will &lt;code class=&quot;highlighter-rouge&quot;&gt;implement&lt;/code&gt; your interface,
+will it require &lt;code class=&quot;highlighter-rouge&quot;&gt;all behaviors&lt;/code&gt; mentioned in your interface,
+or only a few? Refactor your interfaces in multiple interfaces, until the answer to the above question is yes.&lt;/li&gt;
+&lt;/ul&gt;</content><author><name></name></author><summary type="html">This is the question that I still feel that I don’t have a right answer for the past few year!</summary></entry><entry><title type="html">Secure S3 Cloudfont Content</title><link href="http://localhost:4000/aws/s3/sercure-s3-cloudfront/" rel="alternate" type="text/html" title="Secure S3 Cloudfont Content" /><published>2018-10-27T00:00:00+07:00</published><updated>2018-10-27T00:00:00+07:00</updated><id>http://localhost:4000/aws/s3/sercure-s3-cloudfront</id><content type="html" xml:base="http://localhost:4000/aws/s3/sercure-s3-cloudfront/">&lt;blockquote&gt;
   &lt;p&gt;Many companies that distribute content over the internet want to restrict access to documents, business data, media streams, or content
 that is intended for selected users, for example, users who have paid a fee
 &lt;!--more--&gt;&lt;/p&gt;
@@ -253,7 +241,45 @@ So instead of &lt;code class=&quot;highlighter-rouge&quot;&gt;xyz.cloudfront.net
 &lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://www.spacevatican.org/2015/5/1/using-cloudfront-signed-cookies/&quot;&gt;Using Cloudfront Signed Cookies&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name></name></author><summary type="html">Many companies that distribute content over the internet want to restrict access to documents, business data, media streams, or content that is intended for selected users, for example, users who have paid a fee</summary></entry><entry><title type="html">Git Rebase, when to use it?</title><link href="http://localhost:4000/git/git-rebase/" rel="alternate" type="text/html" title="Git Rebase, when to use it?" /><published>2018-09-13T00:00:00+07:00</published><updated>2018-09-13T00:00:00+07:00</updated><id>http://localhost:4000/git/git-rebase</id><content type="html" xml:base="http://localhost:4000/git/git-rebase/">&lt;blockquote&gt;
+&lt;/ul&gt;</content><author><name></name></author><summary type="html">Many companies that distribute content over the internet want to restrict access to documents, business data, media streams, or content that is intended for selected users, for example, users who have paid a fee</summary></entry><entry><title type="html">Naming classes how to avoid calling everything a whatevermanager</title><link href="http://localhost:4000/naming-classes-how-to-avoid-calling-everything-a-whatevermanager/" rel="alternate" type="text/html" title="Naming classes how to avoid calling everything a whatevermanager" /><published>2018-10-27T00:00:00+07:00</published><updated>2018-10-27T00:00:00+07:00</updated><id>http://localhost:4000/naming-classes-how-to-avoid-calling-everything-a-whatevermanager</id><content type="html" xml:base="http://localhost:4000/naming-classes-how-to-avoid-calling-everything-a-whatevermanager/">&lt;p&gt;Try not to create new metaphors (Nanny)
+Have a look at what other frameworks do
+&lt;!--more--&gt;
+Further articles/books on this topic:&lt;/p&gt;
+
+&lt;p&gt;What names do you find yourself prepending/appending to classes regularly?
+What’s the best approach to naming classes?
+Book: Design Patterns: Elements of Reusable Object-Oriented Software (Hardcover)
+Book: Patterns of Enterprise Application Architecture (Hardcover)
+Book: Implementation Patterns (Paperback)&lt;/p&gt;
+
+&lt;p&gt;And a current list of name prefixes/suffixes I collected (subjectively!) from the answers:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Coordinator&lt;/li&gt;
+  &lt;li&gt;Builder&lt;/li&gt;
+  &lt;li&gt;Writer&lt;/li&gt;
+  &lt;li&gt;Reader&lt;/li&gt;
+  &lt;li&gt;Handler&lt;/li&gt;
+  &lt;li&gt;Container&lt;/li&gt;
+  &lt;li&gt;Protocol&lt;/li&gt;
+  &lt;li&gt;Target&lt;/li&gt;
+  &lt;li&gt;Converter&lt;/li&gt;
+  &lt;li&gt;Controller&lt;/li&gt;
+  &lt;li&gt;View&lt;/li&gt;
+  &lt;li&gt;Factory&lt;/li&gt;
+  &lt;li&gt;Entity&lt;/li&gt;
+  &lt;li&gt;Bucket&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;And a good tip for the road:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Don’t get naming paralysis.
+Yes, names are very important but they’re not important enough to waste huge amounts of time on.
+If you can’t think up a good name in 10 minutes, move on.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Source: https://stackoverflow.com/questions/1866794/naming-classes-how-to-avoid-calling-everything-a-whatevermanager&lt;/p&gt;</content><author><name></name></author><summary type="html">Try not to create new metaphors (Nanny) Have a look at what other frameworks do</summary></entry><entry><title type="html">Git Rebase, when to use it?</title><link href="http://localhost:4000/git/git-rebase/" rel="alternate" type="text/html" title="Git Rebase, when to use it?" /><published>2018-09-13T00:00:00+07:00</published><updated>2018-09-13T00:00:00+07:00</updated><id>http://localhost:4000/git/git-rebase</id><content type="html" xml:base="http://localhost:4000/git/git-rebase/">&lt;blockquote&gt;
   &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;git rebase&lt;/code&gt; in its simplest form is a command which will merge another branch
 &lt;!--more--&gt;
 into the branch where you are currently working,
