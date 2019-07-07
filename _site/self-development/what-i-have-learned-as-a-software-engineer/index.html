@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang=" en-US ">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1"> <!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>What I’ve learned after 3 years as a software engineer | Felix’s blog</title>
+<meta name="generator" content="Jekyll v3.8.5" />
+<meta property="og:title" content="What I’ve learned after 3 years as a software engineer" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="After read What should be in a coder’s toolbox I think it’s the time for me to review what’s in my’s toolbox. My early day in development I started my first job in May 2015 after I graduated from university. And that’s a fresher program (training period). With 3 others guys, we’re working together to build a tracking system which has cover basic functions of google analytic like Daily/Weekly/Monthly active users, page views, data from the user agent, exit rate, bounce rate, time on page What added to my’s toolbox? load balancing job server (gearman) multithreading, synchronize, locking split your application to multiple services Junior After three months of training, I actual join the company as an associate software engineer. The business of my team is about marketing, how to lead users to our platform. My responsibilities is to build a tracking system to tracking how many lead to our platform and which campaigns have revenue The tracking system contain 2 main part: collecting mapping data visualize data I use java as the main programming language. collecting data user data browser(js) -&gt; loadbalancer (nginx/ha proxy) -&gt; webserver(jetty)-&gt;scribelog marketing data gg adword api fb ads api analyze and store final result to db visualize data using c3js after one year, I move to another role, backend developer for 360live (livestreaming app)" />
+<meta property="og:description" content="After read What should be in a coder’s toolbox I think it’s the time for me to review what’s in my’s toolbox. My early day in development I started my first job in May 2015 after I graduated from university. And that’s a fresher program (training period). With 3 others guys, we’re working together to build a tracking system which has cover basic functions of google analytic like Daily/Weekly/Monthly active users, page views, data from the user agent, exit rate, bounce rate, time on page What added to my’s toolbox? load balancing job server (gearman) multithreading, synchronize, locking split your application to multiple services Junior After three months of training, I actual join the company as an associate software engineer. The business of my team is about marketing, how to lead users to our platform. My responsibilities is to build a tracking system to tracking how many lead to our platform and which campaigns have revenue The tracking system contain 2 main part: collecting mapping data visualize data I use java as the main programming language. collecting data user data browser(js) -&gt; loadbalancer (nginx/ha proxy) -&gt; webserver(jetty)-&gt;scribelog marketing data gg adword api fb ads api analyze and store final result to db visualize data using c3js after one year, I move to another role, backend developer for 360live (livestreaming app)" />
+<link rel="canonical" href="http://localhost:4000/self-development/what-i-have-learned-as-a-software-engineer/" />
+<meta property="og:url" content="http://localhost:4000/self-development/what-i-have-learned-as-a-software-engineer/" />
+<meta property="og:site_name" content="Felix’s blog" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-12-09T00:00:00+07:00" />
+<script type="application/ld+json">
+{"description":"After read What should be in a coder’s toolbox I think it’s the time for me to review what’s in my’s toolbox. My early day in development I started my first job in May 2015 after I graduated from university. And that’s a fresher program (training period). With 3 others guys, we’re working together to build a tracking system which has cover basic functions of google analytic like Daily/Weekly/Monthly active users, page views, data from the user agent, exit rate, bounce rate, time on page What added to my’s toolbox? load balancing job server (gearman) multithreading, synchronize, locking split your application to multiple services Junior After three months of training, I actual join the company as an associate software engineer. The business of my team is about marketing, how to lead users to our platform. My responsibilities is to build a tracking system to tracking how many lead to our platform and which campaigns have revenue The tracking system contain 2 main part: collecting mapping data visualize data I use java as the main programming language. collecting data user data browser(js) -&gt; loadbalancer (nginx/ha proxy) -&gt; webserver(jetty)-&gt;scribelog marketing data gg adword api fb ads api analyze and store final result to db visualize data using c3js after one year, I move to another role, backend developer for 360live (livestreaming app)","@type":"BlogPosting","url":"http://localhost:4000/self-development/what-i-have-learned-as-a-software-engineer/","headline":"What I’ve learned after 3 years as a software engineer","dateModified":"2018-12-09T00:00:00+07:00","datePublished":"2018-12-09T00:00:00+07:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/self-development/what-i-have-learned-as-a-software-engineer/"},"@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  <link rel="stylesheet" href="/assets/css/style.css?v=9ae005d2f7b42620a9884c950c23f29557d7cd88">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script src="/assets/js/main.js"></script>
+  <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+</head>
+
+<body>
+  <header>
+    <a href="/">
+        <h1>
+       Felix's blog
+        </h1>
+    </a>
+    <p>This blog is about my experiences in software development, I hope you can find something useful!</p>
+</header>
+<hr>
+
+  <nav class="table-of-content">
+    Table Of Contents
+    <ul>
+    </ul>
+  </nav>
+  <div class="wrapper">
+    <section class="content">
+      <h1 class="title">What I've learned after 3 years as a software engineer</h1>
+      </br>
+      <p>After read <a href="https://hackernoon.com/what-should-be-in-a-coders-toolbox-96674fc8fb74">What should be in a coder’s toolbox</a>
+I think it’s the time for me to review what’s in my’s toolbox.</p>
+
+<h2 id="my-early-day-in-development">My early day in development</h2>
+<p>I started my first job in May 2015 after I graduated from university. And that’s a fresher program (training period).
+With 3 others guys, we’re working together to build a tracking system
+which has cover basic functions of google analytic like Daily/Weekly/Monthly active users,
+page views, data from the user agent, exit rate, bounce rate, time on page
+What added to my’s toolbox?</p>
+<ul>
+  <li>load balancing</li>
+  <li>job server (<a href="http://gearman.org/">gearman</a>)</li>
+  <li>multithreading, synchronize, locking</li>
+  <li>split your application to multiple services</li>
+</ul>
+
+<h2 id="junior">Junior</h2>
+<p>After three months of training, I actual join the company as an associate software engineer.
+The business of my team is about marketing, how to lead users to our platform.
+My responsibilities is to build a tracking system to tracking how many lead to our platform
+and which campaigns have revenue
+The tracking system contain 2 main part:</p>
+<ul>
+  <li>collecting</li>
+  <li>mapping data</li>
+  <li>visualize data
+I use java as the main programming language.
+    <h3 id="collecting-data">collecting data</h3>
+  </li>
+  <li>user data
+    <blockquote>
+      <p>browser(js) -&gt; loadbalancer (nginx/ha proxy) -&gt; webserver(jetty)-&gt;scribelog</p>
+    </blockquote>
+  </li>
+  <li>marketing data
+    <blockquote>
+      <p>gg adword api
+fb ads api</p>
+    </blockquote>
+  </li>
+</ul>
+
+<blockquote>
+  <p>analyze and store final result to db
+visualize data using c3js</p>
+</blockquote>
+
+<p>after one year, I move to another role, backend developer for 360live (livestreaming app)</p>
+
+
+    </section>
+    <!-- <footer>
+  <div>
+    Project maintained by
+    <a href="https://github.com/felixvo" target="_blank"
+      >felixvo</a
+    >
+    , here is my <a href="/cv">CV</a>
+  </div>
+  <div>
+    <a href="/practise-speaking">Practise Speaking</a>
+  </div>
+  <small
+    >Hosted on GitHub Pages &mdash; Theme by
+    <a href="https://twitter.com/michigangraham">mattgraham</a>
+  </small>
+</footer>
+ -->
+    
+  <style>
+  </style>
+    <div class="comment-box">
+      <div id="disqus_thread"></div>
+      <script>
+
+        /**
+        *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+        *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+        /*
+        var disqus_config = function () {
+        this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+        */
+        (function () { // DON'T EDIT BELOW THIS LINE
+          var d = document, s = d.createElement('script');
+          s.src = 'https://ngocvts-blog.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the
+        <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+      </noscript>
+    </div>
+  <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+  <script id="dsq-count-scr" src="//ngocvts-blog.disqus.com/count.js" async></script>
+
+  </div>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-92160345-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-92160345-2');
+</script>
+</body>
+</html>

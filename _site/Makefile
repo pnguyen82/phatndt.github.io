@@ -1,4 +1,4 @@
 start:
-	bundle exec jekyll serve --watch
+	bundle exec jekyll serve --watch --drafts
 update-bundle:
 	bundle update

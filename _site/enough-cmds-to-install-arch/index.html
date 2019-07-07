@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang=" en-US ">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1"> <!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Enough Cmds To Install Arch | Felix’s blog</title>
+<meta name="generator" content="Jekyll v3.8.5" />
+<meta property="og:title" content="Enough Cmds To Install Arch" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A guide for installing Arch Linux" />
+<meta property="og:description" content="A guide for installing Arch Linux" />
+<link rel="canonical" href="http://localhost:4000/enough-cmds-to-install-arch/" />
+<meta property="og:url" content="http://localhost:4000/enough-cmds-to-install-arch/" />
+<meta property="og:site_name" content="Felix’s blog" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-07-02T00:00:00+07:00" />
+<script type="application/ld+json">
+{"description":"A guide for installing Arch Linux","@type":"BlogPosting","url":"http://localhost:4000/enough-cmds-to-install-arch/","headline":"Enough Cmds To Install Arch","dateModified":"2019-07-02T00:00:00+07:00","datePublished":"2019-07-02T00:00:00+07:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/enough-cmds-to-install-arch/"},"@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  <link rel="stylesheet" href="/assets/css/style.css?v=9ae005d2f7b42620a9884c950c23f29557d7cd88">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script src="/assets/js/main.js"></script>
+  <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+</head>
+
+<body>
+  <header>
+    <a href="/">
+        <h1>
+       Felix's blog
+        </h1>
+    </a>
+    <p>This blog is about my experiences in software development, I hope you can find something useful!</p>
+</header>
+<hr>
+
+  <nav class="table-of-content">
+    Table Of Contents
+    <ul>
+    </ul>
+  </nav>
+  <div class="wrapper">
+    <section class="content">
+      <h1 class="title">Enough Cmds To Install Arch</h1>
+      </br>
+      <p>A guide for installing Arch Linux</p>
+
+<!--more-->
+<p>Becasue there’s no UI when installing Arch and so many command to remember, so I recommended to list all document you need
+then just <code class="highlighter-rouge">curl</code> to get the document.</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl [url]
+</code></pre></div></div>
+
+<h2 id="important-commands">Important Commands</h2>
+<ul>
+  <li><code class="highlighter-rouge">wifi-menu</code>: connect to wifi</li>
+  <li><code class="highlighter-rouge">pacman -S wifi-menu</code>: install wifi-menu if need</li>
+</ul>
+
+<h2 id="steps--commands">Steps &amp; Commands</h2>
+<ol>
+  <li>Prepare Arch bootable USB
+    <ul>
+      <li><code class="highlighter-rouge">dd bs=4M if=path/to/archlinux.iso of=/dev/sdx status=progress oflag=sync</code>: create bootable usb</li>
+    </ul>
+  </li>
+  <li>Partition the disks
+    <ul>
+      <li><code class="highlighter-rouge">lsblk</code>: lsblk lists information about all or the specified block devices. The lsblk command reads the sysfs filesystem to gather information.</li>
+      <li><code class="highlighter-rouge">cgdisk</code>: text-mode partitioning tools
+Sample layout:
+        <ul>
+          <li>BIOS with MBR
+ Mount point	Partition	Partition type	Suggested size
+ /mnt	/dev/sdX1	Linux	Remainder of the device
+ [SWAP]	/dev/sdX2	Linux swap	More than 512 MiB</li>
+          <li>UEFI with GPT
+ Mount point	Partition	Partition type	Suggested size
+ /mnt/boot or /mnt/efi	/dev/sdX1	EFI system partition	256–512 MiB
+ /mnt	/dev/sdX2	Linux x86-64 root (/)	Remainder of the device
+ [SWAP]	/dev/sdX3	Linux swap	More than 512 MiB</li>
+        </ul>
+      </li>
+      <li><code class="highlighter-rouge">mkfs.vfat -F32 /dev/sdXX</code>: format FAT32 for EFI partition</li>
+      <li><code class="highlighter-rouge">mkfs.ext4 /dev/sdXX</code>: format ext4 for basic linux partition</li>
+      <li><code class="highlighter-rouge">mkswap /dev/sdXX</code>: make swap partition</li>
+      <li><code class="highlighter-rouge">swapon /dev/sdXX</code>: enable swap on a partition</li>
+    </ul>
+  </li>
+  <li>Install the base packages
+    <ul>
+      <li><code class="highlighter-rouge">mount /dev/sdaX /mnt</code>: mount cmd</li>
+      <li><code class="highlighter-rouge">mount /dev/sdaY /mnt/boot</code>: if your boot is UEFI, replace Y with you boot partition number</li>
+      <li><code class="highlighter-rouge">/etc/pacman.d/mirrorlist</code>: Uncomment mirrors you would like to use.</li>
+      <li><code class="highlighter-rouge">pacstrap /mnt base base-devel</code>: command to install arch into /mnt</li>
+    </ul>
+  </li>
+  <li>Configure the system
+    <ul>
+      <li><code class="highlighter-rouge">genfstab -U /mnt &gt;&gt;/mnt/etc/fstab</code>: https`://wiki.archlinux.org/index.php/Fstab</li>
+      <li><code class="highlighter-rouge">arch-chroot /mnt</code>: changes the apparent root directory for the current running process and their children</li>
+      <li><code class="highlighter-rouge">useradd {username}</code>: add new user</li>
+      <li><code class="highlighter-rouge">passwd {username}</code>: set password for</li>
+      <li><code class="highlighter-rouge">pacman -S grub</code>: install grub</li>
+      <li><code class="highlighter-rouge">pacman -S os-prober</code>: if you have many os you need to install this
+EFI
+        <ul>
+          <li><code class="highlighter-rouge">grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB</code>: install grub bootloader, more info: https://wiki.archlinux.org/index.php/GRUB#Installation_2
+BIOS with MBR</li>
+          <li><code class="highlighter-rouge">grub-install --target=i386-pc /dev/sdX</code>: sdX is the disk, not the partion, ex: /dev/sda</li>
+        </ul>
+      </li>
+      <li><code class="highlighter-rouge">grub-mkconfig -o /boot/grub/grub.cfg</code>: create grub boot config</li>
+    </ul>
+  </li>
+</ol>
+
+
+    </section>
+    <!-- <footer>
+  <div>
+    Project maintained by
+    <a href="https://github.com/felixvo" target="_blank"
+      >felixvo</a
+    >
+    , here is my <a href="/cv">CV</a>
+  </div>
+  <div>
+    <a href="/practise-speaking">Practise Speaking</a>
+  </div>
+  <small
+    >Hosted on GitHub Pages &mdash; Theme by
+    <a href="https://twitter.com/michigangraham">mattgraham</a>
+  </small>
+</footer>
+ -->
+    
+  <style>
+  </style>
+    <div class="comment-box">
+      <div id="disqus_thread"></div>
+      <script>
+
+        /**
+        *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+        *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+        /*
+        var disqus_config = function () {
+        this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+        */
+        (function () { // DON'T EDIT BELOW THIS LINE
+          var d = document, s = d.createElement('script');
+          s.src = 'https://ngocvts-blog.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the
+        <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+      </noscript>
+    </div>
+  <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+  <script id="dsq-count-scr" src="//ngocvts-blog.disqus.com/count.js" async></script>
+
+  </div>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-92160345-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-92160345-2');
+</script>
+</body>
+</html>
