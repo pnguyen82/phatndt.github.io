@@ -1,4 +1,74 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-07-07T10:26:36+07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Felix’s blog</title><subtitle>This blog is about my experiences in software development, I hope you can find something useful!</subtitle><entry><title type="html">Working with MySQL JSON</title><link href="http://localhost:4000/mysql/working-with-mysql-json/" rel="alternate" type="text/html" title="Working with MySQL JSON" /><published>2019-06-04T00:00:00+07:00</published><updated>2019-06-04T00:00:00+07:00</updated><id>http://localhost:4000/mysql/working-with-mysql-json</id><content type="html" xml:base="http://localhost:4000/mysql/working-with-mysql-json/">&lt;p&gt;As of &lt;a href=&quot;https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-8.html#mysqld-5-7-8-json&quot;&gt;MySQL 5.7.8&lt;/a&gt;, MySQL supports a native JSON data type defined by RFC 7159 that enables efficient access to data in JSON (JavaScript Object Notation) documents
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-07-07T10:28:05+07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Felix’s blog</title><subtitle>This blog is about my experiences in software development, I hope you can find something useful!</subtitle><entry><title type="html">Enough Cmds To Install Arch</title><link href="http://localhost:4000/enough-cmds-to-install-arch/" rel="alternate" type="text/html" title="Enough Cmds To Install Arch" /><published>2019-07-02T00:00:00+07:00</published><updated>2019-07-02T00:00:00+07:00</updated><id>http://localhost:4000/enough-cmds-to-install-arch</id><content type="html" xml:base="http://localhost:4000/enough-cmds-to-install-arch/">&lt;p&gt;A guide for installing Arch Linux&lt;/p&gt;
+
+&lt;!--more--&gt;
+&lt;p&gt;Becasue there’s no UI when installing Arch and so many command to remember, so I recommended to list all document you need
+then just &lt;code class=&quot;highlighter-rouge&quot;&gt;curl&lt;/code&gt; to get the document.&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;curl [url]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;important-commands&quot;&gt;Important Commands&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;wifi-menu&lt;/code&gt;: connect to wifi&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;pacman -S wifi-menu&lt;/code&gt;: install wifi-menu if need&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;steps--commands&quot;&gt;Steps &amp;amp; Commands&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;Prepare Arch bootable USB
+    &lt;ul&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;dd bs=4M if=path/to/archlinux.iso of=/dev/sdx status=progress oflag=sync&lt;/code&gt;: create bootable usb&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Partition the disks
+    &lt;ul&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;lsblk&lt;/code&gt;: lsblk lists information about all or the specified block devices. The lsblk command reads the sysfs filesystem to gather information.&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;cgdisk&lt;/code&gt;: text-mode partitioning tools
+Sample layout:
+        &lt;ul&gt;
+          &lt;li&gt;BIOS with MBR
+ Mount point	Partition	Partition type	Suggested size
+ /mnt	/dev/sdX1	Linux	Remainder of the device
+ [SWAP]	/dev/sdX2	Linux swap	More than 512 MiB&lt;/li&gt;
+          &lt;li&gt;UEFI with GPT
+ Mount point	Partition	Partition type	Suggested size
+ /mnt/boot or /mnt/efi	/dev/sdX1	EFI system partition	256–512 MiB
+ /mnt	/dev/sdX2	Linux x86-64 root (/)	Remainder of the device
+ [SWAP]	/dev/sdX3	Linux swap	More than 512 MiB&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;mkfs.vfat -F32 /dev/sdXX&lt;/code&gt;: format FAT32 for EFI partition&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;mkfs.ext4 /dev/sdXX&lt;/code&gt;: format ext4 for basic linux partition&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;mkswap /dev/sdXX&lt;/code&gt;: make swap partition&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;swapon /dev/sdXX&lt;/code&gt;: enable swap on a partition&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Install the base packages
+    &lt;ul&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;mount /dev/sdaX /mnt&lt;/code&gt;: mount cmd&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;mount /dev/sdaY /mnt/boot&lt;/code&gt;: if your boot is UEFI, replace Y with you boot partition number&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/pacman.d/mirrorlist&lt;/code&gt;: Uncomment mirrors you would like to use.&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;pacstrap /mnt base base-devel&lt;/code&gt;: command to install arch into /mnt&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Configure the system
+    &lt;ul&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;genfstab -U /mnt &amp;gt;&amp;gt;/mnt/etc/fstab&lt;/code&gt;: https`://wiki.archlinux.org/index.php/Fstab&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;arch-chroot /mnt&lt;/code&gt;: changes the apparent root directory for the current running process and their children&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;useradd {username}&lt;/code&gt;: add new user&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;passwd {username}&lt;/code&gt;: set password for&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;pacman -S grub&lt;/code&gt;: install grub&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;pacman -S os-prober&lt;/code&gt;: if you have many os you need to install this
+EFI
+        &lt;ul&gt;
+          &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB&lt;/code&gt;: install grub bootloader, more info: https://wiki.archlinux.org/index.php/GRUB#Installation_2
+BIOS with MBR&lt;/li&gt;
+          &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;grub-install --target=i386-pc /dev/sdX&lt;/code&gt;: sdX is the disk, not the partion, ex: /dev/sda&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;grub-mkconfig -o /boot/grub/grub.cfg&lt;/code&gt;: create grub boot config&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;</content><author><name></name></author><summary type="html">A guide for installing Arch Linux</summary></entry><entry><title type="html">Working with MySQL JSON</title><link href="http://localhost:4000/mysql/working-with-mysql-json/" rel="alternate" type="text/html" title="Working with MySQL JSON" /><published>2019-06-04T00:00:00+07:00</published><updated>2019-06-04T00:00:00+07:00</updated><id>http://localhost:4000/mysql/working-with-mysql-json</id><content type="html" xml:base="http://localhost:4000/mysql/working-with-mysql-json/">&lt;p&gt;As of &lt;a href=&quot;https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-8.html#mysqld-5-7-8-json&quot;&gt;MySQL 5.7.8&lt;/a&gt;, MySQL supports a native JSON data type defined by RFC 7159 that enables efficient access to data in JSON (JavaScript Object Notation) documents
 &lt;!--more--&gt;
 Source: https://scotch.io/tutorials/working-with-json-in-mysql&lt;/p&gt;
 &lt;h2 id=&quot;create-table&quot;&gt;Create Table&lt;/h2&gt;
@@ -151,7 +221,45 @@ For example, a Car will be a Car, even if it cannot move.&lt;/li&gt;
   &lt;li&gt;Ask the question that, whenever a concrete class will &lt;code class=&quot;highlighter-rouge&quot;&gt;implement&lt;/code&gt; your interface,
 will it require &lt;code class=&quot;highlighter-rouge&quot;&gt;all behaviors&lt;/code&gt; mentioned in your interface,
 or only a few? Refactor your interfaces in multiple interfaces, until the answer to the above question is yes.&lt;/li&gt;
-&lt;/ul&gt;</content><author><name></name></author><summary type="html">This is the question that I still feel that I don’t have a right answer for the past few year!</summary></entry><entry><title type="html">Secure S3 Cloudfont Content</title><link href="http://localhost:4000/aws/s3/sercure-s3-cloudfront/" rel="alternate" type="text/html" title="Secure S3 Cloudfont Content" /><published>2018-10-27T00:00:00+07:00</published><updated>2018-10-27T00:00:00+07:00</updated><id>http://localhost:4000/aws/s3/sercure-s3-cloudfront</id><content type="html" xml:base="http://localhost:4000/aws/s3/sercure-s3-cloudfront/">&lt;blockquote&gt;
+&lt;/ul&gt;</content><author><name></name></author><summary type="html">This is the question that I still feel that I don’t have a right answer for the past few year!</summary></entry><entry><title type="html">Naming classes how to avoid calling everything a whatevermanager</title><link href="http://localhost:4000/naming-classes-how-to-avoid-calling-everything-a-whatevermanager/" rel="alternate" type="text/html" title="Naming classes how to avoid calling everything a whatevermanager" /><published>2018-10-27T00:00:00+07:00</published><updated>2018-10-27T00:00:00+07:00</updated><id>http://localhost:4000/naming-classes-how-to-avoid-calling-everything-a-whatevermanager</id><content type="html" xml:base="http://localhost:4000/naming-classes-how-to-avoid-calling-everything-a-whatevermanager/">&lt;p&gt;Try not to create new metaphors (Nanny)
+Have a look at what other frameworks do
+&lt;!--more--&gt;
+Further articles/books on this topic:&lt;/p&gt;
+
+&lt;p&gt;What names do you find yourself prepending/appending to classes regularly?
+What’s the best approach to naming classes?
+Book: Design Patterns: Elements of Reusable Object-Oriented Software (Hardcover)
+Book: Patterns of Enterprise Application Architecture (Hardcover)
+Book: Implementation Patterns (Paperback)&lt;/p&gt;
+
+&lt;p&gt;And a current list of name prefixes/suffixes I collected (subjectively!) from the answers:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Coordinator&lt;/li&gt;
+  &lt;li&gt;Builder&lt;/li&gt;
+  &lt;li&gt;Writer&lt;/li&gt;
+  &lt;li&gt;Reader&lt;/li&gt;
+  &lt;li&gt;Handler&lt;/li&gt;
+  &lt;li&gt;Container&lt;/li&gt;
+  &lt;li&gt;Protocol&lt;/li&gt;
+  &lt;li&gt;Target&lt;/li&gt;
+  &lt;li&gt;Converter&lt;/li&gt;
+  &lt;li&gt;Controller&lt;/li&gt;
+  &lt;li&gt;View&lt;/li&gt;
+  &lt;li&gt;Factory&lt;/li&gt;
+  &lt;li&gt;Entity&lt;/li&gt;
+  &lt;li&gt;Bucket&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;And a good tip for the road:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Don’t get naming paralysis.
+Yes, names are very important but they’re not important enough to waste huge amounts of time on.
+If you can’t think up a good name in 10 minutes, move on.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Source: https://stackoverflow.com/questions/1866794/naming-classes-how-to-avoid-calling-everything-a-whatevermanager&lt;/p&gt;</content><author><name></name></author><summary type="html">Try not to create new metaphors (Nanny) Have a look at what other frameworks do</summary></entry><entry><title type="html">Secure S3 Cloudfont Content</title><link href="http://localhost:4000/aws/s3/sercure-s3-cloudfront/" rel="alternate" type="text/html" title="Secure S3 Cloudfont Content" /><published>2018-10-27T00:00:00+07:00</published><updated>2018-10-27T00:00:00+07:00</updated><id>http://localhost:4000/aws/s3/sercure-s3-cloudfront</id><content type="html" xml:base="http://localhost:4000/aws/s3/sercure-s3-cloudfront/">&lt;blockquote&gt;
   &lt;p&gt;Many companies that distribute content over the internet want to restrict access to documents, business data, media streams, or content
 that is intended for selected users, for example, users who have paid a fee
 &lt;!--more--&gt;&lt;/p&gt;
@@ -241,45 +349,7 @@ So instead of &lt;code class=&quot;highlighter-rouge&quot;&gt;xyz.cloudfront.net
 &lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://www.spacevatican.org/2015/5/1/using-cloudfront-signed-cookies/&quot;&gt;Using Cloudfront Signed Cookies&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name></name></author><summary type="html">Many companies that distribute content over the internet want to restrict access to documents, business data, media streams, or content that is intended for selected users, for example, users who have paid a fee</summary></entry><entry><title type="html">Naming classes how to avoid calling everything a whatevermanager</title><link href="http://localhost:4000/naming-classes-how-to-avoid-calling-everything-a-whatevermanager/" rel="alternate" type="text/html" title="Naming classes how to avoid calling everything a whatevermanager" /><published>2018-10-27T00:00:00+07:00</published><updated>2018-10-27T00:00:00+07:00</updated><id>http://localhost:4000/naming-classes-how-to-avoid-calling-everything-a-whatevermanager</id><content type="html" xml:base="http://localhost:4000/naming-classes-how-to-avoid-calling-everything-a-whatevermanager/">&lt;p&gt;Try not to create new metaphors (Nanny)
-Have a look at what other frameworks do
-&lt;!--more--&gt;
-Further articles/books on this topic:&lt;/p&gt;
-
-&lt;p&gt;What names do you find yourself prepending/appending to classes regularly?
-What’s the best approach to naming classes?
-Book: Design Patterns: Elements of Reusable Object-Oriented Software (Hardcover)
-Book: Patterns of Enterprise Application Architecture (Hardcover)
-Book: Implementation Patterns (Paperback)&lt;/p&gt;
-
-&lt;p&gt;And a current list of name prefixes/suffixes I collected (subjectively!) from the answers:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Coordinator&lt;/li&gt;
-  &lt;li&gt;Builder&lt;/li&gt;
-  &lt;li&gt;Writer&lt;/li&gt;
-  &lt;li&gt;Reader&lt;/li&gt;
-  &lt;li&gt;Handler&lt;/li&gt;
-  &lt;li&gt;Container&lt;/li&gt;
-  &lt;li&gt;Protocol&lt;/li&gt;
-  &lt;li&gt;Target&lt;/li&gt;
-  &lt;li&gt;Converter&lt;/li&gt;
-  &lt;li&gt;Controller&lt;/li&gt;
-  &lt;li&gt;View&lt;/li&gt;
-  &lt;li&gt;Factory&lt;/li&gt;
-  &lt;li&gt;Entity&lt;/li&gt;
-  &lt;li&gt;Bucket&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;And a good tip for the road:&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Don’t get naming paralysis.
-Yes, names are very important but they’re not important enough to waste huge amounts of time on.
-If you can’t think up a good name in 10 minutes, move on.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Source: https://stackoverflow.com/questions/1866794/naming-classes-how-to-avoid-calling-everything-a-whatevermanager&lt;/p&gt;</content><author><name></name></author><summary type="html">Try not to create new metaphors (Nanny) Have a look at what other frameworks do</summary></entry><entry><title type="html">Git Rebase, when to use it?</title><link href="http://localhost:4000/git/git-rebase/" rel="alternate" type="text/html" title="Git Rebase, when to use it?" /><published>2018-09-13T00:00:00+07:00</published><updated>2018-09-13T00:00:00+07:00</updated><id>http://localhost:4000/git/git-rebase</id><content type="html" xml:base="http://localhost:4000/git/git-rebase/">&lt;blockquote&gt;
+&lt;/ul&gt;</content><author><name></name></author><summary type="html">Many companies that distribute content over the internet want to restrict access to documents, business data, media streams, or content that is intended for selected users, for example, users who have paid a fee</summary></entry><entry><title type="html">Git Rebase, when to use it?</title><link href="http://localhost:4000/git/git-rebase/" rel="alternate" type="text/html" title="Git Rebase, when to use it?" /><published>2018-09-13T00:00:00+07:00</published><updated>2018-09-13T00:00:00+07:00</updated><id>http://localhost:4000/git/git-rebase</id><content type="html" xml:base="http://localhost:4000/git/git-rebase/">&lt;blockquote&gt;
   &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;git rebase&lt;/code&gt; in its simplest form is a command which will merge another branch
 &lt;!--more--&gt;
 into the branch where you are currently working,
