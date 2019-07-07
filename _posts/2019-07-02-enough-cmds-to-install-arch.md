@@ -1,6 +1,7 @@
 A guide for installing Arch Linux
 
 <!--more-->
+[Complete Guide](https://wiki.archlinux.org/index.php/Installation_guide)  
 Becasue there's no UI when installing Arch and so many command to remember, so I recommended to list all document you need
 then just `curl` to get the document.
 ```
