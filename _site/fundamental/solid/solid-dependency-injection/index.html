@@ -4,19 +4,19 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="chrome=1"> <!-- Begin Jekyll SEO tag v2.5.0 -->
-<title>Git Rebase, when to use it? | Felix’s blog</title>
+<title>[SOLID] Dependency Inversion Principle | Felix’s blog</title>
 <meta name="generator" content="Jekyll v3.8.5" />
-<meta property="og:title" content="Git Rebase, when to use it?" />
+<meta property="og:title" content="[SOLID] Dependency Inversion Principle" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="git rebase in its simplest form is a command which will merge another branch" />
-<meta property="og:description" content="git rebase in its simplest form is a command which will merge another branch" />
-<link rel="canonical" href="http://localhost:4000/git/git-rebase/" />
-<meta property="og:url" content="http://localhost:4000/git/git-rebase/" />
+<meta name="description" content="High-level modules should not depend on low-level modules. Both should depend on abstractions (e.g. interfaces)." />
+<meta property="og:description" content="High-level modules should not depend on low-level modules. Both should depend on abstractions (e.g. interfaces)." />
+<link rel="canonical" href="http://localhost:4000/fundamental/solid/solid-dependency-injection/" />
+<meta property="og:url" content="http://localhost:4000/fundamental/solid/solid-dependency-injection/" />
 <meta property="og:site_name" content="Felix’s blog" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2018-09-13T00:00:00+07:00" />
+<meta property="article:published_time" content="2019-07-07T00:00:00+07:00" />
 <script type="application/ld+json">
-{"description":"git rebase in its simplest form is a command which will merge another branch","@type":"BlogPosting","url":"http://localhost:4000/git/git-rebase/","headline":"Git Rebase, when to use it?","dateModified":"2018-09-13T00:00:00+07:00","datePublished":"2018-09-13T00:00:00+07:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/git/git-rebase/"},"@context":"http://schema.org"}</script>
+{"description":"High-level modules should not depend on low-level modules. Both should depend on abstractions (e.g. interfaces).","@type":"BlogPosting","url":"http://localhost:4000/fundamental/solid/solid-dependency-injection/","headline":"[SOLID] Dependency Inversion Principle","dateModified":"2019-07-07T00:00:00+07:00","datePublished":"2019-07-07T00:00:00+07:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/fundamental/solid/solid-dependency-injection/"},"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   <link rel="stylesheet" href="/assets/css/style.css?v=e797d03c68d8aa2ee1e8642f9ff99d44e32584c6">
@@ -47,33 +47,15 @@
   </nav>
   <div class="wrapper">
     <section class="content">
-      <h1 class="title">Git Rebase, when to use it?</h1>
+      <h1 class="title">[SOLID] Dependency Inversion Principle</h1>
       </br>
       <blockquote>
-  <p><code class="highlighter-rouge">git rebase</code> in its simplest form is a command which will merge another branch
+  <p>High-level modules should not depend on low-level modules. Both should depend on abstractions (e.g. interfaces).<br />
 <!--more-->
-into the branch where you are currently working,
-and move all of the local commits that are ahead of the rebased branch to the top of the history
-on that branch.</p>
+Abstractions should not depend on details. Details (concrete implementations) should depend on abstractions.<br />
+<a href="https://en.wikipedia.org/wiki/Dependency_inversion_principle">Wikipedia</a></p>
 </blockquote>
 
-<h2 id="the-golden-rule-of-rebasing">The Golden Rule of Rebasing</h2>
-<blockquote>
-  <p>Once you understand what rebasing is, the most important thing to learn is when not to do it.
-The golden rule of git rebase is to <em>NEVER</em> use it on public branches.</p>
-</blockquote>
-
-<p>So you should alway run git commant like this</p>
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout feature-xxx
-git rebase master
-</code></pre></div></div>
-
-<p>source:</p>
-<ul>
-  <li><a href="https://www.atlassian.com/git/tutorials/merging-vs-rebasing">Merging vs Rebasing</a></li>
-  <li><a href="https://hackernoon.com/git-merge-vs-rebase-whats-the-diff-76413c117333">Git Merge vs. Rebase: What’s the Diff?</a></li>
-  <li><a href="https://nathanleclaire.com/blog/2014/09/14/dont-be-scared-of-git-rebase">Don’t Be Scare Of Git Merge</a></li>
-</ul>
 
     </section>
     <!-- <footer>

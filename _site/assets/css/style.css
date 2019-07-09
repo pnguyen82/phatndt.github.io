@@ -218,7 +218,7 @@ footer { width: 270px; float: left; position: fixed; bottom: 50px; -webkit-font-
 /* type scale */
 * { box-sizing: border-box; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; }
 
-body { font-family: 'Montserrat','Fira Mono','Open Sans','Roboto', sans-serif; font-size: 1em; padding: 0px; margin: 0px; }
+body { font-family: 'Montserrat','Roboto', sans-serif; font-size: 1em; padding: 0px; margin: 0px; }
 
 section { width: auto; max-width: 900px; float: none; }
 

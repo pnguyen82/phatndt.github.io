@@ -6,7 +6,7 @@ As of [MySQL 5.7.8](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-8.h
 <!--more-->
 
 Source: https://scotch.io/tutorials/working-with-json-in-mysql
-## Create Table
+## Create
 ```sql
 CREATE TABLE `e_store`.`products`(
     `id` INT UNSIGNED NOT NULL AUTO_INCREMENT ,
@@ -62,7 +62,7 @@ VALUES(
 SELECT JSON_TYPE(attributes) FROM `e_store`.`products`; // return Object
 ```
 
-## SELECT
+## Select
 ### JSON_EXTRACT
 ```sql
 SELECT
@@ -74,6 +74,7 @@ WHERE
 AND JSON_EXTRACT(`attributes` , '$.ports.usb') > 0
 AND JSON_EXTRACT(`attributes` , '$.ports.hdmi') > 0;
 ```
+- alternative to `JSON_EXTRACT`  
 ```sql
 SELECT
     *
@@ -85,7 +86,7 @@ AND `attributes` -> '$.ports.usb' > 0
 AND `attributes` -> '$.ports.hdmi' > 0;
 ```
 
-## UPDATE
+## Update
 ### JSON_INSERT
 ```sql
 UPDATE `e_store`.`products`

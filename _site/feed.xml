@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-07-07T17:57:06+07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Felix’s blog</title><subtitle>This blog is about my experiences in software development, I hope you can find something useful!</subtitle><entry><title type="html">Enough Cmds To Install Arch</title><link href="http://localhost:4000/enough-cmds-to-install-arch/" rel="alternate" type="text/html" title="Enough Cmds To Install Arch" /><published>2019-07-02T00:00:00+07:00</published><updated>2019-07-02T00:00:00+07:00</updated><id>http://localhost:4000/enough-cmds-to-install-arch</id><content type="html" xml:base="http://localhost:4000/enough-cmds-to-install-arch/">&lt;p&gt;A guide for installing Arch Linux&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-07-09T21:57:34+07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Felix’s blog</title><subtitle>This blog is about my experiences in software development, I hope you can find something useful!</subtitle><entry><title type="html">Enough Cmds To Install Arch</title><link href="http://localhost:4000/enough-cmds-to-install-arch/" rel="alternate" type="text/html" title="Enough Cmds To Install Arch" /><published>2019-07-02T00:00:00+07:00</published><updated>2019-07-02T00:00:00+07:00</updated><id>http://localhost:4000/enough-cmds-to-install-arch</id><content type="html" xml:base="http://localhost:4000/enough-cmds-to-install-arch/">&lt;p&gt;A guide for installing Arch Linux&lt;/p&gt;
 
 &lt;!--more--&gt;
 &lt;p&gt;&lt;a href=&quot;https://wiki.archlinux.org/index.php/Installation_guide&quot;&gt;Complete Guide&lt;/a&gt;&lt;br /&gt;
@@ -125,7 +125,7 @@ BIOS with MBR&lt;/li&gt;
 &lt;!--more--&gt;&lt;/p&gt;
 
 &lt;p&gt;Source: https://scotch.io/tutorials/working-with-json-in-mysql&lt;/p&gt;
-&lt;h2 id=&quot;create-table&quot;&gt;Create Table&lt;/h2&gt;
+&lt;h2 id=&quot;create&quot;&gt;Create&lt;/h2&gt;
 &lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;CREATE&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;TABLE&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;`e_store`&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;`products`&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
     &lt;span class=&quot;nv&quot;&gt;`id`&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;INT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;UNSIGNED&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NOT&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NULL&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;AUTO_INCREMENT&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
     &lt;span class=&quot;nv&quot;&gt;`attributes`&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;JSON&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NOT&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NULL&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
@@ -176,7 +176,7 @@ BIOS with MBR&lt;/li&gt;
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SELECT JSON_TYPE(attributes) FROM `e_store`.`products`; // return Object
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;h2 id=&quot;select&quot;&gt;SELECT&lt;/h2&gt;
+&lt;h2 id=&quot;select&quot;&gt;Select&lt;/h2&gt;
 &lt;h3 id=&quot;json_extract&quot;&gt;JSON_EXTRACT&lt;/h3&gt;
 &lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;SELECT&lt;/span&gt;
     &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;
@@ -187,17 +187,21 @@ BIOS with MBR&lt;/li&gt;
 &lt;span class=&quot;k&quot;&gt;AND&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;JSON_EXTRACT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;`attributes`&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'$.ports.usb'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;AND&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;JSON_EXTRACT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;`attributes`&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'$.ports.hdmi'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;SELECT&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;
+&lt;ul&gt;
+  &lt;li&gt;alternative to &lt;code class=&quot;highlighter-rouge&quot;&gt;JSON_EXTRACT&lt;/code&gt;
+    &lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;SELECT&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt;
-    &lt;span class=&quot;nv&quot;&gt;`e_store`&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;`products`&lt;/span&gt;
+  &lt;span class=&quot;nv&quot;&gt;`e_store`&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;`products`&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;WHERE&lt;/span&gt;
-    &lt;span class=&quot;nv&quot;&gt;`category_id`&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+  &lt;span class=&quot;nv&quot;&gt;`category_id`&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;AND&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;`attributes`&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'$.ports.usb'&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;AND&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;`attributes`&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'$.ports.hdmi'&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;h2 id=&quot;update&quot;&gt;UPDATE&lt;/h2&gt;
+&lt;h2 id=&quot;update&quot;&gt;Update&lt;/h2&gt;
 &lt;h3 id=&quot;json_insert&quot;&gt;JSON_INSERT&lt;/h3&gt;
 &lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;UPDATE&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;`e_store`&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;`products`&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;SET&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;`attributes`&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;JSON_INSERT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
