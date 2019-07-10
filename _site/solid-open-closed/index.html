@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang=" en-US ">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1"> <!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>[SOLID] Open/Closed Principle | Felix’s blog</title>
+<meta name="generator" content="Jekyll v3.8.5" />
+<meta property="og:title" content="[SOLID] Open/Closed Principle" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Software entities (classes, modules, functions, etc.) should be open for extension, but closed for modification – Wikipedia" />
+<meta property="og:description" content="Software entities (classes, modules, functions, etc.) should be open for extension, but closed for modification – Wikipedia" />
+<link rel="canonical" href="http://localhost:4000/solid-open-closed/" />
+<meta property="og:url" content="http://localhost:4000/solid-open-closed/" />
+<meta property="og:site_name" content="Felix’s blog" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-07-09T00:00:00+07:00" />
+<script type="application/ld+json">
+{"description":"Software entities (classes, modules, functions, etc.) should be open for extension, but closed for modification – Wikipedia","@type":"BlogPosting","url":"http://localhost:4000/solid-open-closed/","headline":"[SOLID] Open/Closed Principle","dateModified":"2019-07-09T00:00:00+07:00","datePublished":"2019-07-09T00:00:00+07:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/solid-open-closed/"},"@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  <link rel="stylesheet" href="/assets/css/style.css?v=1b6618b87f459e4d6c798e3a63ca509cd52580da">
+  <link href="https://fonts.googleapis.com/css?family=Fira+Mono|Open+Sans|Montserrat|Roboto&display=swap" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script src="/assets/js/main.js"></script>
+  <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+</head>
+
+<body>
+  <header>
+    <a href="/">
+        <h1>
+       Felix's blog
+        </h1>
+    </a>
+    <p>This blog is about my experiences in software development, I hope you can find something useful!</p>
+</header>
+<hr>
+
+  <nav class="table-of-content">
+    Table Of Contents
+    <ul>
+    </ul>
+  </nav>
+  <div class="wrapper">
+    <section class="content">
+      <h1 class="title">[SOLID] Open/Closed Principle</h1>
+      </br>
+      <blockquote>
+  <p>Software entities (classes, modules, functions, etc.) should be open for extension, but closed for modification
+– <a href="https://en.wikipedia.org/wiki/Open%E2%80%93closed_principle">Wikipedia</a>
+<!--more--></p>
+</blockquote>
+
+<p>Seem too abstract? Let’s take a look at another definition</p>
+
+<blockquote>
+  <ul>
+    <li>A module will be said to be open if it is still available for extension. For example, it should be possible to add fields to the data structures it contains, or new elements to the set of functions it performs.</li>
+    <li>A module will be said to be closed if [it] is available for use by other modules. This assumes that the module has been given a well-defined, stable description (the interface in the sense of information hiding).<br />
+– Bertrand Meyer</li>
+  </ul>
+</blockquote>
+
+<p>Open for extension: you can extend the class/module/funtions, adding behavior/field without changing the current code. How? using abstraction, interface/abstract class
+Closed for modification: public functions/fields of the class/module/functions must be minimal, well-defined.  Like <code class="highlighter-rouge">Encapsulation+</code></p>
+
+<h2 id="example">Example</h2>
+<p>I’m  gonna use <code class="highlighter-rouge">UserController</code> class in my previous post about <a href="/fundamental/solid/solid-single-responsibility/">SRP</a>
+as an example</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">UserController</span><span class="o">{</span>
+    <span class="kd">public</span> <span class="nf">renderHtml</span><span class="o">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span> <span class="n">users</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
+<p>So you have <code class="highlighter-rouge">UserController</code> class that render list user in <code class="highlighter-rouge">HMTML</code> format.<br />
+Next day, you leader come and said:</p>
+<blockquote>
+  <p>Hey, we’re going to support mobile apps next week, so I want to support render list use in both <code class="highlighter-rouge">JSON</code> and <code class="highlighter-rouge">HTML</code> format</p>
+</blockquote>
+
+<p>The easiest solution is to add another method <code class="highlighter-rouge">renderJson(List&lt;User&gt; users)</code></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">UserController</span><span class="o">{</span>
+
+    <span class="kd">public</span> <span class="nf">handle</span><span class="o">(</span><span class="n">request</span><span class="o">){</span>
+        <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="na">query</span><span class="o">.</span><span class="na">type</span><span class="o">==</span><span class="s">"json"</span><span class="o">{</span>
+            <span class="n">renderJson</span><span class="o">(</span><span class="n">users</span><span class="o">)</span>
+        <span class="o">}</span><span class="k">else</span> <span class="o">{</span> <span class="c1">// default = html</span>
+            <span class="n">renderHtml</span><span class="o">(</span><span class="n">users</span><span class="o">)</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    <span class="c1">//</span>
+    <span class="kd">public</span> <span class="nf">renderHtml</span><span class="o">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span> <span class="n">users</span><span class="o">);</span>
+    <span class="kd">public</span> <span class="nf">renderJson</span><span class="o">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span> <span class="n">users</span><span class="o">);</span>
+
+<span class="o">}</span>
+</code></pre></div></div>
+<p>Then after a year you will come up with 10 differences format <code class="highlighter-rouge">xml</code>,<code class="highlighter-rouge">csv</code>,<code class="highlighter-rouge">excel</code>,…<br />
+If you also have to render use list in <code class="highlighter-rouge">ReportController</code>,<code class="highlighter-rouge">100OtherPlacesController</code><br />
+Then when adding a new format you need to add in 100 difference places. 😩</p>
+
+<p>Or you can abstract the way you format a list of user</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">UserController</span><span class="o">{</span>
+    <span class="kd">private</span> <span class="n">UsersFormatterFactory</span> <span class="n">usersFmterFactory</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="nf">handle</span><span class="o">(</span><span class="n">request</span><span class="o">){</span>
+        <span class="n">fmter</span> <span class="o">=</span> <span class="n">usersFmterFactory</span><span class="o">.</span><span class="na">ofType</span><span class="o">(</span><span class="n">request</span><span class="o">.</span><span class="na">query</span><span class="o">.</span><span class="na">type</span><span class="o">);</span>
+        <span class="n">fmter</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="n">users</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">UsersFormatterFactory</span><span class="o">{</span>
+   <span class="kd">public</span> <span class="n">UsersFormatter</span> <span class="nf">ofType</span><span class="o">(</span><span class="n">t</span> <span class="n">Type</span><span class="o">){</span>
+       <span class="k">switch</span><span class="o">(</span><span class="n">t</span><span class="o">){</span>
+           <span class="k">case</span> <span class="s">"json"</span><span class="o">:</span> <span class="k">return</span> <span class="n">JsonFormatter</span><span class="o">;</span>
+           <span class="k">default</span><span class="o">:</span>     <span class="k">return</span> <span class="n">HtmlFormatter</span><span class="o">;</span>
+       <span class="o">}</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">interface</span> <span class="nc">UsersFormatter</span><span class="o">{</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">format</span><span class="o">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span> <span class="n">users</span><span class="o">);</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">JsonFormatter</span> <span class="kd">implements</span> <span class="n">UsersFormatter</span><span class="o">{</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">format</span><span class="o">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span> <span class="n">users</span><span class="o">);</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">HtmlFormatter</span> <span class="kd">implements</span> <span class="n">UsersFormatter</span><span class="o">{</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">format</span><span class="o">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span> <span class="n">users</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
+<p>If you want another module to add their own format (open for extension), you can refactor <code class="highlighter-rouge">UsersFormatterFactory</code> like this</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">UsersFormatterFactory</span><span class="o">{</span>
+   <span class="kd">private</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">Type</span><span class="o">,</span><span class="n">UsersFormatter</span><span class="o">&gt;</span> <span class="n">fmters</span><span class="o">;</span>
+   <span class="kd">public</span> <span class="n">UsersFormatter</span> <span class="nf">ofType</span><span class="o">(</span><span class="n">Type</span> <span class="n">t</span><span class="o">){</span>
+       <span class="k">return</span> <span class="n">fmters</span><span class="o">[</span><span class="n">t</span><span class="o">]</span>
+   <span class="o">}</span>
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">registerFormat</span><span class="o">(</span><span class="n">Type</span> <span class="n">t</span><span class="o">,</span><span class="n">UsersFormatter</span> <span class="n">formatter</span><span class="o">){</span>
+       <span class="n">fmters</span><span class="o">[</span><span class="n">t</span><span class="o">]=</span><span class="n">formatter</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+<p>Now you can create and register your own <code class="highlighter-rouge">XYXFormatter</code> without changing the existing code<br />
+Abstraction is really powerful!</p>
+
+
+    </section>
+    <!-- <footer>
+  <div>
+    Project maintained by
+    <a href="https://github.com/felixvo" target="_blank"
+      >felixvo</a
+    >
+    , here is my <a href="/cv">CV</a>
+  </div>
+  <div>
+    <a href="/practise-speaking">Practise Speaking</a>
+  </div>
+  <small
+    >Hosted on GitHub Pages &mdash; Theme by
+    <a href="https://twitter.com/michigangraham">mattgraham</a>
+  </small>
+</footer>
+ -->
+    <div class="comment-box">
+  <script src="https://utteranc.es/client.js"
+        repo="felixvo/felixvo.github.io"
+        issue-term="pathname"
+        label="comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+ </script>
+</div>
+
+  </div>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-92160345-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-92160345-2');
+</script>
+</body>
+</html>
