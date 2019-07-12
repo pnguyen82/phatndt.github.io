@@ -1,5 +1,121 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-07-11T10:20:20+07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Felix’s blog</title><subtitle>This blog is about my experiences in software development, I hope you can find something useful!</subtitle><entry><title type="html">[SOLID] Single Responsibility Principle</title><link href="http://localhost:4000/fundamental/solid/solid-single-responsibility/" rel="alternate" type="text/html" title="[SOLID] Single Responsibility Principle" /><published>2019-07-07T00:00:00+07:00</published><updated>2019-07-07T00:00:00+07:00</updated><id>http://localhost:4000/fundamental/solid/solid-single-responsibility</id><content type="html" xml:base="http://localhost:4000/fundamental/solid/solid-single-responsibility/">&lt;blockquote&gt;
-  &lt;p&gt;A class or module should have one, and only one, reason to be changed
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-07-12T10:41:58+07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Felix’s blog</title><subtitle>This blog is about my experiences in software development, I hope you can find something useful!</subtitle><entry><title type="html">[SOLID] Open/Closed Principle</title><link href="http://localhost:4000/solid-open-closed/" rel="alternate" type="text/html" title="[SOLID] Open/Closed Principle" /><published>2019-07-09T00:00:00+07:00</published><updated>2019-07-09T00:00:00+07:00</updated><id>http://localhost:4000/solid-open-closed</id><content type="html" xml:base="http://localhost:4000/solid-open-closed/">&lt;blockquote&gt;
+  &lt;p&gt;Software entities (classes, modules, functions, etc.) should be open for extension, but closed for modification
+– &lt;a href=&quot;https://en.wikipedia.org/wiki/Open%E2%80%93closed_principle&quot;&gt;Wikipedia&lt;/a&gt;
+&lt;!--more--&gt;&lt;/p&gt;
+  &lt;h2 id=&quot;definition&quot;&gt;Definition&lt;/h2&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Seem too abstract? Let’s take a look at another definition&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;ul&gt;
+    &lt;li&gt;A module will be said to be open if it is still available for extension. For example, it should be possible to add fields to the data structures it contains, or new elements to the set of functions it performs.&lt;/li&gt;
+    &lt;li&gt;A module will be said to be closed if [it] is available for use by other modules. This assumes that the module has been given a well-defined, stable description (the interface in the sense of information hiding).&lt;br /&gt;
+– Bertrand Meyer&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Open for extension: you can extend the class/module/funtions, adding behavior/field without changing the current code. How? using abstraction, interface/abstract class&lt;/li&gt;
+  &lt;li&gt;Closed for modification: public functions/fields of the class/module/functions must be minimal, well-defined.  Like &lt;code class=&quot;highlighter-rouge&quot;&gt;Encapsulation+&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;example&quot;&gt;Example&lt;/h2&gt;
+
+&lt;p&gt;I’m  gonna use &lt;code class=&quot;highlighter-rouge&quot;&gt;UserController&lt;/code&gt; class in my previous post about &lt;a href=&quot;/fundamental/solid/solid-single-responsibility/&quot;&gt;SRP&lt;/a&gt;
+as an example&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;UserController&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;renderHtml&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;users&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;So you have &lt;code class=&quot;highlighter-rouge&quot;&gt;UserController&lt;/code&gt; class that render list user in &lt;code class=&quot;highlighter-rouge&quot;&gt;HTML&lt;/code&gt; format.&lt;br /&gt;
+Next day, you leader come and said:&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;Hey, we’re going to support mobile apps next week, so I want to support render list use in both &lt;code class=&quot;highlighter-rouge&quot;&gt;JSON&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;HTML&lt;/code&gt; format&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;The easiest solution is to add another method &lt;code class=&quot;highlighter-rouge&quot;&gt;renderJson(List&amp;lt;User&amp;gt; users)&lt;/code&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;UserController&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;handle&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;){&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;query&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;json&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;renderJson&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;users&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// default = html&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;renderHtml&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;users&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;//&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;renderHtml&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;users&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;renderJson&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;users&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Then after a year you will come up with 10 differences format &lt;code class=&quot;highlighter-rouge&quot;&gt;xml&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;csv&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;excel&lt;/code&gt;, …&lt;br /&gt;
+If you also have to render use list in &lt;code class=&quot;highlighter-rouge&quot;&gt;ReportController&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;100OtherPlacesController&lt;/code&gt;&lt;br /&gt;
+Then when adding a new format you need to add in 100 difference places. 😩&lt;/p&gt;
+
+&lt;p&gt;Or you can abstract the way you format a list of user&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;UserController&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;UsersFormatterFactory&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;usersFmterFactory&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;handle&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;){&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;fmter&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;usersFmterFactory&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;ofType&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;query&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;fmter&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;users&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;UsersFormatterFactory&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+   &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;UsersFormatter&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;ofType&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;){&lt;/span&gt;
+       &lt;span class=&quot;k&quot;&gt;switch&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;){&lt;/span&gt;
+           &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;json&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;JsonFormatter&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+           &lt;span class=&quot;k&quot;&gt;default&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;     &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;HtmlFormatter&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+       &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+   &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;interface&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;UsersFormatter&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;users&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;JsonFormatter&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;implements&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;UsersFormatter&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;users&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;HtmlFormatter&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;implements&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;UsersFormatter&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;users&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;If you want another module to add their own format (open for extension), you can refactor &lt;code class=&quot;highlighter-rouge&quot;&gt;UsersFormatterFactory&lt;/code&gt; like this&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;UsersFormatterFactory&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+   &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Map&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;UsersFormatter&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fmters&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+   &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;UsersFormatter&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;ofType&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Type&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;){&lt;/span&gt;
+       &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fmters&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+   &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+   &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;registerFormat&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Type&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;UsersFormatter&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;formatter&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;){&lt;/span&gt;
+       &lt;span class=&quot;n&quot;&gt;fmters&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;formatter&lt;/span&gt;
+   &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Main&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(){&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;UsersFormatterFactory&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;usersFormatterFactory&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;UsersFormatterFactory&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;usersFormatterFactory&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;registerFormat&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;json&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;JsonFormatter&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;());&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;usersFormatterFactory&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;registerFormat&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;html&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;HtmlFormatter&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;());&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;usersFormatterFactory&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;registerFormat&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;csv&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CsvFormatter&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;());&lt;/span&gt;
+      &lt;span class=&quot;c1&quot;&gt;// add another format if need&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Now you can create and register your own &lt;code class=&quot;highlighter-rouge&quot;&gt;XYXFormatter&lt;/code&gt; without changing the existing code&lt;br /&gt;
+Abstraction is really powerful!&lt;/p&gt;</content><author><name></name></author><summary type="html">Software entities (classes, modules, functions, etc.) should be open for extension, but closed for modification – Wikipedia</summary></entry><entry><title type="html">[SOLID] Single Responsibility Principle</title><link href="http://localhost:4000/fundamental/solid/solid-single-responsibility/" rel="alternate" type="text/html" title="[SOLID] Single Responsibility Principle" /><published>2019-07-07T00:00:00+07:00</published><updated>2019-07-07T00:00:00+07:00</updated><id>http://localhost:4000/fundamental/solid/solid-single-responsibility</id><content type="html" xml:base="http://localhost:4000/fundamental/solid/solid-single-responsibility/">&lt;blockquote&gt;
+  &lt;p&gt;A class or module should have one, and only one, reason to be changed – &lt;a href=&quot;https://en.wikipedia.org/wiki/Single_responsibility_principle&quot;&gt;Wikipedia&lt;/a&gt;
 &lt;!--more--&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 
@@ -13,8 +129,10 @@
 Separate those things that change for different reasons.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;p&gt;The reasons for change are people. It is people who request changes. 
+&lt;blockquote&gt;
+  &lt;p&gt;The reasons for change are people. It is people who request changes. 
 And you don’t want to confuse those people, or yourself, by mixing together the code that many different people care about for different reasons.&lt;/p&gt;
+&lt;/blockquote&gt;
 
 &lt;p&gt;Don’t get obsess with this principle, just &lt;code class=&quot;highlighter-rouge&quot;&gt;keep classes small&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;keep methods small&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;refactor when your class become too big&lt;/code&gt;.&lt;br /&gt;
 Software change everyday, you don’t write code once, the code need to be refactor many times.&lt;/p&gt;
@@ -22,7 +140,7 @@ Software change everyday, you don’t write code once, the code need to be refac
 &lt;p&gt;In Object Oriented Programming, we also have a term &lt;code class=&quot;highlighter-rouge&quot;&gt;God Object&lt;/code&gt;, which is an anti-pattern, the oposite of &lt;code class=&quot;highlighter-rouge&quot;&gt;Single Responsibility Principle&lt;/code&gt;&lt;/p&gt;
 &lt;h2 id=&quot;god-object&quot;&gt;God Object&lt;/h2&gt;
 &lt;blockquote&gt;
-  &lt;p&gt;A God object is an object that &lt;code class=&quot;highlighter-rouge&quot;&gt;knows too much or does too much.&lt;/code&gt;&lt;/p&gt;
+  &lt;p&gt;A God object is an object that &lt;code class=&quot;highlighter-rouge&quot;&gt;knows too much or does too much.&lt;/code&gt; – &lt;a href=&quot;https://en.wikipedia.org/wiki/God_object&quot;&gt;Wikipedia&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;p&gt;Imagine you have a class look like this:&lt;/p&gt;
@@ -75,7 +193,7 @@ you will think this class will handle a http request, not send email.&lt;/p&gt;
 &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;This will improve readability of you code and also make code more clean&lt;br /&gt;
-Now you can reuse your class easier&lt;/p&gt;</content><author><name></name></author><summary type="html">A class or module should have one, and only one, reason to be changed</summary></entry><entry><title type="html">Enough Cmds To Install Arch</title><link href="http://localhost:4000/enough-cmds-to-install-arch/" rel="alternate" type="text/html" title="Enough Cmds To Install Arch" /><published>2019-07-02T00:00:00+07:00</published><updated>2019-07-02T00:00:00+07:00</updated><id>http://localhost:4000/enough-cmds-to-install-arch</id><content type="html" xml:base="http://localhost:4000/enough-cmds-to-install-arch/">&lt;p&gt;A guide for installing Arch Linux&lt;/p&gt;
+Now you can reuse your class easier&lt;/p&gt;</content><author><name></name></author><summary type="html">A class or module should have one, and only one, reason to be changed – Wikipedia</summary></entry><entry><title type="html">Enough Cmds To Install Arch</title><link href="http://localhost:4000/enough-cmds-to-install-arch/" rel="alternate" type="text/html" title="Enough Cmds To Install Arch" /><published>2019-07-02T00:00:00+07:00</published><updated>2019-07-02T00:00:00+07:00</updated><id>http://localhost:4000/enough-cmds-to-install-arch</id><content type="html" xml:base="http://localhost:4000/enough-cmds-to-install-arch/">&lt;p&gt;A guide for installing Arch Linux&lt;/p&gt;
 
 &lt;!--more--&gt;
 &lt;p&gt;&lt;a href=&quot;https://wiki.archlinux.org/index.php/Installation_guide&quot;&gt;Complete Guide&lt;/a&gt;&lt;br /&gt;
@@ -525,9 +643,4 @@ git rebase master
 &lt;ul&gt;
   &lt;li&gt;Anki is great fashcard app for you to learn vocabulary https://apps.ankiweb.net/&lt;/li&gt;
   &lt;li&gt;Doulingo  https://www.duolingo.com/&lt;/li&gt;
-&lt;/ul&gt;</content><author><name></name></author><summary type="html"></summary></entry><entry><title type="html">Productivity tools</title><link href="http://localhost:4000/productivity/productivity-tools/" rel="alternate" type="text/html" title="Productivity tools" /><published>2017-12-30T00:00:00+07:00</published><updated>2017-12-30T00:00:00+07:00</updated><id>http://localhost:4000/productivity/productivity-tools</id><content type="html" xml:base="http://localhost:4000/productivity/productivity-tools/">&lt;!--more--&gt;
-&lt;ol&gt;
-  &lt;li&gt;&lt;a href=&quot;https://trello.com&quot;&gt;Trello&lt;/a&gt; for tasks management&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://pomelloapp.com&quot;&gt;Pomello App&lt;/a&gt; Pomello turns your Trello cards into Pomodoro® tasks.&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://gist.github.com/andreyvit/2921703&quot;&gt;Tmux cheatsheet&lt;/a&gt; Tmux cheatsheet&lt;/li&gt;
-&lt;/ol&gt;</content><author><name></name></author><summary type="html"></summary></entry></feed>
+&lt;/ul&gt;</content><author><name></name></author><summary type="html"></summary></entry></feed>

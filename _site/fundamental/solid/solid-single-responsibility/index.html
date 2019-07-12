@@ -8,18 +8,18 @@
 <meta name="generator" content="Jekyll v3.8.5" />
 <meta property="og:title" content="[SOLID] Single Responsibility Principle" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="A class or module should have one, and only one, reason to be changed" />
-<meta property="og:description" content="A class or module should have one, and only one, reason to be changed" />
+<meta name="description" content="A class or module should have one, and only one, reason to be changed – Wikipedia" />
+<meta property="og:description" content="A class or module should have one, and only one, reason to be changed – Wikipedia" />
 <link rel="canonical" href="http://localhost:4000/fundamental/solid/solid-single-responsibility/" />
 <meta property="og:url" content="http://localhost:4000/fundamental/solid/solid-single-responsibility/" />
 <meta property="og:site_name" content="Felix’s blog" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2019-07-07T00:00:00+07:00" />
 <script type="application/ld+json">
-{"description":"A class or module should have one, and only one, reason to be changed","@type":"BlogPosting","url":"http://localhost:4000/fundamental/solid/solid-single-responsibility/","headline":"[SOLID] Single Responsibility Principle","dateModified":"2019-07-07T00:00:00+07:00","datePublished":"2019-07-07T00:00:00+07:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/fundamental/solid/solid-single-responsibility/"},"@context":"http://schema.org"}</script>
+{"description":"A class or module should have one, and only one, reason to be changed – Wikipedia","@type":"BlogPosting","url":"http://localhost:4000/fundamental/solid/solid-single-responsibility/","headline":"[SOLID] Single Responsibility Principle","dateModified":"2019-07-07T00:00:00+07:00","datePublished":"2019-07-07T00:00:00+07:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/fundamental/solid/solid-single-responsibility/"},"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
-  <link rel="stylesheet" href="/assets/css/style.css?v=5c4e5e9a7ec070d6fe6aae6abfb4451d72a71b5e">
+  <link rel="stylesheet" href="/assets/css/style.css?v=a6b6645180c1baaccb98465d3af46316ea3ab285">
   <link href="https://fonts.googleapis.com/css?family=Fira+Mono|Open+Sans|Montserrat|Roboto&display=swap" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
   <script src="/assets/js/main.js"></script>
@@ -50,7 +50,7 @@
       <h1 class="title">[SOLID] Single Responsibility Principle</h1>
       </br>
       <blockquote>
-  <p>A class or module should have one, and only one, reason to be changed
+  <p>A class or module should have one, and only one, reason to be changed – <a href="https://en.wikipedia.org/wiki/Single_responsibility_principle">Wikipedia</a>
 <!--more--></p>
 </blockquote>
 
@@ -64,8 +64,10 @@
 Separate those things that change for different reasons.</p>
 </blockquote>
 
-<p>The reasons for change are people. It is people who request changes. 
+<blockquote>
+  <p>The reasons for change are people. It is people who request changes. 
 And you don’t want to confuse those people, or yourself, by mixing together the code that many different people care about for different reasons.</p>
+</blockquote>
 
 <p>Don’t get obsess with this principle, just <code class="highlighter-rouge">keep classes small</code>, <code class="highlighter-rouge">keep methods small</code> and <code class="highlighter-rouge">refactor when your class become too big</code>.<br />
 Software change everyday, you don’t write code once, the code need to be refactor many times.</p>
@@ -73,7 +75,7 @@ Software change everyday, you don’t write code once, the code need to be refac
 <p>In Object Oriented Programming, we also have a term <code class="highlighter-rouge">God Object</code>, which is an anti-pattern, the oposite of <code class="highlighter-rouge">Single Responsibility Principle</code></p>
 <h2 id="god-object">God Object</h2>
 <blockquote>
-  <p>A God object is an object that <code class="highlighter-rouge">knows too much or does too much.</code></p>
+  <p>A God object is an object that <code class="highlighter-rouge">knows too much or does too much.</code> – <a href="https://en.wikipedia.org/wiki/God_object">Wikipedia</a></p>
 </blockquote>
 
 <p>Imagine you have a class look like this:</p>

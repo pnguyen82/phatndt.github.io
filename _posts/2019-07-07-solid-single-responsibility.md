@@ -2,7 +2,7 @@
 title: '[SOLID] Single Responsibility Principle'
 categories: fundamental solid
 ---
->A class or module should have one, and only one, reason to be changed
+>A class or module should have one, and only one, reason to be changed -- [Wikipedia](https://en.wikipedia.org/wiki/Single_responsibility_principle)
 <!--more-->
 
 ## Definition
@@ -13,15 +13,15 @@ Another wording for the Single Responsibility Principle is:
 >Gather together the things that change for the same reasons.
 >Separate those things that change for different reasons.
 
-The reasons for change are people. It is people who request changes. 
-And you don’t want to confuse those people, or yourself, by mixing together the code that many different people care about for different reasons.
+>The reasons for change are people. It is people who request changes. 
+>And you don’t want to confuse those people, or yourself, by mixing together the code that many different people care about for different reasons.
 
 Don’t get obsess with this principle, just `keep classes small`, `keep methods small` and `refactor when your class become too big`.  
 Software change everyday, you don't write code once, the code need to be refactor many times.
 
 In Object Oriented Programming, we also have a term `God Object`, which is an anti-pattern, the oposite of `Single Responsibility Principle`
 ## God Object
-> A God object is an object that `knows too much or does too much.`
+> A God object is an object that `knows too much or does too much.` -- [Wikipedia](https://en.wikipedia.org/wiki/God_object)
 
 Imagine you have a class look like this:
 ```java

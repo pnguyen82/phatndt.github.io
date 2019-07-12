@@ -19,7 +19,7 @@
 {"description":"Software entities (classes, modules, functions, etc.) should be open for extension, but closed for modification – Wikipedia","@type":"BlogPosting","url":"http://localhost:4000/solid-open-closed/","headline":"[SOLID] Open/Closed Principle","dateModified":"2019-07-09T00:00:00+07:00","datePublished":"2019-07-09T00:00:00+07:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/solid-open-closed/"},"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
-  <link rel="stylesheet" href="/assets/css/style.css?v=5c4e5e9a7ec070d6fe6aae6abfb4451d72a71b5e">
+  <link rel="stylesheet" href="/assets/css/style.css?v=a6b6645180c1baaccb98465d3af46316ea3ab285">
   <link href="https://fonts.googleapis.com/css?family=Fira+Mono|Open+Sans|Montserrat|Roboto&display=swap" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
   <script src="/assets/js/main.js"></script>
@@ -54,8 +54,9 @@
 – <a href="https://en.wikipedia.org/wiki/Open%E2%80%93closed_principle">Wikipedia</a>
 <!--more--></p>
   <h2 id="definition">Definition</h2>
-  <p>Seem too abstract? Let’s take a look at another definition</p>
 </blockquote>
+
+<p>Seem too abstract? Let’s take a look at another definition</p>
 
 <blockquote>
   <ul>
@@ -71,12 +72,15 @@
 </ul>
 
 <h2 id="example">Example</h2>
+
 <p>I’m  gonna use <code class="highlighter-rouge">UserController</code> class in my previous post about <a href="/fundamental/solid/solid-single-responsibility/">SRP</a>
 as an example</p>
+
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">UserController</span><span class="o">{</span>
     <span class="kd">public</span> <span class="nf">renderHtml</span><span class="o">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span> <span class="n">users</span><span class="o">);</span>
 <span class="o">}</span>
 </code></pre></div></div>
+
 <p>So you have <code class="highlighter-rouge">UserController</code> class that render list user in <code class="highlighter-rouge">HTML</code> format.<br />
 Next day, you leader come and said:</p>
 <blockquote>
@@ -100,11 +104,13 @@ Next day, you leader come and said:</p>
 
 <span class="o">}</span>
 </code></pre></div></div>
+
 <p>Then after a year you will come up with 10 differences format <code class="highlighter-rouge">xml</code>, <code class="highlighter-rouge">csv</code>, <code class="highlighter-rouge">excel</code>, …<br />
 If you also have to render use list in <code class="highlighter-rouge">ReportController</code>, <code class="highlighter-rouge">100OtherPlacesController</code><br />
 Then when adding a new format you need to add in 100 difference places. 😩</p>
 
 <p>Or you can abstract the way you format a list of user</p>
+
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">UserController</span><span class="o">{</span>
     <span class="kd">private</span> <span class="n">UsersFormatterFactory</span> <span class="n">usersFmterFactory</span><span class="o">;</span>
     <span class="kd">public</span> <span class="nf">handle</span><span class="o">(</span><span class="n">request</span><span class="o">){</span>
@@ -134,7 +140,9 @@ Then when adding a new format you need to add in 100 difference places. 😩</p>
     <span class="kd">public</span> <span class="n">String</span> <span class="nf">format</span><span class="o">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span> <span class="n">users</span><span class="o">);</span>
 <span class="o">}</span>
 </code></pre></div></div>
+
 <p>If you want another module to add their own format (open for extension), you can refactor <code class="highlighter-rouge">UsersFormatterFactory</code> like this</p>
+
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">UsersFormatterFactory</span><span class="o">{</span>
    <span class="kd">private</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">Type</span><span class="o">,</span><span class="n">UsersFormatter</span><span class="o">&gt;</span> <span class="n">fmters</span><span class="o">;</span>
    <span class="kd">public</span> <span class="n">UsersFormatter</span> <span class="nf">ofType</span><span class="o">(</span><span class="n">Type</span> <span class="n">t</span><span class="o">){</span>
@@ -144,10 +152,20 @@ Then when adding a new format you need to add in 100 difference places. 😩</p>
        <span class="n">fmters</span><span class="o">[</span><span class="n">t</span><span class="o">]=</span><span class="n">formatter</span>
    <span class="o">}</span>
 <span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">Main</span><span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(){</span>
+      <span class="n">UsersFormatterFactory</span> <span class="n">usersFormatterFactory</span> <span class="o">=</span> <span class="k">new</span> <span class="n">UsersFormatterFactory</span><span class="o">();</span>
+      <span class="n">usersFormatterFactory</span><span class="o">.</span><span class="na">registerFormat</span><span class="o">(</span><span class="s">"json"</span><span class="o">,</span> <span class="k">new</span> <span class="n">JsonFormatter</span><span class="o">());</span>
+      <span class="n">usersFormatterFactory</span><span class="o">.</span><span class="na">registerFormat</span><span class="o">(</span><span class="s">"html"</span><span class="o">,</span> <span class="k">new</span> <span class="n">HtmlFormatter</span><span class="o">());</span>
+      <span class="n">usersFormatterFactory</span><span class="o">.</span><span class="na">registerFormat</span><span class="o">(</span><span class="s">"csv"</span><span class="o">,</span> <span class="k">new</span> <span class="n">CsvFormatter</span><span class="o">());</span>
+      <span class="c1">// add another format if need</span>
+    <span class="o">}</span>
+<span class="o">}</span>
 </code></pre></div></div>
+
 <p>Now you can create and register your own <code class="highlighter-rouge">XYXFormatter</code> without changing the existing code<br />
 Abstraction is really powerful!</p>
-
 
     </section>
     <!-- <footer>
