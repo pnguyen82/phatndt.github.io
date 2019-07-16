@@ -4,6 +4,7 @@ title: '[SOLID] Open/Closed Principle'
 >Software entities (classes, modules, functions, etc.) should be open for extension, but closed for modification
 > -- [Wikipedia](https://en.wikipedia.org/wiki/Open%E2%80%93closed_principle)
 <!--more-->
+
 ## Definition
 
 Seem too abstract? Let's take a look at another definition
