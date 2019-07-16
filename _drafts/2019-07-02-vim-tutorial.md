@@ -1,4 +1,5 @@
-# Minimal vim config for Go
+## Minimal vim config for Go
+
 I tried to use vim more than a year ago and I like the vim's way to editing text!
 My main language was Java at that time so I used vim plugin for IntelliJ IDEA.
 I switch to Go fews months ago.
@@ -13,8 +14,10 @@ So I starting to setup vim and here is my tips for you to getting started with v
 Inspiring from [Fatih's Video](https://www.youtube.com/watch?v=7BqJ8dzygtU)
 You should watch this!
 
-# Tips
+## Tips
+
 - start with `vimturor`, just hit `vimtutor` in your terminal
+
 ```bash
  $vimtutor
 ```
@@ -27,5 +30,6 @@ Every time you don't know about a something, type `:help keyword`
 - [Mapping](http://learnvimscripthehardway.stevelosh.com/chapters/03.html) is very helpful, write your own mapping
 - Learn slowly
 - [Vimgifs](https://vimgifs.com/)
-# My Go config
+
+## My Go config
 

@@ -1,4 +1,103 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-07-12T10:41:58+07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Felix’s blog</title><subtitle>This blog is about my experiences in software development, I hope you can find something useful!</subtitle><entry><title type="html">[SOLID] Open/Closed Principle</title><link href="http://localhost:4000/solid-open-closed/" rel="alternate" type="text/html" title="[SOLID] Open/Closed Principle" /><published>2019-07-09T00:00:00+07:00</published><updated>2019-07-09T00:00:00+07:00</updated><id>http://localhost:4000/solid-open-closed</id><content type="html" xml:base="http://localhost:4000/solid-open-closed/">&lt;blockquote&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-07-16T09:45:03+07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Felix’s blog</title><subtitle>This blog is about my experiences in software development, I hope you can find something useful!</subtitle><entry><title type="html">[SOLID] Dependency Inversion Principle</title><link href="http://localhost:4000/fundamental/solid/solid-dependency-injection/" rel="alternate" type="text/html" title="[SOLID] Dependency Inversion Principle" /><published>2019-07-16T00:00:00+07:00</published><updated>2019-07-16T00:00:00+07:00</updated><id>http://localhost:4000/fundamental/solid/solid-dependency-injection</id><content type="html" xml:base="http://localhost:4000/fundamental/solid/solid-dependency-injection/">&lt;blockquote&gt;
+  &lt;ul&gt;
+    &lt;li&gt;High-level modules should not depend on low-level modules. Both should depend on abstractions (e.g. interfaces).&lt;/li&gt;
+    &lt;li&gt;Abstractions should not depend on details. Details (concrete implementations) should depend on abstractions.
+– &lt;a href=&quot;https://en.wikipedia.org/wiki/Dependency_inversion_principle&quot;&gt;Wikipedia&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;!--more--&gt;
+
+&lt;h2 id=&quot;dependency&quot;&gt;Dependency&lt;/h2&gt;
+
+&lt;p&gt;First, let’s talk about &lt;code class=&quot;highlighter-rouge&quot;&gt;Dependency&lt;/code&gt;. What’s a dependencies of a class?&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;If class A change then class B also need to change -&amp;gt; B depend on A&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;package&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;controller&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;UserController&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// High Level&lt;/span&gt;
+   &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;MailSender&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+   &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;FileReader&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+   &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;UserDAO&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;package&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;os&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// Low Level&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;FileReader&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;read&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;package&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mail&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// Low Level&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;MailSender&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;{}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;package&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;databases&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// Low Level&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;UserDAO&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;{}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;In the example above &lt;code class=&quot;highlighter-rouge&quot;&gt;UserController&lt;/code&gt; depend on &lt;code class=&quot;highlighter-rouge&quot;&gt;FileReader&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;MailSender&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;UserDAO&lt;/code&gt; because if one of these change, &lt;code class=&quot;highlighter-rouge&quot;&gt;UserController&lt;/code&gt; also need to be change.&lt;br /&gt;
+if &lt;code class=&quot;highlighter-rouge&quot;&gt;FileReader.read(String path)&lt;/code&gt; change to &lt;code class=&quot;highlighter-rouge&quot;&gt;FileReader.read(Path path)&lt;/code&gt; so you need to update &lt;code class=&quot;highlighter-rouge&quot;&gt;UserController&lt;/code&gt; to match new signature.&lt;/p&gt;
+&lt;div style=&quot;text-align:center&quot; alt=&quot;Dependency Inversion Principle&quot;&gt;&lt;img src=&quot;/assets/images/dip.svg&quot; /&gt;&lt;/div&gt;
+
+&lt;p&gt;Or at package level, you can say:&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;Package &lt;code class=&quot;highlighter-rouge&quot;&gt;controller&lt;/code&gt; depend on packages &lt;code class=&quot;highlighter-rouge&quot;&gt;os&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;mail&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;databases&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;The example above violate DIP because you can see &lt;code class=&quot;highlighter-rouge&quot;&gt;High Level components&lt;/code&gt; depend on &lt;code class=&quot;highlighter-rouge&quot;&gt;Low Level components&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;inversion&quot;&gt;Inversion&lt;/h2&gt;
+
+&lt;p&gt;The second part is &lt;code class=&quot;highlighter-rouge&quot;&gt;Inversion&lt;/code&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;Both should depend on abstractions (e.g. interfaces).&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;&lt;strong&gt;Dependency&lt;/strong&gt;&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;img src=&quot;/assets/images/dip.svg&quot; alt=&quot;Dependency Inversion&quot; /&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Inversion&lt;/strong&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;img src=&quot;/assets/images/dip_inversion.svg&quot; alt=&quot;Dependency Inversion&quot; /&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;Both &lt;code class=&quot;highlighter-rouge&quot;&gt;UserController&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;UserDAO&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;FileReader&lt;/code&gt; now depend on interfaces &lt;code class=&quot;highlighter-rouge&quot;&gt;IUserDAO&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;IFileReader&lt;/code&gt;.&lt;br /&gt;
+Because if &lt;code class=&quot;highlighter-rouge&quot;&gt;IUserDAO&lt;/code&gt; change then &lt;code class=&quot;highlighter-rouge&quot;&gt;UserController&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;UserDAO&lt;/code&gt; also need to change.&lt;/p&gt;
+
+&lt;h2 id=&quot;why-we-need-dip&quot;&gt;Why we need DIP&lt;/h2&gt;
+
+&lt;p&gt;So what is the benefits of Dependency Inversion?&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Testing. Now you can easily mock the dependencies of &lt;code class=&quot;highlighter-rouge&quot;&gt;UserController&lt;/code&gt; class, like &lt;code class=&quot;highlighter-rouge&quot;&gt;InMemUserDAO&lt;/code&gt; instead of a real &lt;code class=&quot;highlighter-rouge&quot;&gt;MySQL UserDAO&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Lose Coupling. If you use &lt;code class=&quot;highlighter-rouge&quot;&gt;UserDAO&lt;/code&gt; heavily, then suddenly you want to change from &lt;code class=&quot;highlighter-rouge&quot;&gt;MySQL&lt;/code&gt; to &lt;code class=&quot;highlighter-rouge&quot;&gt;MongoDB&lt;/code&gt; then you just need to swith the implementation (using &lt;code class=&quot;highlighter-rouge&quot;&gt;Factory Design Pattern&lt;/code&gt;,…) not change the current code.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;generalization-restrictions&quot;&gt;Generalization restrictions&lt;/h2&gt;
+
+&lt;blockquote&gt;
+  &lt;ul&gt;
+    &lt;li&gt;All member variables in a class must be interfaces or abstracts.&lt;/li&gt;
+    &lt;li&gt;All concrete class packages must connect only through interface or abstract class packages.&lt;/li&gt;
+    &lt;li&gt;No class should derive from a concrete class.&lt;/li&gt;
+    &lt;li&gt;No method should override an implemented method.[1]&lt;/li&gt;
+    &lt;li&gt;All variable instantiation requires the implementation of a creational pattern such as the factory method or the factory pattern, or the use of a dependency-injection framework.
+– &lt;a href=&quot;https://en.wikipedia.org/wiki/Dependency_inversion_principle#Generalization_restrictions&quot;&gt;Wikipedia&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/blockquote&gt;</content><author><name></name></author><summary type="html">High-level modules should not depend on low-level modules. Both should depend on abstractions (e.g. interfaces). Abstractions should not depend on details. Details (concrete implementations) should depend on abstractions. – Wikipedia</summary></entry><entry><title type="html">[SOLID] Open/Closed Principle</title><link href="http://localhost:4000/solid-open-closed/" rel="alternate" type="text/html" title="[SOLID] Open/Closed Principle" /><published>2019-07-09T00:00:00+07:00</published><updated>2019-07-09T00:00:00+07:00</updated><id>http://localhost:4000/solid-open-closed</id><content type="html" xml:base="http://localhost:4000/solid-open-closed/">&lt;blockquote&gt;
   &lt;p&gt;Software entities (classes, modules, functions, etc.) should be open for extension, but closed for modification
 – &lt;a href=&quot;https://en.wikipedia.org/wiki/Open%E2%80%93closed_principle&quot;&gt;Wikipedia&lt;/a&gt;
 &lt;!--more--&gt;&lt;/p&gt;
@@ -626,21 +725,4 @@ git rebase master
   &lt;li&gt;&lt;a href=&quot;https://www.atlassian.com/git/tutorials/merging-vs-rebasing&quot;&gt;Merging vs Rebasing&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://hackernoon.com/git-merge-vs-rebase-whats-the-diff-76413c117333&quot;&gt;Git Merge vs. Rebase: What’s the Diff?&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://nathanleclaire.com/blog/2014/09/14/dont-be-scared-of-git-rebase&quot;&gt;Don’t Be Scare Of Git Merge&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name></name></author><summary type="html">git rebase in its simplest form is a command which will merge another branch</summary></entry><entry><title type="html">Learn English Resources</title><link href="http://localhost:4000/english/learn-english-resources/" rel="alternate" type="text/html" title="Learn English Resources" /><published>2018-04-18T00:00:00+07:00</published><updated>2018-04-18T00:00:00+07:00</updated><id>http://localhost:4000/english/learn-english-resources</id><content type="html" xml:base="http://localhost:4000/english/learn-english-resources/">&lt;!--more--&gt;
-
-&lt;h3 id=&quot;english-podcast&quot;&gt;English Podcast&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;https://softwareengineeringdaily.com/
-    &lt;blockquote&gt;
-      &lt;p&gt;I like speaker voice, it’s also have transcript for you&lt;/p&gt;
-    &lt;/blockquote&gt;
-  &lt;/li&gt;
-  &lt;li&gt;https://spec.fm/podcasts/developer-tea&lt;/li&gt;
-  &lt;li&gt;https://www.codingblocks.net/category/podcast/&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;vocabulary&quot;&gt;Vocabulary&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;Anki is great fashcard app for you to learn vocabulary https://apps.ankiweb.net/&lt;/li&gt;
-  &lt;li&gt;Doulingo  https://www.duolingo.com/&lt;/li&gt;
-&lt;/ul&gt;</content><author><name></name></author><summary type="html"></summary></entry></feed>
+&lt;/ul&gt;</content><author><name></name></author><summary type="html">git rebase in its simplest form is a command which will merge another branch</summary></entry></feed>

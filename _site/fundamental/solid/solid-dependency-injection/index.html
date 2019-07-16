@@ -8,18 +8,18 @@
 <meta name="generator" content="Jekyll v3.8.5" />
 <meta property="og:title" content="[SOLID] Dependency Inversion Principle" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="High-level modules should not depend on low-level modules. Both should depend on abstractions (e.g. interfaces)." />
-<meta property="og:description" content="High-level modules should not depend on low-level modules. Both should depend on abstractions (e.g. interfaces)." />
+<meta name="description" content="High-level modules should not depend on low-level modules. Both should depend on abstractions (e.g. interfaces). Abstractions should not depend on details. Details (concrete implementations) should depend on abstractions. – Wikipedia" />
+<meta property="og:description" content="High-level modules should not depend on low-level modules. Both should depend on abstractions (e.g. interfaces). Abstractions should not depend on details. Details (concrete implementations) should depend on abstractions. – Wikipedia" />
 <link rel="canonical" href="http://localhost:4000/fundamental/solid/solid-dependency-injection/" />
 <meta property="og:url" content="http://localhost:4000/fundamental/solid/solid-dependency-injection/" />
 <meta property="og:site_name" content="Felix’s blog" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2019-07-07T00:00:00+07:00" />
+<meta property="article:published_time" content="2019-07-16T00:00:00+07:00" />
 <script type="application/ld+json">
-{"description":"High-level modules should not depend on low-level modules. Both should depend on abstractions (e.g. interfaces).","@type":"BlogPosting","url":"http://localhost:4000/fundamental/solid/solid-dependency-injection/","headline":"[SOLID] Dependency Inversion Principle","dateModified":"2019-07-07T00:00:00+07:00","datePublished":"2019-07-07T00:00:00+07:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/fundamental/solid/solid-dependency-injection/"},"@context":"http://schema.org"}</script>
+{"description":"High-level modules should not depend on low-level modules. Both should depend on abstractions (e.g. interfaces). Abstractions should not depend on details. Details (concrete implementations) should depend on abstractions. – Wikipedia","@type":"BlogPosting","url":"http://localhost:4000/fundamental/solid/solid-dependency-injection/","headline":"[SOLID] Dependency Inversion Principle","dateModified":"2019-07-16T00:00:00+07:00","datePublished":"2019-07-16T00:00:00+07:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/fundamental/solid/solid-dependency-injection/"},"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
-  <link rel="stylesheet" href="/assets/css/style.css?v=a6b6645180c1baaccb98465d3af46316ea3ab285">
+  <link rel="stylesheet" href="/assets/css/style.css?v=6ab8fd2965cd5f7fca8ebeee6d6be37dc9e79011">
   <link href="https://fonts.googleapis.com/css?family=Fira+Mono|Open+Sans|Montserrat|Roboto&display=swap" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
   <script src="/assets/js/main.js"></script>
@@ -50,12 +50,105 @@
       <h1 class="title">[SOLID] Dependency Inversion Principle</h1>
       </br>
       <blockquote>
-  <p>High-level modules should not depend on low-level modules. Both should depend on abstractions (e.g. interfaces).<br />
-<!--more-->
-Abstractions should not depend on details. Details (concrete implementations) should depend on abstractions.<br />
-<a href="https://en.wikipedia.org/wiki/Dependency_inversion_principle">Wikipedia</a></p>
+  <ul>
+    <li>High-level modules should not depend on low-level modules. Both should depend on abstractions (e.g. interfaces).</li>
+    <li>Abstractions should not depend on details. Details (concrete implementations) should depend on abstractions.
+– <a href="https://en.wikipedia.org/wiki/Dependency_inversion_principle">Wikipedia</a></li>
+  </ul>
 </blockquote>
 
+<!--more-->
+
+<h2 id="dependency">Dependency</h2>
+
+<p>First, let’s talk about <code class="highlighter-rouge">Dependency</code>. What’s a dependencies of a class?</p>
+<blockquote>
+  <p>If class A change then class B also need to change -&gt; B depend on A</p>
+</blockquote>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">controller</span>
+<span class="kd">class</span> <span class="nc">UserController</span> <span class="o">{</span> <span class="c1">// High Level</span>
+   <span class="kd">private</span> <span class="n">MailSender</span><span class="o">;</span>
+   <span class="kd">private</span> <span class="n">FileReader</span><span class="o">;</span>
+   <span class="kd">private</span> <span class="n">UserDAO</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">os</span> <span class="c1">// Low Level</span>
+<span class="kd">class</span> <span class="nc">FileReader</span><span class="o">{</span>
+    <span class="kd">public</span> <span class="nf">read</span><span class="o">(</span><span class="n">String</span> <span class="n">path</span><span class="o">)</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">mail</span> <span class="c1">// Low Level</span>
+<span class="kd">class</span> <span class="nc">MailSender</span><span class="o">{}</span>
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">databases</span> <span class="c1">// Low Level</span>
+<span class="kd">class</span> <span class="nc">UserDAO</span><span class="o">{}</span>
+</code></pre></div></div>
+
+<p>In the example above <code class="highlighter-rouge">UserController</code> depend on <code class="highlighter-rouge">FileReader</code>, <code class="highlighter-rouge">MailSender</code> and <code class="highlighter-rouge">UserDAO</code> because if one of these change, <code class="highlighter-rouge">UserController</code> also need to be change.<br />
+if <code class="highlighter-rouge">FileReader.read(String path)</code> change to <code class="highlighter-rouge">FileReader.read(Path path)</code> so you need to update <code class="highlighter-rouge">UserController</code> to match new signature.</p>
+<div style="text-align:center" alt="Dependency Inversion Principle"><img src="/assets/images/dip.svg" /></div>
+
+<p>Or at package level, you can say:</p>
+<blockquote>
+  <p>Package <code class="highlighter-rouge">controller</code> depend on packages <code class="highlighter-rouge">os</code>, <code class="highlighter-rouge">mail</code> and <code class="highlighter-rouge">databases</code></p>
+</blockquote>
+
+<p>The example above violate DIP because you can see <code class="highlighter-rouge">High Level components</code> depend on <code class="highlighter-rouge">Low Level components</code></p>
+
+<h2 id="inversion">Inversion</h2>
+
+<p>The second part is <code class="highlighter-rouge">Inversion</code></p>
+<blockquote>
+  <p>Both should depend on abstractions (e.g. interfaces).</p>
+</blockquote>
+
+<table>
+  <thead>
+    <tr>
+      <th><strong>Dependency</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><img src="/assets/images/dip.svg" alt="Dependency Inversion" /></td>
+    </tr>
+    <tr>
+      <td><strong>Inversion</strong></td>
+    </tr>
+    <tr>
+      <td><img src="/assets/images/dip_inversion.svg" alt="Dependency Inversion" /></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Both <code class="highlighter-rouge">UserController</code>, <code class="highlighter-rouge">UserDAO</code>, <code class="highlighter-rouge">FileReader</code> now depend on interfaces <code class="highlighter-rouge">IUserDAO</code>, <code class="highlighter-rouge">IFileReader</code>.<br />
+Because if <code class="highlighter-rouge">IUserDAO</code> change then <code class="highlighter-rouge">UserController</code> and <code class="highlighter-rouge">UserDAO</code> also need to change.</p>
+
+<h2 id="why-we-need-dip">Why we need DIP</h2>
+
+<p>So what is the benefits of Dependency Inversion?</p>
+
+<ul>
+  <li>Testing. Now you can easily mock the dependencies of <code class="highlighter-rouge">UserController</code> class, like <code class="highlighter-rouge">InMemUserDAO</code> instead of a real <code class="highlighter-rouge">MySQL UserDAO</code></li>
+  <li>Lose Coupling. If you use <code class="highlighter-rouge">UserDAO</code> heavily, then suddenly you want to change from <code class="highlighter-rouge">MySQL</code> to <code class="highlighter-rouge">MongoDB</code> then you just need to swith the implementation (using <code class="highlighter-rouge">Factory Design Pattern</code>,…) not change the current code.</li>
+</ul>
+
+<h2 id="generalization-restrictions">Generalization restrictions</h2>
+
+<blockquote>
+  <ul>
+    <li>All member variables in a class must be interfaces or abstracts.</li>
+    <li>All concrete class packages must connect only through interface or abstract class packages.</li>
+    <li>No class should derive from a concrete class.</li>
+    <li>No method should override an implemented method.[1]</li>
+    <li>All variable instantiation requires the implementation of a creational pattern such as the factory method or the factory pattern, or the use of a dependency-injection framework.
+– <a href="https://en.wikipedia.org/wiki/Dependency_inversion_principle#Generalization_restrictions">Wikipedia</a></li>
+  </ul>
+</blockquote>
 
     </section>
     <!-- <footer>
