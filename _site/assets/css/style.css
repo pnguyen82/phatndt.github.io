@@ -228,13 +228,11 @@ header { text-align: center; width: auto; float: none; position: relative; paddi
 
 .post-category li { display: inline; padding: .1em .7em; background: darkslategrey; border-radius: .5em; color: white; }
 
-.post-info { border-bottom: solid; border-width: 1px; transition: border-width 0.1s linear; }
+.post-info { margin-bottom: 20px; box-shadow: 1px 1px 3px 0px; padding: 15px; }
 
 .post-info:hover { border-width: .5px; }
 
 .wrapper-home { width: 70%; padding: 25px; margin: 0px auto; }
-
-.post-info { margin-bottom: 20px; box-shadow: 1px 1px 3px 1px; padding: 15px; }
 
 .wrapper { max-width: 1024px; width: 65%; padding: 25px; box-shadow: 1px 1px 3px; margin: 0px 0px 0px 25%; }
 

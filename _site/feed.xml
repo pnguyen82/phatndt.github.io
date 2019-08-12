@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-07-16T09:45:03+07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Felix’s blog</title><subtitle>This blog is about my experiences in software development, I hope you can find something useful!</subtitle><entry><title type="html">[SOLID] Dependency Inversion Principle</title><link href="http://localhost:4000/fundamental/solid/solid-dependency-injection/" rel="alternate" type="text/html" title="[SOLID] Dependency Inversion Principle" /><published>2019-07-16T00:00:00+07:00</published><updated>2019-07-16T00:00:00+07:00</updated><id>http://localhost:4000/fundamental/solid/solid-dependency-injection</id><content type="html" xml:base="http://localhost:4000/fundamental/solid/solid-dependency-injection/">&lt;blockquote&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-07-18T13:29:35+07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Felix’s blog</title><subtitle>Tech blog</subtitle><entry><title type="html">[SOLID] Dependency Inversion Principle</title><link href="http://localhost:4000/fundamental/solid/solid-dependency-injection/" rel="alternate" type="text/html" title="[SOLID] Dependency Inversion Principle" /><published>2019-07-16T00:00:00+07:00</published><updated>2019-07-16T00:00:00+07:00</updated><id>http://localhost:4000/fundamental/solid/solid-dependency-injection</id><content type="html" xml:base="http://localhost:4000/fundamental/solid/solid-dependency-injection/">&lt;blockquote&gt;
   &lt;ul&gt;
     &lt;li&gt;High-level modules should not depend on low-level modules. Both should depend on abstractions (e.g. interfaces).&lt;/li&gt;
     &lt;li&gt;Abstractions should not depend on details. Details (concrete implementations) should depend on abstractions.
@@ -101,8 +101,9 @@ Because if &lt;code class=&quot;highlighter-rouge&quot;&gt;IUserDAO&lt;/code&gt;
   &lt;p&gt;Software entities (classes, modules, functions, etc.) should be open for extension, but closed for modification
 – &lt;a href=&quot;https://en.wikipedia.org/wiki/Open%E2%80%93closed_principle&quot;&gt;Wikipedia&lt;/a&gt;
 &lt;!--more--&gt;&lt;/p&gt;
-  &lt;h2 id=&quot;definition&quot;&gt;Definition&lt;/h2&gt;
 &lt;/blockquote&gt;
+
+&lt;h2 id=&quot;definition&quot;&gt;Definition&lt;/h2&gt;
 
 &lt;p&gt;Seem too abstract? Let’s take a look at another definition&lt;/p&gt;
 

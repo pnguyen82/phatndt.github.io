@@ -1,6 +1,6 @@
 theme: jekyll-theme-minimal
 title: Felix's blog
-description: This blog is about my experiences in software development, I hope you can find something useful!
+description: Tech blog
 show_downloads: false
 permalink: /:categories/:title/
 excerpt_separator: <!--more-->
