@@ -1,4 +1,81 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-07-18T13:29:35+07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Felix’s blog</title><subtitle>Tech blog</subtitle><entry><title type="html">[SOLID] Dependency Inversion Principle</title><link href="http://localhost:4000/fundamental/solid/solid-dependency-injection/" rel="alternate" type="text/html" title="[SOLID] Dependency Inversion Principle" /><published>2019-07-16T00:00:00+07:00</published><updated>2019-07-16T00:00:00+07:00</updated><id>http://localhost:4000/fundamental/solid/solid-dependency-injection</id><content type="html" xml:base="http://localhost:4000/fundamental/solid/solid-dependency-injection/">&lt;blockquote&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-08-14T10:12:12+07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Felix’s blog</title><subtitle>Tech blog</subtitle><entry><title type="html">Repository Pattern vs Data Access Object?</title><link href="http://localhost:4000/design%20pattern/repository-pattern-vs-data-access-object/" rel="alternate" type="text/html" title="Repository Pattern vs Data Access Object?" /><published>2019-08-12T00:00:00+07:00</published><updated>2019-08-12T00:00:00+07:00</updated><id>http://localhost:4000/design%20pattern/repository-pattern-vs-data-access-object</id><content type="html" xml:base="http://localhost:4000/design%20pattern/repository-pattern-vs-data-access-object/">&lt;p&gt;What are the differences betwwen those?
+&lt;!--more--&gt;&lt;/p&gt;
+&lt;h2 id=&quot;dao-definition&quot;&gt;DAO Definition&lt;/h2&gt;
+
+&lt;p&gt;As you know, Data Access Object (DAO) is an object that provides an abstract interface to some type of database or other persistence mechanism &lt;a href=&quot;https://en.wikipedia.org/wiki/Data_access_object&quot;&gt;Wiki&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;repository-definition&quot;&gt;Repository Definition&lt;/h2&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Mediates between the domain and data mapping layers using a collection-like interface for accessing domain objects.
+– Edward Hieatt and Rob Mee&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;And if you use Spring Framework, I think you already know this Interface&lt;/p&gt;
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;interface&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;CrudRepository&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ID&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Serializable&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Repository&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ID&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+
+    &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;S&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;S&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;save&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;S&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;entity&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;T&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;findOne&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ID&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;primaryKey&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;Iterable&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;findAll&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;delete&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;entity&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;boolean&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;exists&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ID&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;primaryKey&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;....&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;This make me confuse, so both DAO and Repository seem similar.&lt;br /&gt;
+They both &lt;strong&gt;abstract the way application access to database&lt;/strong&gt; but Repository is in &lt;strong&gt;higher&lt;/strong&gt; level&lt;/p&gt;
+
+&lt;h2 id=&quot;repository-pattern&quot;&gt;Repository Pattern&lt;/h2&gt;
+
+&lt;p&gt;When I read more about &lt;code class=&quot;highlighter-rouge&quot;&gt;Domain Driven Design&lt;/code&gt;, I know that Repositories is only for Aggregate&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;An Aggregate is a &lt;strong&gt;group of associated objects&lt;/strong&gt; which are considered as one unit with regard to data changes.&lt;/li&gt;
+  &lt;li&gt;Factories and Repositories are two design patterns which help us deal with object creation and storage - &lt;a href=&quot;https://www.infoq.com/minibooks/domain-driven-design-quickly/&quot;&gt;DDD Quickly&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;For example if you have a struct &lt;code class=&quot;highlighter-rouge&quot;&gt;User&lt;/code&gt; like this&lt;/p&gt;
+&lt;div class=&quot;language-go highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;struct&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;c&quot;&gt;// table User&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;addresses&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Address&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Address&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;struct&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;c&quot;&gt;// table Address&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;// Getter/Setter .....&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;// https://golang.org/doc/effective_go.html#Getters&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;
+
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;and the &lt;code class=&quot;highlighter-rouge&quot;&gt;UserRepository&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&quot;language-go highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;UserRepository&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;interface&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;FindByID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int64&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Save&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;u&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Find&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()([]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Delete&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;u&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;When you update/delete a &lt;code class=&quot;highlighter-rouge&quot;&gt;User&lt;/code&gt; so the Addresses of that user also updated/deleted. &lt;code class=&quot;highlighter-rouge&quot;&gt;User&lt;/code&gt; is an Aggregate for Address&lt;br /&gt;
+If user class is just User without any association, &lt;code class=&quot;highlighter-rouge&quot;&gt;UserRepository&lt;/code&gt; will similar to &lt;code class=&quot;highlighter-rouge&quot;&gt;UserDAO&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;The purpose of Aggregate is to define object ownership, boundaries&lt;br /&gt;
+and the purpose Repository is to encapsulate the way we persistence data, also for transaction (unit with regard to data changes)&lt;/p&gt;
+
+&lt;p&gt;The business logic will keep inside domain object&lt;br /&gt;
+For example if we want to limit user to have maximum 2 addresses, you will do like this&lt;/p&gt;
+&lt;div class=&quot;language-go highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;func&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;u&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;AddAddress&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Address&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;u&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;addresses&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;c&quot;&gt;// business logic&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fmt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Errorf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;limit 2 addresses per user&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;   
+    &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;u&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;addresses&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;u&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;addresses&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;// Notice that changes will only affect when you call `Save`, this is for transaction&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;user&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SetName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;hello&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;user&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;AddAddress&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;userRepo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;save&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;u&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; 
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name></name></author><category term="design pattern" /><summary type="html">What are the differences betwwen those?</summary></entry><entry><title type="html">[SOLID] Dependency Inversion Principle</title><link href="http://localhost:4000/fundamental/solid/solid-dependency-injection/" rel="alternate" type="text/html" title="[SOLID] Dependency Inversion Principle" /><published>2019-07-16T00:00:00+07:00</published><updated>2019-07-16T00:00:00+07:00</updated><id>http://localhost:4000/fundamental/solid/solid-dependency-injection</id><content type="html" xml:base="http://localhost:4000/fundamental/solid/solid-dependency-injection/">&lt;blockquote&gt;
   &lt;ul&gt;
     &lt;li&gt;High-level modules should not depend on low-level modules. Both should depend on abstractions (e.g. interfaces).&lt;/li&gt;
     &lt;li&gt;Abstractions should not depend on details. Details (concrete implementations) should depend on abstractions.
@@ -574,45 +651,7 @@ For example, a Car will be a Car, even if it cannot move.&lt;/li&gt;
   &lt;li&gt;Ask the question that, whenever a concrete class will &lt;code class=&quot;highlighter-rouge&quot;&gt;implement&lt;/code&gt; your interface,
 will it require &lt;code class=&quot;highlighter-rouge&quot;&gt;all behaviors&lt;/code&gt; mentioned in your interface,
 or only a few? Refactor your interfaces in multiple interfaces, until the answer to the above question is yes.&lt;/li&gt;
-&lt;/ul&gt;</content><author><name></name></author><summary type="html">This is the question that I still feel that I don’t have a right answer for the past few year!</summary></entry><entry><title type="html">Naming classes how to avoid calling everything a whatevermanager</title><link href="http://localhost:4000/naming-classes-how-to-avoid-calling-everything-a-whatevermanager/" rel="alternate" type="text/html" title="Naming classes how to avoid calling everything a whatevermanager" /><published>2018-10-27T00:00:00+07:00</published><updated>2018-10-27T00:00:00+07:00</updated><id>http://localhost:4000/naming-classes-how-to-avoid-calling-everything-a-whatevermanager</id><content type="html" xml:base="http://localhost:4000/naming-classes-how-to-avoid-calling-everything-a-whatevermanager/">&lt;p&gt;Try not to create new metaphors (Nanny)
-Have a look at what other frameworks do
-&lt;!--more--&gt;
-Further articles/books on this topic:&lt;/p&gt;
-
-&lt;p&gt;What names do you find yourself prepending/appending to classes regularly?
-What’s the best approach to naming classes?
-Book: Design Patterns: Elements of Reusable Object-Oriented Software (Hardcover)
-Book: Patterns of Enterprise Application Architecture (Hardcover)
-Book: Implementation Patterns (Paperback)&lt;/p&gt;
-
-&lt;p&gt;And a current list of name prefixes/suffixes I collected (subjectively!) from the answers:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Coordinator&lt;/li&gt;
-  &lt;li&gt;Builder&lt;/li&gt;
-  &lt;li&gt;Writer&lt;/li&gt;
-  &lt;li&gt;Reader&lt;/li&gt;
-  &lt;li&gt;Handler&lt;/li&gt;
-  &lt;li&gt;Container&lt;/li&gt;
-  &lt;li&gt;Protocol&lt;/li&gt;
-  &lt;li&gt;Target&lt;/li&gt;
-  &lt;li&gt;Converter&lt;/li&gt;
-  &lt;li&gt;Controller&lt;/li&gt;
-  &lt;li&gt;View&lt;/li&gt;
-  &lt;li&gt;Factory&lt;/li&gt;
-  &lt;li&gt;Entity&lt;/li&gt;
-  &lt;li&gt;Bucket&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;And a good tip for the road:&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Don’t get naming paralysis.
-Yes, names are very important but they’re not important enough to waste huge amounts of time on.
-If you can’t think up a good name in 10 minutes, move on.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Source: https://stackoverflow.com/questions/1866794/naming-classes-how-to-avoid-calling-everything-a-whatevermanager&lt;/p&gt;</content><author><name></name></author><summary type="html">Try not to create new metaphors (Nanny) Have a look at what other frameworks do</summary></entry><entry><title type="html">Secure S3 Cloudfont Content</title><link href="http://localhost:4000/aws/s3/sercure-s3-cloudfront/" rel="alternate" type="text/html" title="Secure S3 Cloudfont Content" /><published>2018-10-27T00:00:00+07:00</published><updated>2018-10-27T00:00:00+07:00</updated><id>http://localhost:4000/aws/s3/sercure-s3-cloudfront</id><content type="html" xml:base="http://localhost:4000/aws/s3/sercure-s3-cloudfront/">&lt;blockquote&gt;
+&lt;/ul&gt;</content><author><name></name></author><summary type="html">This is the question that I still feel that I don’t have a right answer for the past few year!</summary></entry><entry><title type="html">Secure S3 Cloudfont Content</title><link href="http://localhost:4000/aws/s3/sercure-s3-cloudfront/" rel="alternate" type="text/html" title="Secure S3 Cloudfont Content" /><published>2018-10-27T00:00:00+07:00</published><updated>2018-10-27T00:00:00+07:00</updated><id>http://localhost:4000/aws/s3/sercure-s3-cloudfront</id><content type="html" xml:base="http://localhost:4000/aws/s3/sercure-s3-cloudfront/">&lt;blockquote&gt;
   &lt;p&gt;Many companies that distribute content over the internet want to restrict access to documents, business data, media streams, or content
 that is intended for selected users, for example, users who have paid a fee
 &lt;!--more--&gt;&lt;/p&gt;
@@ -702,28 +741,42 @@ So instead of &lt;code class=&quot;highlighter-rouge&quot;&gt;xyz.cloudfront.net
 &lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://www.spacevatican.org/2015/5/1/using-cloudfront-signed-cookies/&quot;&gt;Using Cloudfront Signed Cookies&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name></name></author><summary type="html">Many companies that distribute content over the internet want to restrict access to documents, business data, media streams, or content that is intended for selected users, for example, users who have paid a fee</summary></entry><entry><title type="html">Git Rebase, when to use it?</title><link href="http://localhost:4000/git/git-rebase/" rel="alternate" type="text/html" title="Git Rebase, when to use it?" /><published>2018-09-13T00:00:00+07:00</published><updated>2018-09-13T00:00:00+07:00</updated><id>http://localhost:4000/git/git-rebase</id><content type="html" xml:base="http://localhost:4000/git/git-rebase/">&lt;blockquote&gt;
-  &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;git rebase&lt;/code&gt; in its simplest form is a command which will merge another branch
+&lt;/ul&gt;</content><author><name></name></author><summary type="html">Many companies that distribute content over the internet want to restrict access to documents, business data, media streams, or content that is intended for selected users, for example, users who have paid a fee</summary></entry><entry><title type="html">Naming classes how to avoid calling everything a whatevermanager</title><link href="http://localhost:4000/naming-classes-how-to-avoid-calling-everything-a-whatevermanager/" rel="alternate" type="text/html" title="Naming classes how to avoid calling everything a whatevermanager" /><published>2018-10-27T00:00:00+07:00</published><updated>2018-10-27T00:00:00+07:00</updated><id>http://localhost:4000/naming-classes-how-to-avoid-calling-everything-a-whatevermanager</id><content type="html" xml:base="http://localhost:4000/naming-classes-how-to-avoid-calling-everything-a-whatevermanager/">&lt;p&gt;Try not to create new metaphors (Nanny)
+Have a look at what other frameworks do
 &lt;!--more--&gt;
-into the branch where you are currently working,
-and move all of the local commits that are ahead of the rebased branch to the top of the history
-on that branch.&lt;/p&gt;
-&lt;/blockquote&gt;
+Further articles/books on this topic:&lt;/p&gt;
 
-&lt;h2 id=&quot;the-golden-rule-of-rebasing&quot;&gt;The Golden Rule of Rebasing&lt;/h2&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;Once you understand what rebasing is, the most important thing to learn is when not to do it.
-The golden rule of git rebase is to &lt;em&gt;NEVER&lt;/em&gt; use it on public branches.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;What names do you find yourself prepending/appending to classes regularly?
+What’s the best approach to naming classes?
+Book: Design Patterns: Elements of Reusable Object-Oriented Software (Hardcover)
+Book: Patterns of Enterprise Application Architecture (Hardcover)
+Book: Implementation Patterns (Paperback)&lt;/p&gt;
 
-&lt;p&gt;So you should alway run git commant like this&lt;/p&gt;
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git checkout feature-xxx
-git rebase master
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;And a current list of name prefixes/suffixes I collected (subjectively!) from the answers:&lt;/p&gt;
 
-&lt;p&gt;source:&lt;/p&gt;
 &lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.atlassian.com/git/tutorials/merging-vs-rebasing&quot;&gt;Merging vs Rebasing&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://hackernoon.com/git-merge-vs-rebase-whats-the-diff-76413c117333&quot;&gt;Git Merge vs. Rebase: What’s the Diff?&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://nathanleclaire.com/blog/2014/09/14/dont-be-scared-of-git-rebase&quot;&gt;Don’t Be Scare Of Git Merge&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name></name></author><summary type="html">git rebase in its simplest form is a command which will merge another branch</summary></entry></feed>
+  &lt;li&gt;Coordinator&lt;/li&gt;
+  &lt;li&gt;Builder&lt;/li&gt;
+  &lt;li&gt;Writer&lt;/li&gt;
+  &lt;li&gt;Reader&lt;/li&gt;
+  &lt;li&gt;Handler&lt;/li&gt;
+  &lt;li&gt;Container&lt;/li&gt;
+  &lt;li&gt;Protocol&lt;/li&gt;
+  &lt;li&gt;Target&lt;/li&gt;
+  &lt;li&gt;Converter&lt;/li&gt;
+  &lt;li&gt;Controller&lt;/li&gt;
+  &lt;li&gt;View&lt;/li&gt;
+  &lt;li&gt;Factory&lt;/li&gt;
+  &lt;li&gt;Entity&lt;/li&gt;
+  &lt;li&gt;Bucket&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;And a good tip for the road:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Don’t get naming paralysis.
+Yes, names are very important but they’re not important enough to waste huge amounts of time on.
+If you can’t think up a good name in 10 minutes, move on.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Source: https://stackoverflow.com/questions/1866794/naming-classes-how-to-avoid-calling-everything-a-whatevermanager&lt;/p&gt;</content><author><name></name></author><summary type="html">Try not to create new metaphors (Nanny) Have a look at what other frameworks do</summary></entry></feed>
