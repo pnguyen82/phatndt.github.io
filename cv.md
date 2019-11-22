@@ -14,7 +14,7 @@ Skype: oknion
 <a href="https://dev.to/felixvo" target="_blank">
   <i class="fab fa-dev fa-2x" title="felixvo's DEV Profile"></i>
 </a>
-<a href="https://www.linkedin.com/in/ngoc-vo-99187112a" target="_blank">
+<a href="https://www.linkedin.com/in/felix-vo/" target="_blank">
 <i class="fab fa-linkedin fa-2x"></i>
 </a> 
 
