@@ -9,6 +9,7 @@ layout: blank
 Nickname: Felix  
 Email: <ngocvt.dev@gmail.com>  
 Phone: +84 933662703  
+Phone: +65 90787409  
 Skype: oknion  
 <script src="https://kit.fontawesome.com/10a4ec14cc.js" crossorigin="anonymous"></script>
 <a href="https://dev.to/felixvo" target="_blank">
