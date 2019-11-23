@@ -11,8 +11,8 @@ First you need to answer these question:
 - Can I break the problem down into sub-problems?
 - What is the big problem and what is the sub-problems?
 
-This is the hardest and most important part.  
-Never jump in to code before answer these question
+** This is the hardest and most important part.  
+Never jump in to code before answer these question **
 
 Fibonacci problem is an example:
 ```
@@ -72,3 +72,6 @@ func fib(n int) int{
     return f1 + f2
 }
 ```
+
+Resource to practise:
+- [Top 50 Dynamic Programming Practice Problems](https://blog.usejournal.com/top-50-dynamic-programming-practice-problems-4208fed71aa3)
