@@ -33,7 +33,7 @@ func fib(n int) int{
 ```
 
 visual
-
+![fibonacci dynamic programming](/assets/images/dynamic_programming/dynamic_programming_fibonacci.png)
 
 so if you break you problem in to sub-problems, it's will look like a tree with main problem in the top
 
@@ -55,6 +55,9 @@ in this case
 ## Dynamic Programming + Memorized
 
 In the Fibonacci example above, you see that for same sub-problem we need to compute the result multiple time
+
+![fibonacci dynamic programming](/assets/images/dynamic_programming/dynamic_programming_fibonacci_duplicate.png)
+
 So it better to cached pre-calculated value for reuse
 like:
 ```go
