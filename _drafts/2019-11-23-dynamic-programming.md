@@ -3,16 +3,19 @@ title: Dynamic Programming
 description: Dynamic Programming summary
 tags: algorithm
 ---
+
+## Definition
 > Dynamic programming is a computer programming **method**.
 > Simplifying a complicated problem by **breaking it down into simpler sub-problems** in a recursive manner
 <!--more-->
-## Dynamic Programming
+
 First you need to answer these question:
 - Can I break the problem down into sub-problems?
 - What is the big problem and what is the sub-problems?
 
-** This is the hardest and most important part.  
-Never jump in to code before answer these question **
+**This is the hardest and most important part.  
+Never jump in to code before answer these questions  
+If you can identify the sub-problem, you almost solve it**
 
 Fibonacci problem is an example:
 ```
@@ -42,13 +45,24 @@ Another example is [Subset Sum Problem](https://www.techiedelight.com/subset-sum
 
 for example:
 arr = [2,3,5,7], s = 8
-```
-f([2,3,5,7],8) = f([3,5,7], 6) |    = f([5,7], 3) |    => END     |
-                               | OR = f([5,7], 6) |    = f([7],1) | => END
-                               |                  | OR = f([7],6) | => END
-            OR = f([3,5,7], 8) |    = f([5,7], 5) |    = f([7],0) | => Success 
-                               | OR = f([5,7], 8) |    => END
-```
+
+For each arr[i] there will be 2 cases
+1. **subset include arr[i]**
+2. **subset not include arr[i]**
+
+![dynamic programming subset sum](/assets/images/dynamic_programming/dynamic_programming_sum.JPG)
+<!-- | F              | sub1            | sub2           | sub3       | sub4 |
+|----------------|-----------------|----------------|------------|--|
+| f([2,3,5,7],8) | = f([3,5,7], 6) | = f([5,7], 3)  | END        |  |
+|                |                 | ______________ |            |  |
+|                |                 | = f([5,7], 6)  | = f([7],1) | END |
+|                |                 |                | __________ |  |
+|                | _______________ | ______________ | = f([7],6) | END |
+|                | _______________ | ______________ | __________ | END |
+|                | = f([3,5,7], 8) | = f([5,7], 5)  | = f([7],0) | Success |
+|                |                 | ______________ | __________ |
+|                |                 | = f([5,7], 8)  | END        | -->
+
 in this case
 > f(x) = f(x1) OR f(x2) NOT f(x1)+f(x2) like above
 

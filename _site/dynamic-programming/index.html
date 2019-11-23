@@ -19,7 +19,7 @@
 {"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/dynamic-programming/"},"url":"http://localhost:4000/dynamic-programming/","headline":"Dynamic Programming","dateModified":"2019-11-23T00:00:00+08:00","datePublished":"2019-11-23T00:00:00+08:00","description":"Dynamic Programming summary","@type":"BlogPosting","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
-  <link rel="stylesheet" href="/assets/css/style.css?v=73ee7308c615a1e4fe9bec8d47eb24fb770aded9">
+  <link rel="stylesheet" href="/assets/css/style.css?v=a3a644ac25d0f40f34d5169d846d35adf940411a">
   <link href="https://fonts.googleapis.com/css?family=Fira+Mono|Open+Sans|Montserrat|Roboto&display=swap" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
   <script src="/assets/js/main.js"></script>
@@ -49,20 +49,22 @@
     <section class="content">
       <h1 class="title">Dynamic Programming</h1>
       </br>
-      <blockquote>
+      <h2 id="definition">Definition</h2>
+<blockquote>
   <p>Dynamic programming is a computer programming <strong>method</strong>.
 Simplifying a complicated problem by <strong>breaking it down into simpler sub-problems</strong> in a recursive manner
 <!--more--></p>
-  <h2 id="dynamic-programming">Dynamic Programming</h2>
-  <p>First you need to answer these question:</p>
-  <ul>
-    <li>Can I break the problem down into sub-problems?</li>
-    <li>What is the big problem and what is the sub-problems?</li>
-  </ul>
 </blockquote>
 
-<p>** This is the hardest and most important part.<br />
-Never jump in to code before answer these question **</p>
+<p>First you need to answer these question:</p>
+<ul>
+  <li>Can I break the problem down into sub-problems?</li>
+  <li>What is the big problem and what is the sub-problems?</li>
+</ul>
+
+<p><strong>This is the hardest and most important part.<br />
+Never jump in to code before answer these questions<br />
+If you can identify the sub-problem, you almost solve it</strong></p>
 
 <p>Fibonacci problem is an example:</p>
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    f(n)        = f(n-1)        +  f(n-2)
@@ -92,12 +94,26 @@ Never jump in to code before answer these question **</p>
 
 <p>for example:
 arr = [2,3,5,7], s = 8</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>f([2,3,5,7],8) = f([3,5,7], 6) |    = f([5,7], 3) |    =&gt; END     |
-                               | OR = f([5,7], 6) |    = f([7],1) | =&gt; END
-                               |                  | OR = f([7],6) | =&gt; END
-            OR = f([3,5,7], 8) |    = f([5,7], 5) |    = f([7],0) | =&gt; Success 
-                               | OR = f([5,7], 8) |    =&gt; END
-</code></pre></div></div>
+
+<p>For each arr[i] there will be 2 cases</p>
+<ol>
+  <li><strong>subset include arr[i]</strong></li>
+  <li><strong>subset not include arr[i]</strong></li>
+</ol>
+
+<p><img src="/assets/images/dynamic_programming/dynamic_programming_sum.JPG" alt="dynamic programming subset sum" />
+<!-- | F              | sub1            | sub2           | sub3       | sub4 |
+|----------------|-----------------|----------------|------------|--|
+| f([2,3,5,7],8) | = f([3,5,7], 6) | = f([5,7], 3)  | END        |  |
+|                |                 | ______________ |            |  |
+|                |                 | = f([5,7], 6)  | = f([7],1) | END |
+|                |                 |                | __________ |  |
+|                | _______________ | ______________ | = f([7],6) | END |
+|                | _______________ | ______________ | __________ | END |
+|                | = f([3,5,7], 8) | = f([5,7], 5)  | = f([7],0) | Success |
+|                |                 | ______________ | __________ |
+|                |                 | = f([5,7], 8)  | END        | --></p>
+
 <p>in this case</p>
 <blockquote>
   <p>f(x) = f(x1) OR f(x2) NOT f(x1)+f(x2) like above</p>
