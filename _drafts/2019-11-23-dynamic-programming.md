@@ -16,7 +16,7 @@ First you need to answer these question:
 **This is the hardest and most important part.  
 Never jump in to code before answer these questions  
 If you can identify the sub-problem, you almost solve it**
-
+### Fibonacci example
 Fibonacci problem is an example:
 ```
     f(n)        = f(n-1)        +  f(n-2)
@@ -39,6 +39,8 @@ visual
 ![fibonacci dynamic programming](/assets/images/dynamic_programming/dynamic_programming_fibonacci.png)
 
 so if you break you problem in to sub-problems, it's will look like a tree with main problem in the top
+
+### Subset Sum Problem
 
 Another example is [Subset Sum Problem](https://www.techiedelight.com/subset-sum-problem/)
 > Given a set of positive intergers and an integer s, is there any non-empty subset whose sum to s
@@ -65,6 +67,20 @@ For each arr[i] there will be 2 cases
 
 in this case
 > f(x) = f(x1) OR f(x2) NOT f(x1)+f(x2) like above
+
+### [Longest Common Subsequence](https://leetcode.com/problems/longest-common-subsequence/)
+>Given two strings text1 and text2, return the length of their longest common subsequence.
+>
+>A subsequence of a string is a new string generated from the original string with some characters(can be none) deleted
+>without changing the relative order of the remaining characters. (eg, "ace" is a subsequence of "abcde" while "aec" is not).
+> 
+>A common subsequence of two strings is a subsequence that is common to both strings.
+
+<object data="/assets/images/dynamic_programming/lcs.pdf" type="application/pdf" width="700px" height="700px">
+    <embed src="/assets/images/dynamic_programming/lcs.pdf">
+        <p>This browser does not support PDFs. Please download the PDF to view it: <a href="/assets/images/dynamic_programming/lcs.pdf">Download PDF</a>.</p>
+    </embed>
+</object>
 
 ## Dynamic Programming + Memorized
 
