@@ -2,21 +2,19 @@
 title: CV
 layout: blank
 ---
-# VO THAI NGOC
+# NGOC VO THAI - Felix
 #### *Software Engineer*
 #### Tech stack: `Go`, `Microservice`, `gRPC`, `MySQL`, `Kafka` , `RabbitMQ`, `Redis`
 ## Personal Information
-Nickname: Felix  
-Email: <ngocvt.dev@gmail.com>  
-Phone: +84 933662703  
-Skype: oknion  
-<script src="https://kit.fontawesome.com/10a4ec14cc.js" crossorigin="anonymous"></script>
+<span>![email](/assets/images/icons/email.svg){:width="20px" height="20px"}</span> <ngocvt.dev@gmail.com>  
+<span>![email](/assets/images/icons/phone-solid.svg){:width="20px" height="20px"}</span> +84 933662703  
+<span>![email](/assets/images/icons/skype-brands.svg){:width="20px" height="20px"}</span> oknion  
 <a href="https://dev.to/felixvo" target="_blank">
-  <i class="fab fa-dev fa-2x" title="felixvo's DEV Profile"></i>
+![felixvo's DEV Profile](/assets/images/icons/dev-brands.svg){:height="30px" width="30px"}
 </a>
 <a href="https://www.linkedin.com/in/felix-vo/" target="_blank">
-<i class="fab fa-linkedin fa-2x"></i>
-</a> 
+![Felix Linkedin Profile](/assets/images/icons/linkedin-brands.svg){:height="30px" width="30px"}
+</a>
 
 -------
 ## Experiences
