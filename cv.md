@@ -6,29 +6,16 @@ layout: blank
 #### *Software Engineer*
 #### Tech stack: `Go`, `Microservice`, `gRPC`, `MySQL`, `Kafka` , `RabbitMQ`, `Redis`
 ## Personal Information
-<<<<<<< HEAD
-<span>![email](/assets/images/icons/email.svg){:width="20px" height="20px"}</span> <ngocvt.dev@gmail.com>  
-<span>![email](/assets/images/icons/phone-solid.svg){:width="20px" height="20px"}</span> +84 933662703  
-<span>![email](/assets/images/icons/skype-brands.svg){:width="20px" height="20px"}</span> oknion  
-=======
-Nickname: Felix  
 Email: <ngocvt.dev@gmail.com>  
 Phone: +84 933662703  
 Phone: +65 90787409  
 Skype: oknion  
-<script src="https://kit.fontawesome.com/10a4ec14cc.js" crossorigin="anonymous"></script>
->>>>>>> 30ac59a5ef0184f4e17f9bdfbc39348ee374aa11
 <a href="https://dev.to/felixvo" target="_blank">
-![felixvo's DEV Profile](/assets/images/icons/dev-brands.svg){:height="30px" width="30px"}
+    ![felixvo's DEV Profile](/assets/images/icons/dev-brands.svg){:height="30px" width="30px"}
 </a>
 <a href="https://www.linkedin.com/in/felix-vo/" target="_blank">
-<<<<<<< HEAD
-![Felix Linkedin Profile](/assets/images/icons/linkedin-brands.svg){:height="30px" width="30px"}
+    ![Felix Linkedin Profile](/assets/images/icons/linkedin-brands.svg){:height="30px" width="30px"}
 </a>
-=======
-  <i class="fab fa-linkedin fa-2x"></i>
-</a> 
->>>>>>> 30ac59a5ef0184f4e17f9bdfbc39348ee374aa11
 
 -------
 ## Experiences
