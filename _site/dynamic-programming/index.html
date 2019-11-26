@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang=" en-US ">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1"> <!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Dynamic Programming | Felix’s blog</title>
+<meta name="generator" content="Jekyll v3.8.5" />
+<meta property="og:title" content="Dynamic Programming" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Dynamic Programming summary" />
+<meta property="og:description" content="Dynamic Programming summary" />
+<link rel="canonical" href="http://localhost:4000/dynamic-programming/" />
+<meta property="og:url" content="http://localhost:4000/dynamic-programming/" />
+<meta property="og:site_name" content="Felix’s blog" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-11-23T00:00:00+08:00" />
+<script type="application/ld+json">
+{"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/dynamic-programming/"},"url":"http://localhost:4000/dynamic-programming/","headline":"Dynamic Programming","dateModified":"2019-11-23T00:00:00+08:00","datePublished":"2019-11-23T00:00:00+08:00","description":"Dynamic Programming summary","@type":"BlogPosting","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  <link rel="stylesheet" href="/assets/css/style.css?v=3760de6d30000491f4b077ae375fb154e0fd0946">
+  <link href="https://fonts.googleapis.com/css?family=Fira+Mono|Open+Sans|Montserrat|Roboto&display=swap" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script src="/assets/js/main.js"></script>
+  <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+</head>
+
+<body>
+  <script src="https://kit.fontawesome.com/10a4ec14cc.js" crossorigin="anonymous"></script>
+<header>
+    <a href="/">
+        <h2>
+       Felix's blog
+        </h2>
+    </a>
+    <p>
+        <a href="https://github.com/felixvo" target="_blank">
+            <i style="color: #222;" class="fab fa-github-square fa-2x"></i>
+        </a>
+        <a href="https://dev.to/felixvo" target="_blank">
+          <i style="color: #222;" class="fab fa-dev fa-2x" title="felixvo's DEV Profile"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/felix-vo/" target="_blank">
+          <i style="color: #222;" class="fab fa-linkedin fa-2x"></i>
+        </a> 
+        <!-- <span> Tech blog</span> -->
+    </p>
+</header>
+<hr>
+
+  <nav class="table-of-content">
+    Table Of Contents
+    <ul>
+    </ul>
+  </nav>
+  <div class="wrapper">
+    <section class="content">
+      <h1 class="title">Dynamic Programming</h1>
+      </br>
+      <h2 id="definition">Definition</h2>
+<blockquote>
+  <p>Dynamic programming is a computer programming <strong>method</strong>.
+Simplifying a complicated problem by <strong>breaking it down into simpler sub-problems</strong> in a recursive manner
+<!--more--></p>
+</blockquote>
+
+<p>First you need to answer these question:</p>
+<ul>
+  <li>Can I break the problem down into sub-problems?</li>
+  <li>What is the big problem and what is the sub-problems?</li>
+</ul>
+
+<p><strong>This is the hardest and most important part.<br />
+Never jump in to code before answer these questions<br />
+If you can identify the sub-problem, you almost solve it</strong></p>
+<h3 id="fibonacci-example">Fibonacci example</h3>
+<p>Fibonacci problem is an example:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    f(n)        = f(n-1)        +  f(n-2)
+//  big problem = sub-problem 1 +  sub-problem 2
+</code></pre></div></div>
+
+<p>and in the code</p>
+
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">func</span><span class="x"> </span><span class="n">fib</span><span class="p">(</span><span class="n">n</span><span class="x"> </span><span class="kt">int</span><span class="p">)</span><span class="x"> </span><span class="kt">int</span><span class="p">{</span><span class="x">
+    </span><span class="k">if</span><span class="x"> </span><span class="n">n</span><span class="o">&lt;=</span><span class="m">1</span><span class="x"> </span><span class="p">{</span><span class="x">
+        </span><span class="k">return</span><span class="x"> </span><span class="n">n</span><span class="x">
+    </span><span class="p">}</span><span class="x">
+    </span><span class="k">return</span><span class="x"> </span><span class="n">f</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="m">1</span><span class="p">)</span><span class="o">+</span><span class="n">f</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="m">2</span><span class="p">)</span><span class="x">
+</span><span class="p">}</span><span class="x">
+
+</span></code></pre></div></div>
+
+<p>visual
+<img src="/assets/images/dynamic_programming/dynamic_programming_fibonacci.png" alt="fibonacci dynamic programming" /></p>
+
+<p>so if you break you problem in to sub-problems, it’s will look like a tree with main problem in the top</p>
+
+<h3 id="subset-sum-problem">Subset Sum Problem</h3>
+
+<p>Another example is <a href="https://www.techiedelight.com/subset-sum-problem/">Subset Sum Problem</a></p>
+<blockquote>
+  <p>Given a set of positive intergers and an integer s, is there any non-empty subset whose sum to s</p>
+</blockquote>
+
+<p>for example:
+arr = [2,3,5,7], s = 8</p>
+
+<p>For each arr[i] there will be 2 cases</p>
+<ol>
+  <li><strong>subset include arr[i]</strong></li>
+  <li><strong>subset not include arr[i]</strong></li>
+</ol>
+
+<p><img src="/assets/images/dynamic_programming/dynamic_programming_sum.JPG" alt="dynamic programming subset sum" />
+<!-- | F              | sub1            | sub2           | sub3       | sub4 |
+|----------------|-----------------|----------------|------------|--|
+| f([2,3,5,7],8) | = f([3,5,7], 6) | = f([5,7], 3)  | END        |  |
+|                |                 | ______________ |            |  |
+|                |                 | = f([5,7], 6)  | = f([7],1) | END |
+|                |                 |                | __________ |  |
+|                | _______________ | ______________ | = f([7],6) | END |
+|                | _______________ | ______________ | __________ | END |
+|                | = f([3,5,7], 8) | = f([5,7], 5)  | = f([7],0) | Success |
+|                |                 | ______________ | __________ |
+|                |                 | = f([5,7], 8)  | END        | --></p>
+
+<p>in this case</p>
+<blockquote>
+  <p>f(x) = f(x1) OR f(x2) NOT f(x1)+f(x2) like above</p>
+</blockquote>
+
+<h3 id="longest-common-subsequence"><a href="https://leetcode.com/problems/longest-common-subsequence/">Longest Common Subsequence</a></h3>
+<blockquote>
+  <p>Given two strings text1 and text2, return the length of their longest common subsequence.</p>
+
+  <p>A subsequence of a string is a new string generated from the original string with some characters(can be none) deleted
+without changing the relative order of the remaining characters. (eg, “ace” is a subsequence of “abcde” while “aec” is not).</p>
+
+  <p>A common subsequence of two strings is a subsequence that is common to both strings.</p>
+</blockquote>
+
+<object data="/assets/images/dynamic_programming/lcs.pdf" type="application/pdf" width="700px" height="700px">
+    <embed src="/assets/images/dynamic_programming/lcs.pdf" />
+        <p>This browser does not support PDFs. Please download the PDF to view it: <a href="/assets/images/dynamic_programming/lcs.pdf">Download PDF</a>.</p>
+    &lt;/embed&gt;
+</object>
+
+<h2 id="dynamic-programming--memorized">Dynamic Programming + Memorized</h2>
+
+<p>In the Fibonacci example above, you see that for same sub-problem we need to compute the result multiple time</p>
+
+<p><img src="/assets/images/dynamic_programming/dynamic_programming_fibonacci_duplicate.png" alt="fibonacci dynamic programming" /></p>
+
+<p>So it better to cached pre-calculated value for reuse
+like:</p>
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">cache</span><span class="x"> </span><span class="o">=</span><span class="x"> </span><span class="k">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">int</span><span class="x">
+</span><span class="k">func</span><span class="x"> </span><span class="n">fib</span><span class="p">(</span><span class="n">n</span><span class="x"> </span><span class="kt">int</span><span class="p">)</span><span class="x"> </span><span class="kt">int</span><span class="p">{</span><span class="x">
+    </span><span class="k">if</span><span class="x"> </span><span class="n">n</span><span class="o">&lt;=</span><span class="m">1</span><span class="x"> </span><span class="p">{</span><span class="x">
+        </span><span class="k">return</span><span class="x"> </span><span class="n">n</span><span class="x">
+    </span><span class="p">}</span><span class="x">
+    </span><span class="k">if</span><span class="x"> </span><span class="n">cache</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="x"> </span><span class="n">exist</span><span class="p">{</span><span class="x">
+        </span><span class="k">return</span><span class="x"> </span><span class="n">cache</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="x">
+    </span><span class="p">}</span><span class="x">
+    </span><span class="n">f1</span><span class="x"> </span><span class="o">=</span><span class="x"> </span><span class="n">f</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="m">1</span><span class="p">)</span><span class="x">
+    </span><span class="n">f2</span><span class="x"> </span><span class="o">=</span><span class="x"> </span><span class="n">f</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="m">2</span><span class="p">)</span><span class="x">
+    </span><span class="c">// put to cache</span><span class="x">
+    </span><span class="k">return</span><span class="x"> </span><span class="n">f1</span><span class="x"> </span><span class="o">+</span><span class="x"> </span><span class="n">f2</span><span class="x">
+</span><span class="p">}</span><span class="x">
+</span></code></pre></div></div>
+
+<p>Resource to practise:</p>
+<ul>
+  <li><a href="https://blog.usejournal.com/top-50-dynamic-programming-practice-problems-4208fed71aa3">Top 50 Dynamic Programming Practice Problems</a></li>
+</ul>
+
+    </section>
+    <!-- <footer>
+  <div>
+    Project maintained by
+    <a href="https://github.com/felixvo" target="_blank"
+      >felixvo</a
+    >
+    , here is my <a href="/cv">CV</a>
+  </div>
+  <div>
+    <a href="/practise-speaking">Practise Speaking</a>
+  </div>
+  <small
+    >Hosted on GitHub Pages &mdash; Theme by
+    <a href="https://twitter.com/michigangraham">mattgraham</a>
+  </small>
+</footer>
+ -->
+    <div class="comment-box">
+  <script src="https://utteranc.es/client.js"
+        repo="felixvo/felixvo.github.io"
+        issue-term="pathname"
+        label="comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+ </script>
+</div>
+
+  </div>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-92160345-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-92160345-2');
+</script>
+</body>
+</html>

@@ -1,9 +1,21 @@
+<script src="https://kit.fontawesome.com/10a4ec14cc.js" crossorigin="anonymous"></script>
 <header>
     <a href="/">
         <h2>
        {{ site.title | default: site.github.repository_name }}
         </h2>
     </a>
-    <p>{{ site.description | default: site.github.project_tagline }}</p>
+    <p>
+        <a href="https://github.com/felixvo" target="_blank">
+            <i style="color: #222;" class="fab fa-github-square fa-2x"></i>
+        </a>
+        <a href="https://dev.to/felixvo" target="_blank">
+          <i style="color: #222;" class="fab fa-dev fa-2x" title="felixvo's DEV Profile"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/felix-vo/" target="_blank">
+          <i style="color: #222;" class="fab fa-linkedin fa-2x"></i>
+        </a> 
+        <!-- <span> {{ site.description | default: site.github.project_tagline }}</span> -->
+    </p>
 </header>
 <hr>
