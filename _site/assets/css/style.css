@@ -218,9 +218,9 @@ footer { width: 270px; float: left; position: fixed; bottom: 50px; -webkit-font-
 /* type scale */
 * { box-sizing: border-box; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; }
 
-body { font-family: 'Montserrat','Roboto', sans-serif; font-size: 1em; color: #373636; padding: 0px; margin: 0px; }
+body { font-family: 'Montserrat','Roboto', sans-serif; font-size: 1em; color: #373636; background-color: whitesmoke; padding: 0px; margin: 0px; }
 
-section { width: auto; max-width: 900px; float: none; }
+section { width: auto; max-width: 900px; float: none; margin: auto; }
 
 header { text-align: center; width: auto; float: none; position: relative; padding: 30px 10px 0px 0px; }
 
@@ -230,7 +230,7 @@ header { text-align: center; width: auto; float: none; position: relative; paddi
 
 .post-info { margin-bottom: 20px; box-shadow: 1px 1px 3px 0px; padding: 15px; }
 
-.post-info:hover { border-width: .5px; }
+.post-info:hover { border-width: .5px; box-shadow: 1px 1px 5px 0px; transform: translateY(-3px); transition-duration: .2s; }
 
 .wrapper-home { width: 70%; padding: 25px; margin: 0px auto; }
 

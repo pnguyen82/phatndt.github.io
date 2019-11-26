@@ -42,6 +42,7 @@ body{
     font-family:'Montserrat','Roboto', sans-serif;
     font-size: $type-size-5;
     color: #373636;
+    background-color: whitesmoke;
     padding: 0px;
     margin: 0px;
 }
@@ -50,6 +51,7 @@ section{
     width:auto;
     max-width: 900px;
     float:none;
+    margin: auto;
 }
 header{
     text-align: center;
@@ -78,6 +80,9 @@ header{
 }
 .post-info:hover {
     border-width: .5px;
+    box-shadow: 1px 1px 5px 0px;
+    transform: translateY(-3px);
+    transition-duration: .2s;
 }
 .wrapper-home{
     width:70%;
