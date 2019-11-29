@@ -4,9 +4,8 @@ description: Dynamic Programming summary
 tags: algorithm
 ---
 
-## Definition
-> Dynamic programming is a computer programming **method**.
-> Simplifying a complicated problem by **breaking it down into simpler sub-problems** in a recursive manner
+Dynamic programming is a computer programming **method**.  
+Simplifying a complicated problem by **breaking it down into simpler sub-problems** in a recursive manner
 <!--more-->
 
 First you need to answer these question:
