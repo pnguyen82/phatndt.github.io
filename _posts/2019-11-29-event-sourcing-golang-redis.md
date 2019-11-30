@@ -73,16 +73,6 @@ Events:
 - The consumer will consume events and build the application state
 - `snapshot` package will take the application state and save to redis every 30s. Application state will restore from this if our app crash
 
-## The State
-The `state` object is pretty simple, just a plain struct
-```go
-type State struct {
-	LatestEventID string
-	Users         map[int64]*user.User
-	Items         map[string]*warehouse.Item
-}
-```
-
 ## The Producer
 Use `XAdd` cmd to add data to a stream
 
@@ -112,6 +102,16 @@ func Topup(client *redis.Client) {
 	}
 }
 
+```
+
+## The State
+The `state` object is pretty simple, just a plain struct
+```go
+type State struct {
+	LatestEventID string
+	Users         map[int64]*user.User
+	Items         map[string]*warehouse.Item
+}
 ```
 
 ## The Consumer
