@@ -32,9 +32,10 @@ now you have
 I've read many articles/blog posts about Event Sourcing so I try to make once.
 
 ## What we will build?
-Let's say you have an e-commerce website and users can buy items from your website.
-Source: https://github.com/felixvo/lmax
+Let's say you have an e-commerce website and users can buy items from your website.  
+Source: https://github.com/felixvo/lmax  
 NOTE: This code is not tested, just an experiment
+
 
 Entities:  
 - `User` will have `balance`.
@@ -64,9 +65,9 @@ Events:
 ![Alt Text](https://thepracticaldev.s3.amazonaws.com/i/ui1bv7ili5wag324ucil.png)
 
 - Event storage: [Redis Stream](https://redis.io/topics/streams-intro)  
->Entry IDs
->The entry ID returned by the XADD command, and identifying univocally >each entry inside a given stream, is composed of two parts:
->`<millisecondsTime>-<sequenceNumber>`
+> Entry IDs
+> The entry ID returned by the XADD command, and identifying univocally >each entry inside a given stream, is composed of two parts:  
+> `<millisecondsTime>-<sequenceNumber>`
 > I use this `Entry ID` to keep track of processed event
 
 - The consumer will consume events and build the application state
@@ -113,7 +114,7 @@ func Topup(client *redis.Client) {
 
 ```
 
-##The Consumer
+## The Consumer
 Then the Consumer gets the events => pass the event proper `handler`
 
 ```go
