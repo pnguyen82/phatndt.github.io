@@ -43,14 +43,30 @@ function renderControls(count) {
 }
 
 function manualFetch() {
-  fetchMore(function(data) {
+  fetchWordsNeedReview(function(data) {
+    let ww = [];
     if (!data) {
       return;
     }
     for (k in data) {
-      vocabs.push(data[k]);
+      ww.push(data[k]);
     }
-    shuffle(vocabs);
+    shuffle(ww);
+    vocabs = vocabs.concat(ww);
+    if (!currentWord) {
+      nextWord();
+    }
+  });
+  fetchMore(function(data) {
+    let ww = [];
+    if (!data) {
+      return;
+    }
+    for (k in data) {
+      ww.push(data[k]);
+    }
+    shuffle(ww);
+    vocabs = vocabs.concat(ww);
     if (!currentWord) {
       nextWord();
     }
@@ -90,18 +106,20 @@ function next(noDays) {
 
 function fetchMore(callback) {
   //
-
-  console.log("fetch more");
+  console.log("fetch new word more");
   var newWords = firebase
     .database()
     .ref("words")
     .orderByChild("review_date")
     .equalTo(null)
-    .limitToFirst(20);
+    .limitToFirst(1000);
 
   newWords.on("value", function(data) {
     callback(data.val());
   });
+}
+function fetchWordsNeedReview(callback) {
+  console.log("fetch review word more");
   var today = new Date();
   var reviewWords = firebase
     .database()
