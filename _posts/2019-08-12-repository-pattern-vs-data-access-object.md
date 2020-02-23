@@ -31,6 +31,11 @@ They both **abstract the way application access to database** but Repository is 
 
 ## Repository Pattern 
 
+UPDATED:
+I recently found this video
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/rtXpYpZdOzM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 When I read more about `Domain Driven Design`, I know that Repositories is only for Aggregate
 - An Aggregate is a **group of associated objects** which are considered as one unit with regard to data changes.
 - Factories and Repositories are two design patterns which help us deal with object creation and storage - [DDD Quickly](https://www.infoq.com/minibooks/domain-driven-design-quickly/)
@@ -55,7 +60,6 @@ and the `UserRepository`
 ```go
 type UserRepository interface{
     FindByID(id int64) (*User,error)
-    Save(u *User)error
     Find()([]*User,error)
     Delete(u *User) error
 }
@@ -78,5 +82,4 @@ func (u *User) AddAddress(a *Address)error{
 // Notice that changes will only affect when you call `Save`, this is for transaction
 user.SetName("hello")
 user.AddAddress(a)
-userRepo.save(u) 
 ```
