@@ -5,6 +5,7 @@ description: Dockerfile for Go
 
 Dockerfile for Go  
 Uncomment or comment out the line you need
+<!--more-->
 
 ```dockerfile
 FROM golang:1.13.4 AS builder
