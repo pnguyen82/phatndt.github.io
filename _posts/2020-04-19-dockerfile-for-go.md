@@ -1,9 +1,8 @@
 ---
 title: Dockerfile for Go
-published: false
 description: Dockerfile for Go
-tags: go,dockerfile
 ---
+
 Dockerfile for Go  
 Uncomment or comment out the line you need
 
