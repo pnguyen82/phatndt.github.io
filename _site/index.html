@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="chrome=1"> <!-- Begin Jekyll SEO tag v2.5.0 -->
+  <meta http-equiv="X-UA-Compatible" content="chrome=1"> <!-- Begin Jekyll SEO tag v2.6.1 -->
 <title>blog posts | Felix’s blog</title>
 <meta name="generator" content="Jekyll v3.8.5" />
 <meta property="og:title" content="blog posts" />
@@ -15,11 +15,11 @@
 <meta property="og:site_name" content="Felix’s blog" />
 <link rel="next" href="http://localhost:4000/page2" />
 <script type="application/ld+json">
-{"url":"http://localhost:4000/","headline":"blog posts","name":"Felix’s blog","description":"Tech blog","@type":"WebSite","@context":"http://schema.org"}</script>
+{"headline":"blog posts","description":"Tech blog","url":"http://localhost:4000/","name":"Felix’s blog","@type":"WebSite","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   <link href="https://fonts.googleapis.com/css?family=Fira+Mono|Open+Sans|Montserrat|Roboto&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/css/style.css?v=5b084457baa1776f732f37cfaf5f2add89e875e8">
+  <link rel="stylesheet" href="/assets/css/style.css?v=e77b4a80d7ad404c0d51c7abedac377f05457106">
   <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script> -->
   <!-- <script src="/assets/js/main.js"></script> -->
   <!--[if lt IE 9]>
@@ -58,6 +58,140 @@
       <!-- This loops through the paginated posts -->
 <div class="posts">
   <ul>
+
+  <div class="post-info">
+    <h1>
+      <a href="/design/pattern/builder-pattern-go/">Builder Pattern example in Go</a>
+    </h1>
+    <div>
+          <p>The builder pattern is a design pattern designed to provide a flexible solution to various object creation problems in object-oriented programming.<br />
+The intent of the Builder design pattern is to separate the construction of a complex object from its representation.</p>
+
+
+    </div>
+    <div class="info">
+      <span class="date">
+        <small>25 April 2020</small>
+      </span>
+    </div>
+      <!-- <ul class="post-category">
+      
+        <li>design</li>
+      
+        <li>pattern</li>
+      
+      </ul> -->
+
+  </div>
+  <!-- <br> -->
+
+  <div class="post-info">
+    <h1>
+      <a href="/2020_02_24_gitlab_kubernetes_ci_cd/">Gitlab Kubernetes CI/CD with Okteto</a>
+    </h1>
+    <div>
+          <table>
+  <tbody>
+    <tr>
+      <td>kubectl get secrets default-token-f2wc6 -o json</td>
+      <td>jq -r  ‘.data.”ca.crt”’</td>
+      <td>base64 -D</td>
+    </tr>
+    <tr>
+      <td>kubectl get secrets default-token-f2wc6 -o json</td>
+      <td>jq -r  ‘.data.”token”’</td>
+      <td>base64 –decode</td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+    <div class="info">
+      <span class="date">
+        <small>19 April 2020</small>
+      </span>
+    </div>
+      <!-- <ul class="post-category">
+      
+      </ul> -->
+
+  </div>
+  <!-- <br> -->
+
+  <div class="post-info">
+    <h1>
+      <a href="/dockerfile-for-go/">Dockerfile for Go</a>
+    </h1>
+    <div>
+          <p>Dockerfile for Go<br />
+Uncomment or comment out the line you need</p>
+
+
+    </div>
+    <div class="info">
+      <span class="date">
+        <small>19 April 2020</small>
+      </span>
+    </div>
+      <!-- <ul class="post-category">
+      
+      </ul> -->
+
+  </div>
+  <!-- <br> -->
+
+  <div class="post-info">
+    <h1>
+      <a href="/product/architecture/build-your-product-using-free-services/">Build your product using free servies</a>
+    </h1>
+    <div>
+          <p>https://free-for.dev/#/</p>
+
+
+    </div>
+    <div class="info">
+      <span class="date">
+        <small>16 December 2019</small>
+      </span>
+    </div>
+      <!-- <ul class="post-category">
+      
+        <li>product</li>
+      
+        <li>architecture</li>
+      
+      </ul> -->
+
+  </div>
+  <!-- <br> -->
+
+  <div class="post-info">
+    <h1>
+      <a href="/architecture/event-sourcing-golang-redis/">Event Sourcing with Go and Redis</a>
+    </h1>
+    <div>
+          <p>I thought you already heard about Event Sourcing in the past recent year.
+But let’s go through the definition again.</p>
+<blockquote>
+  <p>Capture all changes to an application state as a sequence of events.
+Event Sourcing ensures that all changes to application state are stored as a sequence of events. - <a href="https://martinfowler.com/eaaDev/EventSourcing.html">Martin Fowler</a></p>
+</blockquote>
+
+
+    </div>
+    <div class="info">
+      <span class="date">
+        <small>29 November 2019</small>
+      </span>
+    </div>
+      <!-- <ul class="post-category">
+      
+        <li>architecture</li>
+      
+      </ul> -->
+
+  </div>
+  <!-- <br> -->
 
   <div class="post-info">
     <h1>
@@ -180,158 +314,6 @@ Simplifying a complicated problem by <strong>breaking it down into simpler sub-p
   </div>
   <!-- <br> -->
 
-  <div class="post-info">
-    <h1>
-      <a href="/fundamental/solid/solid-single-responsibility/">[SOLID] Single Responsibility Principle</a>
-    </h1>
-    <div>
-          <blockquote>
-  <p>A class or module should have one, and only one, reason to be changed – <a href="https://en.wikipedia.org/wiki/Single_responsibility_principle">Wikipedia</a></p>
-</blockquote>
-
-
-    </div>
-    <div class="info">
-      <span class="date">
-        <small>7 July 2019</small>
-      </span>
-    </div>
-      <!-- <ul class="post-category">
-      
-        <li>fundamental</li>
-      
-        <li>solid</li>
-      
-      </ul> -->
-
-  </div>
-  <!-- <br> -->
-
-  <div class="post-info">
-    <h1>
-      <a href="/enough-cmds-to-install-arch/">Enough Cmds To Install Arch</a>
-    </h1>
-    <div>
-          <p>A guide for installing Arch Linux</p>
-
-
-    </div>
-    <div class="info">
-      <span class="date">
-        <small>2 July 2019</small>
-      </span>
-    </div>
-      <!-- <ul class="post-category">
-      
-      </ul> -->
-
-  </div>
-  <!-- <br> -->
-
-  <div class="post-info">
-    <h1>
-      <a href="/vim-tutorial/">Vim Tutorial</a>
-    </h1>
-    <div>
-          <h2 id="minimal-vim-config-for-go">Minimal vim config for Go</h2>
-
-<p>I tried to use vim more than a year ago and I like the vim’s way to editing text!
-My main language was Java at that time so I used vim plugin for IntelliJ IDEA.
-I switch to Go fews months ago.
-My first text editor for go was <code class="highlighter-rouge">VS Code</code> + <code class="highlighter-rouge">VSCodeVim</code> plugin
-Everything is good, vs code is excelent editor
-But why I use vim plugin all the time?
-Should I try to set vim for Go?
-I work a lot with terminal so maybe it’s will better to use vim
-Or at least, vim make me look cooler :))
-So I starting to setup vim and here is my tips for you to getting started with vim</p>
-
-<p>Inspiring from <a href="https://www.youtube.com/watch?v=7BqJ8dzygtU">Fatih’s Video</a>
-You should watch this!</p>
-
-<h2 id="tips">Tips</h2>
-
-<ul>
-  <li>start with <code class="highlighter-rouge">vimturor</code>, just hit <code class="highlighter-rouge">vimtutor</code> in your terminal</li>
-</ul>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nv">$vimtutor</span>
-</code></pre></div></div>
-
-<ul>
-  <li>start with small <code class="highlighter-rouge">.vimrc</code> then adding your own config to it.
-Any time you add a plugin, you need to read the document about it, how to config it,…</li>
-  <li>Watch some vim casts to see how other people use vim</li>
-  <li><code class="highlighter-rouge">:help</code> command is very helpful
-Every time you don’t know about a something, type <code class="highlighter-rouge">:help keyword</code></li>
-  <li><a href="http://learnvimscripthehardway.stevelosh.com/chapters/03.html">Mapping</a> is very helpful, write your own mapping</li>
-  <li>Learn slowly</li>
-  <li><a href="https://vimgifs.com/">Vimgifs</a></li>
-</ul>
-
-<h2 id="my-go-config">My Go config</h2>
-
-
-    </div>
-    <div class="info">
-      <span class="date">
-        <small>2 July 2019</small>
-      </span>
-    </div>
-      <!-- <ul class="post-category">
-      
-      </ul> -->
-
-  </div>
-  <!-- <br> -->
-
-  <div class="post-info">
-    <h1>
-      <a href="/mysql/working-with-mysql-json/">Working with MySQL JSON</a>
-    </h1>
-    <div>
-          <p>As of <a href="https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-8.html#mysqld-5-7-8-json">MySQL 5.7.8</a>, MySQL supports a native JSON data type defined by RFC 7159 that enables efficient access to data in JSON (JavaScript Object Notation) documents</p>
-
-
-    </div>
-    <div class="info">
-      <span class="date">
-        <small>4 June 2019</small>
-      </span>
-    </div>
-      <!-- <ul class="post-category">
-      
-        <li>mysql</li>
-      
-      </ul> -->
-
-  </div>
-  <!-- <br> -->
-
-  <div class="post-info">
-    <h1>
-      <a href="/devops/open-port-centos/">Open port CentOS</a>
-    </h1>
-    <div>
-          <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>firewall-cmd --zone=public --add-port=8080/tcp --permanent
-firewall-cmd --reload
-</code></pre></div></div>
-
-    </div>
-    <div class="info">
-      <span class="date">
-        <small>29 May 2019</small>
-      </span>
-    </div>
-      <!-- <ul class="post-category">
-      
-        <li>devops</li>
-      
-      </ul> -->
-
-  </div>
-  <!-- <br> -->
-
 </ul>
 </div>
 
@@ -375,6 +357,19 @@ firewall-cmd --reload
 
   gtag('config', 'UA-92160345-2');
 </script>
+
+<!-- Hotjar Tracking Code for http://felixvo.github.io/ -->
+<script>
+    (function(h,o,t,j,a,r){
+        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+        h._hjSettings={hjid:1613847,hjsv:6};
+        a=o.getElementsByTagName('head')[0];
+        r=o.createElement('script');r.async=1;
+        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+        a.appendChild(r);
+    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+</script>
+
 </body>
 
 </html>

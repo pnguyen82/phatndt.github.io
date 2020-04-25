@@ -1,0 +1,57 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Learn Vocab</title>
+    <script src="https://www.gstatic.com/firebasejs/7.8.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.8.1/firebase-database.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        font-family: monospace;
+        font-size: 1.3em;
+      }
+      .container {
+        width: 100%;
+        background: darkgray;
+        min-height: 500px;
+      }
+      section {
+        max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+        background: whitesmoke;
+        padding: 30px 30px 0px 30px;
+        min-height: 500px;
+      }
+      button {
+        width: 90px;
+        height: 45px;
+        margin-left: 5px;
+      }
+      .controls {
+        /* position: absolute; */
+        bottom: 10;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <section>
+        <div class="front">
+          <div id="word"></div>
+        </div>
+        <div class="back">
+          <div id="translations"></div>
+        </div>
+        <div id="controls" class="controls"></div>
+      </section>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>

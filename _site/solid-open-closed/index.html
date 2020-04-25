@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="chrome=1"> <!-- Begin Jekyll SEO tag v2.5.0 -->
+  <meta http-equiv="X-UA-Compatible" content="chrome=1"> <!-- Begin Jekyll SEO tag v2.6.1 -->
 <title>[SOLID] Open/Closed Principle | Felix’s blog</title>
 <meta name="generator" content="Jekyll v3.8.5" />
 <meta property="og:title" content="[SOLID] Open/Closed Principle" />
@@ -16,10 +16,10 @@
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2019-07-09T00:00:00+08:00" />
 <script type="application/ld+json">
-{"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/solid-open-closed/"},"url":"http://localhost:4000/solid-open-closed/","headline":"[SOLID] Open/Closed Principle","dateModified":"2019-07-09T00:00:00+08:00","datePublished":"2019-07-09T00:00:00+08:00","description":"Software entities (classes, modules, functions, etc.) should be open for extension, but closed for modification – Wikipedia","@type":"BlogPosting","@context":"http://schema.org"}</script>
+{"headline":"[SOLID] Open/Closed Principle","dateModified":"2019-07-09T00:00:00+08:00","datePublished":"2019-07-09T00:00:00+08:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/solid-open-closed/"},"description":"Software entities (classes, modules, functions, etc.) should be open for extension, but closed for modification – Wikipedia","url":"http://localhost:4000/solid-open-closed/","@type":"BlogPosting","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
-  <link rel="stylesheet" href="/assets/css/style.css?v=5b084457baa1776f732f37cfaf5f2add89e875e8">
+  <link rel="stylesheet" href="/assets/css/style.css?v=e77b4a80d7ad404c0d51c7abedac377f05457106">
   <link href="https://fonts.googleapis.com/css?family=Fira+Mono|Open+Sans|Montserrat|Roboto&display=swap" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
   <script src="/assets/js/main.js"></script>
@@ -83,26 +83,26 @@
 
 <ul>
   <li>Open for extension: you can extend the class/module/funtions, adding behavior/field without changing the current code. How? using abstraction, interface/abstract class</li>
-  <li>Closed for modification: public functions/fields of the class/module/functions must be minimal, well-defined.  Like <code class="highlighter-rouge">Encapsulation+</code></li>
+  <li>Closed for modification: public functions/fields of the class/module/functions must be minimal, well-defined.  Like <code class="language-plaintext highlighter-rouge">Encapsulation+</code></li>
 </ul>
 
 <h2 id="example">Example</h2>
 
-<p>I’m  gonna use <code class="highlighter-rouge">UserController</code> class in my previous post about <a href="/fundamental/solid/solid-single-responsibility/">SRP</a>
+<p>I’m  gonna use <code class="language-plaintext highlighter-rouge">UserController</code> class in my previous post about <a href="/fundamental/solid/solid-single-responsibility/">SRP</a>
 as an example</p>
 
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">UserController</span><span class="o">{</span>
-    <span class="kd">public</span> <span class="nf">renderHtml</span><span class="o">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span> <span class="n">users</span><span class="o">);</span>
+    <span class="kd">public</span> <span class="nf">renderHtml</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">User</span><span class="o">&gt;</span> <span class="n">users</span><span class="o">);</span>
 <span class="o">}</span>
 </code></pre></div></div>
 
-<p>So you have <code class="highlighter-rouge">UserController</code> class that render list user in <code class="highlighter-rouge">HTML</code> format.<br />
+<p>So you have <code class="language-plaintext highlighter-rouge">UserController</code> class that render list user in <code class="language-plaintext highlighter-rouge">HTML</code> format.<br />
 Next day, you leader come and said:</p>
 <blockquote>
-  <p>Hey, we’re going to support mobile apps next week, so I want to support render list use in both <code class="highlighter-rouge">JSON</code> and <code class="highlighter-rouge">HTML</code> format</p>
+  <p>Hey, we’re going to support mobile apps next week, so I want to support render list use in both <code class="language-plaintext highlighter-rouge">JSON</code> and <code class="language-plaintext highlighter-rouge">HTML</code> format</p>
 </blockquote>
 
-<p>The easiest solution is to add another method <code class="highlighter-rouge">renderJson(List&lt;User&gt; users)</code></p>
+<p>The easiest solution is to add another method <code class="language-plaintext highlighter-rouge">renderJson(List&lt;User&gt; users)</code></p>
 
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">UserController</span><span class="o">{</span>
 
@@ -114,20 +114,20 @@ Next day, you leader come and said:</p>
         <span class="o">}</span>
     <span class="o">}</span>
     <span class="c1">//</span>
-    <span class="kd">public</span> <span class="nf">renderHtml</span><span class="o">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span> <span class="n">users</span><span class="o">);</span>
-    <span class="kd">public</span> <span class="nf">renderJson</span><span class="o">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span> <span class="n">users</span><span class="o">);</span>
+    <span class="kd">public</span> <span class="nf">renderHtml</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">User</span><span class="o">&gt;</span> <span class="n">users</span><span class="o">);</span>
+    <span class="kd">public</span> <span class="nf">renderJson</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">User</span><span class="o">&gt;</span> <span class="n">users</span><span class="o">);</span>
 
 <span class="o">}</span>
 </code></pre></div></div>
 
-<p>Then after a year you will come up with 10 differences format <code class="highlighter-rouge">xml</code>, <code class="highlighter-rouge">csv</code>, <code class="highlighter-rouge">excel</code>, …<br />
-If you also have to render use list in <code class="highlighter-rouge">ReportController</code>, <code class="highlighter-rouge">100OtherPlacesController</code><br />
+<p>Then after a year you will come up with 10 differences format <code class="language-plaintext highlighter-rouge">xml</code>, <code class="language-plaintext highlighter-rouge">csv</code>, <code class="language-plaintext highlighter-rouge">excel</code>, …<br />
+If you also have to render use list in <code class="language-plaintext highlighter-rouge">ReportController</code>, <code class="language-plaintext highlighter-rouge">100OtherPlacesController</code><br />
 Then when adding a new format you need to add in 100 difference places. 😩</p>
 
 <p>Or you can abstract the way you format a list of user</p>
 
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">UserController</span><span class="o">{</span>
-    <span class="kd">private</span> <span class="n">UsersFormatterFactory</span> <span class="n">usersFmterFactory</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">UsersFormatterFactory</span> <span class="n">usersFmterFactory</span><span class="o">;</span>
     <span class="kd">public</span> <span class="nf">handle</span><span class="o">(</span><span class="n">request</span><span class="o">){</span>
         <span class="n">fmter</span> <span class="o">=</span> <span class="n">usersFmterFactory</span><span class="o">.</span><span class="na">ofType</span><span class="o">(</span><span class="n">request</span><span class="o">.</span><span class="na">query</span><span class="o">.</span><span class="na">type</span><span class="o">);</span>
         <span class="n">fmter</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="n">users</span><span class="o">);</span>
@@ -135,51 +135,51 @@ Then when adding a new format you need to add in 100 difference places. 😩</p>
 <span class="o">}</span>
 
 <span class="kd">class</span> <span class="nc">UsersFormatterFactory</span><span class="o">{</span>
-   <span class="kd">public</span> <span class="n">UsersFormatter</span> <span class="nf">ofType</span><span class="o">(</span><span class="n">t</span> <span class="n">Type</span><span class="o">){</span>
+   <span class="kd">public</span> <span class="nc">UsersFormatter</span> <span class="nf">ofType</span><span class="o">(</span><span class="n">t</span> <span class="nc">Type</span><span class="o">){</span>
        <span class="k">switch</span><span class="o">(</span><span class="n">t</span><span class="o">){</span>
-           <span class="k">case</span> <span class="s">"json"</span><span class="o">:</span> <span class="k">return</span> <span class="n">JsonFormatter</span><span class="o">;</span>
-           <span class="k">default</span><span class="o">:</span>     <span class="k">return</span> <span class="n">HtmlFormatter</span><span class="o">;</span>
+           <span class="k">case</span> <span class="s">"json"</span><span class="o">:</span> <span class="k">return</span> <span class="nc">JsonFormatter</span><span class="o">;</span>
+           <span class="k">default</span><span class="o">:</span>     <span class="k">return</span> <span class="nc">HtmlFormatter</span><span class="o">;</span>
        <span class="o">}</span>
    <span class="o">}</span>
 <span class="o">}</span>
 
 <span class="kd">interface</span> <span class="nc">UsersFormatter</span><span class="o">{</span>
-    <span class="kd">public</span> <span class="n">String</span> <span class="nf">format</span><span class="o">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span> <span class="n">users</span><span class="o">);</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">format</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">User</span><span class="o">&gt;</span> <span class="n">users</span><span class="o">);</span>
 <span class="o">}</span>
 
-<span class="kd">class</span> <span class="nc">JsonFormatter</span> <span class="kd">implements</span> <span class="n">UsersFormatter</span><span class="o">{</span>
-    <span class="kd">public</span> <span class="n">String</span> <span class="nf">format</span><span class="o">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span> <span class="n">users</span><span class="o">);</span>
+<span class="kd">class</span> <span class="nc">JsonFormatter</span> <span class="kd">implements</span> <span class="nc">UsersFormatter</span><span class="o">{</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">format</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">User</span><span class="o">&gt;</span> <span class="n">users</span><span class="o">);</span>
 <span class="o">}</span>
 
-<span class="kd">class</span> <span class="nc">HtmlFormatter</span> <span class="kd">implements</span> <span class="n">UsersFormatter</span><span class="o">{</span>
-    <span class="kd">public</span> <span class="n">String</span> <span class="nf">format</span><span class="o">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span> <span class="n">users</span><span class="o">);</span>
+<span class="kd">class</span> <span class="nc">HtmlFormatter</span> <span class="kd">implements</span> <span class="nc">UsersFormatter</span><span class="o">{</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">format</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">User</span><span class="o">&gt;</span> <span class="n">users</span><span class="o">);</span>
 <span class="o">}</span>
 </code></pre></div></div>
 
-<p>If you want another module to add their own format (open for extension), you can refactor <code class="highlighter-rouge">UsersFormatterFactory</code> like this</p>
+<p>If you want another module to add their own format (open for extension), you can refactor <code class="language-plaintext highlighter-rouge">UsersFormatterFactory</code> like this</p>
 
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">UsersFormatterFactory</span><span class="o">{</span>
-   <span class="kd">private</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">Type</span><span class="o">,</span><span class="n">UsersFormatter</span><span class="o">&gt;</span> <span class="n">fmters</span><span class="o">;</span>
-   <span class="kd">public</span> <span class="n">UsersFormatter</span> <span class="nf">ofType</span><span class="o">(</span><span class="n">Type</span> <span class="n">t</span><span class="o">){</span>
+   <span class="kd">private</span> <span class="nc">Map</span><span class="o">&lt;</span><span class="nc">Type</span><span class="o">,</span><span class="nc">UsersFormatter</span><span class="o">&gt;</span> <span class="n">fmters</span><span class="o">;</span>
+   <span class="kd">public</span> <span class="nc">UsersFormatter</span> <span class="nf">ofType</span><span class="o">(</span><span class="nc">Type</span> <span class="n">t</span><span class="o">){</span>
        <span class="k">return</span> <span class="n">fmters</span><span class="o">[</span><span class="n">t</span><span class="o">]</span>
    <span class="o">}</span>
-   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">registerFormat</span><span class="o">(</span><span class="n">Type</span> <span class="n">t</span><span class="o">,</span><span class="n">UsersFormatter</span> <span class="n">formatter</span><span class="o">){</span>
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">registerFormat</span><span class="o">(</span><span class="nc">Type</span> <span class="n">t</span><span class="o">,</span><span class="nc">UsersFormatter</span> <span class="n">formatter</span><span class="o">){</span>
        <span class="n">fmters</span><span class="o">[</span><span class="n">t</span><span class="o">]=</span><span class="n">formatter</span>
    <span class="o">}</span>
 <span class="o">}</span>
 
 <span class="kd">class</span> <span class="nc">Main</span><span class="o">{</span>
     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(){</span>
-      <span class="n">UsersFormatterFactory</span> <span class="n">usersFormatterFactory</span> <span class="o">=</span> <span class="k">new</span> <span class="n">UsersFormatterFactory</span><span class="o">();</span>
-      <span class="n">usersFormatterFactory</span><span class="o">.</span><span class="na">registerFormat</span><span class="o">(</span><span class="s">"json"</span><span class="o">,</span> <span class="k">new</span> <span class="n">JsonFormatter</span><span class="o">());</span>
-      <span class="n">usersFormatterFactory</span><span class="o">.</span><span class="na">registerFormat</span><span class="o">(</span><span class="s">"html"</span><span class="o">,</span> <span class="k">new</span> <span class="n">HtmlFormatter</span><span class="o">());</span>
-      <span class="n">usersFormatterFactory</span><span class="o">.</span><span class="na">registerFormat</span><span class="o">(</span><span class="s">"csv"</span><span class="o">,</span> <span class="k">new</span> <span class="n">CsvFormatter</span><span class="o">());</span>
+      <span class="nc">UsersFormatterFactory</span> <span class="n">usersFormatterFactory</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">UsersFormatterFactory</span><span class="o">();</span>
+      <span class="n">usersFormatterFactory</span><span class="o">.</span><span class="na">registerFormat</span><span class="o">(</span><span class="s">"json"</span><span class="o">,</span> <span class="k">new</span> <span class="nc">JsonFormatter</span><span class="o">());</span>
+      <span class="n">usersFormatterFactory</span><span class="o">.</span><span class="na">registerFormat</span><span class="o">(</span><span class="s">"html"</span><span class="o">,</span> <span class="k">new</span> <span class="nc">HtmlFormatter</span><span class="o">());</span>
+      <span class="n">usersFormatterFactory</span><span class="o">.</span><span class="na">registerFormat</span><span class="o">(</span><span class="s">"csv"</span><span class="o">,</span> <span class="k">new</span> <span class="nc">CsvFormatter</span><span class="o">());</span>
       <span class="c1">// add another format if need</span>
     <span class="o">}</span>
 <span class="o">}</span>
 </code></pre></div></div>
 
-<p>Now you can create and register your own <code class="highlighter-rouge">XYXFormatter</code> without changing the existing code<br />
+<p>Now you can create and register your own <code class="language-plaintext highlighter-rouge">XYXFormatter</code> without changing the existing code<br />
 Abstraction is really powerful!</p>
 
     </section>
@@ -221,5 +221,18 @@ Abstraction is really powerful!</p>
 
   gtag('config', 'UA-92160345-2');
 </script>
+
+<!-- Hotjar Tracking Code for http://felixvo.github.io/ -->
+<script>
+    (function(h,o,t,j,a,r){
+        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+        h._hjSettings={hjid:1613847,hjsv:6};
+        a=o.getElementsByTagName('head')[0];
+        r=o.createElement('script');r.async=1;
+        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+        a.appendChild(r);
+    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+</script>
+
 </body>
 </html>

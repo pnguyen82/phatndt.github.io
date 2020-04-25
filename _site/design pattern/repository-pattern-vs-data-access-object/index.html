@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="chrome=1"> <!-- Begin Jekyll SEO tag v2.5.0 -->
+  <meta http-equiv="X-UA-Compatible" content="chrome=1"> <!-- Begin Jekyll SEO tag v2.6.1 -->
 <title>Repository Pattern vs Data Access Object? | Felix’s blog</title>
 <meta name="generator" content="Jekyll v3.8.5" />
 <meta property="og:title" content="Repository Pattern vs Data Access Object?" />
@@ -16,10 +16,10 @@
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2019-08-12T00:00:00+08:00" />
 <script type="application/ld+json">
-{"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/design%20pattern/repository-pattern-vs-data-access-object/"},"url":"http://localhost:4000/design%20pattern/repository-pattern-vs-data-access-object/","headline":"Repository Pattern vs Data Access Object?","dateModified":"2019-08-12T00:00:00+08:00","datePublished":"2019-08-12T00:00:00+08:00","description":"What are the differences betwwen those?","@type":"BlogPosting","@context":"http://schema.org"}</script>
+{"headline":"Repository Pattern vs Data Access Object?","dateModified":"2019-08-12T00:00:00+08:00","datePublished":"2019-08-12T00:00:00+08:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/design%20pattern/repository-pattern-vs-data-access-object/"},"description":"What are the differences betwwen those?","url":"http://localhost:4000/design%20pattern/repository-pattern-vs-data-access-object/","@type":"BlogPosting","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
-  <link rel="stylesheet" href="/assets/css/style.css?v=5b084457baa1776f732f37cfaf5f2add89e875e8">
+  <link rel="stylesheet" href="/assets/css/style.css?v=e77b4a80d7ad404c0d51c7abedac377f05457106">
   <link href="https://fonts.googleapis.com/css?family=Fira+Mono|Open+Sans|Montserrat|Roboto&display=swap" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
   <script src="/assets/js/main.js"></script>
@@ -77,14 +77,14 @@
 </blockquote>
 
 <p>And if you use Spring Framework, I think you already know this Interface</p>
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">CrudRepository</span><span class="o">&lt;</span><span class="n">T</span><span class="o">,</span> <span class="n">ID</span> <span class="kd">extends</span> <span class="n">Serializable</span><span class="o">&gt;</span>
-    <span class="kd">extends</span> <span class="n">Repository</span><span class="o">&lt;</span><span class="n">T</span><span class="o">,</span> <span class="n">ID</span><span class="o">&gt;</span> <span class="o">{</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">CrudRepository</span><span class="o">&lt;</span><span class="no">T</span><span class="o">,</span> <span class="no">ID</span> <span class="kd">extends</span> <span class="nc">Serializable</span><span class="o">&gt;</span>
+    <span class="kd">extends</span> <span class="nc">Repository</span><span class="o">&lt;</span><span class="no">T</span><span class="o">,</span> <span class="no">ID</span><span class="o">&gt;</span> <span class="o">{</span>
 
-    <span class="o">&lt;</span><span class="n">S</span> <span class="kd">extends</span> <span class="n">T</span><span class="o">&gt;</span> <span class="n">S</span> <span class="nf">save</span><span class="o">(</span><span class="n">S</span> <span class="n">entity</span><span class="o">)</span>
-    <span class="n">T</span> <span class="nf">findOne</span><span class="o">(</span><span class="n">ID</span> <span class="n">primaryKey</span><span class="o">);</span>
-    <span class="n">Iterable</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="nf">findAll</span><span class="o">();</span>
-    <span class="kt">void</span> <span class="nf">delete</span><span class="o">(</span><span class="n">T</span> <span class="n">entity</span><span class="o">);</span>
-    <span class="kt">boolean</span> <span class="nf">exists</span><span class="o">(</span><span class="n">ID</span> <span class="n">primaryKey</span><span class="o">);</span>
+    <span class="o">&lt;</span><span class="no">S</span> <span class="kd">extends</span> <span class="no">T</span><span class="o">&gt;</span> <span class="no">S</span> <span class="nf">save</span><span class="o">(</span><span class="no">S</span> <span class="n">entity</span><span class="o">)</span>
+    <span class="no">T</span> <span class="nf">findOne</span><span class="o">(</span><span class="no">ID</span> <span class="n">primaryKey</span><span class="o">);</span>
+    <span class="nc">Iterable</span><span class="o">&lt;</span><span class="no">T</span><span class="o">&gt;</span> <span class="nf">findAll</span><span class="o">();</span>
+    <span class="kt">void</span> <span class="nf">delete</span><span class="o">(</span><span class="no">T</span> <span class="n">entity</span><span class="o">);</span>
+    <span class="kt">boolean</span> <span class="nf">exists</span><span class="o">(</span><span class="no">ID</span> <span class="n">primaryKey</span><span class="o">);</span>
     <span class="o">....</span>
 <span class="o">}</span>
 </code></pre></div></div>
@@ -93,54 +93,57 @@ They both <strong>abstract the way application access to database</strong> but R
 
 <h2 id="repository-pattern">Repository Pattern</h2>
 
-<p>When I read more about <code class="highlighter-rouge">Domain Driven Design</code>, I know that Repositories is only for Aggregate</p>
+<p>UPDATED:
+I recently found this video</p>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/rtXpYpZdOzM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+
+<p>When I read more about <code class="language-plaintext highlighter-rouge">Domain Driven Design</code>, I know that Repositories is only for Aggregate</p>
 <ul>
   <li>An Aggregate is a <strong>group of associated objects</strong> which are considered as one unit with regard to data changes.</li>
   <li>Factories and Repositories are two design patterns which help us deal with object creation and storage - <a href="https://www.infoq.com/minibooks/domain-driven-design-quickly/">DDD Quickly</a></li>
 </ul>
 
-<p>For example if you have a struct <code class="highlighter-rouge">User</code> like this</p>
-<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">type</span><span class="x"> </span><span class="n">User</span><span class="x"> </span><span class="k">struct</span><span class="p">{</span><span class="x"> </span><span class="c">// table User</span><span class="x">
-    </span><span class="n">id</span><span class="x"> </span><span class="kt">int</span><span class="x">
-    </span><span class="n">name</span><span class="x"> </span><span class="kt">string</span><span class="x">
-    </span><span class="n">addresses</span><span class="x"> </span><span class="p">[]</span><span class="o">*</span><span class="n">Address</span><span class="x">
-</span><span class="p">}</span><span class="x">
-</span><span class="k">type</span><span class="x"> </span><span class="n">Address</span><span class="x"> </span><span class="k">struct</span><span class="p">{</span><span class="x"> </span><span class="c">// table Address</span><span class="x">
-    </span><span class="n">id</span><span class="x"> </span><span class="kt">int</span><span class="x">
-    </span><span class="n">name</span><span class="x"> </span><span class="kt">string</span><span class="x">
-</span><span class="p">}</span><span class="x">
-</span><span class="c">// Getter/Setter .....</span><span class="x">
-</span><span class="c">// https://golang.org/doc/effective_go.html#Getters</span><span class="x">
+<p>For example if you have a struct <code class="language-plaintext highlighter-rouge">User</code> like this</p>
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">type</span> <span class="n">User</span> <span class="k">struct</span><span class="p">{</span> <span class="c">// table User</span>
+    <span class="n">id</span> <span class="kt">int</span>
+    <span class="n">name</span> <span class="kt">string</span>
+    <span class="n">addresses</span> <span class="p">[]</span><span class="o">*</span><span class="n">Address</span>
+<span class="p">}</span>
+<span class="k">type</span> <span class="n">Address</span> <span class="k">struct</span><span class="p">{</span> <span class="c">// table Address</span>
+    <span class="n">id</span> <span class="kt">int</span>
+    <span class="n">name</span> <span class="kt">string</span>
+<span class="p">}</span>
+<span class="c">// Getter/Setter .....</span>
+<span class="c">// https://golang.org/doc/effective_go.html#Getters</span>
 
-</span></code></pre></div></div>
+</code></pre></div></div>
 
-<p>and the <code class="highlighter-rouge">UserRepository</code></p>
-<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">type</span><span class="x"> </span><span class="n">UserRepository</span><span class="x"> </span><span class="k">interface</span><span class="p">{</span><span class="x">
-    </span><span class="n">FindByID</span><span class="p">(</span><span class="n">id</span><span class="x"> </span><span class="kt">int64</span><span class="p">)</span><span class="x"> </span><span class="p">(</span><span class="o">*</span><span class="n">User</span><span class="p">,</span><span class="kt">error</span><span class="p">)</span><span class="x">
-    </span><span class="n">Save</span><span class="p">(</span><span class="n">u</span><span class="x"> </span><span class="o">*</span><span class="n">User</span><span class="p">)</span><span class="kt">error</span><span class="x">
-    </span><span class="n">Find</span><span class="p">()([]</span><span class="o">*</span><span class="n">User</span><span class="p">,</span><span class="kt">error</span><span class="p">)</span><span class="x">
-    </span><span class="n">Delete</span><span class="p">(</span><span class="n">u</span><span class="x"> </span><span class="o">*</span><span class="n">User</span><span class="p">)</span><span class="x"> </span><span class="kt">error</span><span class="x">
-</span><span class="p">}</span><span class="x">
-</span></code></pre></div></div>
-<p>When you update/delete a <code class="highlighter-rouge">User</code> so the Addresses of that user also updated/deleted. <code class="highlighter-rouge">User</code> is an Aggregate for Address<br />
-If user class is just User without any association, <code class="highlighter-rouge">UserRepository</code> will similar to <code class="highlighter-rouge">UserDAO</code></p>
+<p>and the <code class="language-plaintext highlighter-rouge">UserRepository</code></p>
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">type</span> <span class="n">UserRepository</span> <span class="k">interface</span><span class="p">{</span>
+    <span class="n">FindByID</span><span class="p">(</span><span class="n">id</span> <span class="kt">int64</span><span class="p">)</span> <span class="p">(</span><span class="o">*</span><span class="n">User</span><span class="p">,</span><span class="kt">error</span><span class="p">)</span>
+    <span class="n">Find</span><span class="p">()([]</span><span class="o">*</span><span class="n">User</span><span class="p">,</span><span class="kt">error</span><span class="p">)</span>
+    <span class="n">Delete</span><span class="p">(</span><span class="n">u</span> <span class="o">*</span><span class="n">User</span><span class="p">)</span> <span class="kt">error</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p>When you update/delete a <code class="language-plaintext highlighter-rouge">User</code> so the Addresses of that user also updated/deleted. <code class="language-plaintext highlighter-rouge">User</code> is an Aggregate for Address<br />
+If user class is just User without any association, <code class="language-plaintext highlighter-rouge">UserRepository</code> will similar to <code class="language-plaintext highlighter-rouge">UserDAO</code></p>
 
 <p>The purpose of Aggregate is to define object ownership, boundaries<br />
 and the purpose Repository is to encapsulate the way we persistence data, also for transaction (unit with regard to data changes)</p>
 
 <p>The business logic will keep inside domain object<br />
 For example if we want to limit user to have maximum 2 addresses, you will do like this</p>
-<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">func</span><span class="x"> </span><span class="p">(</span><span class="n">u</span><span class="x"> </span><span class="o">*</span><span class="n">User</span><span class="p">)</span><span class="x"> </span><span class="n">AddAddress</span><span class="p">(</span><span class="n">a</span><span class="x"> </span><span class="o">*</span><span class="n">Address</span><span class="p">)</span><span class="kt">error</span><span class="p">{</span><span class="x">
-    </span><span class="k">if</span><span class="x"> </span><span class="nb">len</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">addresses</span><span class="p">)</span><span class="o">&gt;=</span><span class="m">2</span><span class="p">{</span><span class="x"> </span><span class="c">// business logic</span><span class="x">
-        </span><span class="k">return</span><span class="x"> </span><span class="n">fmt</span><span class="o">.</span><span class="n">Errorf</span><span class="p">(</span><span class="s">"limit 2 addresses per user"</span><span class="p">)</span><span class="x">
-    </span><span class="p">}</span><span class="x">   
-    </span><span class="n">u</span><span class="o">.</span><span class="n">addresses</span><span class="x"> </span><span class="o">=</span><span class="x"> </span><span class="nb">append</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">addresses</span><span class="p">,</span><span class="n">a</span><span class="p">)</span><span class="x">
-</span><span class="p">}</span><span class="x">
-</span><span class="c">// Notice that changes will only affect when you call `Save`, this is for transaction</span><span class="x">
-</span><span class="n">user</span><span class="o">.</span><span class="n">SetName</span><span class="p">(</span><span class="s">"hello"</span><span class="p">)</span><span class="x">
-</span><span class="n">user</span><span class="o">.</span><span class="n">AddAddress</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="x">
-</span><span class="n">userRepo</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">u</span><span class="p">)</span><span class="x"> 
-</span></code></pre></div></div>
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">func</span> <span class="p">(</span><span class="n">u</span> <span class="o">*</span><span class="n">User</span><span class="p">)</span> <span class="n">AddAddress</span><span class="p">(</span><span class="n">a</span> <span class="o">*</span><span class="n">Address</span><span class="p">)</span><span class="kt">error</span><span class="p">{</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">addresses</span><span class="p">)</span><span class="o">&gt;=</span><span class="m">2</span><span class="p">{</span> <span class="c">// business logic</span>
+        <span class="k">return</span> <span class="n">fmt</span><span class="o">.</span><span class="n">Errorf</span><span class="p">(</span><span class="s">"limit 2 addresses per user"</span><span class="p">)</span>
+    <span class="p">}</span>   
+    <span class="n">u</span><span class="o">.</span><span class="n">addresses</span> <span class="o">=</span> <span class="nb">append</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">addresses</span><span class="p">,</span><span class="n">a</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="c">// Notice that changes will only affect when you call `Save`, this is for transaction</span>
+<span class="n">user</span><span class="o">.</span><span class="n">SetName</span><span class="p">(</span><span class="s">"hello"</span><span class="p">)</span>
+<span class="n">user</span><span class="o">.</span><span class="n">AddAddress</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</code></pre></div></div>
 
     </section>
     <!-- <footer>
@@ -181,5 +184,18 @@ For example if we want to limit user to have maximum 2 addresses, you will do li
 
   gtag('config', 'UA-92160345-2');
 </script>
+
+<!-- Hotjar Tracking Code for http://felixvo.github.io/ -->
+<script>
+    (function(h,o,t,j,a,r){
+        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+        h._hjSettings={hjid:1613847,hjsv:6};
+        a=o.getElementsByTagName('head')[0];
+        r=o.createElement('script');r.async=1;
+        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+        a.appendChild(r);
+    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+</script>
+
 </body>
 </html>

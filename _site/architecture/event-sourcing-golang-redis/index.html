@@ -1,0 +1,398 @@
+<!doctype html>
+<html lang=" en-US ">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1"> <!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Event Sourcing with Go and Redis | Felix’s blog</title>
+<meta name="generator" content="Jekyll v3.8.5" />
+<meta property="og:title" content="Event Sourcing with Go and Redis" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="I thought you already heard about Event Sourcing in the past recent year. But let’s go through the definition again. Capture all changes to an application state as a sequence of events. Event Sourcing ensures that all changes to application state are stored as a sequence of events. - Martin Fowler" />
+<meta property="og:description" content="I thought you already heard about Event Sourcing in the past recent year. But let’s go through the definition again. Capture all changes to an application state as a sequence of events. Event Sourcing ensures that all changes to application state are stored as a sequence of events. - Martin Fowler" />
+<link rel="canonical" href="http://localhost:4000/architecture/event-sourcing-golang-redis/" />
+<meta property="og:url" content="http://localhost:4000/architecture/event-sourcing-golang-redis/" />
+<meta property="og:site_name" content="Felix’s blog" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-11-29T00:00:00+08:00" />
+<script type="application/ld+json">
+{"headline":"Event Sourcing with Go and Redis","dateModified":"2019-11-29T00:00:00+08:00","datePublished":"2019-11-29T00:00:00+08:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/architecture/event-sourcing-golang-redis/"},"description":"I thought you already heard about Event Sourcing in the past recent year. But let’s go through the definition again. Capture all changes to an application state as a sequence of events. Event Sourcing ensures that all changes to application state are stored as a sequence of events. - Martin Fowler","url":"http://localhost:4000/architecture/event-sourcing-golang-redis/","@type":"BlogPosting","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  <link rel="stylesheet" href="/assets/css/style.css?v=e77b4a80d7ad404c0d51c7abedac377f05457106">
+  <link href="https://fonts.googleapis.com/css?family=Fira+Mono|Open+Sans|Montserrat|Roboto&display=swap" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script src="/assets/js/main.js"></script>
+  <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+</head>
+
+<body>
+  <header>
+    <a href="/">
+        <h2>
+       Felix's blog
+        </h2>
+    </a>
+    <p>
+        <a href="/cv" target="_blank">
+            <img alt="felixvo cv" src="/assets/images/icons/cv.png" width="28px" height="28px">
+        </a>
+        <a href="https://github.com/felixvo" target="_blank">
+            <img alt="felixvo Github" src="/assets/images/icons/github-square-brands.svg" width="30px" height="30px">
+        </a>
+        <a href="https://dev.to/felixvo" target="_blank">
+            <img alt="felixvo dev profile" src="/assets/images/icons/dev-brands.svg" width="30px" height="30px">
+        </a>
+        <a href="https://www.linkedin.com/in/felix-vo/" target="_blank">
+            <img alt="felixvo linkedin" src="/assets/images/icons/linkedin-brands.svg" width="30px" height="30px">
+        </a> 
+        <!-- <span> Tech blog</span> -->
+    </p>
+</header>
+<hr>
+
+  <nav class="table-of-content">
+    Table Of Contents
+    <ul>
+    </ul>
+  </nav>
+  <div class="wrapper">
+    <section class="content">
+      <h1 class="title">Event Sourcing with Go and Redis</h1>
+      
+      <p>I thought you already heard about Event Sourcing in the past recent year.
+But let’s go through the definition again.</p>
+<blockquote>
+  <p>Capture all changes to an application state as a sequence of events.
+Event Sourcing ensures that all changes to application state are stored as a sequence of events. - <a href="https://martinfowler.com/eaaDev/EventSourcing.html">Martin Fowler</a>
+<!--more--></p>
+</blockquote>
+
+<p>If you know bitcoin/blockchain you will know it’s quite similar with Event Sourcing.</p>
+
+<blockquote>
+  <p>Your current balance (Application State) is calculated from a series of events in history (in the chain)
+<img src="https://thepracticaldev.s3.amazonaws.com/i/ztik9xqelulsh4lx3kl9.png" alt="Alt Text"></p>
+</blockquote>
+
+<p>so you don’t have a table like this in database</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>user_id</th>
+      <th>balance</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>10</td>
+      <td>100$</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>200$</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>now you have</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>events</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>user x top-up event</td>
+    </tr>
+    <tr>
+      <td>user buy 5 items event</td>
+    </tr>
+    <tr>
+      <td>user y top-up event</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>I’ve read many articles/blog posts about Event Sourcing so I try to make once.</p>
+
+<h2 id="what-we-will-build">What we will build?</h2>
+<p>Let’s say you have an e-commerce website and users can buy items from your website.<br>
+Source: https://github.com/felixvo/lmax<br>
+NOTE: This code is not tested, just an experiment</p>
+
+<p>Entities:</p>
+<ul>
+  <li>
+<code class="language-plaintext highlighter-rouge">User</code> will have <code class="language-plaintext highlighter-rouge">balance</code>.</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">Item</code> will have <code class="language-plaintext highlighter-rouge">price</code> and number of <code class="language-plaintext highlighter-rouge">remain</code> items in the <code class="language-plaintext highlighter-rouge">warehouse</code>.</li>
+</ul>
+
+<p>Events:</p>
+<ul>
+  <li>
+<code class="language-plaintext highlighter-rouge">Topup</code>: increase user balance</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">AddItem</code>: add more item to <code class="language-plaintext highlighter-rouge">warehouse</code>
+</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">Order</code>: buy items</li>
+</ul>
+
+<h2 id="directory-structure">Directory Structure</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>├── cmd
+│   ├── consumer       # process events
+│   │   ├── handler    # handle new event base on event Type
+│   │   └── state
+│   └── producer       # publish events
+└── pkg
+    ├── event          # event definition
+    ├── snapshot       # snapshot state of the app
+    ├── user           # user domain
+    └── warehouse      # item domain
+</code></pre></div></div>
+
+<h2 id="architecture">Architecture</h2>
+<p><img src="https://thepracticaldev.s3.amazonaws.com/i/ui1bv7ili5wag324ucil.png" alt="Alt Text"></p>
+
+<ul>
+  <li>Event storage: <a href="https://redis.io/topics/streams-intro">Redis Stream</a>
+    <blockquote>
+      <p>Entry IDs
+The entry ID returned by the XADD command, and identifying univocally &gt;each entry inside a given stream, is composed of two parts:<br>
+<code class="language-plaintext highlighter-rouge">&lt;millisecondsTime&gt;-&lt;sequenceNumber&gt;</code>
+I use this <code class="language-plaintext highlighter-rouge">Entry ID</code> to keep track of processed event</p>
+    </blockquote>
+  </li>
+  <li>The consumer will consume events and build the application state</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">snapshot</code> package will take the application state and save to redis every 30s. Application state will restore from this if our app crash</li>
+</ul>
+
+<h2 id="the-producer">The Producer</h2>
+<p>Use <code class="language-plaintext highlighter-rouge">XAdd</code> cmd to add data to a stream</p>
+
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">func</span> <span class="n">Topup</span><span class="p">(</span><span class="n">client</span> <span class="o">*</span><span class="n">redis</span><span class="o">.</span><span class="n">Client</span><span class="p">)</span> <span class="p">{</span>
+	<span class="k">for</span> <span class="n">i</span> <span class="o">:=</span> <span class="m">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="m">10</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span> <span class="p">{</span>
+		<span class="n">userID</span> <span class="o">:=</span> <span class="kt">int64</span><span class="p">(</span><span class="n">rand</span><span class="o">.</span><span class="n">Intn</span><span class="p">(</span><span class="n">MaxUserIDRange</span><span class="p">))</span>
+		<span class="n">strCMD</span> <span class="o">:=</span> <span class="n">client</span><span class="o">.</span><span class="n">XAdd</span><span class="p">(</span><span class="o">&amp;</span><span class="n">redis</span><span class="o">.</span><span class="n">XAddArgs</span><span class="p">{</span>
+			<span class="n">Stream</span><span class="o">:</span> <span class="s">"orders"</span><span class="p">,</span>
+			<span class="n">Values</span><span class="o">:</span> <span class="k">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="k">interface</span><span class="p">{}{</span>
+				<span class="s">"type"</span><span class="o">:</span> <span class="kt">string</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">TopUpType</span><span class="p">),</span>
+				<span class="s">"data"</span><span class="o">:</span> <span class="o">&amp;</span><span class="n">event</span><span class="o">.</span><span class="n">TopUp</span><span class="p">{</span>
+					<span class="n">Base</span><span class="o">:</span> <span class="o">&amp;</span><span class="n">event</span><span class="o">.</span><span class="n">Base</span><span class="p">{</span>
+						<span class="n">Type</span><span class="o">:</span> <span class="n">event</span><span class="o">.</span><span class="n">TopUpType</span><span class="p">,</span>
+					<span class="p">},</span>
+					<span class="n">UserID</span><span class="o">:</span> <span class="n">userID</span><span class="p">,</span>
+					<span class="n">Amount</span><span class="o">:</span> <span class="m">500</span><span class="p">,</span>
+				<span class="p">},</span>
+			<span class="p">},</span>
+		<span class="p">})</span>
+		<span class="n">newID</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">strCMD</span><span class="o">.</span><span class="n">Result</span><span class="p">()</span>
+		<span class="k">if</span> <span class="n">err</span> <span class="o">!=</span> <span class="no">nil</span> <span class="p">{</span>
+			<span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s">"topup error:%v</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">err</span><span class="p">)</span>
+		<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+			<span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s">"topup success for user:%v offset:%v</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">userID</span><span class="p">,</span> <span class="n">newID</span><span class="p">)</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+
+</code></pre></div></div>
+
+<h2 id="the-state">The State</h2>
+<p>The <code class="language-plaintext highlighter-rouge">state</code> object is pretty simple, just a plain struct</p>
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">type</span> <span class="n">State</span> <span class="k">struct</span> <span class="p">{</span>
+	<span class="n">LatestEventID</span> <span class="kt">string</span>
+	<span class="n">Users</span>         <span class="k">map</span><span class="p">[</span><span class="kt">int64</span><span class="p">]</span><span class="o">*</span><span class="n">user</span><span class="o">.</span><span class="n">User</span>
+	<span class="n">Items</span>         <span class="k">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="o">*</span><span class="n">warehouse</span><span class="o">.</span><span class="n">Item</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="the-consumer">The Consumer</h2>
+<p>Then the Consumer gets the events =&gt; pass the event proper <code class="language-plaintext highlighter-rouge">handler</code></p>
+
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">func</span> <span class="n">consumeEvents</span><span class="p">(</span><span class="n">events</span> <span class="k">chan</span> <span class="n">event</span><span class="o">.</span><span class="n">Event</span><span class="p">,</span> <span class="n">handlerFactory</span> <span class="k">func</span><span class="p">(</span><span class="n">t</span> <span class="n">event</span><span class="o">.</span><span class="n">Type</span><span class="p">)</span> <span class="n">handler</span><span class="o">.</span><span class="n">Handler</span><span class="p">)</span> <span class="p">{</span>
+	<span class="k">for</span> <span class="p">{</span>
+		<span class="k">select</span> <span class="p">{</span>
+		<span class="k">case</span> <span class="n">e</span> <span class="o">:=</span> <span class="o">&lt;-</span><span class="n">events</span><span class="o">:</span>
+			<span class="n">h</span> <span class="o">:=</span> <span class="n">handlerFactory</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">GetType</span><span class="p">())</span>
+			<span class="n">err</span> <span class="o">:=</span> <span class="n">h</span><span class="o">.</span><span class="n">Handle</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+			<span class="k">if</span> <span class="n">err</span> <span class="o">!=</span> <span class="no">nil</span> <span class="p">{</span>
+				<span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s">"handle event error eventType:%v err:%v</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">GetType</span><span class="p">(),</span> <span class="n">err</span><span class="p">)</span>
+			<span class="p">}</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+
+</code></pre></div></div>
+<p>Depend on <code class="language-plaintext highlighter-rouge">event.Type</code>, we have different handlers for each event type.
+And the <code class="language-plaintext highlighter-rouge">handler</code> will handle the business logic then update the <code class="language-plaintext highlighter-rouge">state</code></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>handler/
+ factory.go
+ handler.go
+ item_add.go
+ log.go
+ order.go
+ topup.go
+
+</code></pre></div></div>
+<p><code class="language-plaintext highlighter-rouge">handler/topup.go</code></p>
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">func</span> <span class="p">(</span><span class="n">h</span> <span class="o">*</span><span class="n">topupHandler</span><span class="p">)</span> <span class="n">Handle</span><span class="p">(</span><span class="n">e</span> <span class="n">event</span><span class="o">.</span><span class="n">Event</span><span class="p">)</span> <span class="kt">error</span> <span class="p">{</span>
+	<span class="n">topup</span><span class="p">,</span> <span class="n">ok</span> <span class="o">:=</span> <span class="n">e</span><span class="o">.</span><span class="p">(</span><span class="o">*</span><span class="n">event</span><span class="o">.</span><span class="n">TopUp</span><span class="p">)</span>
+	<span class="k">defer</span> <span class="k">func</span><span class="p">()</span> <span class="p">{</span>
+		<span class="n">h</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">LatestEventID</span> <span class="o">=</span> <span class="n">topup</span><span class="o">.</span><span class="n">GetID</span><span class="p">()</span>
+	<span class="p">}()</span>
+	<span class="k">if</span> <span class="o">!</span><span class="n">ok</span> <span class="p">{</span>
+		<span class="k">return</span> <span class="n">fmt</span><span class="o">.</span><span class="n">Errorf</span><span class="p">(</span><span class="s">"incorrect event type"</span><span class="p">)</span>
+	<span class="p">}</span>
+
+	<span class="n">u</span><span class="p">,</span> <span class="n">exist</span> <span class="o">:=</span> <span class="n">h</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">Users</span><span class="p">[</span><span class="n">topup</span><span class="o">.</span><span class="n">UserID</span><span class="p">]</span>
+	<span class="k">if</span> <span class="o">!</span><span class="n">exist</span> <span class="p">{</span> <span class="c">// should have an event to create user before use</span>
+		<span class="n">u</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">user</span><span class="o">.</span><span class="n">User</span><span class="p">{</span>
+			<span class="n">UseID</span><span class="o">:</span>   <span class="n">topup</span><span class="o">.</span><span class="n">UserID</span><span class="p">,</span>
+			<span class="n">Balance</span><span class="o">:</span> <span class="m">0</span><span class="p">,</span>
+		<span class="p">}</span>
+		<span class="n">h</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">Users</span><span class="p">[</span><span class="n">topup</span><span class="o">.</span><span class="n">UserID</span><span class="p">]</span> <span class="o">=</span> <span class="n">u</span>
+	<span class="p">}</span>
+
+	<span class="n">u</span><span class="o">.</span><span class="n">Balance</span> <span class="o">+=</span> <span class="n">topup</span><span class="o">.</span><span class="n">Amount</span>
+
+	<span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s">"completed topup %+v </span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">topup</span><span class="p">)</span>
+	<span class="k">return</span> <span class="no">nil</span>
+<span class="p">}</span>
+
+</code></pre></div></div>
+<p><code class="language-plaintext highlighter-rouge">handler/item_add.go</code></p>
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">func</span> <span class="p">(</span><span class="n">h</span> <span class="o">*</span><span class="n">itemAddHandler</span><span class="p">)</span> <span class="n">Handle</span><span class="p">(</span><span class="n">e</span> <span class="n">event</span><span class="o">.</span><span class="n">Event</span><span class="p">)</span> <span class="kt">error</span> <span class="p">{</span>
+	<span class="n">addItem</span><span class="p">,</span> <span class="n">ok</span> <span class="o">:=</span> <span class="n">e</span><span class="o">.</span><span class="p">(</span><span class="o">*</span><span class="n">event</span><span class="o">.</span><span class="n">AddItem</span><span class="p">)</span>
+	<span class="k">defer</span> <span class="k">func</span><span class="p">()</span> <span class="p">{</span>
+		<span class="n">h</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">LatestEventID</span> <span class="o">=</span> <span class="n">addItem</span><span class="o">.</span><span class="n">GetID</span><span class="p">()</span>
+	<span class="p">}()</span>
+	<span class="k">if</span> <span class="o">!</span><span class="n">ok</span> <span class="p">{</span>
+		<span class="k">return</span> <span class="n">fmt</span><span class="o">.</span><span class="n">Errorf</span><span class="p">(</span><span class="s">"incorrect event type"</span><span class="p">)</span>
+	<span class="p">}</span>
+
+	<span class="n">i</span><span class="p">,</span> <span class="n">exist</span> <span class="o">:=</span> <span class="n">h</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">Items</span><span class="p">[</span><span class="n">addItem</span><span class="o">.</span><span class="n">ItemID</span><span class="p">]</span>
+	<span class="k">if</span> <span class="o">!</span><span class="n">exist</span> <span class="p">{</span>
+		<span class="n">i</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">warehouse</span><span class="o">.</span><span class="n">Item</span><span class="p">{</span>
+			<span class="n">ID</span><span class="o">:</span>     <span class="n">addItem</span><span class="o">.</span><span class="n">ItemID</span><span class="p">,</span>
+			<span class="n">Price</span><span class="o">:</span>  <span class="kt">uint</span><span class="p">(</span><span class="n">rand</span><span class="o">.</span><span class="n">Intn</span><span class="p">(</span><span class="m">100</span><span class="p">)),</span>
+			<span class="n">Remain</span><span class="o">:</span> <span class="kt">uint</span><span class="p">(</span><span class="n">rand</span><span class="o">.</span><span class="n">Intn</span><span class="p">(</span><span class="m">200</span><span class="p">)),</span>
+		<span class="p">}</span>
+		<span class="n">h</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">Items</span><span class="p">[</span><span class="n">addItem</span><span class="o">.</span><span class="n">ItemID</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span>
+	<span class="p">}</span>
+	<span class="n">i</span><span class="o">.</span><span class="n">Remain</span> <span class="o">+=</span> <span class="n">addItem</span><span class="o">.</span><span class="n">Count</span>
+
+	<span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s">"completed add item %+v </span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">addItem</span><span class="p">)</span>
+	<span class="k">return</span> <span class="no">nil</span>
+<span class="p">}</span>
+
+</code></pre></div></div>
+
+<h2 id="snapshot">Snapshot</h2>
+<p>the <code class="language-plaintext highlighter-rouge">snapshot</code> will take the <code class="language-plaintext highlighter-rouge">state</code> and save to redis</p>
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">func</span> <span class="n">exeSnapshot</span><span class="p">(</span><span class="n">st</span> <span class="o">*</span><span class="n">state</span><span class="o">.</span><span class="n">State</span><span class="p">,</span> <span class="n">snapshotSrv</span> <span class="n">snapshot</span><span class="o">.</span><span class="n">Snapshot</span><span class="p">)</span> <span class="p">{</span>
+	<span class="n">ticker</span> <span class="o">:=</span> <span class="n">time</span><span class="o">.</span><span class="n">Tick</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">Second</span> <span class="o">*</span> <span class="m">30</span><span class="p">)</span>
+	<span class="k">for</span> <span class="p">{</span>
+		<span class="k">select</span> <span class="p">{</span>
+		<span class="k">case</span> <span class="o">&lt;-</span><span class="n">ticker</span><span class="o">:</span>
+			<span class="n">err</span> <span class="o">:=</span> <span class="n">snapshotSrv</span><span class="o">.</span><span class="n">Snapshot</span><span class="p">(</span><span class="n">st</span><span class="p">)</span>
+			<span class="k">if</span> <span class="n">err</span> <span class="o">!=</span> <span class="no">nil</span> <span class="p">{</span>
+				<span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="s">"snapshot failed:"</span><span class="p">,</span> <span class="n">err</span><span class="p">)</span>
+				<span class="k">break</span>
+			<span class="p">}</span>
+			<span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="s">"snapshot success:"</span><span class="p">,</span> <span class="n">st</span><span class="o">.</span><span class="n">LatestEventID</span><span class="p">,</span> <span class="s">" at "</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">Now</span><span class="p">())</span>
+		<span class="p">}</span>
+
+	<span class="p">}</span>
+<span class="p">}</span>
+
+</code></pre></div></div>
+
+<h2 id="run">Run</h2>
+<p><strong>Require redis running locally</strong></p>
+
+<h3 id="producer">Producer</h3>
+
+<p>First, start the producer to insert some events to <code class="language-plaintext highlighter-rouge">redis stream</code>
+<img src="https://thepracticaldev.s3.amazonaws.com/i/v0scin2iq1cdcnu9nkaw.png" alt="Alt Text"></p>
+
+<h3 id="consumer">Consumer</h3>
+
+<p>Now start the consumer to consume events</p>
+
+<p><img src="https://thepracticaldev.s3.amazonaws.com/i/eueho865f5couulhbnal.png" alt="Alt Text">
+Because the consumer consumes the events but not backup the state yet.
+If you wait for more than 30s, you will see this message from console</p>
+
+<p><img src="https://thepracticaldev.s3.amazonaws.com/i/0qkcmgzgwlhctk51q3bj.png" alt="Alt Text"></p>
+
+<p>Now if you stop the app and start it again, the application state will restore from the latest snapshot, not reprocess the event again</p>
+
+<p><img src="https://thepracticaldev.s3.amazonaws.com/i/vxxwbn2hfho3qj1hgi3b.png" alt="Alt Text"></p>
+
+<p>Thank you for reading!
+I hope the source code is clean enough for you to understand <img class="emoji" title=":scream:" alt=":scream:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f631.png" height="20" width="20"></p>
+
+<h2 id="thoughts">Thoughts</h2>
+<p>Did you curious why I name my repository <code class="language-plaintext highlighter-rouge">lmax</code>?
+By the time I write this post, I’m researching about this <a href="https://martinfowler.com/articles/lmax.html">LMAX architecture</a> <a href="https://github.com/LMAX-Exchange/disruptor/wiki">Github</a>.
+It’s quite interesting. Currently, I fetch new events and push to a <code class="language-plaintext highlighter-rouge">channel</code>,  we can use <code class="language-plaintext highlighter-rouge">LMAX Disruptor</code> to optimize the latency but there is no stable implement of <code class="language-plaintext highlighter-rouge">LMAX Disruptor</code> in <code class="language-plaintext highlighter-rouge">go</code>.</p>
+
+
+    </section>
+    <!-- <footer>
+  <div>
+    Project maintained by
+    <a href="https://github.com/felixvo" target="_blank"
+      >felixvo</a
+    >
+    , here is my <a href="/cv">CV</a>
+  </div>
+  <div>
+    <a href="/practise-speaking">Practise Speaking</a>
+  </div>
+  <small
+    >Hosted on GitHub Pages &mdash; Theme by
+    <a href="https://twitter.com/michigangraham">mattgraham</a>
+  </small>
+</footer>
+ -->
+    <div class="comment-box">
+  <script src="https://utteranc.es/client.js" repo="felixvo/felixvo.github.io" issue-term="pathname" label="comment" theme="github-light" crossorigin="anonymous" async>
+ </script>
+</div>
+
+  </div>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-92160345-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-92160345-2');
+</script>
+
+<!-- Hotjar Tracking Code for http://felixvo.github.io/ -->
+<script>
+    (function(h,o,t,j,a,r){
+        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+        h._hjSettings={hjid:1613847,hjsv:6};
+        a=o.getElementsByTagName('head')[0];
+        r=o.createElement('script');r.async=1;
+        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+        a.appendChild(r);
+    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+</script>
+
+</body>
+</html>

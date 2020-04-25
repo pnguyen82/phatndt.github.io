@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="chrome=1"> <!-- Begin Jekyll SEO tag v2.5.0 -->
+  <meta http-equiv="X-UA-Compatible" content="chrome=1"> <!-- Begin Jekyll SEO tag v2.6.1 -->
 <title>[SOLID] Single Responsibility Principle | Felix’s blog</title>
 <meta name="generator" content="Jekyll v3.8.5" />
 <meta property="og:title" content="[SOLID] Single Responsibility Principle" />
@@ -16,10 +16,10 @@
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2019-07-07T00:00:00+08:00" />
 <script type="application/ld+json">
-{"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/fundamental/solid/solid-single-responsibility/"},"url":"http://localhost:4000/fundamental/solid/solid-single-responsibility/","headline":"[SOLID] Single Responsibility Principle","dateModified":"2019-07-07T00:00:00+08:00","datePublished":"2019-07-07T00:00:00+08:00","description":"A class or module should have one, and only one, reason to be changed – Wikipedia","@type":"BlogPosting","@context":"http://schema.org"}</script>
+{"headline":"[SOLID] Single Responsibility Principle","dateModified":"2019-07-07T00:00:00+08:00","datePublished":"2019-07-07T00:00:00+08:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/fundamental/solid/solid-single-responsibility/"},"description":"A class or module should have one, and only one, reason to be changed – Wikipedia","url":"http://localhost:4000/fundamental/solid/solid-single-responsibility/","@type":"BlogPosting","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
-  <link rel="stylesheet" href="/assets/css/style.css?v=5b084457baa1776f732f37cfaf5f2add89e875e8">
+  <link rel="stylesheet" href="/assets/css/style.css?v=e77b4a80d7ad404c0d51c7abedac377f05457106">
   <link href="https://fonts.googleapis.com/css?family=Fira+Mono|Open+Sans|Montserrat|Roboto&display=swap" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
   <script src="/assets/js/main.js"></script>
@@ -83,62 +83,62 @@ Separate those things that change for different reasons.</p>
 And you don’t want to confuse those people, or yourself, by mixing together the code that many different people care about for different reasons.</p>
 </blockquote>
 
-<p>Don’t get obsess with this principle, just <code class="highlighter-rouge">keep classes small</code>, <code class="highlighter-rouge">keep methods small</code> and <code class="highlighter-rouge">refactor when your class become too big</code>.<br />
+<p>Don’t get obsess with this principle, just <code class="language-plaintext highlighter-rouge">keep classes small</code>, <code class="language-plaintext highlighter-rouge">keep methods small</code> and <code class="language-plaintext highlighter-rouge">refactor when your class become too big</code>.<br />
 Software change everyday, you don’t write code once, the code need to be refactor many times.</p>
 
-<p>In Object Oriented Programming, we also have a term <code class="highlighter-rouge">God Object</code>, which is an anti-pattern, the oposite of <code class="highlighter-rouge">Single Responsibility Principle</code></p>
+<p>In Object Oriented Programming, we also have a term <code class="language-plaintext highlighter-rouge">God Object</code>, which is an anti-pattern, the oposite of <code class="language-plaintext highlighter-rouge">Single Responsibility Principle</code></p>
 <h2 id="god-object">God Object</h2>
 <blockquote>
-  <p>A God object is an object that <code class="highlighter-rouge">knows too much or does too much.</code> – <a href="https://en.wikipedia.org/wiki/God_object">Wikipedia</a></p>
+  <p>A God object is an object that <code class="language-plaintext highlighter-rouge">knows too much or does too much.</code> – <a href="https://en.wikipedia.org/wiki/God_object">Wikipedia</a></p>
 </blockquote>
 
 <p>Imagine you have a class look like this:</p>
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">UserController</span><span class="o">{</span>
-  <span class="kd">private</span> <span class="n">DBConnection</span> <span class="n">conn</span><span class="o">;</span>
-  <span class="kd">private</span> <span class="n">MailTemplate</span> <span class="n">mailTemplate</span><span class="o">;</span>
-  <span class="kd">private</span> <span class="n">SendGridClient</span> <span class="n">mailClient</span><span class="o">;</span>
-  <span class="kd">public</span> <span class="nf">UserController</span><span class="o">(</span><span class="n">DBConnection</span> <span class="n">conn</span><span class="o">,</span><span class="n">MailTemplate</span> <span class="n">mailTemplate</span><span class="o">)</span>
+  <span class="kd">private</span> <span class="nc">DBConnection</span> <span class="n">conn</span><span class="o">;</span>
+  <span class="kd">private</span> <span class="nc">MailTemplate</span> <span class="n">mailTemplate</span><span class="o">;</span>
+  <span class="kd">private</span> <span class="nc">SendGridClient</span> <span class="n">mailClient</span><span class="o">;</span>
+  <span class="kd">public</span> <span class="nf">UserController</span><span class="o">(</span><span class="nc">DBConnection</span> <span class="n">conn</span><span class="o">,</span><span class="nc">MailTemplate</span> <span class="n">mailTemplate</span><span class="o">)</span>
     
-  <span class="kd">public</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span> <span class="nf">getUserList</span><span class="o">();</span>
-   <span class="kd">public</span> <span class="n">User</span> <span class="nf">getUserByEmail</span><span class="o">(</span><span class="n">String</span> <span class="n">email</span><span class="o">);</span>
+  <span class="kd">public</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">User</span><span class="o">&gt;</span> <span class="nf">getUserList</span><span class="o">();</span>
+   <span class="kd">public</span> <span class="nc">User</span> <span class="nf">getUserByEmail</span><span class="o">(</span><span class="nc">String</span> <span class="n">email</span><span class="o">);</span>
   
-  <span class="kd">public</span> <span class="nf">renderHtml</span><span class="o">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span> <span class="n">users</span><span class="o">);</span>
+  <span class="kd">public</span> <span class="nf">renderHtml</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">User</span><span class="o">&gt;</span> <span class="n">users</span><span class="o">);</span>
   
-  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">sendEmailTo</span><span class="o">(</span><span class="n">String</span> <span class="n">email</span><span class="o">,</span><span class="n">String</span> <span class="n">content</span><span class="o">);</span>
+  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">sendEmailTo</span><span class="o">(</span><span class="nc">String</span> <span class="n">email</span><span class="o">,</span><span class="nc">String</span> <span class="n">content</span><span class="o">);</span>
 <span class="o">}</span>
 </code></pre></div></div>
 
 <ul>
-  <li>Wherever you wan to use <code class="highlighter-rouge">getUserList</code> method, you need to an instance of <code class="highlighter-rouge">UserController</code>, which require a <code class="highlighter-rouge">MailTemplate</code>.<br />
-Why do you need to know about <code class="highlighter-rouge">MailTemplate</code> when you just want to query to database?</li>
-  <li>And wherever you just want to send an email you also need a <code class="highlighter-rouge">DBConnection</code>?</li>
+  <li>Wherever you wan to use <code class="language-plaintext highlighter-rouge">getUserList</code> method, you need to an instance of <code class="language-plaintext highlighter-rouge">UserController</code>, which require a <code class="language-plaintext highlighter-rouge">MailTemplate</code>.<br />
+Why do you need to know about <code class="language-plaintext highlighter-rouge">MailTemplate</code> when you just want to query to database?</li>
+  <li>And wherever you just want to send an email you also need a <code class="language-plaintext highlighter-rouge">DBConnection</code>?</li>
   <li>How can you unit test this class? Setup inmem databases,inmem MailTemplate and a mailsender client, seem a lot?</li>
   <li>….</li>
 </ul>
 
-<p>We usually guest the behavior of a class base on it’s name. If the class name is <code class="highlighter-rouge">UserController</code>,<br />
+<p>We usually guest the behavior of a class base on it’s name. If the class name is <code class="language-plaintext highlighter-rouge">UserController</code>,<br />
 you will think this class will handle a http request, not send email.</p>
 
 <h3 id="refactor-god-object">Refactor God Object</h3>
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Handle http request/response</span>
 <span class="kd">class</span> <span class="nc">UserController</span><span class="o">{</span>
-  <span class="kd">private</span> <span class="n">MailSender</span> <span class="n">mailSender</span><span class="o">;</span>
-  <span class="kd">private</span> <span class="n">UserService</span> <span class="n">userService</span><span class="o">;</span>
-  <span class="kd">public</span> <span class="nf">UserController</span><span class="o">(</span><span class="n">UserService</span> <span class="n">userService</span><span class="o">,</span> <span class="n">MailSender</span> <span class="n">mailSender</span><span class="o">)</span>
-  <span class="kd">public</span> <span class="nf">renderHtml</span><span class="o">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span> <span class="n">users</span><span class="o">);</span>
+  <span class="kd">private</span> <span class="nc">MailSender</span> <span class="n">mailSender</span><span class="o">;</span>
+  <span class="kd">private</span> <span class="nc">UserService</span> <span class="n">userService</span><span class="o">;</span>
+  <span class="kd">public</span> <span class="nf">UserController</span><span class="o">(</span><span class="nc">UserService</span> <span class="n">userService</span><span class="o">,</span> <span class="nc">MailSender</span> <span class="n">mailSender</span><span class="o">)</span>
+  <span class="kd">public</span> <span class="nf">renderHtml</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">User</span><span class="o">&gt;</span> <span class="n">users</span><span class="o">);</span>
 <span class="o">}</span>
 <span class="c1">// To send mail</span>
 <span class="kd">class</span> <span class="nc">MailSender</span><span class="o">{</span>
-  <span class="kd">private</span> <span class="n">MailTemplate</span> <span class="n">mailTemplate</span><span class="o">;</span>
-  <span class="kd">private</span> <span class="n">SendGridClient</span> <span class="n">mailClient</span><span class="o">;</span>
-  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">sendEmailTo</span><span class="o">(</span><span class="n">String</span> <span class="n">email</span><span class="o">,</span><span class="n">String</span> <span class="n">content</span><span class="o">);</span>
+  <span class="kd">private</span> <span class="nc">MailTemplate</span> <span class="n">mailTemplate</span><span class="o">;</span>
+  <span class="kd">private</span> <span class="nc">SendGridClient</span> <span class="n">mailClient</span><span class="o">;</span>
+  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">sendEmailTo</span><span class="o">(</span><span class="nc">String</span> <span class="n">email</span><span class="o">,</span><span class="nc">String</span> <span class="n">content</span><span class="o">);</span>
 <span class="o">}</span>
 <span class="c1">// Handle database connection/query</span>
 <span class="kd">class</span> <span class="nc">UserService</span><span class="o">{</span>
-  <span class="kd">private</span> <span class="n">DBConnection</span> <span class="n">conn</span><span class="o">;</span>
+  <span class="kd">private</span> <span class="nc">DBConnection</span> <span class="n">conn</span><span class="o">;</span>
    
-  <span class="kd">public</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span> <span class="nf">getUserList</span><span class="o">();</span>
-  <span class="kd">public</span> <span class="n">User</span> <span class="nf">getUserByEmail</span><span class="o">(</span><span class="n">String</span> <span class="n">email</span><span class="o">);</span>
+  <span class="kd">public</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">User</span><span class="o">&gt;</span> <span class="nf">getUserList</span><span class="o">();</span>
+  <span class="kd">public</span> <span class="nc">User</span> <span class="nf">getUserByEmail</span><span class="o">(</span><span class="nc">String</span> <span class="n">email</span><span class="o">);</span>
 <span class="o">}</span>
 </code></pre></div></div>
 <p>This will improve readability of you code and also make code more clean<br />
@@ -184,5 +184,18 @@ Now you can reuse your class easier</p>
 
   gtag('config', 'UA-92160345-2');
 </script>
+
+<!-- Hotjar Tracking Code for http://felixvo.github.io/ -->
+<script>
+    (function(h,o,t,j,a,r){
+        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+        h._hjSettings={hjid:1613847,hjsv:6};
+        a=o.getElementsByTagName('head')[0];
+        r=o.createElement('script');r.async=1;
+        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+        a.appendChild(r);
+    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+</script>
+
 </body>
 </html>
