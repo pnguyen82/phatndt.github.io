@@ -1,12 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-04-29T17:43:21+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Felix’s blog</title><subtitle>Tech blog</subtitle><entry><title type="html">Vim to Emacs, a simple configuration that won’t blow your mind</title><link href="http://localhost:4000/editor/vim/emacs/vim-to-emacs/" rel="alternate" type="text/html" title="Vim to Emacs, a simple configuration that won't blow your mind" /><published>2020-04-29T00:00:00+08:00</published><updated>2020-04-29T00:00:00+08:00</updated><id>http://localhost:4000/editor/vim/emacs/vim-to-emacs</id><content type="html" xml:base="http://localhost:4000/editor/vim/emacs/vim-to-emacs/">&lt;p&gt;Emacs - An extensible, customizable, free/libre text editor&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-04-29T18:01:27+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Felix’s blog</title><subtitle>Tech blog</subtitle><entry><title type="html">Vim to Emacs, a simple configuration that won’t blow your mind</title><link href="http://localhost:4000/editor/vim/emacs/vim-to-emacs/" rel="alternate" type="text/html" title="Vim to Emacs, a simple configuration that won't blow your mind" /><published>2020-04-29T00:00:00+08:00</published><updated>2020-04-29T00:00:00+08:00</updated><id>http://localhost:4000/editor/vim/emacs/vim-to-emacs</id><content type="html" xml:base="http://localhost:4000/editor/vim/emacs/vim-to-emacs/">&lt;p&gt;Emacs - An extensible, customizable, free/libre text editor&lt;/p&gt;
 
 &lt;!--more--&gt;
 &lt;p&gt;&lt;img src=&quot;/assets/images/vim2emacs/window-sample.png&quot; alt=&quot;Emacs overview&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;I’m a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;vim&lt;/code&gt; user but I’m learning Clojure now, so I decided to give &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;emacs&lt;/code&gt; a try.&lt;br /&gt;
-If you have no idea what Emacs is, I recommend you to check this guide before continue&lt;/p&gt;
+If you have no idea what Emacs is, I recommend you to check these guide before continue&lt;/p&gt;
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;http://www.jesshamrick.com/2012/09/10/absolute-beginners-guide-to-emacs/&quot;&gt;Absolute Beginner’s Guide to Emacs&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://blog.aaronbieber.com/2015/05/24/from-vim-to-emacs-in-fourteen-days.html&quot;&gt;From Vim to Emacs in Fourteen Days&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;Key Prefix meaning:&lt;/p&gt;

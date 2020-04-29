@@ -8,8 +8,9 @@ Emacs - An extensible, customizable, free/libre text editor
 ![Emacs overview](/assets/images/vim2emacs/window-sample.png)
 
 I'm a `vim` user but I'm learning Clojure now, so I decided to give `emacs` a try.  
-If you have no idea what Emacs is, I recommend you to check this guide before continue  
+If you have no idea what Emacs is, I recommend you to check these guide before continue  
 - [Absolute Beginner's Guide to Emacs](http://www.jesshamrick.com/2012/09/10/absolute-beginners-guide-to-emacs/)
+- [From Vim to Emacs in Fourteen Days](https://blog.aaronbieber.com/2015/05/24/from-vim-to-emacs-in-fourteen-days.html)
 
 Key Prefix meaning:
 - `C`: `Control`
