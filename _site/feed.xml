@@ -1,4 +1,122 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-04-29T17:38:46+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Felix’s blog</title><subtitle>Tech blog</subtitle><entry><title type="html">Builder Pattern example in Go</title><link href="http://localhost:4000/design/pattern/builder-pattern-go/" rel="alternate" type="text/html" title="Builder Pattern example in Go" /><published>2020-04-25T00:00:00+08:00</published><updated>2020-04-25T00:00:00+08:00</updated><id>http://localhost:4000/design/pattern/builder-pattern-go</id><content type="html" xml:base="http://localhost:4000/design/pattern/builder-pattern-go/">&lt;p&gt;The builder pattern is a design pattern designed to provide a flexible solution to various object creation problems in object-oriented programming.&lt;br /&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-04-29T17:43:21+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Felix’s blog</title><subtitle>Tech blog</subtitle><entry><title type="html">Vim to Emacs, a simple configuration that won’t blow your mind</title><link href="http://localhost:4000/editor/vim/emacs/vim-to-emacs/" rel="alternate" type="text/html" title="Vim to Emacs, a simple configuration that won't blow your mind" /><published>2020-04-29T00:00:00+08:00</published><updated>2020-04-29T00:00:00+08:00</updated><id>http://localhost:4000/editor/vim/emacs/vim-to-emacs</id><content type="html" xml:base="http://localhost:4000/editor/vim/emacs/vim-to-emacs/">&lt;p&gt;Emacs - An extensible, customizable, free/libre text editor&lt;/p&gt;
+
+&lt;!--more--&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/vim2emacs/window-sample.png&quot; alt=&quot;Emacs overview&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;I’m a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;vim&lt;/code&gt; user but I’m learning Clojure now, so I decided to give &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;emacs&lt;/code&gt; a try.&lt;br /&gt;
+If you have no idea what Emacs is, I recommend you to check this guide before continue&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.jesshamrick.com/2012/09/10/absolute-beginners-guide-to-emacs/&quot;&gt;Absolute Beginner’s Guide to Emacs&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Key Prefix meaning:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;C&lt;/code&gt;: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Control&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;M&lt;/code&gt;: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Alt&lt;/code&gt;/&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Option&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;s&lt;/code&gt;: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Command&lt;/code&gt;/&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Window&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;C-c&lt;/code&gt;: Hold &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Control&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;c&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;You don’t have to remember all the command, the list below is enough:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;M-x&lt;/code&gt;: execute extended command.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;C-x C-c&lt;/code&gt;: quit emacs&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;C-g&lt;/code&gt;: cancel, like &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Esc&lt;/code&gt; in vim&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;C-x C-f&lt;/code&gt;: open file&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;C-x b&lt;/code&gt;: switch buffers&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;install-emacs&quot;&gt;Install Emacs&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://emacsformacosx.com/&quot;&gt;GUI version&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;or &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;brew install emacs&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;the-configuration-file&quot;&gt;The configuration file&lt;/h2&gt;
+&lt;p&gt;Download the config file and save it in your home dir &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;~/.emacs&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;curl https://raw.githubusercontent.com/felixvo/dotfiles/master/emacs/init.el&amp;gt;~/.emacs
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Then open your &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;emacs&lt;/code&gt;. Hopefully, you will see the UI below&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/vim2emacs/overview.png&quot; alt=&quot;Emacs overview&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;projectile-discover-projects&quot;&gt;projectile-discover-projects&lt;/h3&gt;
+&lt;p&gt;basiclly this step will tell &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;emacs&lt;/code&gt; where is your projects&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;To add a project to Projectile’s list of known projects, open a file in the project. If you have a projects directory, you can tell Projectile about all of the projects in it with the command &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;M-x&lt;/code&gt;
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;projectile-discover-projects-in-directory&lt;/code&gt;&lt;br /&gt;
+&lt;a href=&quot;https://docs.projectile.mx/en/latest/usage/&quot;&gt;Projectile Docs&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/vim2emacs/project-discover.png&quot; alt=&quot;emacs project discover&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;usage&quot;&gt;Usage&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;window management the vim way
+    &lt;ul&gt;
+      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;:vs&lt;/code&gt; horizontal split&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;:sp&lt;/code&gt; vertical split&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;C-w C-w&lt;/code&gt; or &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;C-h/j/k/l&lt;/code&gt;: switch around window&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;:close&lt;/code&gt; or &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;C-x 0&lt;/code&gt;: close current window&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;C-x 1&lt;/code&gt;: close other windows
+&lt;img src=&quot;/assets/images/vim2emacs/windows.png&quot; alt=&quot;emacs window&quot; /&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;manage open buffers
+    &lt;ul&gt;
+      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;C-p&lt;/code&gt;: show list buffer and recent files (helm-mini window)&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;C-x C-b&lt;/code&gt;: list buffer&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;s-p&lt;/code&gt; (command+p): list buffer in project&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;:bd&lt;/code&gt;: close buffer&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;:bn&lt;/code&gt;/&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;:bp&lt;/code&gt;: next/previous buffer
+&lt;img src=&quot;/assets/images/vim2emacs/find buffers.png&quot; alt=&quot;emacs buffer&quot; /&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;switch project
+    &lt;ul&gt;
+      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;s-p p&lt;/code&gt; (command+p p): swith project
+&lt;img src=&quot;/assets/images/vim2emacs/switch-project.png&quot; alt=&quot;emacs switch project&quot; /&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;find files in project
+    &lt;ul&gt;
+      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;s-p f&lt;/code&gt; (command+p f): find files in current project&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;s-p F&lt;/code&gt; (command+p F): find files in all project
+&lt;img src=&quot;/assets/images/vim2emacs/find-file-in-project.png&quot; alt=&quot;emacs find files in project&quot; /&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;grep in project
+    &lt;ul&gt;
+      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;s-p s g&lt;/code&gt; (command+p s g): grep in current project
+&lt;img src=&quot;/assets/images/vim2emacs/grep-in-project.png&quot; alt=&quot;emacs grep in project&quot; /&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;file explorer
+    &lt;ul&gt;
+      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;C-x C-j&lt;/code&gt;: open file explorer in current buffer
+&lt;img src=&quot;/assets/images/vim2emacs/file-explorer.png&quot; alt=&quot;emacs file explorer&quot; /&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;helm mini
+    &lt;ul&gt;
+      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;C-p&lt;/code&gt;: show list buffer and recent files (helm-mini window)
+&lt;img src=&quot;/assets/images/vim2emacs/helm-mini.png&quot; alt=&quot;emacs helm mini&quot; /&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;strong&gt;you can click on &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;projectile&lt;/code&gt; in the status bar below for more commands&lt;/strong&gt;
+&lt;img src=&quot;/assets/images/vim2emacs/projectile-menu.png&quot; alt=&quot;emacs projectile menu&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+&lt;p&gt;highly recommend you to check out the links below for more details&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.jesshamrick.com/2012/09/10/absolute-beginners-guide-to-emacs/&quot;&gt;Absolute Beginner’s Guide to Emacs&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://blog.aaronbieber.com/2015/05/24/from-vim-to-emacs-in-fourteen-days.html&quot;&gt;From Vim to Emacs in Fourteen Days&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://tuhdo.github.io/helm-projectile.html#sec-1-1&quot;&gt;Exploring large projects with Projectile&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name></name></author><summary type="html">Emacs - An extensible, customizable, free/libre text editor</summary></entry><entry><title type="html">Builder Pattern example in Go</title><link href="http://localhost:4000/design/pattern/builder-pattern-go/" rel="alternate" type="text/html" title="Builder Pattern example in Go" /><published>2020-04-25T00:00:00+08:00</published><updated>2020-04-25T00:00:00+08:00</updated><id>http://localhost:4000/design/pattern/builder-pattern-go</id><content type="html" xml:base="http://localhost:4000/design/pattern/builder-pattern-go/">&lt;p&gt;The builder pattern is a design pattern designed to provide a flexible solution to various object creation problems in object-oriented programming.&lt;br /&gt;
 The intent of the Builder design pattern is to separate the construction of a complex object from its representation.
 &lt;!--more--&gt;&lt;/p&gt;
 &lt;h2 id=&quot;builder&quot;&gt;Builder&lt;/h2&gt;
@@ -921,127 +1039,4 @@ you will think this class will handle a http request, not send email.&lt;/p&gt;
 &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;This will improve readability of you code and also make code more clean&lt;br /&gt;
-Now you can reuse your class easier&lt;/p&gt;</content><author><name></name></author><summary type="html">A class or module should have one, and only one, reason to be changed – Wikipedia</summary></entry><entry><title type="html">Enough Cmds To Install Arch</title><link href="http://localhost:4000/enough-cmds-to-install-arch/" rel="alternate" type="text/html" title="Enough Cmds To Install Arch" /><published>2019-07-02T00:00:00+08:00</published><updated>2019-07-02T00:00:00+08:00</updated><id>http://localhost:4000/enough-cmds-to-install-arch</id><content type="html" xml:base="http://localhost:4000/enough-cmds-to-install-arch/">&lt;p&gt;A guide for installing Arch Linux&lt;/p&gt;
-
-&lt;!--more--&gt;
-&lt;p&gt;&lt;a href=&quot;https://wiki.archlinux.org/index.php/Installation_guide&quot;&gt;Complete Guide&lt;/a&gt;&lt;br /&gt;
-Becasue there’s no UI when installing Arch and so many command to remember, so I recommended to list all document you need
-then just &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;curl&lt;/code&gt; to get the document.&lt;/p&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;curl [url]
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;important-commands&quot;&gt;Important Commands&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;wifi-menu&lt;/code&gt;: connect to wifi&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pacman -S wifi-menu&lt;/code&gt;: install wifi-menu if need&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;steps--commands&quot;&gt;Steps &amp;amp; Commands&lt;/h2&gt;
-&lt;ol&gt;
-  &lt;li&gt;Prepare Arch bootable USB
-    &lt;ul&gt;
-      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dd bs=4M if=path/to/archlinux.iso of=/dev/sdx status=progress oflag=sync&lt;/code&gt;: create bootable usb&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Partition the disks
-    &lt;ul&gt;
-      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;lsblk&lt;/code&gt;: lsblk lists information about all or the specified block devices. The lsblk command reads the sysfs filesystem to gather information.&lt;/li&gt;
-      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cgdisk&lt;/code&gt;: text-mode partitioning tools&lt;br /&gt;
-Sample layout:&lt;/li&gt;
-    &lt;/ul&gt;
-    &lt;ul&gt;
-      &lt;li&gt;
-        &lt;p&gt;BIOS with MBR:&lt;/p&gt;
-
-        &lt;table&gt;
-          &lt;thead&gt;
-            &lt;tr&gt;
-              &lt;th&gt;Mount point&lt;/th&gt;
-              &lt;th&gt;Partition&lt;/th&gt;
-              &lt;th&gt;Partition type&lt;/th&gt;
-              &lt;th&gt;Suggested size&lt;/th&gt;
-            &lt;/tr&gt;
-          &lt;/thead&gt;
-          &lt;tbody&gt;
-            &lt;tr&gt;
-              &lt;td&gt;/mnt&lt;/td&gt;
-              &lt;td&gt;/dev/sdX1&lt;/td&gt;
-              &lt;td&gt;Linux&lt;/td&gt;
-              &lt;td&gt;Remainder of the device&lt;/td&gt;
-            &lt;/tr&gt;
-            &lt;tr&gt;
-              &lt;td&gt;[SWAP]&lt;/td&gt;
-              &lt;td&gt;/dev/sdX2&lt;/td&gt;
-              &lt;td&gt;Linux&lt;/td&gt;
-              &lt;td&gt;swap	More than 512 MiB&lt;/td&gt;
-            &lt;/tr&gt;
-          &lt;/tbody&gt;
-        &lt;/table&gt;
-      &lt;/li&gt;
-      &lt;li&gt;
-        &lt;p&gt;UEFI with GPT:&lt;/p&gt;
-
-        &lt;table&gt;
-          &lt;thead&gt;
-            &lt;tr&gt;
-              &lt;th&gt;Mount point&lt;/th&gt;
-              &lt;th&gt;Partition&lt;/th&gt;
-              &lt;th&gt;Partition type&lt;/th&gt;
-              &lt;th&gt;Suggested size&lt;/th&gt;
-            &lt;/tr&gt;
-          &lt;/thead&gt;
-          &lt;tbody&gt;
-            &lt;tr&gt;
-              &lt;td&gt;/mnt/boot or /mnt/efi&lt;/td&gt;
-              &lt;td&gt;/dev/sdX1&lt;/td&gt;
-              &lt;td&gt;EFI system partition&lt;/td&gt;
-              &lt;td&gt;256–512 MiB&lt;/td&gt;
-            &lt;/tr&gt;
-            &lt;tr&gt;
-              &lt;td&gt;/mnt&lt;/td&gt;
-              &lt;td&gt;/dev/sdX2	Linux x86-64 root (/)&lt;/td&gt;
-              &lt;td&gt;Remainder of the device&lt;/td&gt;
-              &lt;td&gt; &lt;/td&gt;
-            &lt;/tr&gt;
-            &lt;tr&gt;
-              &lt;td&gt;[SWAP]&lt;/td&gt;
-              &lt;td&gt;/dev/sdX3&lt;/td&gt;
-              &lt;td&gt;Linux swap	More than 512 MiB&lt;/td&gt;
-              &lt;td&gt; &lt;/td&gt;
-            &lt;/tr&gt;
-          &lt;/tbody&gt;
-        &lt;/table&gt;
-      &lt;/li&gt;
-      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mkfs.vfat -F32 /dev/sdXX&lt;/code&gt;: format FAT32 for EFI partition&lt;/li&gt;
-      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mkfs.ext4 /dev/sdXX&lt;/code&gt;: format ext4 for basic linux partition&lt;/li&gt;
-      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mkswap /dev/sdXX&lt;/code&gt;: make swap partition&lt;/li&gt;
-      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;swapon /dev/sdXX&lt;/code&gt;: enable swap on a partition&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Install the base packages
-    &lt;ul&gt;
-      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mount /dev/sdaX /mnt&lt;/code&gt;: mount cmd&lt;/li&gt;
-      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mount /dev/sdaY /mnt/boot&lt;/code&gt;: if your boot is UEFI, replace Y with you boot partition number&lt;/li&gt;
-      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/etc/pacman.d/mirrorlist&lt;/code&gt;: Uncomment mirrors you would like to use.&lt;/li&gt;
-      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pacstrap /mnt base base-devel&lt;/code&gt;: command to install arch into /mnt&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Configure the system
-    &lt;ul&gt;
-      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;genfstab -U /mnt &amp;gt;&amp;gt;/mnt/etc/fstab&lt;/code&gt;: https`://wiki.archlinux.org/index.php/Fstab&lt;/li&gt;
-      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;arch-chroot /mnt&lt;/code&gt;: changes the apparent root directory for the current running process and their children&lt;/li&gt;
-      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;useradd {username}&lt;/code&gt;: add new user&lt;/li&gt;
-      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;passwd {username}&lt;/code&gt;: set password for&lt;/li&gt;
-      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pacman -S grub&lt;/code&gt;: install grub&lt;/li&gt;
-      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pacman -S os-prober&lt;/code&gt;: if you have many os you need to install this
-EFI
-        &lt;ul&gt;
-          &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB&lt;/code&gt;: install grub bootloader, more info: https://wiki.archlinux.org/index.php/GRUB#Installation_2
-BIOS with MBR&lt;/li&gt;
-          &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;grub-install --target=i386-pc /dev/sdX&lt;/code&gt;: sdX is the disk, not the partion, ex: /dev/sda&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;grub-mkconfig -o /boot/grub/grub.cfg&lt;/code&gt;: create grub boot config&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;</content><author><name></name></author><summary type="html">A guide for installing Arch Linux</summary></entry></feed>
+Now you can reuse your class easier&lt;/p&gt;</content><author><name></name></author><summary type="html">A class or module should have one, and only one, reason to be changed – Wikipedia</summary></entry></feed>
