@@ -32,7 +32,7 @@ You don't have to remember all the command, the list below is enough:
 ## The configuration file
 Download the config file and save it in your home dir `~/.emacs`
 ```bash
-curl https://raw.githubusercontent.com/felixvo/dotfiles/master/emacs/init.el>~/.emacs
+curl https://raw.githubusercontent.com/felixvo/vimtoemacs/master/init.el>~/.emacs
 ```
 Then open your `emacs`. Hopefully, you will see the UI below
 
