@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang=" en-US ">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1"> <!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Clojure sample | Felix’s blog</title>
+<meta name="generator" content="Jekyll v3.8.5" />
+<meta property="og:title" content="Clojure sample" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Tech blog" />
+<meta property="og:description" content="Tech blog" />
+<link rel="canonical" href="http://localhost:4000/clojure/clojure-sample/" />
+<meta property="og:url" content="http://localhost:4000/clojure/clojure-sample/" />
+<meta property="og:site_name" content="Felix’s blog" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-04-30T00:00:00+08:00" />
+<script type="application/ld+json">
+{"headline":"Clojure sample","dateModified":"2020-04-30T00:00:00+08:00","datePublished":"2020-04-30T00:00:00+08:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/clojure/clojure-sample/"},"description":"Tech blog","url":"http://localhost:4000/clojure/clojure-sample/","@type":"BlogPosting","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  <link rel="stylesheet" href="/assets/css/style.css?v=a0c63f3c15856fc07767b2b28daca7a8051c753d">
+  <link href="https://fonts.googleapis.com/css?family=Fira+Mono|Open+Sans|Montserrat|Roboto&display=swap" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script src="/assets/js/main.js"></script>
+  <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+</head>
+
+<body>
+  <header>
+    <a href="/">
+        <h2>
+       Felix's blog
+        </h2>
+    </a>
+    <p>
+        <a href="/cv" target="_blank">
+            <img alt="felixvo cv" src="/assets/images/icons/cv.png" width="28px" height="28px"></img>
+        </a>
+        <a href="https://github.com/felixvo" target="_blank">
+            <img alt="felixvo Github" src="/assets/images/icons/github-square-brands.svg" width="30px" height="30px"></img>
+        </a>
+        <a href="https://dev.to/felixvo" target="_blank">
+            <img alt="felixvo dev profile" src="/assets/images/icons/dev-brands.svg" width="30px" height="30px"></img>
+        </a>
+        <a href="https://www.linkedin.com/in/felix-vo/" target="_blank">
+            <img alt="felixvo linkedin" src="/assets/images/icons/linkedin-brands.svg" width="30px" height="30px"></img>
+        </a> 
+        <!-- <span> Tech blog</span> -->
+    </p>
+</header>
+<hr>
+
+  <nav class="table-of-content">
+    Table Of Contents
+    <ul>
+    </ul>
+  </nav>
+  <div class="wrapper">
+    <section class="content">
+      <h1 class="title">Clojure sample</h1>
+      </br>
+      <!--more-->
+<h2 id="basic-types">Basic types</h2>
+
+<div class="language-clojure highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mf">12.43</span><span class="w">
+
+</span><span class="c1">;; -&gt; 12.43</span><span class="w">
+</span><span class="mi">1</span><span class="n">/3</span><span class="w">
+
+</span><span class="c1">;; -&gt; 1/3</span><span class="w">
+</span><span class="mi">4</span><span class="n">/2</span><span class="w">
+
+</span><span class="c1">;; -&gt; 2</span><span class="w">
+</span><span class="mf">4.0</span><span class="n">/2</span><span class="w">
+
+</span><span class="c1">;; -&gt; NumberFormatException Invalid number: 4.0/2</span><span class="w">
+</span><span class="p">(</span><span class="nb">/</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="w">
+
+</span><span class="c1">;; -&gt; 1/3</span><span class="w">
+</span><span class="p">(</span><span class="nb">/</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mf">3.0</span><span class="p">)</span><span class="w">
+
+</span><span class="c1">;; -&gt; 0.3333333333333333</span><span class="w">
+
+
+</span><span class="s">"jam"</span><span class="w">
+
+</span><span class="c1">;; -&gt; "jam"</span><span class="w">
+
+</span><span class="no">:jam</span><span class="w">
+
+</span><span class="c1">;; -&gt; :jam</span><span class="w">
+
+</span><span class="sc">\j</span><span class="w">
+
+</span><span class="c1">;; -&gt; \j</span><span class="w">
+
+</span><span class="n">true</span><span class="w">
+
+</span><span class="c1">;; -&gt; true</span><span class="w">
+</span><span class="n">false</span><span class="w">
+
+</span><span class="c1">;; -&gt; false</span><span class="w">
+
+</span><span class="n">nil</span><span class="w">
+
+</span><span class="c1">;; -&gt; nil</span><span class="w">
+</span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w">
+
+</span><span class="c1">;; -&gt; 2</span><span class="w">
+
+
+</span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="mi">1</span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="mi">3</span><span class="p">))</span><span class="w">
+
+</span><span class="c1">;; -&gt; 12</span><span class="w">
+
+</span><span class="o">'</span><span class="p">(</span><span class="nf">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="s">"jam"</span><span class="w"> </span><span class="no">:marmalade-jar</span><span class="p">)</span><span class="w">
+
+</span><span class="c1">;; -&gt; (1 2 "jam" :marmalade-jar)</span><span class="w">
+
+</span><span class="p">(</span><span class="nb">first</span><span class="w"> </span><span class="o">'</span><span class="p">(</span><span class="no">:rabbit</span><span class="w"> </span><span class="no">:pocket-watch</span><span class="w"> </span><span class="no">:marmalade</span><span class="w"> </span><span class="no">:door</span><span class="p">))</span><span class="w"> 
+</span><span class="c1">;; -&gt; :rabbit</span><span class="w">
+</span><span class="p">(</span><span class="nb">rest</span><span class="w"> </span><span class="o">'</span><span class="p">(</span><span class="no">:rabbit</span><span class="w"> </span><span class="no">:pocket-watch</span><span class="w"> </span><span class="no">:marmalade</span><span class="w"> </span><span class="no">:door</span><span class="p">))</span><span class="w"> 
+</span><span class="c1">;; -&gt; (:pocket-watch :marmalade :door)</span><span class="w">
+
+</span><span class="p">(</span><span class="nb">cons</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="o">'</span><span class="p">())</span><span class="w"> 
+</span><span class="c1">;; -&gt; (5)</span><span class="w">
+
+</span><span class="c1">;; building the list with a nil</span><span class="w">
+</span><span class="p">(</span><span class="nb">cons</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="n">nil</span><span class="p">)</span><span class="w">
+
+</span><span class="c1">;; -&gt; (5)</span><span class="w">
+</span><span class="p">(</span><span class="nb">cons</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="p">(</span><span class="nb">cons</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="n">nil</span><span class="p">))</span><span class="w"> 
+
+</span><span class="c1">;; -&gt; (4 5)</span><span class="w">
+
+
+</span><span class="c1">;; Vector</span><span class="w">
+</span><span class="p">[</span><span class="no">:jar1</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="no">:jar2</span><span class="p">]</span><span class="w">
+
+</span><span class="c1">;; -&gt; [:jar1 1 2 3 :jar2]</span><span class="w">
+</span><span class="p">(</span><span class="nb">first</span><span class="w"> </span><span class="p">[</span><span class="no">:jar1</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="no">:jar2</span><span class="p">])</span><span class="w">
+
+</span><span class="c1">;; -&gt; :jar1</span><span class="w">
+</span><span class="p">(</span><span class="nb">rest</span><span class="w"> </span><span class="p">[</span><span class="no">:jar1</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="no">:jar2</span><span class="p">])</span><span class="w"> 
+</span><span class="c1">;; -&gt; (1 2 3 :jar2)</span><span class="w">
+</span><span class="p">(</span><span class="nb">nth</span><span class="w"> </span><span class="p">[</span><span class="no">:jar1</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="no">:jar2</span><span class="p">]</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> 
+</span><span class="c1">;; -&gt; :jar1</span><span class="w">
+</span><span class="p">(</span><span class="nb">nth</span><span class="w"> </span><span class="p">[</span><span class="no">:jar1</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="no">:jar2</span><span class="p">]</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> 
+</span><span class="c1">;; -&gt; 2</span><span class="w">
+
+
+</span><span class="c1">;; conj adds to the end of vectors</span><span class="w">
+</span><span class="p">(</span><span class="nb">conj</span><span class="w"> </span><span class="p">[</span><span class="no">:toast</span><span class="w"> </span><span class="no">:butter</span><span class="p">]</span><span class="w"> </span><span class="no">:jam</span><span class="p">)</span><span class="w"> 
+</span><span class="c1">;; -&gt; [:toast :butter :jam]</span><span class="w">
+    
+</span><span class="c1">;; multiple elements added on end of vectors</span><span class="w">
+</span><span class="p">(</span><span class="nb">conj</span><span class="w"> </span><span class="p">[</span><span class="no">:toast</span><span class="w"> </span><span class="no">:butter</span><span class="p">]</span><span class="w"> </span><span class="no">:jam</span><span class="w"> </span><span class="no">:honey</span><span class="p">)</span><span class="w"> 
+</span><span class="c1">;; -&gt; [:toast :butter :jam :honey]</span><span class="w">
+
+ 
+</span><span class="c1">;; conj adds to the front of lists</span><span class="w">
+</span><span class="p">(</span><span class="nb">conj</span><span class="w"> </span><span class="o">'</span><span class="p">(</span><span class="no">:toast</span><span class="w"> </span><span class="no">:butter</span><span class="p">)</span><span class="w"> </span><span class="no">:jam</span><span class="p">)</span><span class="w"> 
+</span><span class="c1">;; -&gt; (:jam :toast :butter)</span><span class="w">
+    
+</span><span class="c1">;; multiple elements added to the front of lists</span><span class="w">
+</span><span class="p">(</span><span class="nb">conj</span><span class="w"> </span><span class="o">'</span><span class="p">(</span><span class="w"> </span><span class="no">:toast</span><span class="w"> </span><span class="no">:butter</span><span class="p">)</span><span class="w"> </span><span class="no">:jam</span><span class="w"> </span><span class="no">:honey</span><span class="p">)</span><span class="w"> 
+</span><span class="c1">;; -&gt; (:honey :jam :toast :butter)</span><span class="w">
+
+</span><span class="c1">;; MAPS</span><span class="w">
+</span><span class="p">{</span><span class="no">:jam1</span><span class="w"> </span><span class="s">"strawberry"</span><span class="w"> </span><span class="no">:jam2</span><span class="w"> </span><span class="s">"blackberry"</span><span class="p">}</span><span class="w">
+</span><span class="c1">;; -&gt; {:jam2 "blackberry", :jam1 "strawberry"}</span><span class="w">
+
+ </span><span class="c1">;; explicit get</span><span class="w">
+</span><span class="p">(</span><span class="nb">get</span><span class="w"> </span><span class="p">{</span><span class="no">:jam1</span><span class="w"> </span><span class="s">"strawberry"</span><span class="w"> </span><span class="no">:jam2</span><span class="w"> </span><span class="s">"blackberry"</span><span class="p">}</span><span class="w"> </span><span class="no">:jam2</span><span class="p">)</span><span class="w">
+</span><span class="c1">;; -&gt; "blackberry"</span><span class="w">
+</span><span class="p">(</span><span class="nb">get</span><span class="w"> </span><span class="p">{</span><span class="no">:jam1</span><span class="w"> </span><span class="s">"strawberry"</span><span class="w"> </span><span class="no">:jam2</span><span class="w"> </span><span class="s">"blackberry"</span><span class="p">}</span><span class="w"> </span><span class="no">:jam3</span><span class="w"> </span><span class="s">"not found"</span><span class="p">)</span><span class="w">
+</span><span class="c1">;; -&gt; "not found"</span><span class="w">
+
+ </span><span class="c1">;; getting using the key as the function</span><span class="w">
+</span><span class="p">(</span><span class="no">:jam2</span><span class="w"> </span><span class="p">{</span><span class="no">:jam1</span><span class="w"> </span><span class="s">"strawberry"</span><span class="w"> </span><span class="no">:jam2</span><span class="w"> </span><span class="s">"blackberry"</span><span class="w"> </span><span class="no">:jam3</span><span class="w"> </span><span class="s">"marmalade"</span><span class="p">})</span><span class="w"> </span><span class="c1">;; -&gt; "blackberry"</span><span class="w">
+  </span><span class="c1">;; the keys function</span><span class="w">
+</span><span class="p">(</span><span class="nb">keys</span><span class="w"> </span><span class="p">{</span><span class="no">:jam1</span><span class="w"> </span><span class="s">"strawberry"</span><span class="w"> </span><span class="no">:jam2</span><span class="w"> </span><span class="s">"blackberry"</span><span class="w"> </span><span class="no">:jam3</span><span class="w"> </span><span class="s">"marmalade"</span><span class="p">})</span><span class="w"> </span><span class="c1">;; -&gt; (:jam3 :jam2 :jam1)</span><span class="w">
+    </span><span class="c1">;;the vals function</span><span class="w">
+</span><span class="p">(</span><span class="nb">vals</span><span class="w"> </span><span class="p">{</span><span class="no">:jam1</span><span class="w"> </span><span class="s">"strawberry"</span><span class="w"> </span><span class="no">:jam2</span><span class="w"> </span><span class="s">"blackberry"</span><span class="w"> </span><span class="no">:jam3</span><span class="w"> </span><span class="s">"marmalade"</span><span class="p">})</span><span class="w"> </span><span class="c1">;; -&gt; ("marmalade" "blackberry" "strawberry")</span><span class="w">
+
+</span><span class="p">(</span><span class="nb">assoc</span><span class="w"> </span><span class="p">{</span><span class="no">:jam1</span><span class="w"> </span><span class="s">"red"</span><span class="w"> </span><span class="no">:jam2</span><span class="w"> </span><span class="s">"black"</span><span class="p">}</span><span class="w"> </span><span class="no">:jam1</span><span class="w"> </span><span class="s">"orange"</span><span class="p">)</span><span class="w">
+</span><span class="c1">;; -&gt; {:jam2 "black", :jam1 "orange"}</span><span class="w">
+
+</span><span class="p">(</span><span class="nb">dissoc</span><span class="w"> </span><span class="p">{</span><span class="no">:jam1</span><span class="w"> </span><span class="s">"strawberry"</span><span class="w"> </span><span class="no">:jam2</span><span class="w"> </span><span class="s">"blackberry"</span><span class="p">}</span><span class="w"> </span><span class="no">:jam1</span><span class="p">)</span><span class="w"> </span><span class="c1">;; -&gt; {:jam2 "blackberry"}</span><span class="w">
+
+</span><span class="p">(</span><span class="nb">merge</span><span class="w"> </span><span class="p">{</span><span class="no">:jam1</span><span class="w"> </span><span class="s">"red"</span><span class="w"> </span><span class="no">:jam2</span><span class="w"> </span><span class="s">"black"</span><span class="p">}</span><span class="w">
+           </span><span class="p">{</span><span class="no">:jam1</span><span class="w"> </span><span class="s">"orange"</span><span class="w"> </span><span class="no">:jam3</span><span class="w"> </span><span class="s">"red"</span><span class="p">}</span><span class="w">
+</span><span class="p">{</span><span class="no">:jam4</span><span class="w"> </span><span class="s">"blue"</span><span class="p">})</span><span class="w">
+</span><span class="c1">;; -&gt; {:jam4 "blue", :jam3 "red", :jam2 "black", :jam1 "orange"}</span><span class="w">
+
+</span><span class="c1">;; SETS</span><span class="w">
+
+</span><span class="o">#</span><span class="p">{</span><span class="no">:red</span><span class="w"> </span><span class="no">:blue</span><span class="w"> </span><span class="no">:white</span><span class="w"> </span><span class="no">:pink</span><span class="p">}</span><span class="w">
+</span><span class="c1">;; -&gt; #{:white :red :blue :pink}</span><span class="w">
+</span><span class="c1">;; No duplicates allowed in the set at creation</span><span class="w">
+</span><span class="o">#</span><span class="p">{</span><span class="no">:red</span><span class="w"> </span><span class="no">:blue</span><span class="w"> </span><span class="no">:white</span><span class="w"> </span><span class="no">:pink</span><span class="w"> </span><span class="no">:pink</span><span class="p">}</span><span class="w">
+</span><span class="c1">;; -&gt; IllegalArgumentException Duplicate key: :pink</span><span class="w">
+
+</span><span class="p">(</span><span class="nf">clojure.set/union</span><span class="w"> </span><span class="o">#</span><span class="p">{</span><span class="no">:r</span><span class="w"> </span><span class="no">:b</span><span class="w"> </span><span class="no">:w</span><span class="p">}</span><span class="w"> </span><span class="o">#</span><span class="p">{</span><span class="no">:w</span><span class="w"> </span><span class="no">:p</span><span class="w"> </span><span class="no">:y</span><span class="p">})</span><span class="w">
+</span><span class="c1">;; -&gt; #{:y :r :w :b :p}</span><span class="w">
+</span><span class="p">(</span><span class="nf">clojure.set/difference</span><span class="w"> </span><span class="o">#</span><span class="p">{</span><span class="no">:r</span><span class="w"> </span><span class="no">:b</span><span class="w"> </span><span class="no">:w</span><span class="p">}</span><span class="w"> </span><span class="o">#</span><span class="p">{</span><span class="no">:w</span><span class="w"> </span><span class="no">:p</span><span class="w"> </span><span class="no">:y</span><span class="p">})</span><span class="w">
+</span><span class="c1">;; -&gt; #{:r :b}</span><span class="w">
+</span><span class="p">(</span><span class="nf">clojure.set/intersection</span><span class="w"> </span><span class="o">#</span><span class="p">{</span><span class="no">:r</span><span class="w"> </span><span class="no">:b</span><span class="w"> </span><span class="no">:w</span><span class="p">}</span><span class="w"> </span><span class="o">#</span><span class="p">{</span><span class="no">:w</span><span class="w"> </span><span class="no">:p</span><span class="w"> </span><span class="no">:y</span><span class="p">})</span><span class="w">
+</span><span class="c1">;; -&gt; #{:w}</span><span class="w">
+</span><span class="p">(</span><span class="nb">set</span><span class="w"> </span><span class="p">[</span><span class="no">:rabbit</span><span class="w"> </span><span class="no">:rabbit</span><span class="w"> </span><span class="no">:watch</span><span class="w"> </span><span class="no">:door</span><span class="p">])</span><span class="w"> </span><span class="c1">;; -&gt; #{:door :watch :rabbit}</span><span class="w">
+</span><span class="p">(</span><span class="nb">set</span><span class="p">{</span><span class="no">:a1:b2:c3</span><span class="p">})</span><span class="w">
+</span><span class="c1">;; -&gt; #{[:c 3] [:b 2] [:a 1]}</span><span class="w">
+
+</span><span class="p">(</span><span class="nb">get</span><span class="w"> </span><span class="o">#</span><span class="p">{</span><span class="no">:rabbit</span><span class="w"> </span><span class="no">:door</span><span class="w"> </span><span class="no">:watch</span><span class="p">}</span><span class="w"> </span><span class="no">:rabbit</span><span class="p">)</span><span class="w">
+</span><span class="c1">;; -&gt; :rabbit</span><span class="w">
+</span><span class="p">(</span><span class="nb">get</span><span class="w"> </span><span class="o">#</span><span class="p">{</span><span class="no">:rabbit</span><span class="w"> </span><span class="no">:door</span><span class="w"> </span><span class="no">:watch</span><span class="p">}</span><span class="w"> </span><span class="no">:jar</span><span class="p">)</span><span class="w">
+</span><span class="c1">;; -&gt; nil</span><span class="w">
+</span><span class="n">We</span><span class="w"> </span><span class="n">can</span><span class="w"> </span><span class="n">also</span><span class="w"> </span><span class="n">access</span><span class="w"> </span><span class="n">it</span><span class="w"> </span><span class="n">directly</span><span class="w"> </span><span class="n">using</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="nb">keyword</span><span class="err">:</span><span class="w">
+</span><span class="p">(</span><span class="no">:rabbit</span><span class="w"> </span><span class="o">#</span><span class="p">{</span><span class="no">:rabbit</span><span class="w"> </span><span class="no">:door</span><span class="w"> </span><span class="no">:watch</span><span class="p">})</span><span class="w">
+</span><span class="c1">;; -&gt; :rabbit</span><span class="w">
+
+</span><span class="p">(</span><span class="o">#</span><span class="p">{</span><span class="w"> </span><span class="no">:rabbit</span><span class="w"> </span><span class="no">:door</span><span class="w"> </span><span class="no">:watch</span><span class="p">}</span><span class="w"> </span><span class="no">:rabbit</span><span class="p">)</span><span class="w">
+</span><span class="c1">;; -&gt; :rabbit</span><span class="w">
+</span><span class="p">(</span><span class="nb">contains?</span><span class="w"> </span><span class="o">#</span><span class="p">{</span><span class="no">:rabbit</span><span class="w"> </span><span class="no">:door</span><span class="w"> </span><span class="no">:watch</span><span class="p">}</span><span class="w"> </span><span class="no">:rabbit</span><span class="p">)</span><span class="w">
+</span><span class="c1">;; -&gt; true</span><span class="w">
+</span><span class="p">(</span><span class="nb">contains?</span><span class="w"> </span><span class="o">#</span><span class="p">{</span><span class="no">:rabbit</span><span class="w"> </span><span class="no">:door</span><span class="w"> </span><span class="no">:watch</span><span class="p">}</span><span class="w"> </span><span class="no">:jam</span><span class="p">)</span><span class="w"> </span><span class="c1">;; -&gt; false</span><span class="w">
+</span><span class="p">(</span><span class="nb">conj</span><span class="w"> </span><span class="o">#</span><span class="p">{</span><span class="no">:rabbit</span><span class="w"> </span><span class="no">:door</span><span class="p">}</span><span class="w"> </span><span class="no">:jam</span><span class="p">)</span><span class="w"> 
+</span><span class="c1">;; -&gt; #{:door :rabbit :jam}</span><span class="w">
+</span><span class="p">(</span><span class="nb">disj</span><span class="w"> </span><span class="o">#</span><span class="p">{</span><span class="no">:rabbit</span><span class="w"> </span><span class="no">:door</span><span class="p">}</span><span class="w"> </span><span class="no">:door</span><span class="p">)</span><span class="w">
+</span><span class="c1">;; -&gt; #{:rabbit}</span><span class="w">
+
+</span><span class="c1">;; func</span><span class="w">
+</span><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="n">shop-for-jams</span><span class="w"> </span><span class="p">[</span><span class="n">jam1</span><span class="w"> </span><span class="n">jam2</span><span class="p">]</span><span class="w"> </span><span class="p">{</span><span class="no">:name</span><span class="w"> </span><span class="s">"jam-basket"</span><span class="w">
+</span><span class="no">:jam1</span><span class="w"> </span><span class="n">jam1</span><span class="w">
+</span><span class="no">:jam2</span><span class="w"> </span><span class="n">jam2</span><span class="p">})</span><span class="w">
+</span><span class="c1">;; -&gt; #'user/shop-for-jams</span><span class="w">
+</span><span class="p">(</span><span class="nf">shop-for-jams</span><span class="w"> </span><span class="s">"strawberry"</span><span class="w"> </span><span class="s">"marmalade"</span><span class="p">)</span><span class="w">
+</span><span class="c1">;; -&gt; {:name "jam-basket", :jam1 "strawberry", :jam2 "marmalade"}</span><span class="w">
+
+</span><span class="c1">;;  anonymous function</span><span class="w">
+</span><span class="p">(</span><span class="o">#</span><span class="p">(</span><span class="nb">str</span><span class="w"> </span><span class="s">"Off we go"</span><span class="w"> </span><span class="s">"!"</span><span class="w"> </span><span class="s">" - "</span><span class="w"> </span><span class="n">%</span><span class="p">)</span><span class="w"> </span><span class="s">"again"</span><span class="p">)</span><span class="w">
+</span><span class="c1">;; -&gt; "Off we go! - again"</span><span class="w">
+</span><span class="p">(</span><span class="o">#</span><span class="p">(</span><span class="nb">str</span><span class="w"> </span><span class="s">"Off we go"</span><span class="w"> </span><span class="s">"!"</span><span class="w"> </span><span class="s">" - "</span><span class="w"> </span><span class="n">%1</span><span class="w"> </span><span class="n">%2</span><span class="p">)</span><span class="w"> </span><span class="s">"again"</span><span class="w"> </span><span class="s">"?"</span><span class="p">)</span><span class="w">
+</span><span class="c1">;; -&gt; "Off we go! - again?"</span><span class="w">
+
+</span></code></pre></div></div>
+
+
+    </section>
+    <!-- <footer>
+  <div>
+    Project maintained by
+    <a href="https://github.com/felixvo" target="_blank"
+      >felixvo</a
+    >
+    , here is my <a href="/cv">CV</a>
+  </div>
+  <div>
+    <a href="/practise-speaking">Practise Speaking</a>
+  </div>
+  <small
+    >Hosted on GitHub Pages &mdash; Theme by
+    <a href="https://twitter.com/michigangraham">mattgraham</a>
+  </small>
+</footer>
+ -->
+    <div class="comment-box">
+  <script src="https://utteranc.es/client.js"
+        repo="felixvo/felixvo.github.io"
+        issue-term="pathname"
+        label="comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+ </script>
+</div>
+
+  </div>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-92160345-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-92160345-2');
+</script>
+
+<!-- Hotjar Tracking Code for http://felixvo.github.io/ -->
+<script>
+    (function(h,o,t,j,a,r){
+        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+        h._hjSettings={hjid:1613847,hjsv:6};
+        a=o.getElementsByTagName('head')[0];
+        r=o.createElement('script');r.async=1;
+        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+        a.appendChild(r);
+    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+</script>
+
+</body>
+</html>

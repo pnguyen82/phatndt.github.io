@@ -109,6 +109,14 @@
 <lastmod>2020-04-29T00:00:00+08:00</lastmod>
 </url>
 <url>
+<loc>http://localhost:4000/clojure/clojure-sample/</loc>
+<lastmod>2020-04-30T00:00:00+08:00</lastmod>
+</url>
+<url>
+<loc>http://localhost:4000/fundamental/binary-number/</loc>
+<lastmod>2020-05-24T00:00:00+08:00</lastmod>
+</url>
+<url>
 <loc>http://localhost:4000/about/</loc>
 </url>
 <url>
@@ -139,6 +147,10 @@
 <url>
 <loc>http://localhost:4000/jwt.html</loc>
 <lastmod>2020-04-19T11:53:42+08:00</lastmod>
+</url>
+<url>
+<loc>http://localhost:4000/neo4j_certificate.pdf</loc>
+<lastmod>2020-05-09T17:59:53+08:00</lastmod>
 </url>
 <url>
 <loc>http://localhost:4000/vocab/</loc>

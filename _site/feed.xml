@@ -1,4 +1,268 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-04-29T18:01:27+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Felix’s blog</title><subtitle>Tech blog</subtitle><entry><title type="html">Vim to Emacs, a simple configuration that won’t blow your mind</title><link href="http://localhost:4000/editor/vim/emacs/vim-to-emacs/" rel="alternate" type="text/html" title="Vim to Emacs, a simple configuration that won't blow your mind" /><published>2020-04-29T00:00:00+08:00</published><updated>2020-04-29T00:00:00+08:00</updated><id>http://localhost:4000/editor/vim/emacs/vim-to-emacs</id><content type="html" xml:base="http://localhost:4000/editor/vim/emacs/vim-to-emacs/">&lt;p&gt;Emacs - An extensible, customizable, free/libre text editor&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-05-24T12:15:05+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Felix’s blog</title><subtitle>Tech blog</subtitle><entry><title type="html">What is Binary number by the way</title><link href="http://localhost:4000/fundamental/binary-number/" rel="alternate" type="text/html" title="What is Binary number by the way" /><published>2020-05-24T00:00:00+08:00</published><updated>2020-05-24T00:00:00+08:00</updated><id>http://localhost:4000/fundamental/binary-number</id><content type="html" xml:base="http://localhost:4000/fundamental/binary-number/">&lt;h2 id=&quot;binary-vs-decimal&quot;&gt;Binary vs Decimal&lt;/h2&gt;
+&lt;p&gt;Before talking about binary numbers, lets talk about Decimal number(base-10) first.&lt;br /&gt;
+Because we use Decimal everyday in school or in your life&lt;br /&gt;
+Base-10 mean you have 10 digits (from 0 to 9) to represent your number
+&lt;!--more--&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;0 1 2 3 4 5 6 7 8 9&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;How do you add two numbers in base-10?&lt;br /&gt;
+We gonna start from 0 and increse it to 22&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;base-10&lt;/th&gt;
+      &lt;th&gt;Increase by&lt;/th&gt;
+      &lt;th&gt;Result&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;00&lt;/td&gt;
+      &lt;td&gt;+1&lt;/td&gt;
+      &lt;td&gt;= 1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;01&lt;/td&gt;
+      &lt;td&gt;+1&lt;/td&gt;
+      &lt;td&gt;= 2&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;02&lt;/td&gt;
+      &lt;td&gt;+1&lt;/td&gt;
+      &lt;td&gt;= 3&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;…&lt;/td&gt;
+      &lt;td&gt;+1&lt;/td&gt;
+      &lt;td&gt;= …&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;09&lt;/td&gt;
+      &lt;td&gt;+1&lt;/td&gt;
+      &lt;td&gt;= ?&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;What we’re doing is we &lt;strong&gt;increase the rightmost digit by 1&lt;/strong&gt;.&lt;br /&gt;
+Now we have &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;09&lt;/code&gt; then what next? We all know 09 + 1 = 10 but the detail is&lt;br /&gt;
+&lt;strong&gt;We reset the rightmost digit -&amp;gt; 0 and increase the next digit by 1 then we have 10&lt;/strong&gt;&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;base-10&lt;/th&gt;
+      &lt;th&gt;Increase by&lt;/th&gt;
+      &lt;th&gt;Result&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;09&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;strong&gt;+1&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;= &lt;strong&gt;10&lt;/strong&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;10&lt;/td&gt;
+      &lt;td&gt;+1&lt;/td&gt;
+      &lt;td&gt;= 11&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;11&lt;/td&gt;
+      &lt;td&gt;+1&lt;/td&gt;
+      &lt;td&gt;= 12&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;…&lt;/td&gt;
+      &lt;td&gt;+1&lt;/td&gt;
+      &lt;td&gt;= …&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;19&lt;/td&gt;
+      &lt;td&gt;+1&lt;/td&gt;
+      &lt;td&gt;= &lt;strong&gt;?&lt;/strong&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;then what next?&lt;br /&gt;
+then we do the same thing as 09 +1&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;reset the rightmost digit -&amp;gt; 0 and increase the next digit by 1 then we have 20&lt;/strong&gt;&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;base-10&lt;/th&gt;
+      &lt;th&gt;Increase by&lt;/th&gt;
+      &lt;th&gt;Result&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;19&lt;/td&gt;
+      &lt;td&gt;+1&lt;/td&gt;
+      &lt;td&gt;= 20&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;20&lt;/td&gt;
+      &lt;td&gt;+1&lt;/td&gt;
+      &lt;td&gt;= 21&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;21&lt;/td&gt;
+      &lt;td&gt;+1&lt;/td&gt;
+      &lt;td&gt;= 22&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;22&lt;/td&gt;
+      &lt;td&gt;+1&lt;/td&gt;
+      &lt;td&gt;= 23&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;binary&quot;&gt;Binary&lt;/h2&gt;
+&lt;p&gt;Binary number works exactly the same but now we only have 2 digits&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;0 and 1&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;We gonna start from 0 and increase it to 5 (because 22 gonna be long in binary)&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;base-2&lt;/th&gt;
+      &lt;th&gt;in base-10&lt;/th&gt;
+      &lt;th&gt;Increase by&lt;/th&gt;
+      &lt;th&gt;Result&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;00&lt;/td&gt;
+      &lt;td&gt;0&lt;/td&gt;
+      &lt;td&gt;+1&lt;/td&gt;
+      &lt;td&gt;= 01&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;01&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;+1&lt;/td&gt;
+      &lt;td&gt;= &lt;strong&gt;?&lt;/strong&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;Because we only have 0 and 1 so can not increase the rightmost digit 1-&amp;gt;2, there’s no digits left so&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;We reset the rightmost numbers -&amp;gt; 0 and increase the next number by 1 then we have 10&lt;/strong&gt;&lt;br /&gt;
+but &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;10&lt;/code&gt; in this case is not &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;10 in base-10&lt;/code&gt; it’s &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;2 in base-10&lt;/code&gt;&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;base-2&lt;/th&gt;
+      &lt;th&gt;in base-10&lt;/th&gt;
+      &lt;th&gt;Increase by&lt;/th&gt;
+      &lt;th&gt;Result&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;01&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;+1&lt;/td&gt;
+      &lt;td&gt;= 10&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;10&lt;/td&gt;
+      &lt;td&gt;2&lt;/td&gt;
+      &lt;td&gt;+1&lt;/td&gt;
+      &lt;td&gt;= 11&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;11&lt;/td&gt;
+      &lt;td&gt;3&lt;/td&gt;
+      &lt;td&gt;+1&lt;/td&gt;
+      &lt;td&gt;= 100&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;100&lt;/td&gt;
+      &lt;td&gt;4&lt;/td&gt;
+      &lt;td&gt;+1&lt;/td&gt;
+      &lt;td&gt;= 101&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;101&lt;/td&gt;
+      &lt;td&gt;5&lt;/td&gt;
+      &lt;td&gt;+1&lt;/td&gt;
+      &lt;td&gt;= 111&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;how-about-ternary-base-3&quot;&gt;How about Ternary (base-3)&lt;/h2&gt;
+
+&lt;p&gt;Ternary number works exactly the same but now we have 3 digits&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;0 and 1 and 2&lt;/strong&gt;&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;base-3&lt;/th&gt;
+      &lt;th&gt;in base-10&lt;/th&gt;
+      &lt;th&gt;Increase by&lt;/th&gt;
+      &lt;th&gt;Result&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;00&lt;/td&gt;
+      &lt;td&gt;0&lt;/td&gt;
+      &lt;td&gt;+1&lt;/td&gt;
+      &lt;td&gt;= 01&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;01&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;+1&lt;/td&gt;
+      &lt;td&gt;= 02&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;02&lt;/td&gt;
+      &lt;td&gt;2&lt;/td&gt;
+      &lt;td&gt;+1&lt;/td&gt;
+      &lt;td&gt;= 10&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;There’s no digit left for the rightmost digit&lt;br /&gt;
+&lt;strong&gt;We reset the rightmost numbers -&amp;gt; 0 and increase the next number by 1 then we have 10&lt;/strong&gt;&lt;br /&gt;
+but &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;10&lt;/code&gt; in this case is not &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;10 in base-10&lt;/code&gt; it’s &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;3 in base-10&lt;/code&gt;&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;base-3&lt;/th&gt;
+      &lt;th&gt;in base-10&lt;/th&gt;
+      &lt;th&gt;Increase by&lt;/th&gt;
+      &lt;th&gt;Result&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;10&lt;/td&gt;
+      &lt;td&gt;3&lt;/td&gt;
+      &lt;td&gt;+1&lt;/td&gt;
+      &lt;td&gt;= 11&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</content><author><name></name></author><summary type="html">Binary vs Decimal Before talking about binary numbers, lets talk about Decimal number(base-10) first. Because we use Decimal everyday in school or in your life Base-10 mean you have 10 digits (from 0 to 9) to represent your number</summary></entry><entry><title type="html">Vim to Emacs, a simple configuration that won’t blow your mind</title><link href="http://localhost:4000/editor/vim/emacs/vim-to-emacs/" rel="alternate" type="text/html" title="Vim to Emacs, a simple configuration that won't blow your mind" /><published>2020-04-29T00:00:00+08:00</published><updated>2020-04-29T00:00:00+08:00</updated><id>http://localhost:4000/editor/vim/emacs/vim-to-emacs</id><content type="html" xml:base="http://localhost:4000/editor/vim/emacs/vim-to-emacs/">&lt;p&gt;Emacs - An extensible, customizable, free/libre text editor&lt;/p&gt;
 
 &lt;!--more--&gt;
 &lt;p&gt;&lt;img src=&quot;/assets/images/vim2emacs/window-sample.png&quot; alt=&quot;Emacs overview&quot; /&gt;&lt;/p&gt;
@@ -35,7 +299,7 @@ If you have no idea what Emacs is, I recommend you to check these guide before c
 
 &lt;h2 id=&quot;the-configuration-file&quot;&gt;The configuration file&lt;/h2&gt;
 &lt;p&gt;Download the config file and save it in your home dir &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;~/.emacs&lt;/code&gt;&lt;/p&gt;
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;curl https://raw.githubusercontent.com/felixvo/dotfiles/master/emacs/init.el&amp;gt;~/.emacs
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;curl https://raw.githubusercontent.com/felixvo/vimtoemacs/master/init.el&amp;gt;~/.emacs
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;Then open your &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;emacs&lt;/code&gt;. Hopefully, you will see the UI below&lt;/p&gt;
 
@@ -961,83 +1225,4 @@ Then when adding a new format you need to add in 100 difference places. 😩&lt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;Now you can create and register your own &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;XYXFormatter&lt;/code&gt; without changing the existing code&lt;br /&gt;
-Abstraction is really powerful!&lt;/p&gt;</content><author><name></name></author><summary type="html">Software entities (classes, modules, functions, etc.) should be open for extension, but closed for modification – Wikipedia</summary></entry><entry><title type="html">[SOLID] Single Responsibility Principle</title><link href="http://localhost:4000/fundamental/solid/solid-single-responsibility/" rel="alternate" type="text/html" title="[SOLID] Single Responsibility Principle" /><published>2019-07-07T00:00:00+08:00</published><updated>2019-07-07T00:00:00+08:00</updated><id>http://localhost:4000/fundamental/solid/solid-single-responsibility</id><content type="html" xml:base="http://localhost:4000/fundamental/solid/solid-single-responsibility/">&lt;blockquote&gt;
-  &lt;p&gt;A class or module should have one, and only one, reason to be changed – &lt;a href=&quot;https://en.wikipedia.org/wiki/Single_responsibility_principle&quot;&gt;Wikipedia&lt;/a&gt;
-&lt;!--more--&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h2 id=&quot;definition&quot;&gt;Definition&lt;/h2&gt;
-&lt;p&gt;Because of confusion around the word “reason”, Martin wrote a blog post entitled &lt;a href=&quot;https://blog.cleancoder.com/uncle-bob/2014/05/08/SingleReponsibilityPrinciple.html&quot;&gt;The Single Responsibility Principle&lt;/a&gt; with a goal to clarify what was meant by the phrase “reason for change.” in 2014.&lt;/p&gt;
-
-&lt;p&gt;Another wording for the Single Responsibility Principle is:&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Gather together the things that change for the same reasons.
-Separate those things that change for different reasons.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;The reasons for change are people. It is people who request changes. 
-And you don’t want to confuse those people, or yourself, by mixing together the code that many different people care about for different reasons.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Don’t get obsess with this principle, just &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;keep classes small&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;keep methods small&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;refactor when your class become too big&lt;/code&gt;.&lt;br /&gt;
-Software change everyday, you don’t write code once, the code need to be refactor many times.&lt;/p&gt;
-
-&lt;p&gt;In Object Oriented Programming, we also have a term &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;God Object&lt;/code&gt;, which is an anti-pattern, the oposite of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Single Responsibility Principle&lt;/code&gt;&lt;/p&gt;
-&lt;h2 id=&quot;god-object&quot;&gt;God Object&lt;/h2&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;A God object is an object that &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;knows too much or does too much.&lt;/code&gt; – &lt;a href=&quot;https://en.wikipedia.org/wiki/God_object&quot;&gt;Wikipedia&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Imagine you have a class look like this:&lt;/p&gt;
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;UserController&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;DBConnection&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;conn&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;MailTemplate&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mailTemplate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;SendGridClient&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mailClient&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;UserController&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;DBConnection&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;conn&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;MailTemplate&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mailTemplate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-    
-  &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;getUserList&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
-   &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;User&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;getUserByEmail&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;email&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-  
-  &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;renderHtml&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;users&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-  
-  &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;sendEmailTo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;email&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;content&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Wherever you wan to use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;getUserList&lt;/code&gt; method, you need to an instance of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;UserController&lt;/code&gt;, which require a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MailTemplate&lt;/code&gt;.&lt;br /&gt;
-Why do you need to know about &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MailTemplate&lt;/code&gt; when you just want to query to database?&lt;/li&gt;
-  &lt;li&gt;And wherever you just want to send an email you also need a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;DBConnection&lt;/code&gt;?&lt;/li&gt;
-  &lt;li&gt;How can you unit test this class? Setup inmem databases,inmem MailTemplate and a mailsender client, seem a lot?&lt;/li&gt;
-  &lt;li&gt;….&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;We usually guest the behavior of a class base on it’s name. If the class name is &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;UserController&lt;/code&gt;,&lt;br /&gt;
-you will think this class will handle a http request, not send email.&lt;/p&gt;
-
-&lt;h3 id=&quot;refactor-god-object&quot;&gt;Refactor God Object&lt;/h3&gt;
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// Handle http request/response&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;UserController&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;MailSender&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mailSender&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;UserService&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;userService&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;UserController&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;UserService&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;userService&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;MailSender&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mailSender&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-  &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;renderHtml&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;users&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// To send mail&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;MailSender&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;MailTemplate&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mailTemplate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;SendGridClient&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mailClient&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;sendEmailTo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;email&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;content&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// Handle database connection/query&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;UserService&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;DBConnection&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;conn&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-   
-  &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;getUserList&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
-  &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;User&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;getUserByEmail&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;email&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;This will improve readability of you code and also make code more clean&lt;br /&gt;
-Now you can reuse your class easier&lt;/p&gt;</content><author><name></name></author><summary type="html">A class or module should have one, and only one, reason to be changed – Wikipedia</summary></entry></feed>
+Abstraction is really powerful!&lt;/p&gt;</content><author><name></name></author><summary type="html">Software entities (classes, modules, functions, etc.) should be open for extension, but closed for modification – Wikipedia</summary></entry></feed>
