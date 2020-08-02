@@ -4,7 +4,6 @@ layout: blank
 ---
 # PHAT NGUYEN
 #### *Sr Frontend Engineer*
-#### Tech stack: `Javascript`, `Angular`, `CSS3/SCSS`, `HTML5`
 ## PROFILE
 Email: <dev.phatdt@gmail.com>  
 Phone: (+84)122 695 9198
