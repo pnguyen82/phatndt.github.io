@@ -2,28 +2,24 @@
 title: CV
 layout: blank
 ---
-# NGOC VO THAI - Felix
-#### *Software Engineer*
-#### Tech stack: `Go`, `Microservice`, `gRPC`, `MySQL`, `Kafka` , `RabbitMQ`, `Redis`
+# PHAT NGUYEN
+#### *Sr Frontend Engineer*
+#### Tech stack: `Javascript`, `Angular`, `CSS3/SCSS`, `HTML5`
 ## Personal Information
-Email: <ngocvt.dev@gmail.com>  
-Phone: +84 933662703  
-Phone: +65 90787409  
-Skype: oknion  
-<a href="https://dev.to/felixvo" target="_blank">
-    ![felixvo's DEV Profile](/assets/images/icons/dev-brands.svg){:height="30px" width="30px"}
-</a>
-<a href="https://www.linkedin.com/in/felix-vo/" target="_blank">
-    ![Felix Linkedin Profile](/assets/images/icons/linkedin-brands.svg){:height="30px" width="30px"}
+Email: <dev.phatdt@gmail.com>  
+Phone: (+84)122 695 9198
+<a href="https://www.linkedin.com/in/phat-nguyen-0125b015b/" target="_blank">
+    ![Phat Linkedin Profile](/assets/images/icons/linkedin-brands.svg){:height="30px" width="30px"}
 </a>
 
 -------
 ## Experiences
-**Software engineer**  *5/2018 - Present*
-*Mobiclix MobiClix Pte LTD*
+**Sr Frontend Engineer**  *8/2019 - Present*
+*DATXANHRES*
 
-- Develop backend services for payment gateway, in-house products, and external products that are run across 20+ markets globally.
-- Design and implement scalable, maintainable system
+- Designed and developed web user interfaces using HTML, SCSS, Angular 8.
+- Designed and developed Chat, Call components.
+- Build Communication Service by NodeJs and MongoDB.
 - Integrate in-house payment gateway with payment aggregators.
 - Tech stack: `Go`, `gRPC`, `MySQL`, `RabbitMQ`, `Redis`
 
