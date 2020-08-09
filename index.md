@@ -28,13 +28,13 @@ Phone: (+84)122 695 9198
 
 ## TECHNICAL SKILLS
 
-**Web Technologies**: `HTML`, `CSS`, `Bootstrap`, `jQuery`, `SCSS`, `JSON`, `MVC`, **Angular 5/7**, `ReactJs`.
+**Web Technologies**: `HTML`, `CSS`, `Bootstrap`, `jQuery`, `SCSS`, `JSON`, `MVC`, **`Angular 5/7`**, `ReactJs`.
 
-**Backend**: `.Net core`, `Node.JS`
+**Backend**: `.Net core`, **`Node.JS`**
 
 **Mobile**: `React native`
 
-**Database**: `SQL Server`, `MYSQL`, **MongoDB**.
+**Database**: `SQL Server`, `MYSQL`, **`MongoDB`**.
 
 **Version Control**: `GIT`, `SVN`.
 
@@ -44,7 +44,7 @@ Phone: (+84)122 695 9198
 
 ## PROFESSIONAL EXPERIENCE:
 
-*DATXANHRES*
+**DATXANHRES**
 *Sr Full-stack Engineer*
 
 *Responsibilities:*
@@ -58,19 +58,22 @@ Phone: (+84)122 695 9198
 - Collaborated with product team members to implement new feature developments.
 - Lead Front-end Team: mentor and training junior developers, review code in `gitlab`.
 - Designed and developed the application using Agile Scrum methodology by breaking down the project to several sprints.
+
 *ENVIRONMENT:* Angular 7, NodeJs, MongoDb, CRQS, RabbitMQ.
 
 
-*24hPlus*
+**24hPlus**
 *Sr Full-stack Engineer*
 
+*Responsibilities:*
 - Designing and developing new Application with `React-native`.
 - Implemented and maintained Backend with `.Net Core` and `MongoDb`. Integrated to 3 systems.
 - Experienced with deployments, maintenance applications on Linux server.
+
 *ENVIRONMENT:* .NET Core, React native, MongoDB
 
 
-*DXC TECHNOLOGY*
+**DXC TECHNOLOGY**
 *Sofware Engineer*
 
 *Responsibilities:*
@@ -83,7 +86,7 @@ Phone: (+84)122 695 9198
 *ENVIRONMENT:* .NET Core, Azure, SQLServer, Angular 5 
 
 
-*CSC VIETNAM*
+**CSC VIETNAM**
 *Sofware Engineer*
 
 *Responsibilities:*
