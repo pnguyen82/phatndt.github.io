@@ -3,7 +3,7 @@ title: CV
 layout: blank
 ---
 # PHAT NGUYEN
-#### *Sr Frontend Engineer*
+#### *Sr Fullstack Engineer*
 ## PROFILE
 Email: <dev.phatdt@gmail.com>  
 Phone: (+84)122 695 9198
