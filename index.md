@@ -44,26 +44,47 @@ Phone: (+84)122 695 9198
 
 ## PROFESSIONAL EXPERIENCE:
 
-**Sr Frontend Engineer**  *8/2019 - Present*
 *DATXANHRES*
+*Sr Full-stack Engineer*
+
+*Responsibilities:*
 - Designed and developed web user interfaces using `HTML`, `SCSS`, `Angular 7`.
 - Implemented `Chat` and `Call` functionalities for in-house web application.
 - Build Communication Service using `NodeJS` and `MongoDB`.
-- Responsible for the development of unit testing and Frontend code reviews.
+- Build Transaction Service with full follow sale event.
+- Extensively used SASS (Syntactically awesome style sheets) while styling with CSS3.
+- Experience integrating RESTful services (API’s). Used JSON for data transfer between front end and back end.
+- Make the Transaction page is realtime by notifier from `RabbitMQ`.
 - Collaborated with product team members to implement new feature developments.
 - Lead Front-end Team: mentor and training junior developers, review code in `gitlab`.
+- Designed and developed the application using Agile Scrum methodology by breaking down the project to several sprints.
+*ENVIRONMENT:* Angular 7, NodeJs, MongoDb, CRQS, RabbitMQ.
 
-**Sofware Engineer**  *4/2017 - 8/2019*
+
+*24hPlus*
+*Sr Full-stack Engineer*
+
+- Designing and developing new Application with `React-native`.
+- Implemented and maintained Backend with `.Net Core` and `MongoDb`. Integrated to 3 systems.
+- Experienced with deployments, maintenance applications on Linux server.
+*ENVIRONMENT:* .NET Core, React native, MongoDB
+
+
 *DXC TECHNOLOGY*
+*Sofware Engineer*
+
+*Responsibilities:*
 - Created and maintained front-end code and documentation standards using `HTML`, `SCSS`, `Angular 5`
 - Build an ED application to support the main application to collect answers.
 - Build and maintain in-house application using `.Net Core` and `Onion Architecture`.
 - Mentor junior developers to proper understand project requirements and meet the standard solution.
 - Integrating with third-party services and external APIs  and other CRMs system.
 - Handle mapping model using AutoMapping.
+*ENVIRONMENT:* .NET Core, Azure, SQLServer, Angular 5 
+
 
 *CSC VIETNAM*
-*Sofware Engineer*  *7/2015 - 4/2017*
+*Sofware Engineer*
 
 *Responsibilities:*
 - Involved in development of User Interface using HTML/HTML5, CSS/CSS3, JavaScript.
