@@ -45,8 +45,10 @@ Phone: (+84)122 695 9198
 ## PROFESSIONAL EXPERIENCE:
 
 **DATXANHRES**
+
 *Frontend Team Leader*
-*08/2019 - now*
+
+*(08/2019 - now)*
 
 *Responsibilities:*
 - Designed and developed web user interfaces using `HTML`, `SCSS`, `Angular 7`.
@@ -64,8 +66,10 @@ Phone: (+84)122 695 9198
 
 
 **24hPlus**
+
 *Team Leader*
-*04/2020 - 08/2020*
+
+*(04/2020 - 08/2020)*
 
 *Responsibilities:*
 - Designing and developing new Application with `React-native`.
@@ -77,8 +81,10 @@ Phone: (+84)122 695 9198
 
 
 **DXC TECHNOLOGY**
+
 *Sofware Engineer*
-*04/2017 - 08/2029*
+
+*(04/2017 - 08/2029)*
 
 *Responsibilities:*
 - Created and maintained front-end code and documentation standards using `HTML`, `SCSS`, `Angular 5`
@@ -91,8 +97,10 @@ Phone: (+84)122 695 9198
 
 
 **CSC VIETNAM**
+
 *Sofware Engineer*
-*07/2015 - 04/2017*
+
+*(07/2015 - 04/2017)*
 
 *Responsibilities:*
 - Involved in development of User Interface using HTML/HTML5, CSS/CSS3, JavaScript.
