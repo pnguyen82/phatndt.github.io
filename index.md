@@ -3,10 +3,10 @@ title: CV
 layout: blank
 ---
 # PHAT NGUYEN
-#### *Sr Fullstack Engineer*
+#### *Sr Frontend Engineer*
 ## PROFILE
 Email: <dev.phatdt@gmail.com>  
-Phone: (+84)122 695 9198
+Phone: (+84)77 695 9198
 
 <a href="https://www.linkedin.com/in/phat-nguyen-0125b015b/" target="_blank">
     ![Phat Linkedin Profile](/assets/images/icons/linkedin-brands.svg){:height="30px" width="30px"}
