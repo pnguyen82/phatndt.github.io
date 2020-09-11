@@ -3,7 +3,7 @@ title: CV
 layout: blank
 ---
 # PHAT NGUYEN
-#### *Sr Frontend Engineer*
+#### *Sr Fullstack Engineer*
 ## PROFILE
 Email: <dev.phatdt@gmail.com>  
 Phone: (+84)77 695 9198
@@ -62,39 +62,69 @@ Phone: (+84)77 695 9198
 - Lead Front-end Team: mentor and training junior developers, review code in `gitlab`.
 - Designed and developed the application using Agile Scrum methodology by breaking down the project to several sprints.
 
-*ENVIRONMENT:* Angular 7, NodeJs, MongoDb, CRQS, RabbitMQ.
+*Achievements:*
+- Knowledge Sale Procedure for Real Estate.
+- Build feature Call and Chat in Web application.
+- Break down Taks and manage it on Jira.
+- Open 2 offline events to sale Real Estate successfully.
+
+*ENVIRONMENT:* Angular 7, NodeJs, MongoDb, CRQS, RabbitMQ, Linux.
 
 
 **24hPlus**
 
-*Team Leader*
+*Team Leader (Freelancer)*
 
 *(04/2020 - 08/2020)*
 
 *Responsibilities:*
 - Designing and developing new Application with `React-native`.
+- Develop a Web application by `Angular 7`.
 - Implemented and maintained Backend with `.Net Core` and `MongoDb`. Integrated to 3 systems.
 - Experienced with deployments, maintenance applications on Linux server.
 - Lead Team: mentor and training junior developers, review code in `gitlab`.
 
-*ENVIRONMENT:* .NET Core, React native, MongoDB
+*Achievements:*
+- Knowledge about Finance Domain
+- Understanding React-native lifecycle.
+- Develop ability how to manage a team.
+- Deploy app to server Linux
+
+*ENVIRONMENT:* .NET Core, React native, Angular, MongoDB, Linux
 
 
 **DXC TECHNOLOGY**
 
-*Sofware Engineer*
+*Senior Sofware Engineer*
 
-*(04/2017 - 08/2029)*
+*(03/2018 - 08/2029)*
 
 *Responsibilities:*
 - Created and maintained front-end code and documentation standards using `HTML`, `SCSS`, `Angular 5`
 - Build an ED application to support the main application to collect answers.
-- Build and maintain in-house application using `.Net Core` and `Onion Architecture`.
 - Mentor junior developers to proper understand project requirements and meet the standard solution.
 - Integrating with third-party services and external APIs  and other CRMs system.
-- Handle mapping model using AutoMapping.
-*ENVIRONMENT:* .NET Core, Azure, SQLServer, Angular 5 
 
+*Achievements:*
+- Knowledge about Insurance Domain
+- Understanding Angular lifecycle.
+
+*ENVIRONMENT:* Angular 5, NodeJs 
+
+
+*Sofware Engineer*
+
+*(04/2017 - 03/2028)*
+
+*Responsibilities:*
+- Build and maintain in-house application using `.Net Core` and `Onion Architecture` architecture.
+- Handle mapping model using AutoMapping.
+- Write a report function to audit .
+
+*Achievements:*
+- Understand Onion Architecture architecture, and how to apply.
+
+*ENVIRONMENT:* .NET Core, Azure, SQLServer
 
 **CSC VIETNAM**
 
@@ -112,3 +142,6 @@ Phone: (+84)77 695 9198
 ## EDUCATION
 - Bachelor of Information Technology at University Of Technology And Education (2011-2015)
 
+## VOLUNTARY ACTIVITIES
+- Blood Donation annually 
+- A member of Hope HCM volunteer club.
