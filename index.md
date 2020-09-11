@@ -5,8 +5,8 @@ layout: blank
 # PHAT NGUYEN
 #### *Sr Fullstack Engineer*
 ## PROFILE
-Email: <pao.phatnguyen@gmail.com>  
-Phone: (+84)967 567 071
+Email: <dev.phatdt@gmail.com>  
+Phone: (+84)77 695 9198
 
 <a href="https://www.linkedin.com/in/phat-nguyen-0125b015b/" target="_blank">
     ![Phat Linkedin Profile](/assets/images/icons/linkedin-brands.svg){:height="30px" width="30px"}
