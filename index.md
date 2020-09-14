@@ -5,8 +5,8 @@ layout: blank
 # PHAT NGUYEN
 #### *Sr Fullstack Engineer*
 ## PROFILE
-Email: <dev.phatdt@gmail.com>  
-Phone: (+84)77 695 9198
+Email: <pao.phatnguyen@gmail.com>  
+Phone: (+84)967 567 071
 
 <a href="https://www.linkedin.com/in/phat-nguyen-0125b015b/" target="_blank">
     ![Phat Linkedin Profile](/assets/images/icons/linkedin-brands.svg){:height="30px" width="30px"}
@@ -97,7 +97,7 @@ Phone: (+84)77 695 9198
 
 *Senior Sofware Engineer*
 
-*(03/2018 - 08/2029)*
+*(03/2018 - 08/2019)*
 
 *Responsibilities:*
 - Created and maintained front-end code and documentation standards using `HTML`, `SCSS`, `Angular 5`
@@ -114,7 +114,7 @@ Phone: (+84)77 695 9198
 
 *Sofware Engineer*
 
-*(04/2017 - 03/2028)*
+*(04/2017 - 03/2018)*
 
 *Responsibilities:*
 - Build and maintain in-house application using `.Net Core` and `Onion Architecture` architecture.
