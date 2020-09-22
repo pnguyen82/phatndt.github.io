@@ -5,8 +5,8 @@ layout: blank
 # PHAT NGUYEN
 #### *Sr Fullstack Engineer*
 ## PROFILE
-Email: <pao.phatnguyen@gmail.com>  
-Phone: (+84)967 567 071
+Email: <dev.phatdt@gmail.com>  
+Phone: (+84)77 695 9198
 
 <a href="https://www.linkedin.com/in/phat-nguyen-0125b015b/" target="_blank">
     ![Phat Linkedin Profile](/assets/images/icons/linkedin-brands.svg){:height="30px" width="30px"}
@@ -17,7 +17,7 @@ Phone: (+84)967 567 071
 ## SUMMARY
 - Having 5 years of experience in developing Web Applications using HTML (4/5), CSS (2/3), JavaScript, TypeScript, Angular (5/7), Node.js, jQuery, XML, Bootstrap, JSON.
 - Extensive knowledge in developing applications in a `single page (SPAs)` using various JavaScript frameworks like `Angular`, React.
-- Experience of working on CSS Preprocessors like LESS and SASS.
+- Experience of working on CSS Preprocessors like SCSS.
 - Developed the backend by using Node.js and MongoDB.
 - Expertise in implementing the `CRQS` architecture in backend applications Node.js.
 - Experience in working with RESTFUL Web Services and implementing RESTFUL API's.
@@ -62,12 +62,6 @@ Phone: (+84)967 567 071
 - Lead Front-end Team: mentor and training junior developers, review code in `gitlab`.
 - Designed and developed the application using Agile Scrum methodology by breaking down the project to several sprints.
 
-*Achievements:*
-- Knowledge Sale Procedure for Real Estate.
-- Build feature Call and Chat in Web application.
-- Break down Taks and manage it on Jira.
-- Open 2 offline events to sale Real Estate successfully.
-
 *ENVIRONMENT:* Angular 7, NodeJs, MongoDb, CRQS, RabbitMQ, Linux.
 
 
@@ -84,12 +78,6 @@ Phone: (+84)967 567 071
 - Experienced with deployments, maintenance applications on Linux server.
 - Lead Team: mentor and training junior developers, review code in `gitlab`.
 
-*Achievements:*
-- Knowledge about Finance Domain
-- Understanding React-native lifecycle.
-- Develop ability how to manage a team.
-- Deploy app to server Linux
-
 *ENVIRONMENT:* .NET Core, React native, Angular, MongoDB, Linux
 
 
@@ -105,10 +93,6 @@ Phone: (+84)967 567 071
 - Mentor junior developers to proper understand project requirements and meet the standard solution.
 - Integrating with third-party services and external APIs  and other CRMs system.
 
-*Achievements:*
-- Knowledge about Insurance Domain
-- Understanding Angular lifecycle.
-
 *ENVIRONMENT:* Angular 5, NodeJs 
 
 
@@ -120,9 +104,6 @@ Phone: (+84)967 567 071
 - Build and maintain in-house application using `.Net Core` and `Onion Architecture` architecture.
 - Handle mapping model using AutoMapping.
 - Write a report function to audit .
-
-*Achievements:*
-- Understand Onion Architecture architecture, and how to apply.
 
 *ENVIRONMENT:* .NET Core, Azure, SQLServer
 
