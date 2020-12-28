@@ -15,13 +15,13 @@ Phone: (+84)77 695 9198
 -------
 
 ## SUMMARY
-- Having 5 years of experience in developing Web Applications using HTML (4/5), CSS (2/3), JavaScript, TypeScript, Angular (5/7), Node.js, jQuery, XML, Bootstrap, JSON.
+- Having 5 years of experience in developing Web Applications using HTML/HTML5, CSS/CSS3, JavaScript, TypeScript, Angular (5/7), Node.js, jQuery, Bootstrap, JSON.
 - Extensive knowledge in developing applications in a `single page (SPAs)` using various JavaScript frameworks like `Angular`, React.
 - Experience of working on CSS Preprocessors like SCSS.
 - Developed the backend by using Node.js and MongoDB.
 - Expertise in implementing the `CRQS` architecture in backend applications Node.js.
 - Experience in working with RESTFUL Web Services and implementing RESTFUL API's.
-- Extensive experience working under `Agile` methodologies environment (scrum).
+- Extensive experience working under `Agile` methodologies environment.
 - Experience in working on MAC, Windows, and Linux - Ubuntu operating systems.
 - Excellent interpersonal abilities, communication skills, time management and Team skills with an intention to work hard to meet project deadlines.
 
@@ -38,7 +38,7 @@ Phone: (+84)77 695 9198
 
 **Version Control**: `GIT`, `SVN`.
 
-**Operating systems**: `Linux - Ubuntu`, `Mac OS`, `Windows`.
+**Operating systems**: `Linux - Ubuntu`, `Mac OS`, `Windows`, `Docker`.
 
 **Other**: `Git`, `GitHub`
 
@@ -63,22 +63,6 @@ Phone: (+84)77 695 9198
 - Designed and developed the application using Agile Scrum methodology by breaking down the project to several sprints.
 
 *ENVIRONMENT:* Angular 7, NodeJs, MongoDb, CRQS, RabbitMQ, Linux.
-
-
-**24hPlus**
-
-*Team Leader (Freelancer)*
-
-*(04/2020 - 08/2020)*
-
-*Responsibilities:*
-- Designing and developing new Application with `React-native`.
-- Develop a Web application by `Angular 7`.
-- Implemented and maintained Backend with `.Net Core` and `MongoDb`. Integrated to 3 systems.
-- Experienced with deployments, maintenance applications on Linux server.
-- Lead Team: mentor and training junior developers, review code in `gitlab`.
-
-*ENVIRONMENT:* .NET Core, React native, Angular, MongoDB, Linux
 
 
 **DXC TECHNOLOGY**
