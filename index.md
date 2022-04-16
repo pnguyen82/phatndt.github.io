@@ -26,19 +26,20 @@ Phone: (+84)77 695 9198
 
 ## TECHNICAL SKILLS
 
-**Web Technologies**: `HTML`, `CSS`, `Bootstrap`, `jQuery`, `SCSS`, `JSON`, `MVC`, **`Angular 5/7`**, `ReactJs`.
+**Mangement Team**: `JIRA`
 
-**Backend**: `.Net core`, **`Node.JS`**
+**Web Technologies**: HTML, CSS, Bootstrap, jQuery, SCSS, JSON, **`Angular 5/7`**, ReactJs.
+
+**Backend**: .Net core, **`Node.JS`**
 
 **Mobile**: `React native`
 
-**Database**: `SQL Server`, `MYSQL`, **`MongoDB`**.
+**Database**: SQL Server, MYSQL, **`MongoDB`**.
 
-**Version Control**: `GIT`, `SVN`.
+**Version Control**: `GIT`.
 
-**Operating systems**: `Linux - Ubuntu`, `Mac OS`, `Windows`, `Docker`.
+**Operating systems**: Linux - Ubuntu, Mac OS, Windows, `Docker`.
 
-**Other**: `Git`, `GitHub`
 
 ## PROFESSIONAL EXPERIENCE:
 
