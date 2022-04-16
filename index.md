@@ -16,7 +16,7 @@ Phone: (+84)77 695 9198
 
 ## SUMMARY
 - Having 2 years of experience at `Product Owner` position in Agile.
-- Having 6 years of experience in developing Web Applications using HTML/HTML5, CSS/CSS3, JavaScript, TypeScript, Angular (5/7), Node.js, jQuery, Bootstrap, JSON.
+- Having 5 years of experience in developing Web Applications using HTML/HTML5, CSS/CSS3, JavaScript, TypeScript, Angular (5/7), Node.js, jQuery, Bootstrap, JSON.
 - Extensive knowledge in developing applications in a `single page (SPAs)` using various JavaScript frameworks like `Angular`, React.
 - Expertise in implementing the `Microservices` architecture in backend applications Node.js.
 - Extensive experience working under `Agile` methodologies environment.
