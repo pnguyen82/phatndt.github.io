@@ -3,7 +3,7 @@ title: CV
 layout: blank
 ---
 # PHAT NGUYEN
-#### *Project Manager*
+#### *Product Owner*
 ## PROFILE
 Email: <dev.phatdt@gmail.com>  
 Phone: (+84)77 695 9198
@@ -15,12 +15,10 @@ Phone: (+84)77 695 9198
 -------
 
 ## SUMMARY
+- Having 1 year of experience at `Product Owner` position.
 - Having 6 years of experience in developing Web Applications using HTML/HTML5, CSS/CSS3, JavaScript, TypeScript, Angular (5/7), Node.js, jQuery, Bootstrap, JSON.
 - Extensive knowledge in developing applications in a `single page (SPAs)` using various JavaScript frameworks like `Angular`, React.
-- Experience of working on CSS Preprocessors like SCSS.
-- Developed the backend by using Node.js and MongoDB.
-- Expertise in implementing the `CRQS` architecture in backend applications Node.js.
-- Experience in working with RESTFUL Web Services and implementing RESTFUL API's.
+- Expertise in implementing the `Microservices` architecture in backend applications Node.js.
 - Extensive experience working under `Agile` methodologies environment.
 - Experience in working on MAC, Windows, and Linux - Ubuntu operating systems.
 - Excellent interpersonal abilities, communication skills, time management and Team skills with an intention to work hard to meet project deadlines.
@@ -46,15 +44,15 @@ Phone: (+84)77 695 9198
 
 **IHouzz Technology**
 
-*Project Manager*
+*Product Owner*
 
 *(02/2020 - now)*
 
 *Responsibilities:*
-- Develops performance plans and evaluations of employees, including subordinate supervisors as well as reviews evaluations to assure equity of individual employee performance objectives, standards and ratings among lower level staffManages and coordinates 1 or more Projects in order optimize portfolio delivery.
-- Manages and coordinates 1 Project (SPX Project) in order optimize portfolio delivery
-- Regularly reviews, reallocates, and checks priorities within the Project to align with organizational goals and direction
-- Establish milestones, anticipates issues, and monitors adherence to project scope, requirements and design documents, schedules, and to the CSSC software development process
+- Collaborated with teams to discover and deliver the best solution to the market presented by the business.
+- Created Sprint Release Plans with input from development teams.
+- Applied Agile methods and processes to promote a disciplined and transparent project management process.
+- Operation product after launching to the martket: customer services, handle production issues, analysis user by their behavior, ... 
 
 *ENVIRONMENT:* Jira, XMind, SmartSheet
 
